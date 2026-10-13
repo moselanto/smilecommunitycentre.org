@@ -165,13 +165,17 @@ add_shortcode(
 add_shortcode(
 	'smile_community',
 	function () {
+		// Real Google reviews (Smile Community Centre Children's Home, Mzesa). Wording kept as written.
 		$quotes  = array(
-			array( __( 'Such a beautiful place with beautiful people. From the management, to the kids here. So much love.', 'smile-community' ), __( 'Ruth Kamau', 'smile-community' ), __( 'Volunteer', 'smile-community' ) ),
-			array( __( 'We did a CSR as AFC fans Kayole branch and it was quite an encounter. Good reception and gestures from the staff and the children as well.', 'smile-community' ), __( 'Hawkins Isabwa', 'smile-community' ), __( 'AFC Leopards Fans, Kayole Branch', 'smile-community' ) ),
-			array( __( 'No matter how small you are willing to give, these kids need it because it will make a difference and put a smile on them.', 'smile-community' ), __( 'Maureen Syokau', 'smile-community' ), __( 'Supporter', 'smile-community' ) ),
+			array( __( 'Awesome place with awesome people for awesome kids. Definitely donate if you can, it’s been a pleasure meeting the team/family behind this place and seeing the good use they put the donations to.', 'smile-community' ), __( 'Melissa Nz', 'smile-community' ), __( 'Visitor', 'smile-community' ) ),
+			array( __( 'A place of compassion, the kids are jovial, well disciplined and they have a special way to make visitors feel at home. One of the best places I’ve visited.', 'smile-community' ), __( 'Eugene Emmanuel', 'smile-community' ), __( 'Visitor', 'smile-community' ) ),
+			array( __( 'The place is very cool and the kids are very disciplined and hardworking. I really enjoyed being there with all of them because of their kindness. Hope to visit you again.', 'smile-community' ), __( 'Maureen Ngobili', 'smile-community' ), __( 'Visitor', 'smile-community' ) ),
 		);
+		$reviews_url = smile_setting( 'google_reviews_url', 'https://share.google/xseS4IIjXcfL36FcG' );
 		$friends = array( __( 'Lift the Children', 'smile-community' ), __( 'Thrive Kenya', 'smile-community' ), __( 'Rotary Club', 'smile-community' ), __( 'AFC Leopards Fans Kayole', 'smile-community' ), __( 'IEBC', 'smile-community' ), __( 'Volunteer doctors', 'smile-community' ), __( 'University volunteers', 'smile-community' ), __( "Children's officers", 'smile-community' ), __( 'Local chiefs and police', 'smile-community' ) );
-		$out     = '<div class="smile-voices">';
+		$out     = '<div class="smile-rating smile-reveal"><span class="smile-rating__score">4.7</span><span class="smile-rating__stars" aria-hidden="true">' . str_repeat( smile_icon( 'star' ), 5 ) . '</span><span class="smile-rating__text">' . esc_html__( 'Rated 4.7 out of 5 from 111 Google reviews', 'smile-community' ) . '</span>'
+			. ( $reviews_url ? '<a class="smile-rating__link" href="' . esc_url( $reviews_url ) . '" target="_blank" rel="noopener">' . esc_html__( 'Read all reviews on Google', 'smile-community' ) . ' &rarr;</a>' : '' ) . '</div>';
+		$out    .= '<div class="smile-voices">';
 		foreach ( $quotes as $i => $q ) {
 			$initials = implode( '', array_map( function ( $p ) { return mb_substr( $p, 0, 1 ); }, explode( ' ', $q[1] ) ) );
 			$out     .= '<figure class="smile-voice' . ( 0 === $i ? ' smile-voice--lead' : '' ) . ' smile-reveal"><div class="smile-voice__stars" aria-label="' . esc_attr__( 'Google review', 'smile-community' ) . '">' . str_repeat( smile_icon( 'star' ), 5 ) . '</div><blockquote>' . esc_html( $q[0] ) . '</blockquote><figcaption><span class="smile-voice__avatar" aria-hidden="true">' . esc_html( $initials ) . '</span><span><strong>' . esc_html( $q[1] ) . '</strong>' . esc_html( $q[2] ) . ' &middot; ' . esc_html__( 'Google review', 'smile-community' ) . '</span></figcaption></figure>';

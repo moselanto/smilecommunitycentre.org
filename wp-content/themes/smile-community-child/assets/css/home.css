@@ -1163,3 +1163,14 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 @media (min-width: 1201px) {
 	.smile-nav__list:hover > li:not(:hover) > .sub-menu { opacity: 0 !important; visibility: hidden !important; pointer-events: none; }
 }
+
+
+/* v2.23.0 Google rating summary above the reviews */
+.smile-rating { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; margin: 0 0 1.6rem; padding: .85rem 1.2rem; border-radius: 16px; background: var(--smile-cream); border: 1px solid rgba(22,75,63,.08); }
+.smile-rating__score { font-family: var(--smile-font-display); font-size: 2rem; font-weight: 600; line-height: 1; color: var(--smile-forest, #164B3F); }
+.smile-rating__stars { display: inline-flex; gap: 2px; color: var(--smile-sun); }
+.smile-rating__stars .smile-icon { width: 18px; height: 18px; fill: currentColor; }
+.smile-rating__text { font-size: .95rem; color: var(--smile-ink, #1d2b27); }
+.smile-rating__link { margin-left: auto; font-weight: 700; font-size: .92rem; color: var(--smile-teal) !important; text-decoration: none; }
+.smile-rating__link:hover { text-decoration: underline; }
+@media (max-width: 600px) { .smile-rating__link { margin-left: 0; width: 100%; } }
