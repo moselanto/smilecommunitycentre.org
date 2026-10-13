@@ -5,7 +5,7 @@
 | **Product** | smilecommunitycentre.org |
 | **Owner** | Smile Community Centre Children's Home |
 | **Status** | Staging (topnotchmall.co.ke/smilescommunity), preparing for launch |
-| **Theme** | smile-community-child 2.14.0, Smile Community Core 1.1.0 |
+| **Theme** | smile-community-child 2.17.0, Smile Community Core 1.1.0 |
 
 ## 1. Purpose
 
@@ -44,6 +44,9 @@ Give the centre a trustworthy, international-standard website that tells its sto
 | F8 | Safeguarding page with commitments, urgent numbers and concern steps |
 | F9 | Redirects from old URLs |
 | F10 | One-zip install with a setup wizard and one-click import |
+| F11 | Every visitor-facing text and section photo editable by staff without code |
+| F12 | Search-ready: schema.org graph, keyword-mapped titles and descriptions |
+| F13 | High-resolution brand logo and site icons |
 
 ## 5. Non-functional requirements
 

@@ -6,6 +6,7 @@ Every change goes through the same five steps.
 2. **Bump the version** in two places: `style.css` (`Version:`) and `functions.php` (`SMILE_THEME_VERSION`).
 3. **Build**: `bash scripts/build-theme-zip.sh`
    - Rebuilds the minified files in `assets/build/`.
+   - Lists every editable text (`scripts/extract-strings.py` > `demo/strings.json`).
    - Runs the quality gate `scripts/check-theme.py`. If anything fails, no zip is made.
 4. **Commit** to `main` with a message that lists what changed and why.
 5. **Install** on the site:
@@ -25,3 +26,10 @@ Every change goes through the same five steps.
 - Open the home page and two inner pages, and check the top bar, header, banner and footer.
 - Check one page on a phone (menu, bottom bar, slider).
 - Confirm the live version: open `.../wp-content/themes/smile-community-child/style.css` and read the `Version:` line.
+
+## Writing code that stays editable
+
+- Put every visitor-facing sentence in `__()` / `esc_html__()` with the `smile-community` domain. It then appears in Site text & photos automatically.
+- Use `smile_image_by_key( 'key' )` for section photos, so staff can replace them.
+- Use `smile_setting()` for contact and payment details.
+- Add a line to `CHANGELOG.md` with every release.

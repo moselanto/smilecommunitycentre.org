@@ -23,6 +23,10 @@ The one-page version of [ARCHITECTURE.md](ARCHITECTURE.md).
 | Forms | `plugins/smile-community-core/includes/forms.php` |
 | Phone, M-Pesa, emails | WordPress: Smile Centre > Centre details |
 | Security behaviour | `inc/security.php` (every feature has an off-switch filter) |
+| SEO and schema | `inc/seo.php`, titles in `demo/pages.json` |
+| Logo and icons | `assets/images/brand/`, `inc/brand.php` |
+| Wording and photos (staff) | WordPress: Smile Centre > Site text & photos |
+| Fonts | `assets/fonts/`, loaded in `inc/setup.php` |
 
 ## How a form message travels
 
@@ -35,6 +39,10 @@ Edit → bump version in `style.css` and `functions.php` → `bash scripts/build
 ## Security in one breath
 
 HTTPS + HSTS · security headers · nonces everywhere · typed sanitisation · escaped output · rate-limited forms and logins · 12-hour sessions · 12-character passwords · no user enumeration · XML-RPC off · REST CORS own-origin only · no secrets in code.
+
+## Text you add in code
+
+Wrap every visitor-facing string in `__( '...', 'smile-community' )` (or `esc_html__`). The build lists it in Site text & photos automatically, so staff can change it.
 
 ## Never do
 

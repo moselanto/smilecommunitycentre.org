@@ -20,8 +20,9 @@
   With Pro, Theme Builder templates can replace any of these, and they take priority automatically.
 - **No online card or M-Pesa STK payments are built.** There are no approved credentials or provider, so only the verified manual M-Pesa method is shown. A Daraja STK Push or card gateway can be added once the centre approves a provider and supplies credentials. It needs server-side callback verification and a sandbox test first.
 - **Email delivery** depends on SMTP being configured on the host. The forms report honestly if email fails, and every message is also stored.
-- **PHP was not run during development**, because no PHP runtime was available in the build environment. The first install on staging is the first real execution, so check the Smile Setup log and the PHP error log.
+- **Automated checks:** every build runs PHP 8.3 syntax checks, JavaScript and CSS checks and security patterns. Visual checks still need a person on staging.
 - **Images are imported from the live site at their existing size.** Some are small or low quality. A consented, recent photo shoot of the Mzesa centre, staff and activities is recommended.
-- **Fonts** (Fraunces and Inter) load through Elementor. Set them to load locally as described in install-and-deploy.md.
-- **Performance and Core Web Vitals have not been measured yet.** They must be measured on staging.
+- **Fonts** (Newsreader, Figtree, Caveat) are self-hosted by the theme since 2.17.0.
+- **Performance:** the theme work is done; reaching 1 to 3 seconds also needs page caching, `.htaccess` caching and PHP 8.2 on the host (docs/performance.md). Measure with PageSpeed Insights.
+- **Logo source:** the new logo was supplied as a flat image; an SVG from the designer would make it razor sharp at any size.
 - **Cistern of Hope reference:** the brief mentions this as an internal reference. This design is deliberately its own (a warm teal and sunshine palette with an editorial serif) and copies nothing from it.

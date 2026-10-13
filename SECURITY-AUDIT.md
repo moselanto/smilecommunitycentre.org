@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Scope** | `smile-community-child` theme 2.14.0 (all PHP, JS, CSS, templates, page data) and the bundled Smile Community Core plugin 1.1.0 |
+| **Scope** | `smile-community-child` theme 2.14.0 (re-checked for 2.17.0) (all PHP, JS, CSS, templates, page data) and the bundled Smile Community Core plugin 1.1.0 |
 | **Date** | 13 October 2026 |
 | **Method** | Manual line-by-line review of every request entry point (public forms, admin-post, AJAX, REST, template output, remote fetches), automated syntax and pattern checks (`scripts/check-theme.py`), OWASP Top 10 and WordPress security guidelines |
 | **Result** | No critical or high findings remain. 9 issues fixed, 12 hardening controls added, residual items listed in section 6 |
@@ -16,6 +16,7 @@
 | `wp_ajax_smile_install_plugin` | Administrators | `check_ajax_referer` + `install_plugins` + `activate_plugins` + slug allow-list |
 | `wp_ajax_smile_demo_step` | Administrators | `check_ajax_referer` + `manage_options` |
 | Enquiry status meta box save | Staff | Nonce + `smile_manage_inquiries` |
+| `admin-post.php?action=smile_save_text` / `smile_save_photos` (2.17.0) | Editors | `check_admin_referer` + `edit_pages`; keys restricted to hex hashes / `sanitize_key`; text `sanitize_textarea_field` (2,000 chars); photo IDs must be image attachments; output still escaped at render |
 | Templates and shortcodes | Public output | Context escaping |
 | `wp-login.php`, XML-RPC, REST | Public | Throttling, generic errors, XML-RPC off, users endpoint hidden, CORS own-origin |
 | Content importer remote calls | Administrators | `wp_safe_remote_get`, `download_url` (blocks private and local addresses), `wp_kses_post` |

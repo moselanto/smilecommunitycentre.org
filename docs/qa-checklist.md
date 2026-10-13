@@ -33,12 +33,19 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] Each page has a unique title and description (SEOPress).
 - [ ] `/sitemaps.xml` is reachable. Staging is noindex, and production is indexable at launch.
 - [ ] Every row in redirects.md returns a 301 to the right page.
-- [ ] Only one Organization schema appears (SEOPress). Check with the Rich Results Test.
+- [ ] Only one Organization appears (the theme's; SEOPress Knowledge Graph off). Check the home page with the Rich Results Test and the Schema Markup Validator.
+- [ ] View source on Home, Donate and a story: the title and meta description match docs/SEO.md.
 
 ## Performance
 - [ ] Run PageSpeed Insights on mobile for Home, Donate and a story. Record LCP, CLS and INP here.
 - [ ] Target LCP < 2.5 s, CLS < 0.1 and INP < 200 ms. If the hero image is too heavy, replace it with a 1600 px WebP.
-- [ ] WP Rocket: form pages still work while logged out. The cache lifespan is 10 hours or less.
+- [ ] Page cache (WP Super Cache): forms still work while logged out. The cache lifespan is 10 hours or less.
+- [ ] No requests to fonts.googleapis.com or fonts.gstatic.com (browser DevTools > Network).
+
+## Editing
+- [ ] Change one sentence in Smile Centre > Site text & photos, check it on the site, then empty the box and check the original returns.
+- [ ] Replace one photo in the Photos tab, check it, then click "Use original".
+- [ ] The new logo shows in the header, footer, browser tab and sign-in page.
 
 ## Safeguarding and privacy
 - [ ] No child's full name, school or exact situation appears in any page, caption, filename or alt text.

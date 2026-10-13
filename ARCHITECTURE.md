@@ -36,7 +36,10 @@ Rule: **presentation in the theme, data in the plugin.** If the theme is ever sw
 | File | Purpose |
 |---|---|
 | `security.php` | Security headers, HTTPS redirect, login throttling, generic login errors, session length, password minimum, user-enumeration blocks, XML-RPC off, REST CORS |
-| `setup.php` | Theme supports, image sizes, asset loading (minified bundles), non-blocking fonts, first-slide preload, dequeues |
+| `brand.php` | Bundled logo (1x/2x/3x, WebP + PNG), site icons, login logo, logo URL for schema |
+| `seo.php` | Connected schema.org graph, title and description resolver (feeds SEOPress), indexing rules, fallback meta and Open Graph |
+| `content-editor.php` | Smile Centre > Site text & photos: text overrides through `gettext`, photo overrides by key |
+| `setup.php` | Theme supports, image sizes, asset loading (minified bundles), self-hosted fonts with preload, first-slide preload, Elementor trimming, speculative prerender |
 | `template-tags.php` | Settings helper, phone links, breadcrumbs, reading time, stories per page |
 | `components.php` | Icon set, story images, category labels, shared shortcodes |
 | `home-sections.php` | Section shortcodes used across pages |
@@ -95,7 +98,22 @@ sequenceDiagram
   end
 ```
 
-### 5.3 Content import (administrators only)
+### 5.3 Editing text and photos
+
+```mermaid
+sequenceDiagram
+  participant E as Editor
+  participant A as Site text & photos
+  participant O as Options
+  participant P as Public page
+  E->>A: Change wording / choose photo (nonce, edit_pages)
+  A->>O: smile_text_overrides / smile_image_overrides (sanitised)
+  P->>O: gettext filter swaps edited text; smile_image_by_key() returns chosen photo
+```
+
+`scripts/extract-strings.py` lists every visitor-facing string into `demo/strings.json` at build time, so the screen always matches the code.
+
+### 5.4 Content import (administrators only)
 
 `wp_ajax_smile_demo_step` → nonce + `manage_options` → builds pages from `demo/pages.json`, sideloads photos with `download_url()` (SSRF-safe), imports stories from the live site with `wp_safe_remote_get()`, cleans HTML with `wp_kses_post()`.
 
@@ -109,6 +127,8 @@ sequenceDiagram
 | Redirects | Option `smile_core_redirects` | Administrators |
 | Rate-limit counters | Transients keyed by hashed IP | Nobody (raw IPs are never stored) |
 | Design version | Option `smile_design_version` | Administrators |
+| Text and photo changes | Options `smile_text_overrides`, `smile_image_overrides` | Editors and administrators |
+| SEO sync marker | Option `smile_seo_synced` | Administrators |
 
 Enquiries are excluded from search, REST, feeds and front-end queries, and are deleted by a daily retention job.
 
@@ -116,7 +136,8 @@ Enquiries are excluded from search, REST, feeds and front-end queries, and are d
 
 - `assets/css/main.css` (all pages), `home.css` + `slider.css` (sections), `assets/js/main.js`, `slider.js` (home only)
 - Built into `assets/build/*.min.*` by `scripts/build-theme-zip.sh`
-- Fonts: Newsreader and Figtree (non-blocking), Caveat only on About, Founder, FAQ
+- Fonts: Newsreader, Figtree and Caveat self-hosted in `assets/fonts/` (latin woff2), inline `@font-face`, two preloaded
+- Brand: `assets/images/brand/` (logo sizes, icons)
 
 ## 8. Build and release
 
