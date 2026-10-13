@@ -76,7 +76,7 @@
 			srText.textContent = link.textContent;
 			var sign = document.createElement( 'span' );
 			sign.setAttribute( 'aria-hidden', 'true' );
-			sign.textContent = '+';
+			sign.className = 'smile-sub-toggle__chev';
 			btn.appendChild( srText );
 			btn.appendChild( sign );
 			link.insertAdjacentElement( 'afterend', btn );
@@ -84,7 +84,6 @@
 				var open = btn.getAttribute( 'aria-expanded' ) !== 'true';
 				btn.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
 				item.classList.toggle( 'is-open', open );
-				btn.querySelector( '[aria-hidden]' ).textContent = open ? '\u2212' : '+';
 			} );
 		} );
 

@@ -45,7 +45,7 @@ $smile_heart     = '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true
 		</div>
 
 		<nav class="smile-nav" id="smile-primary-nav" aria-label="<?php esc_attr_e( 'Main', 'smile-community' ); ?>">
-			<p class="smile-nav__title" aria-hidden="true"><?php esc_html_e( 'Menu', 'smile-community' ); ?></p>
+			<div class="smile-nav__head"><?php echo smile_brand_logo( 'drawer' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in smile_brand_logo(). ?></div>
 			<?php
 			wp_nav_menu(
 				array(
