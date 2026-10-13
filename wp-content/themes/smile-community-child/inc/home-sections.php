@@ -585,3 +585,95 @@ add_shortcode(
 		return $out . '</ul>';
 	}
 );
+
+
+/* ---------- Contact hub (Contact Us) ---------- */
+add_shortcode(
+	'smile_contact_hub',
+	function () {
+		$phone = smile_setting( 'phone_primary', '0721 318 869' );
+		$wa    = preg_replace( '/\D/', '', smile_setting( 'whatsapp', '254721318869' ) );
+		$email = smile_setting( 'email', 'info@smilecommunitycentre.org' );
+		$map   = smile_setting( 'map_link', 'https://maps.app.goo.gl/6BvCCFYRq1DtkXNF9' );
+		$cards = array(
+			array( 'phone', __( 'Call us', 'smile-community' ), $phone, smile_tel_href( $phone ), __( 'Call now', 'smile-community' ), __( 'Talk to the office directly', 'smile-community' ) ),
+			array( 'chat', __( 'WhatsApp', 'smile-community' ), __( 'Chat with us', 'smile-community' ), $wa ? 'https://wa.me/' . $wa : '', __( 'Open WhatsApp', 'smile-community' ), __( 'Quick replies during office hours', 'smile-community' ) ),
+			array( 'mail', __( 'Email', 'smile-community' ), antispambot( $email ), 'mailto:' . antispambot( $email ), __( 'Write to us', 'smile-community' ), __( 'We reply within a few working days', 'smile-community' ) ),
+			array( 'pin', __( 'Visit', 'smile-community' ), __( 'Mzesa, Soweto, Kayole', 'smile-community' ), $map, __( 'Get directions', 'smile-community' ), __( 'By arrangement, near Donholm Phase 8', 'smile-community' ) ),
+		);
+		$out  = '<div class="smile-hub">';
+		$out .= '<p class="smile-hub__status" data-smile-office="9-17"><span class="smile-hub__dot" aria-hidden="true"></span><span class="smile-hub__state">' . esc_html__( 'Office hours', 'smile-community' ) . '</span> <span class="smile-hub__hours">' . esc_html__( '9am to 5pm, Nairobi time', 'smile-community' ) . '</span></p>';
+		$out .= '<ul class="smile-hub__grid">';
+		foreach ( $cards as $i => $c ) {
+			if ( \! $c[3] ) {
+				continue;
+			}
+			$ext  = 0 === strpos( $c[3], 'http' ) ? ' target="_blank" rel="noopener"' : '';
+			$out .= '<li class="smile-hub__card' . ( 0 === $i ? ' is-primary' : '' ) . '">' . smile_icon( $c[0] ) . '<span class="smile-hub__label">' . esc_html( $c[1] ) . '</span><strong class="smile-hub__value">' . esc_html( $c[2] ) . '</strong><span class="smile-hub__hint">' . esc_html( $c[5] ) . '</span><a class="smile-hub__btn" href="' . esc_url( $c[3] ) . '"' . $ext . '>' . esc_html( $c[4] ) . ' <span aria-hidden="true">&rarr;</span></a></li>';
+		}
+		return $out . '</ul></div>';
+	}
+);
+
+/* ---------- Contact: what happens next ---------- */
+add_shortcode(
+	'smile_next_steps',
+	function () {
+		$phone  = smile_setting( 'phone_primary', '0721 318 869' );
+		$others = array_filter( array_map( 'trim', explode( "\n", smile_setting( 'phone_others', "0722 412 676\n0720 805 865" ) ) ) );
+		$steps  = array(
+			array( 'mail', __( 'You send your message', 'smile-community' ), __( 'Use the form, or call or WhatsApp if it is quicker for you.', 'smile-community' ) ),
+			array( 'users', __( 'Our team reads it', 'smile-community' ), __( 'Every message is read by authorised Smile staff.', 'smile-community' ) ),
+			array( 'chat', __( 'We reply', 'smile-community' ), __( 'Usually within a few working days, by email or phone.', 'smile-community' ) ),
+		);
+		$out = '<ol class="smile-next">';
+		foreach ( $steps as $i => $st ) {
+			$out .= '<li>' . smile_icon( $st[0] ) . '<div><strong>' . esc_html( $st[1] ) . '</strong><span>' . esc_html( $st[2] ) . '</span></div></li>';
+		}
+		$out .= '</ol><div class="smile-next__urgent">' . smile_icon( 'shield' ) . '<p><strong>' . esc_html__( 'Worried about a child\'s safety?', 'smile-community' ) . '</strong> ' . esc_html__( 'Please call us rather than writing. If a child is in immediate danger, call 999 or 112.', 'smile-community' ) . '</p></div>';
+		$out .= '<dl class="smile-next__facts"><div><dt>' . esc_html__( 'Phone lines', 'smile-community' ) . '</dt><dd>';
+		$nums = array_merge( array( $phone ), $others );
+		$links = array();
+		foreach ( $nums as $n ) {
+			$links[] = '<a href="' . esc_url( smile_tel_href( $n ) ) . '">' . esc_html( $n ) . '</a>';
+		}
+		$out .= implode( '<br>', $links ) . '</dd></div><div><dt>' . esc_html__( 'Postal address', 'smile-community' ) . '</dt><dd>' . esc_html( smile_setting( 'postal_address', 'P.O. Box 156-00518, Nairobi, Kenya' ) ) . '</dd></div></dl>';
+		return $out;
+	}
+);
+
+/* ---------- Contact: visit expectations ---------- */
+add_shortcode(
+	'smile_visit_expect',
+	function () {
+		$items = array(
+			array( 'calendar', __( 'Book ahead', 'smile-community' ), __( 'Request a date below so we can welcome you properly.', 'smile-community' ) ),
+			array( 'users', __( 'Tell us who is coming', 'smile-community' ), __( 'Let us know how many people, and if you are a group.', 'smile-community' ) ),
+			array( 'gift', __( 'Bringing something?', 'smile-community' ), __( 'Tell us what you plan to bring so it goes where it is needed.', 'smile-community' ) ),
+			array( 'shield', __( 'Children come first', 'smile-community' ), __( 'Visits follow the children\'s routine and our safeguarding rules, including no photos without permission.', 'smile-community' ) ),
+		);
+		$out = '<ul class="smile-expect">';
+		foreach ( $items as $it ) {
+			$out .= '<li>' . smile_icon( $it[0] ) . '<div><strong>' . esc_html( $it[1] ) . '</strong><span>' . esc_html( $it[2] ) . '</span></div></li>';
+		}
+		return $out . '</ul>';
+	}
+);
+
+/* ---------- Donate: how we use donations ---------- */
+add_shortcode(
+	'smile_use',
+	function () {
+		$items = array(
+			array( 'home', __( 'Daily care', 'smile-community' ), __( 'Meals, shelter, water and care for the children in our home.', 'smile-community' ) ),
+			array( 'users', __( 'Community programmes', 'smile-community' ), __( 'Feeding, education and health support where the need is greatest.', 'smile-community' ) ),
+			array( 'book', __( 'Your choice', 'smile-community' ), __( 'Ask us to direct your gift to an area such as education or meals.', 'smile-community' ) ),
+			array( 'gift', __( 'Donated goods', 'smile-community' ), __( 'Never sold. Extra clothes go to families in need during outreach.', 'smile-community' ) ),
+		);
+		$out = '<ul class="smile-use">';
+		foreach ( $items as $it ) {
+			$out .= '<li>' . smile_icon( $it[0] ) . '<div><strong>' . esc_html( $it[1] ) . '</strong><span>' . esc_html( $it[2] ) . '</span></div></li>';
+		}
+		return $out . '</ul>';
+	}
+);

@@ -263,6 +263,21 @@
 		els.forEach( function ( el ) { io.observe( el ); } );
 	}
 
+
+	/* Office open / closed badge (Nairobi time) */
+	function initOffice() {
+		document.querySelectorAll( '[data-smile-office]' ).forEach( function ( el ) {
+			var r = el.getAttribute( 'data-smile-office' ).split( '-' ), open = parseInt( r[0], 10 ), close = parseInt( r[1], 10 );
+			var h;
+			try { h = parseInt( new Intl.DateTimeFormat( 'en-GB', { hour: 'numeric', hourCycle: 'h23', timeZone: 'Africa/Nairobi' } ).format( new Date() ), 10 ); } catch ( e ) { return; }
+			if ( isNaN( h ) ) { return; }
+			var isOpen = h >= open && h < close;
+			el.classList.add( isOpen ? 'is-open' : 'is-closed' );
+			var st = el.querySelector( '.smile-hub__state' );
+			if ( st ) { st.textContent = isOpen ? 'Office open now' : 'Office closed now'; }
+		} );
+	}
+
 	function initForms() {
 		// Move focus to the status / first error after a server round-trip so screen readers announce it.
 		var target = document.querySelector( '.smile-form__status[tabindex="-1"]' );
@@ -270,8 +285,8 @@
 	}
 
 	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); initWall(); initCounters(); } );
+		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); initWall(); initCounters(); initOffice(); } );
 	} else {
-		initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); initWall(); initCounters();
+		initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); initWall(); initCounters(); initOffice();
 	}
 }() );

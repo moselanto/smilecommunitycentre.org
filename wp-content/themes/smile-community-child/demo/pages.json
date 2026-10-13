@@ -6696,8 +6696,8 @@
     "elType": "section",
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec",
-     "content_position": "middle",
+     "css_classes": "smile-sec smile-sec--use",
+     "content_position": "top",
      "structure": "20"
     },
     "elements": [
@@ -6720,12 +6720,31 @@
         "elements": []
        },
        {
+        "id": "6b01aa",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Unless you ask us to direct your gift, it goes where the need is greatest.</p>",
+         "_css_classes": "smile-lead"
+        },
+        "elements": []
+       },
+       {
+        "id": "6b01ab",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_use]"
+        },
+        "elements": []
+       },
+       {
         "id": "ec3b960",
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>Donations are used for the daily care of the children in our home and for our community programmes, where the need is greatest unless you ask us to direct your gift to a particular area such as education or meals. We do not sell donated goods. Extra clothes are given to families in need during outreach.</p><p>Questions about giving, a large gift or confirming that we received your donation? Use the form below or call or WhatsApp us.</p>",
-         "_css_classes": "smile-measure"
+         "editor": "<p>Questions about giving, a large gift or confirming that we received your donation? Use the form or call or WhatsApp us.</p>",
+         "_css_classes": "smile-use__note"
         },
         "elements": []
        }
@@ -7029,7 +7048,7 @@
     "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--tight smile-sec--overlap",
+     "css_classes": "smile-sec smile-sec--tight smile-sec--overlap smile-sec--hub",
      "structure": "10"
     },
     "elements": [
@@ -7047,7 +7066,7 @@
         "elType": "widget",
         "widgetType": "shortcode",
         "settings": {
-         "shortcode": "[smile_contact_cards]"
+         "shortcode": "[smile_contact_hub]"
         },
         "elements": []
        }
@@ -7060,8 +7079,8 @@
     "elType": "section",
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec",
-     "content_position": "middle",
+     "css_classes": "smile-sec smile-sec--message",
+     "content_position": "top",
      "structure": "20"
     },
     "elements": [
@@ -7069,26 +7088,37 @@
       "id": "3836e86",
       "elType": "column",
       "settings": {
-       "_column_size": 40,
-       "_inline_size": 40
+       "_column_size": 50,
+       "_inline_size": 42
       },
       "elements": [
        {
-        "id": "f7b103d",
+        "id": "6a01ab",
         "elType": "widget",
         "widgetType": "heading",
         "settings": {
-         "title": "Other ways to <em>reach us</em>",
+         "title": "Before you write",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
+       {
+        "id": "6a01ac",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "We read <em>every</em> message",
          "header_size": "h2"
         },
         "elements": []
        },
        {
-        "id": "77bd891",
+        "id": "6a01ad",
         "elType": "widget",
         "widgetType": "shortcode",
         "settings": {
-         "shortcode": "[smile_contact]"
+         "shortcode": "[smile_next_steps]"
         },
         "elements": []
        }
@@ -7099,8 +7129,8 @@
       "id": "18189af",
       "elType": "column",
       "settings": {
-       "_column_size": 60,
-       "_inline_size": 60
+       "_column_size": 50,
+       "_inline_size": 58
       },
       "elements": [
        {
@@ -7133,7 +7163,7 @@
     "elType": "section",
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--cream",
+     "css_classes": "smile-sec smile-sec--cream smile-sec--findus",
      "content_position": "middle",
      "structure": "20"
     },
@@ -7146,6 +7176,17 @@
        "_inline_size": 45
       },
       "elements": [
+       {
+        "id": "6a02aa",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Getting here",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
        {
         "id": "e28af60",
         "elType": "widget",
@@ -7205,19 +7246,31 @@
     "elType": "section",
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec",
-     "content_position": "middle",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--visit",
+     "content_position": "top",
+     "structure": "20"
     },
     "elements": [
      {
-      "id": "fe7b8ae",
+      "id": "6a03c1",
       "elType": "column",
+      "isInner": false,
       "settings": {
-       "_column_size": 100,
-       "_inline_size": null
+       "_column_size": 50,
+       "_inline_size": 42
       },
       "elements": [
+       {
+        "id": "6a03ab",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Come and see us",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
        {
         "id": "2955d6f",
         "elType": "widget",
@@ -7238,6 +7291,26 @@
         "elements": []
        },
        {
+        "id": "6a03ac",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_visit_expect]"
+        },
+        "elements": []
+       }
+      ]
+     },
+     {
+      "id": "6a03c2",
+      "elType": "column",
+      "isInner": false,
+      "settings": {
+       "_column_size": 50,
+       "_inline_size": 58
+      },
+      "elements": [
+       {
         "id": "6e7836a",
         "elType": "widget",
         "widgetType": "shortcode",
@@ -7246,8 +7319,7 @@
         },
         "elements": []
        }
-      ],
-      "isInner": false
+      ]
      }
     ],
     "isInner": false
