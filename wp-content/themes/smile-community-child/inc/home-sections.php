@@ -469,7 +469,7 @@ add_shortcode(
 		$out .= '</div><ul class="smile-wall__grid">';
 		foreach ( $items as $i => $it ) {
 			$id = smile_image_by_key( $it[0] );
-			if ( \! $id ) {
+			if ( ! $id ) {
 				continue;
 			}
 			$full = wp_get_attachment_image_url( $id, 'large' );
@@ -605,7 +605,7 @@ add_shortcode(
 		$out .= '<p class="smile-hub__status" data-smile-office="9-17"><span class="smile-hub__dot" aria-hidden="true"></span><span class="smile-hub__state">' . esc_html__( 'Office hours', 'smile-community' ) . '</span> <span class="smile-hub__hours">' . esc_html__( '9am to 5pm, Nairobi time', 'smile-community' ) . '</span></p>';
 		$out .= '<ul class="smile-hub__grid">';
 		foreach ( $cards as $i => $c ) {
-			if ( \! $c[3] ) {
+			if ( ! $c[3] ) {
 				continue;
 			}
 			$ext  = 0 === strpos( $c[3], 'http' ) ? ' target="_blank" rel="noopener"' : '';
