@@ -59,16 +59,48 @@ $smile_lead   = ( 1 === $smile_paged && $smile_total > 3 );
 	</header>
 
 	<?php if ( $smile_cats ) : ?>
+		<?php
+		$smile_main_cats = array_slice( $smile_cats, 0, 6 );
+		$smile_more_cats = array_slice( $smile_cats, 6 );
+		$smile_more_on   = false;
+		foreach ( $smile_more_cats as $smile_mc ) {
+			if ( is_category( $smile_mc->term_id ) ) {
+				$smile_more_on = true;
+			}
+		}
+		?>
 		<nav class="smile-topics" aria-label="<?php esc_attr_e( 'Story topics', 'smile-community' ); ?>">
-			<div class="smile-container">
+			<div class="smile-container smile-topics__inner">
+				<p class="smile-topics__label"><?php esc_html_e( 'Browse by topic', 'smile-community' ); ?></p>
 				<ul class="smile-topics__list">
 					<li><a class="smile-topics__chip<?php echo $smile_is_index ? ' is-active' : ''; ?>" href="<?php echo esc_url( $smile_blog ); ?>"<?php echo $smile_is_index ? ' aria-current="page"' : ''; ?>><?php esc_html_e( 'All stories', 'smile-community' ); ?></a></li>
 					<?php
-					foreach ( $smile_cats as $smile_cat ) :
+					foreach ( $smile_main_cats as $smile_cat ) :
 						$smile_on = is_category( $smile_cat->term_id );
 						?>
 						<li><a class="smile-topics__chip<?php echo $smile_on ? ' is-active' : ''; ?>" href="<?php echo esc_url( get_category_link( $smile_cat ) ); ?>"<?php echo $smile_on ? ' aria-current="page"' : ''; ?>><?php echo esc_html( smile_cat_label( $smile_cat->name ) ); ?><span class="smile-topics__n"><?php echo (int) $smile_cat->count; ?></span></a></li>
 					<?php endforeach; ?>
+					<?php if ( $smile_more_cats ) : ?>
+						<li class="smile-topics__more-item">
+							<details class="smile-topics__more">
+								<summary class="smile-topics__chip smile-topics__chip--more<?php echo $smile_more_on ? ' is-active' : ''; ?>">
+									<?php
+									/* translators: %d: number of extra topics */
+									echo esc_html( sprintf( __( 'More topics (%d)', 'smile-community' ), count( $smile_more_cats ) ) );
+									?>
+									<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								</summary>
+								<ul class="smile-topics__panel">
+									<?php
+									foreach ( $smile_more_cats as $smile_cat ) :
+										$smile_on = is_category( $smile_cat->term_id );
+										?>
+										<li><a class="<?php echo $smile_on ? 'is-active' : ''; ?>" href="<?php echo esc_url( get_category_link( $smile_cat ) ); ?>"<?php echo $smile_on ? ' aria-current="page"' : ''; ?>><?php echo esc_html( smile_cat_label( $smile_cat->name ) ); ?><span class="smile-topics__n"><?php echo (int) $smile_cat->count; ?></span></a></li>
+									<?php endforeach; ?>
+								</ul>
+							</details>
+						</li>
+					<?php endif; ?>
 				</ul>
 			</div>
 		</nav>

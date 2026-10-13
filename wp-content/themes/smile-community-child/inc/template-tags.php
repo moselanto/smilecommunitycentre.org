@@ -99,3 +99,20 @@ function smile_breadcrumbs() {
 function smile_cta_band() {
 	get_template_part( 'template-parts/cta-band' );
 }
+
+
+/**
+ * Stories and topic pages show 12 stories, so the grid always fills complete rows
+ * (page 1: 1 lead + 3 "Also new" + 8 cards + 1 support card; later pages: 12 cards).
+ *
+ * @param WP_Query $q Query.
+ */
+function smile_stories_per_page( $q ) {
+	if ( is_admin() || ! $q->is_main_query() ) {
+		return;
+	}
+	if ( $q->is_home() || $q->is_category() || $q->is_tag() ) {
+		$q->set( 'posts_per_page', 12 );
+	}
+}
+add_action( 'pre_get_posts', 'smile_stories_per_page' );
