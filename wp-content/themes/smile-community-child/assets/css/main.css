@@ -692,3 +692,41 @@ img { max-width: 100%; height: auto; }
 	.smile-gap-lg > .elementor-container { gap: 1.5rem; }
 	.smile-card-col { margin-bottom: 1rem; }
 }
+
+/* =========================================================
+   v1.4.2 "Our journey" band (current staging layout)
+   Heading row + 4 fact columns become one compact band:
+   heading left, short note under it, facts as glass cards.
+   ========================================================= */
+.smile-sec--forest { background: var(--smile-forest) radial-gradient(circle at 92% 0%, rgba(244,201,93,.16), transparent 42%) !important; }
+.smile-sec--forest.smile-sec--tight { padding-top: clamp(2.75rem, 2rem + 2.5vw, 4rem) !important; padding-bottom: 1.5rem !important; }
+.smile-sec--forest.smile-sec--tight + .smile-sec--forest { padding-top: 0 !important; padding-bottom: clamp(2.75rem, 2rem + 2.5vw, 4rem) !important; }
+.smile-sec--forest.smile-sec--tight .elementor-widget-heading h2.elementor-heading-title { font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.75rem); max-width: 18ch; }
+.smile-sec--forest.smile-sec--tight .smile-measure { max-width: 52ch; }
+.smile-sec--forest.smile-sec--tight .smile-measure p { font-size: .9rem; color: rgba(231,240,236,.72); line-height: 1.5; }
+
+/* Fact cards */
+.smile-sec--forest .elementor-column:has(.smile-fact) > .elementor-widget-wrap {
+	height: 100%; align-content: flex-start;
+	background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-top: 3px solid var(--smile-sun);
+	border-radius: 18px; padding: 1.5rem 1.4rem 1.6rem !important;
+	transition: background .25s, transform .25s;
+}
+.smile-sec--forest .elementor-column:has(.smile-fact):hover > .elementor-widget-wrap { background: rgba(255,255,255,.09); transform: translateY(-3px); }
+.smile-sec--forest .elementor-column:has(.smile-fact) { padding: 0 .55rem !important; }
+.smile-sec--forest > .elementor-container:has(.smile-fact) { margin-inline: -.55rem; max-width: calc(var(--smile-container) + 1.1rem + 20px); }
+.smile-sec--forest .smile-fact .elementor-heading-title { font-size: clamp(2.2rem, 1.7rem + 1.6vw, 3rem) !important; letter-spacing: -.02em; margin-bottom: .6rem !important; }
+.smile-sec--forest .smile-fact-label p { font-size: .9rem; line-height: 1.5; color: rgba(231,240,236,.85); margin: 0; }
+.smile-sec--forest .elementor-widget:not(:last-child) { margin-bottom: 0; }
+@media (max-width: 1024px) {
+	.smile-sec--forest .elementor-column:has(.smile-fact) { width: 50% !important; margin-bottom: 1.1rem; }
+}
+@media (max-width: 560px) {
+	.smile-sec--forest .elementor-column:has(.smile-fact) { width: 100% !important; }
+	.smile-sec--forest .elementor-column:has(.smile-fact) > .elementor-widget-wrap { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; padding: 1.1rem 1.2rem !important; }
+	.smile-sec--forest .smile-fact .elementor-heading-title { margin: 0 !important; font-size: 1.9rem !important; }
+}
+
+/* New timeline (v1.4 layout): same compact rhythm */
+.smile-sec--journey { padding-block: clamp(2.75rem, 2rem + 2.5vw, 4rem) !important; }
+.smile-sec--journey .smile-measure p { font-size: .9rem; color: rgba(231,240,236,.72); }
