@@ -602,3 +602,93 @@ img { max-width: 100%; height: auto; }
 .smile-gallery .gallery-item a:hover img { transform: scale(1.05); }
 .smile-form { background: #fff; }
 .elementor-widget-shortcode .smile-form-wrap { background: #fff; border: 1px solid var(--smile-line); border-radius: var(--smile-radius-lg); padding: clamp(1.25rem, 3vw, 2.25rem); box-shadow: 0 14px 36px rgba(22,75,63,.06); }
+
+/* =========================================================
+   v1.4.1 spacing and alignment: tighter, consistent rhythm
+   ========================================================= */
+:root {
+	--smile-s9: clamp(2.75rem, 2rem + 2.6vw, 4.5rem); /* section padding (was up to 6.5rem) */
+	--smile-s8: 3rem;
+	--smile-gap-row: 1.25rem;
+}
+.smile-sec { padding-block: var(--smile-s9) !important; }
+.smile-sec--tight { padding-block: 2.5rem !important; }
+
+/* Consecutive sections with the same background read as one block. */
+.smile-sec--cream + .smile-sec--cream,
+.smile-sec--sand + .smile-sec--sand,
+.smile-sec--forest + .smile-sec--forest,
+.smile-sec--tight + .smile-sec--tight:not(.smile-sec--cream):not(.smile-sec--sand):not(.smile-sec--forest) { padding-top: 0 !important; }
+.smile-sec--cream:has(+ .smile-sec--cream),
+.smile-sec--sand:has(+ .smile-sec--sand),
+.smile-sec--forest:has(+ .smile-sec--forest) { padding-bottom: var(--smile-gap-row) !important; }
+
+/* Heading-only rows sit close to the content they introduce. */
+.smile-sec--head { padding-bottom: 0 !important; }
+.smile-sec--head + .elementor-section { padding-top: 1.75rem !important; }
+
+/* Elementor spacing: columns and widgets */
+.smile-sec > .elementor-container > .elementor-column > .elementor-widget-wrap { padding-top: 0; padding-bottom: 0; }
+.smile-sec .elementor-widget:not(:last-child) { margin-bottom: 1rem; }
+.smile-sec .elementor-widget-heading + .elementor-widget-text-editor { margin-top: -.25rem; }
+.smile-sec .elementor-widget-heading h2.elementor-heading-title { margin-bottom: 0; }
+.smile-sec .smile-eyebrow { margin-bottom: .5rem !important; }
+.smile-sec .elementor-widget-text-editor p { margin-bottom: .85rem; }
+.smile-sec .elementor-widget-text-editor p:last-child { margin-bottom: 0; }
+
+/* One consistent content edge: header, sections and footer share the same container. */
+.elementor-section.elementor-section-boxed > .elementor-container { max-width: calc(var(--smile-container) + 20px); padding-inline: clamp(.25rem, 3vw, 1.25rem); }
+.elementor-section.elementor-section-boxed.smile-sec > .elementor-container > .elementor-column { padding-inline: 0; }
+
+/* Cards: equal height, content top-aligned, links left-aligned under the text. */
+.smile-card-col { display: flex; }
+.smile-card-col > .elementor-widget-wrap { width: 100%; }
+.smile-card-col .elementor-widget-button, .smile-card-col .elementor-button-wrapper { text-align: left !important; }
+.smile-card-col .elementor-widget-heading { padding-top: 1.25rem !important; }
+.smile-card-col .elementor-widget:not(.elementor-widget-image) { padding-inline: 1.25rem !important; }
+.smile-card-col .elementor-widget:last-child { padding-bottom: 1.25rem !important; margin-bottom: 0; }
+.smile-card-col--plain > .elementor-widget-wrap { padding: 1.5rem 1.25rem !important; }
+.smile-card-col--plain .elementor-widget { padding-inline: 0 !important; }
+.smile-card-col--plain .elementor-widget-heading { padding-top: 0 !important; }
+.smile-card-col .elementor-widget-heading h3 { margin-bottom: .35rem; }
+.smile-card-col .smile-icon--card { margin-bottom: .75rem; }
+
+/* Split sections: vertically centre text with its photo; consistent gap. */
+.smile-gap-lg > .elementor-container { gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.smile-photo img { max-height: 560px; }
+
+/* Facts row (Our journey, old layout) */
+.smile-fact .elementor-heading-title { margin-bottom: .35rem !important; }
+.smile-sec--forest .elementor-column { padding-block: 0; }
+
+/* Hero, page banners, slider, quick strip */
+.smile-slider { height: clamp(520px, 78vh, 720px); }
+.smile-slide__content { padding-bottom: 5.5rem; }
+.smile-slider__controls { bottom: 4.5rem; }
+.smile-quick { margin-top: -3rem; padding-bottom: 1.25rem; }
+.smile-pagehero { min-height: 360px; padding-block: 4.5rem 3rem !important; }
+.smile-pagehero--plain { min-height: 260px; }
+.smile-page-hero--archive { padding-block: 4rem 2.5rem; }
+.smile-hero { min-height: min(78vh, 680px) !important; }
+
+/* CTA band and footer */
+.smile-cta-band { padding-block: 3.25rem; }
+.smile-footer { padding-top: 3rem; }
+.smile-footer__bottom { margin-top: 2.25rem; padding-block: 1.1rem; }
+.smile-footer__grid { gap: 2rem; }
+
+/* Home components */
+.smile-intro { padding-bottom: 3rem; }
+.smile-journey { margin-top: 1.75rem; }
+.smile-friends { margin-top: 1.75rem; }
+.smile-ctaphoto { min-height: 460px; }
+.smile-ctaphoto__inner { padding-block: 3.5rem; }
+
+@media (max-width: 767px) {
+	:root { --smile-s9: 2.5rem; }
+	.smile-sec--tight { padding-block: 2rem !important; }
+	.smile-pagehero { min-height: 300px; padding-block: 3.5rem 2.25rem !important; }
+	.smile-slider { min-height: 560px; }
+	.smile-gap-lg > .elementor-container { gap: 1.5rem; }
+	.smile-card-col { margin-bottom: 1rem; }
+}
