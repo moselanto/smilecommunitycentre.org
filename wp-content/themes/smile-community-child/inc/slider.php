@@ -205,7 +205,14 @@ function smile_hero_slider() {
 							$lines = preg_split( '/(?<=[.!?])\s+/', trim( $s['title'] ) );
 							$last  = count( $lines ) - 1;
 							foreach ( $lines as $li => $line ) {
-								echo '<span class="smile-slide__line' . ( $li === $last && $last > 0 ? ' smile-slide__line--accent' : '' ) . '">' . esc_html( $line ) . '</span> ';
+								if ( $li === $last && $last > 0 ) {
+									// Put the smile arc under the last word only ("smile.").
+									$words = preg_split( '/\s+/', $line );
+									$word  = array_pop( $words );
+									echo '<span class="smile-slide__line smile-slide__line--accent">' . ( $words ? esc_html( implode( ' ', $words ) ) . ' ' : '' ) . '<span class="smile-slide__word">' . esc_html( $word ) . '</span></span> ';
+								} else {
+									echo '<span class="smile-slide__line">' . esc_html( $line ) . '</span> ';
+								}
 							}
 						} else {
 							echo esc_html( $s['title'] );

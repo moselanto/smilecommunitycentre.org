@@ -1136,3 +1136,10 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 .home .elementor-section:has(.smile-calc), .home .e-con:has(.smile-calc),
 .home .elementor-section:has(.smile-involve), .home .e-con:has(.smile-involve),
 .home .elementor-section:has(+ .elementor-section .smile-involve), .home .e-con:has(+ .e-con .smile-involve) { display: none !important; }
+
+
+/* v2.22.3 Smile arc sits under the word "smile." */
+.smile-slide--split .smile-slide__line--accent::after { content: none !important; display: none !important; }
+.smile-slide--split .smile-slide__line--accent { padding-bottom: .22em; }
+.smile-slide__word { position: relative; display: inline-block; white-space: nowrap; }
+.smile-slide__word::after { content: ""; position: absolute; left: 4%; right: 10%; bottom: -.2em; height: .26em; background: var(--smile-curve) no-repeat center / 100% 100%; pointer-events: none; }
