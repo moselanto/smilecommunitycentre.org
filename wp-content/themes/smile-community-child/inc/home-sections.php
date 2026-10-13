@@ -445,7 +445,7 @@ add_shortcode(
 			array( 'founder-serving', 'life', __( 'Margret serving a meal', 'smile-community' ) ),
 			array( 'pupils', 'learning', __( 'Ready for school', 'smile-community' ) ),
 			array( 'feeding1', 'life', __( 'Community feeding day', 'smile-community' ) ),
-			array( 'football', 'play', __( 'Match day at Jacaranda', 'smile-community' ) ),
+			array( 'football', 'play', __( 'Match day', 'smile-community' ) ),
 			array( 'highschool', 'learning', __( 'Secondary school students', 'smile-community' ) ),
 			array( 'staff-serving', 'life', __( 'Breakfast time', 'smile-community' ) ),
 			array( 'doctors', 'friends', __( 'Volunteer doctors visit', 'smile-community' ) ),
