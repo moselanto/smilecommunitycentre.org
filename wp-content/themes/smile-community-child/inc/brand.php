@@ -24,7 +24,7 @@ function smile_brand_url( $file ) {
 
 /**
  * Logo markup: WebP with PNG fallback, 1x / 2x / 3x sources, fixed dimensions
- * (no layout shift). The logo is 3.38 : 1.
+ * (no layout shift). The logo is 3.43 : 1.
  *
  * @param string $context header|footer.
  * @return string
@@ -34,7 +34,7 @@ function smile_brand_logo( $context = 'header' ) {
 		return has_custom_logo() ? get_custom_logo() : '<a class="smile-header__name" href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a>';
 	}
 	$height = 'footer' === $context ? 64 : 60;
-	$width  = (int) round( $height * 1878 / 556 );
+	$width  = (int) round( $height * 1940 / 566 );
 	$alt    = __( 'Smile Community Centre: protecting, empowering and giving a smile', 'smile-community' );
 	$webp   = smile_brand_url( 'smile-logo-120.webp' ) . ' 2x, ' . smile_brand_url( 'smile-logo-180.webp' ) . ' 3x';
 	$png    = smile_brand_url( 'smile-logo-60.png' ) . ' 1x, ' . smile_brand_url( 'smile-logo-120.png' ) . ' 2x, ' . smile_brand_url( 'smile-logo-180.png' ) . ' 3x';
