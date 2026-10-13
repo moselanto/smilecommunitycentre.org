@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.20.2
+- Mobile menu polish: no dot on the parent section (only on the exact page), "Go to <section> →" text link instead of "Overview:", flatter evenly inset sub-menu card, tidier spacing.
+
 ## 2.20.1
 - Updated to the centre's current logo (four children, one carrying a baby): header, footer, sign-in page, schema logo, theme preview picture, and the umbrella-and-children favicon and phone icons.
 

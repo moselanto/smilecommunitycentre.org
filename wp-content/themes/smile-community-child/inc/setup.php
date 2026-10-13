@@ -109,7 +109,7 @@ function smile_theme_assets() {
 			'copyFail'  => __( 'Press and hold to copy', 'smile-community' ),
 			'menuOpen'  => __( 'Open menu', 'smile-community' ),
 			'menuClose' => __( 'Close menu', 'smile-community' ),
-			'overview'  => __( 'Overview', 'smile-community' ),
+			'overview'  => __( 'Go to', 'smile-community' ),
 		)
 	);
 

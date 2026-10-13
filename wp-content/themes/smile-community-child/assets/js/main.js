@@ -86,7 +86,7 @@
 			ov.className = 'smile-sub-overview';
 			var ova = document.createElement( 'a' );
 			ova.href = link.href;
-			ova.textContent = ( i18n.overview || 'Overview' ) + ': ' + link.textContent.trim();
+			ova.textContent = ( i18n.overview || 'Go to' ) + ' ' + link.textContent.trim();
 			ov.appendChild( ova );
 			sub.insertBefore( ov, sub.firstChild );
 
