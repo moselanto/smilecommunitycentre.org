@@ -19,33 +19,33 @@ function smile_slider_defaults() {
 	return array(
 		1 => array(
 			'img'     => 'founder-serving',
-			'eyebrow' => __( "Children's home in Soweto, Kayole, Nairobi", 'smile-community' ),
-			'title'   => __( 'Every child deserves safety, care and a chance to thrive', 'smile-community' ),
-			'text'    => __( 'We give orphaned, abandoned and vulnerable children a safe home, daily meals, schooling and access to healthcare.', 'smile-community' ),
-			'b1'      => __( 'Donate to Support a Child', 'smile-community' ),
+			'eyebrow' => __( "Children's home in Soweto, Kayole", 'smile-community' ),
+			'title'   => __( 'A safe home for every child', 'smile-community' ),
+			'text'    => __( 'We give orphaned and vulnerable children shelter, daily meals, schooling and access to healthcare.', 'smile-community' ),
+			'b1'      => __( 'Support a Child', 'smile-community' ),
 			'u1'      => '/donate/',
-			'b2'      => __( 'Discover Our Work', 'smile-community' ),
-			'u2'      => '/our-programmes/',
+			'b2'      => __( 'Our Story', 'smile-community' ),
+			'u2'      => '/about-us/',
 		),
 		2 => array(
 			'img'     => 'pupils',
 			'eyebrow' => __( 'Education programme', 'smile-community' ),
-			'title'   => __( 'Keep a child in school this term', 'smile-community' ),
-			'text'    => __( 'Every child in our care is enrolled in school. Your gift pays fees, uniforms, books and the costs that keep them learning.', 'smile-community' ),
+			'title'   => __( 'Keep every child in school', 'smile-community' ),
+			'text'    => __( 'Your gift pays school fees, uniforms and books so the children in our care never miss a term.', 'smile-community' ),
 			'b1'      => __( 'Support Education', 'smile-community' ),
 			'u1'      => '/donate/',
-			'b2'      => __( 'Our Education Programme', 'smile-community' ),
+			'b2'      => __( 'Education Programme', 'smile-community' ),
 			'u2'      => '/education-program/',
 		),
 		3 => array(
 			'img'     => 'mealtime',
 			'eyebrow' => __( 'Feeding programme', 'smile-community' ),
-			'title'   => __( 'A warm meal, every single day', 'smile-community' ),
-			'text'    => __( 'Daily meals at home, and a community feeding programme reaching more than 300 children in Soweto and Kayole.', 'smile-community' ),
+			'title'   => __( 'A warm meal, every day', 'smile-community' ),
+			'text'    => __( 'Daily meals at home, and a community feeding programme reaching more than 300 children.', 'smile-community' ),
 			'b1'      => __( 'Give a Meal', 'smile-community' ),
 			'u1'      => '/donate/',
-			'b2'      => __( 'Partner With Smile', 'smile-community' ),
-			'u2'      => '/partner-with-us/',
+			'b2'      => __( 'Feeding Programme', 'smile-community' ),
+			'u2'      => '/feeding-program/',
 		),
 	);
 }
@@ -116,10 +116,6 @@ function smile_hero_slider() {
 		return '';
 	}
 	$count  = count( $slides );
-	$paybill = function_exists( 'smile_core_get' ) ? smile_core_get( 'mpesa_paybill' ) : '247247';
-	$phone   = function_exists( 'smile_core_get' ) ? smile_core_get( 'phone_primary' ) : '0721 318 869';
-	$volunteer = get_page_by_path( 'volunteer' );
-	$contact   = get_page_by_path( 'contact-us' );
 
 	ob_start();
 	?>
@@ -147,7 +143,7 @@ function smile_hero_slider() {
 					</div>
 					<div class="smile-slide__shade" aria-hidden="true"></div>
 					<div class="smile-container smile-slide__content">
-						<p class="smile-slide__eyebrow"><span class="smile-slide__num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span><?php echo esc_html( $s['eyebrow'] ); ?></p>
+						<p class="smile-slide__eyebrow"><?php echo esc_html( $s['eyebrow'] ); ?></p>
 						<?php $tag = 0 === $i ? 'h1' : 'h2'; ?>
 						<<?php echo esc_html( $tag ); ?> class="smile-slide__title"><?php echo esc_html( $s['title'] ); ?></<?php echo esc_html( $tag ); ?>>
 						<?php if ( $s['text'] ) : ?>
@@ -167,40 +163,20 @@ function smile_hero_slider() {
 		</div>
 
 		<?php if ( $count > 1 ) : ?>
-			<div class="smile-container smile-slider__controls">
+			<button type="button" class="smile-slider__btn smile-slider__arrow smile-slider__arrow--prev" data-dir="-1" aria-label="<?php esc_attr_e( 'Previous slide', 'smile-community' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+			<button type="button" class="smile-slider__btn smile-slider__arrow smile-slider__arrow--next" data-dir="1" aria-label="<?php esc_attr_e( 'Next slide', 'smile-community' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
+			<div class="smile-slider__controls">
 				<div class="smile-slider__dots" role="group" aria-label="<?php esc_attr_e( 'Choose a slide', 'smile-community' ); ?>">
 					<?php foreach ( $slides as $i => $s ) : ?>
 						<button type="button" class="smile-slider__dot<?php echo 0 === $i ? ' is-active' : ''; ?>" data-go="<?php echo esc_attr( $i ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: 1 number 2 title */ __( 'Slide %1$d: %2$s', 'smile-community' ), $i + 1, $s['title'] ) ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>><span></span></button>
 					<?php endforeach; ?>
 				</div>
-				<div class="smile-slider__arrows">
-					<button type="button" class="smile-slider__btn" data-dir="-1" aria-label="<?php esc_attr_e( 'Previous slide', 'smile-community' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-					<button type="button" class="smile-slider__btn smile-slider__pause" aria-pressed="false" aria-label="<?php esc_attr_e( 'Pause slideshow', 'smile-community' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true" class="i-pause"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2.4"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="i-play"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button>
-					<button type="button" class="smile-slider__btn" data-dir="1" aria-label="<?php esc_attr_e( 'Next slide', 'smile-community' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-				</div>
+				<button type="button" class="smile-slider__pause" aria-pressed="false" aria-label="<?php esc_attr_e( 'Pause slideshow', 'smile-community' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true" class="i-pause"><path d="M9 6v12M15 6v12" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="i-play"><path d="M9 6l9 6-9 6z" fill="currentColor"/></svg></button>
 			</div>
 			<div class="smile-slider__progress" aria-hidden="true"><span></span></div>
 		<?php endif; ?>
 	</section>
 
-	<div class="smile-quick">
-		<div class="smile-container smile-quick__grid">
-			<a class="smile-quick__item" href="<?php echo esc_url( smile_donate_url() ); ?>">
-				<span class="smile-quick__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2 0 3.5 1.1 4.3 2.6.8-1.5 2.3-2.6 4.3-2.6 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg></span>
-				<span><strong><?php esc_html_e( 'Give by M-Pesa', 'smile-community' ); ?></strong><span><?php echo esc_html( sprintf( /* translators: %s paybill */ __( 'Paybill %s', 'smile-community' ), $paybill ) ); ?></span></span>
-			</a>
-			<?php if ( $volunteer ) : ?>
-			<a class="smile-quick__item" href="<?php echo esc_url( get_permalink( $volunteer ) ); ?>">
-				<span class="smile-quick__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5" fill="currentColor"/><path d="M4.5 20c.6-4 3.6-6.5 7.5-6.5s6.9 2.5 7.5 6.5z" fill="currentColor"/></svg></span>
-				<span><strong><?php esc_html_e( 'Volunteer with us', 'smile-community' ); ?></strong><span><?php esc_html_e( 'Teaching, mentoring, sports and more', 'smile-community' ); ?></span></span>
-			</a>
-			<?php endif; ?>
-			<a class="smile-quick__item" href="<?php echo esc_url( $contact ? get_permalink( $contact ) : smile_tel_href( $phone ) ); ?>">
-				<span class="smile-quick__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c-3.9 0-7 3-7 6.9 0 5 7 12.1 7 12.1s7-7.1 7-12.1c0-3.9-3.1-6.9-7-6.9zm0 9.4a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" fill="currentColor"/></svg></span>
-				<span><strong><?php esc_html_e( 'Visit the centre', 'smile-community' ); ?></strong><span><?php echo esc_html( sprintf( /* translators: %s phone */ __( 'Call or WhatsApp %s', 'smile-community' ), $phone ) ); ?></span></span>
-			</a>
-		</div>
-	</div>
 	<?php
 	return ob_get_clean();
 }

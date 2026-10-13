@@ -53,27 +53,26 @@ add_shortcode(
 	}
 );
 
-/* ---------- Programmes bento ---------- */
+/* ---------- Programmes: uniform editorial cards ---------- */
 add_shortcode(
 	'smile_programmes',
 	function () {
 		$items = array(
-			array( 'highschool', 'book', __( 'Education and school support', 'smile-community' ), __( 'Every child in our care goes to school, with fees, uniforms, books and mentoring.', 'smile-community' ), '/education-program/' ),
-			array( 'feeding1', 'bowl', __( 'Feeding programme', 'smile-community' ), __( 'Daily meals at home and community feeding for 300+ children.', 'smile-community' ), '/feeding-program/' ),
-			array( 'staff-serving', 'home', __( 'Shelter and child care', 'smile-community' ), __( 'A safe, stable home for children referred by the authorities.', 'smile-community' ), '/child-care-and-shelter/' ),
-			array( 'doctors', 'health', __( 'Health and wellbeing', 'smile-community' ), __( 'Medical care, counselling and HIV/AIDS support.', 'smile-community' ), '/health-and-wellbeing/' ),
-			array( 'football', 'ball', __( 'Sports and talent', 'smile-community' ), __( 'Football, basketball and play at Jacaranda Grounds.', 'smile-community' ), '/sports/' ),
-			array( 'founder-serving', 'hands', __( 'Community outreach', 'smile-community' ), __( 'Food for widows, single parents and neighbouring families.', 'smile-community' ), '/partner-with-us/' ),
+			array( 'schoolkids', 'book', __( 'Education', 'smile-community' ), __( 'Every child in our care goes to school, with fees, uniforms, books and mentoring.', 'smile-community' ), '/education-program/' ),
+			array( 'feeding1', 'bowl', __( 'Feeding programme', 'smile-community' ), __( 'Daily meals at home, and community feeding for more than 300 children.', 'smile-community' ), '/feeding-program/' ),
+			array( 'staff-serving', 'home', __( 'Shelter and child care', 'smile-community' ), __( 'A safe, stable home for children referred by police and children’s officers.', 'smile-community' ), '/child-care-and-shelter/' ),
+			array( 'doctors', 'health', __( 'Health and wellbeing', 'smile-community' ), __( 'Medical care, counselling and support for children affected by HIV/AIDS.', 'smile-community' ), '/health-and-wellbeing/' ),
+			array( 'football', 'ball', __( 'Sports and talent', 'smile-community' ), __( 'Football, basketball and play at Jacaranda Grounds to build confidence.', 'smile-community' ), '/sports/' ),
+			array( 'founder-serving', 'hands', __( 'Community outreach', 'smile-community' ), __( 'Food support for widows, single parents and neighbouring families.', 'smile-community' ), '/partner-with-us/' ),
 		);
-		$out = '<div class="smile-bento">';
+		$out = '<div class="smile-progs">';
 		foreach ( $items as $i => $it ) {
-			$out .= '<a class="smile-bento__tile smile-bento__tile--' . ( $i + 1 ) . ' smile-reveal" href="' . smile_link( $it[4] ) . '">'
-				. smile_img( $it[0], 0 === $i ? 'large' : 'smile-card', 'smile-bento__img' )
-				. '<span class="smile-bento__shade" aria-hidden="true"></span>'
-				. '<span class="smile-bento__body">' . smile_icon( $it[1], 'smile-bento__icon' )
-				. '<span class="smile-bento__title">' . esc_html( $it[2] ) . '</span>'
-				. '<span class="smile-bento__text">' . esc_html( $it[3] ) . '</span>'
-				. '<span class="smile-bento__more">' . esc_html__( 'Learn more', 'smile-community' ) . ' <span aria-hidden="true">&rarr;</span></span></span></a>';
+			$out .= '<a class="smile-prog smile-reveal" style="--i:' . (int) ( $i % 3 ) . '" href="' . smile_link( $it[4] ) . '">'
+				. '<span class="smile-prog__media">' . smile_img( $it[0], 'smile-card', 'smile-prog__img' ) . '</span>'
+				. '<span class="smile-prog__body">' . smile_icon( $it[1], 'smile-prog__icon' )
+				. '<span class="smile-prog__title">' . esc_html( $it[2] ) . '</span>'
+				. '<span class="smile-prog__text">' . esc_html( $it[3] ) . '</span>'
+				. '<span class="smile-prog__more">' . esc_html__( 'Learn more', 'smile-community' ) . '<span aria-hidden="true">&rarr;</span></span></span></a>';
 		}
 		return $out . '</div>';
 	}
