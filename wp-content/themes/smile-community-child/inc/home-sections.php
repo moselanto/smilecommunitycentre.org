@@ -741,6 +741,60 @@ add_shortcode(
 add_shortcode(
 	'smile_founder_words',
 	function () {
-		return '<figure class="smile-fwords smile-reveal"><span class="smile-fwords__mark" aria-hidden="true">&ldquo;</span><blockquote>' . esc_html__( 'That her smile combined with other aspects of life can change the world.', 'smile-community' ) . '</blockquote><figcaption><span class="smile-fwords__line" aria-hidden="true"></span>' . esc_html__( 'What Margret believes, and what every day at Smile is built on.', 'smile-community' ) . '<span class="smile-signature">Margret Nekesa</span></figcaption></figure>';
+		$img = function_exists( 'smile_image_by_key' ) ? smile_image_by_key( 'founder-serving-2021' ) : 0;
+		if ( ! $img && function_exists( 'smile_image_by_key' ) ) {
+			$img = smile_image_by_key( 'founder-serving' );
+		}
+		$out  = '<figure class="smile-fwords' . ( $img ? ' has-photo' : '' ) . ' smile-reveal">';
+		if ( $img ) {
+			$out .= '<div class="smile-fwords__photo">' . wp_get_attachment_image( $img, 'smile-card', false, array( 'loading' => 'lazy', 'alt' => esc_attr__( 'Margret Nekesa serving the children at Smile', 'smile-community' ) ) ) . '</div>';
+		}
+		$out .= '<div class="smile-fwords__body"><p class="smile-fwords__kicker">' . esc_html__( 'In her words', 'smile-community' ) . '</p><span class="smile-fwords__mark" aria-hidden="true">&ldquo;</span><blockquote>' . esc_html__( 'That her smile combined with other aspects of life can change the world.', 'smile-community' ) . '</blockquote><figcaption><span class="smile-signature">Margret Nekesa</span><span class="smile-fwords__role">' . esc_html__( 'Founder, Smile Community Centre', 'smile-community' ) . '</span><span class="smile-fwords__note">' . esc_html__( 'What Margret believes, and what every day at Smile is built on.', 'smile-community' ) . '</span></figcaption></div></figure>';
+		return $out;
+	}
+);
+
+/* ---------- Founder: Margret's path (facts from the founder and about pages) ---------- */
+add_shortcode(
+	'smile_founder_path',
+	function () {
+		$steps = array(
+			array( __( 'Childhood', 'smile-community' ), __( 'Growing up', 'smile-community' ), __( 'The eldest daughter, sent with her sisters to their grandfather\'s farm, where she struggled to stay in school.', 'smile-community' ) ),
+			array( __( '1996 to 2003', 'smile-community' ), __( 'Seven years bedridden', 'smile-community' ), __( 'A severe spinal condition kept her in one room, caring for three children. She prayed to walk again so she could help others.', 'smile-community' ) ),
+			array( __( 'Recovery', 'smile-community' ), __( 'A calling', 'smile-community' ), __( 'She began serving her community, enrolling children in school and sharing her own home with those who had nowhere to go.', 'smile-community' ) ),
+			array( '2009', __( 'Smile begins', 'smile-community' ), __( 'She registered the Smile self-help group, training women and youth and feeding street children.', 'smile-community' ) ),
+			array( '2016', __( 'A registered CBO', 'smile-community' ), __( 'Smile was registered as a Community Based Organisation.', 'smile-community' ) ),
+			array( __( 'Today', 'smile-community' ), __( 'A home at Mzesa', 'smile-community' ), __( 'Supported by her three children and friends of Smile, the centre keeps growing in Soweto, Kayole.', 'smile-community' ) ),
+		);
+		$out = '<ol class="smile-fpath">';
+		foreach ( $steps as $i => $st ) {
+			$out .= '<li class="smile-reveal" style="--i:' . (int) ( $i % 3 ) . '"><span class="smile-fpath__when">' . esc_html( $st[0] ) . '</span><strong>' . esc_html( $st[1] ) . '</strong><p>' . esc_html( $st[2] ) . '</p></li>';
+		}
+		return $out . '</ol>';
+	}
+);
+
+
+/* ---------- Volunteer: international volunteers at a glance ---------- */
+add_shortcode(
+	'smile_intl',
+	function () {
+		$facts = array(
+			array( 'receipt', __( 'One-time fee', 'smile-community' ), __( 'US$165 administration fee. All volunteer work is unpaid.', 'smile-community' ) ),
+			array( 'home', __( 'Where you stay', 'smile-community' ), __( 'A secure local host family, or a nearby hotel or hostel, usually 1 to 5 km from the centre.', 'smile-community' ) ),
+			array( 'gift', __( 'Your own costs', 'smile-community' ), __( 'Airport transfers, accommodation and meals.', 'smile-community' ) ),
+			array( 'users', __( 'Small groups', 'smile-community' ), __( 'We host between one and four volunteers a month.', 'smile-community' ) ),
+		);
+		$pack = array( __( 'Mosquito net', 'smile-community' ), __( 'Torch', 'smile-community' ), __( 'Toiletries', 'smile-community' ), __( 'First-aid kit', 'smile-community' ), __( 'Sun cream', 'smile-community' ), __( 'Durable shoes', 'smile-community' ) );
+		$out = '<div class="smile-intl"><ul class="smile-intl__facts">';
+		foreach ( $facts as $f ) {
+			$out .= '<li>' . smile_icon( $f[0] ) . '<div><strong>' . esc_html( $f[1] ) . '</strong><span>' . esc_html( $f[2] ) . '</span></div></li>';
+		}
+		$out .= '</ul><div class="smile-intl__pack"><p class="smile-intl__pack-title">' . esc_html__( 'What to bring', 'smile-community' ) . '</p><ul>';
+		foreach ( $pack as $it ) {
+			$out .= '<li>' . smile_icon( 'check' ) . esc_html( $it ) . '</li>';
+		}
+		$out .= '</ul><p class="smile-intl__pack-note">' . esc_html__( 'All of these can also be bought in Nairobi.', 'smile-community' ) . '</p></div></div>';
+		return $out;
 	}
 );

@@ -1787,12 +1787,65 @@
     "isInner": false
    },
    {
+    "id": "8d01aa",
+    "elType": "section",
+    "isInner": false,
+    "settings": {
+     "gap": "extended",
+     "css_classes": "smile-sec smile-sec--fpath",
+     "structure": "10"
+    },
+    "elements": [
+     {
+      "id": "8d01c0",
+      "elType": "column",
+      "isInner": false,
+      "settings": {
+       "_column_size": 100,
+       "_inline_size": null
+      },
+      "elements": [
+       {
+        "id": "8d01ab",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Her journey",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
+       {
+        "id": "8d01ad",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "From a single room to <em>a home for many</em>",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "8d01ae",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_founder_path]"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   },
+   {
     "id": "8c03aa",
     "elType": "section",
     "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--fwords",
+     "css_classes": "smile-sec smile-sec--fwords smile-sec--cream",
      "structure": "10"
     },
     "elements": [
@@ -5508,7 +5561,7 @@
     "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--sand smile-sec--tight",
+     "css_classes": "smile-sec smile-sec--sand smile-sec--steps",
      "structure": "10"
     },
     "elements": [
@@ -5549,8 +5602,8 @@
     "elType": "section",
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec",
-     "content_position": "middle",
+     "css_classes": "smile-sec smile-sec--apply",
+     "content_position": "top",
      "structure": "20",
      "_element_id": "apply"
     },
@@ -5560,9 +5613,20 @@
       "elType": "column",
       "settings": {
        "_column_size": 50,
-       "_inline_size": null
+       "_inline_size": 45
       },
       "elements": [
+       {
+        "id": "8e01ab",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "From overseas",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
        {
         "id": "70ac06a",
         "elType": "widget",
@@ -5574,11 +5638,20 @@
         "elements": []
        },
        {
-        "id": "c6c91b9",
+        "id": "8e01ac",
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>Volunteers from overseas are welcome. All volunteer work is unpaid. International volunteers pay a one-time administration fee of US$165 and cover their own living costs, including airport transfers, accommodation and meals. Accommodation can be arranged with a secure local host family or at a nearby hotel or hostel, usually 1 to 5 km from the centre. The project hosts between one and four volunteers a month.</p><p>Bring a mosquito net, a torch, toiletries, a first-aid kit, sun cream and durable shoes. All of these can also be bought in Nairobi.</p>"
+         "editor": "<p>Volunteers from overseas are welcome. Here is what to expect before you apply.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "8e01ad",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_intl]"
         },
         "elements": []
        }
@@ -5590,7 +5663,7 @@
       "elType": "column",
       "settings": {
        "_column_size": 50,
-       "_inline_size": null
+       "_inline_size": 55
       },
       "elements": [
        {
