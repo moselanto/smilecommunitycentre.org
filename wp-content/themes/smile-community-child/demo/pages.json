@@ -1286,119 +1286,36 @@
     "isInner": false
    },
    {
-    "id": "dd2e160",
+    "id": "8b01aa",
     "elType": "section",
+    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec",
-     "content_position": "middle",
-     "structure": "20"
+     "css_classes": "smile-sec smile-sec--mvx",
+     "structure": "10"
     },
     "elements": [
      {
-      "id": "4720771",
+      "id": "8b01ac",
       "elType": "column",
+      "isInner": false,
       "settings": {
-       "_column_size": 50,
-       "_inline_size": null,
-       "css_classes": "smile-card-col smile-card-col--plain"
+       "_column_size": 100,
+       "_inline_size": null
       },
       "elements": [
        {
-        "id": "87b3d90",
+        "id": "8b01ab",
         "elType": "widget",
         "widgetType": "shortcode",
         "settings": {
-         "shortcode": "[smile_icon name=\"heart\"]"
-        },
-        "elements": []
-       },
-       {
-        "id": "72fdf20",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Our purpose",
-         "header_size": "p",
-         "_css_classes": "smile-eyebrow"
-        },
-        "elements": []
-       },
-       {
-        "id": "66d2287",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Mission",
-         "header_size": "h3"
-        },
-        "elements": []
-       },
-       {
-        "id": "8ca8181",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p>To promote self-reliance, education and wellbeing of orphaned and vulnerable children, women and youth in the informal settlements.</p>"
+         "shortcode": "[smile_mv]"
         },
         "elements": []
        }
-      ],
-      "isInner": false
-     },
-     {
-      "id": "6e36aab",
-      "elType": "column",
-      "settings": {
-       "_column_size": 50,
-       "_inline_size": null,
-       "css_classes": "smile-card-col smile-card-col--plain"
-      },
-      "elements": [
-       {
-        "id": "5bab1ee",
-        "elType": "widget",
-        "widgetType": "shortcode",
-        "settings": {
-         "shortcode": "[smile_icon name=\"star\"]"
-        },
-        "elements": []
-       },
-       {
-        "id": "e225715",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Our hope",
-         "header_size": "p",
-         "_css_classes": "smile-eyebrow"
-        },
-        "elements": []
-       },
-       {
-        "id": "230d977",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Vision",
-         "header_size": "h3"
-        },
-        "elements": []
-       },
-       {
-        "id": "d1bc52d",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p>To see a community free from illiteracy, lack of sustainable income and poor health.</p>"
-        },
-        "elements": []
-       }
-      ],
-      "isInner": false
+      ]
      }
-    ],
-    "isInner": false
+    ]
    },
    {
     "id": "e25a760",
@@ -1495,59 +1412,36 @@
     "isInner": false
    },
    {
-    "id": "153e7c2",
+    "id": "8b02aa",
     "elType": "section",
+    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec",
-     "content_position": "middle",
+     "css_classes": "smile-sec smile-sec--dream",
      "structure": "10"
     },
     "elements": [
      {
-      "id": "26a2c0b",
+      "id": "8b02ac",
       "elType": "column",
+      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
       },
       "elements": [
        {
-        "id": "616499c",
+        "id": "8b02ab",
         "elType": "widget",
-        "widgetType": "heading",
+        "widgetType": "shortcode",
         "settings": {
-         "title": "Looking ahead",
-         "header_size": "p",
-         "_css_classes": "smile-eyebrow"
-        },
-        "elements": []
-       },
-       {
-        "id": "f52ddf5",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Our dream",
-         "header_size": "h2"
-        },
-        "elements": []
-       },
-       {
-        "id": "3b1287f",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p>We hope to have enough space to care for more children comfortably, and in the long term to open a community school and a health facility for the centre. These are future goals that depend on sustainable support.</p>",
-         "_css_classes": "smile-measure"
+         "shortcode": "[smile_dream]"
         },
         "elements": []
        }
-      ],
-      "isInner": false
+      ]
      }
-    ],
-    "isInner": false
+    ]
    },
    {
     "id": "7c26847",
@@ -1738,6 +1632,17 @@
       },
       "elements": [
        {
+        "id": "8c01aa",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Chapter one",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
+       {
         "id": "6b4013e",
         "elType": "widget",
         "widgetType": "heading",
@@ -1831,6 +1736,17 @@
       },
       "elements": [
        {
+        "id": "8c02aa",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Chapter two",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
+       {
         "id": "f3fe39c",
         "elType": "widget",
         "widgetType": "heading",
@@ -1871,17 +1787,17 @@
     "isInner": false
    },
    {
-    "id": "3a39ef9",
+    "id": "8c03aa",
     "elType": "section",
     "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--tight",
+     "css_classes": "smile-sec smile-sec--fwords",
      "structure": "10"
     },
     "elements": [
      {
-      "id": "301824e",
+      "id": "8c03ac",
       "elType": "column",
       "isInner": false,
       "settings": {
@@ -1890,12 +1806,11 @@
       },
       "elements": [
        {
-        "id": "6621782",
+        "id": "8c03ab",
         "elType": "widget",
-        "widgetType": "text-editor",
+        "widgetType": "shortcode",
         "settings": {
-         "editor": "<p class=\"smile-lead\">“That her smile combined with other aspects of life can change the world” is what Margret believes, and what every day at Smile is built on.</p><span class=\"smile-signature\">Margret Nekesa</span>",
-         "_css_classes": "smile-center"
+         "shortcode": "[smile_founder_words]"
         },
         "elements": []
        }
@@ -2074,211 +1989,121 @@
     ]
    },
    {
-    "id": "7b45145",
+    "id": "8a01aa",
     "elType": "section",
+    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-mv",
-     "content_position": "middle",
-     "structure": "20"
+     "css_classes": "smile-sec smile-sec--mvx",
+     "structure": "10"
     },
     "elements": [
      {
-      "id": "65e7e42",
+      "id": "8a01ac",
       "elType": "column",
+      "isInner": false,
       "settings": {
-       "_column_size": 50,
+       "_column_size": 100,
        "_inline_size": null
       },
       "elements": [
        {
-        "id": "5d48158",
+        "id": "8a01ab",
         "elType": "widget",
         "widgetType": "shortcode",
         "settings": {
-         "shortcode": "[smile_icon name=\"heart\"]"
-        },
-        "elements": []
-       },
-       {
-        "id": "8f2c6ec",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Mission",
-         "header_size": "p",
-         "_css_classes": "smile-eyebrow"
-        },
-        "elements": []
-       },
-       {
-        "id": "6472f1a",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p class=\"smile-lead\">To promote self-reliance, education and wellbeing of orphaned and vulnerable children, women and youth in the informal settlements.</p>"
+         "shortcode": "[smile_mv]"
         },
         "elements": []
        }
-      ],
-      "isInner": false
-     },
-     {
-      "id": "1a81682",
-      "elType": "column",
-      "settings": {
-       "_column_size": 50,
-       "_inline_size": null
-      },
-      "elements": [
-       {
-        "id": "73e9e84",
-        "elType": "widget",
-        "widgetType": "shortcode",
-        "settings": {
-         "shortcode": "[smile_icon name=\"star\"]"
-        },
-        "elements": []
-       },
-       {
-        "id": "66237a0",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Vision",
-         "header_size": "p",
-         "_css_classes": "smile-eyebrow"
-        },
-        "elements": []
-       },
-       {
-        "id": "64e50ca",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p class=\"smile-lead\">To see a community free from illiteracy, lack of sustainable income and poor health.</p>"
-        },
-        "elements": []
-       }
-      ],
-      "isInner": false
+      ]
      }
-    ],
-    "isInner": false
+    ]
    },
    {
-    "id": "30cbc97",
+    "id": "8a02aa",
     "elType": "section",
+    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--cream",
-     "content_position": "middle",
      "structure": "10"
     },
     "elements": [
      {
-      "id": "0fef792",
+      "id": "8a02ac",
       "elType": "column",
+      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
       },
       "elements": [
        {
-        "id": "a260cd0",
+        "id": "8a02ab",
         "elType": "widget",
         "widgetType": "heading",
         "settings": {
-         "title": "Our objectives",
-         "header_size": "h2"
-        },
-        "elements": []
-       },
-       {
-        "id": "6683688",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<ul><li>Provide food, shelter and education for orphaned and vulnerable children.</li><li>Raise awareness of HIV/AIDS, which has left many children orphaned, and fight stigma and discrimination.</li><li>Offer training in hygiene, environmental management, and skills and technical training.</li><li>Offer counselling, medical referral, and food and nutrition support.</li><li>Help young people and the wider community understand good nutrition and health through home-based care and feeding programmes.</li><li>Promote awareness of preventing mother-to-child HIV transmission, and maternal, newborn and child health among young women.</li><li>Encourage exchange between Smile and local, national and international organisations to build capacity and share ideas and culture.</li><li>Provide psychological support through counselling for teenagers, youth and women.</li><li>Develop talent through sports and games.</li><li>Advocate for human rights and the right to live positively.</li></ul>",
-         "_css_classes": "smile-ticks smile-ticks--cols"
-        },
-        "elements": []
-       }
-      ],
-      "isInner": false
-     }
-    ],
-    "isInner": false
-   },
-   {
-    "id": "1c2442f",
-    "elType": "section",
-    "settings": {
-     "gap": "extended",
-     "css_classes": "smile-sec",
-     "content_position": "middle",
-     "structure": "10"
-    },
-    "elements": [
-     {
-      "id": "298cb3a",
-      "elType": "column",
-      "settings": {
-       "_column_size": 100,
-       "_inline_size": null
-      },
-      "elements": [
-       {
-        "id": "113db17",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Long-term goals",
+         "title": "What we do",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
         "elements": []
        },
        {
-        "id": "fc132d0",
+        "id": "8a02ac",
         "elType": "widget",
         "widgetType": "heading",
         "settings": {
-         "title": "Expanding our reach",
+         "title": "Ten objectives that <em>guide our work</em>",
          "header_size": "h2"
         },
         "elements": []
        },
        {
-        "id": "3571810",
+        "id": "8a02ad",
         "elType": "widget",
-        "widgetType": "text-editor",
+        "widgetType": "shortcode",
         "settings": {
-         "editor": "<p>When sustainable donor funding allows, Smile hopes to mobilise more communities across Kenya by opening further rescue centres for orphaned and vulnerable children, and to build a community school and health facility. These are aspirations, not current services.</p>",
-         "_css_classes": "smile-measure"
-        },
-        "elements": []
-       },
-       {
-        "id": "70ccec3",
-        "elType": "widget",
-        "widgetType": "button",
-        "settings": {
-         "text": "Partner With Smile",
-         "link": {
-          "url": "/partner-with-us/",
-          "is_external": "",
-          "nofollow": ""
-         },
-         "_css_classes": "smile-btn-el smile-btn-el--teal"
+         "shortcode": "[smile_objectives]"
         },
         "elements": []
        }
-      ],
-      "isInner": false
+      ]
      }
-    ],
-    "isInner": false
+    ]
+   },
+   {
+    "id": "8a03aa",
+    "elType": "section",
+    "isInner": false,
+    "settings": {
+     "gap": "extended",
+     "css_classes": "smile-sec smile-sec--dream",
+     "structure": "10"
+    },
+    "elements": [
+     {
+      "id": "8a03ac",
+      "elType": "column",
+      "isInner": false,
+      "settings": {
+       "_column_size": 100,
+       "_inline_size": null
+      },
+      "elements": [
+       {
+        "id": "8a03ab",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_dream]"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
    }
   ],
   "html": "<section><p>Our goals</p><h1>Mission, vision and objectives</h1><p>What we work towards today, and what we hope to achieve with sustainable support.</p></section><section><p>Mission</p><p class=\"smile-lead\">To promote self-reliance, education and wellbeing of orphaned and vulnerable children, women and youth in the informal settlements.</p><p>Vision</p><p class=\"smile-lead\">To see a community free from illiteracy, lack of sustainable income and poor health.</p></section><section><h2>Our objectives</h2><ul><li>Provide food, shelter and education for orphaned and vulnerable children.</li><li>Raise awareness of HIV/AIDS, which has left many children orphaned, and fight stigma and discrimination.</li><li>Offer training in hygiene, environmental management, and skills and technical training.</li><li>Offer counselling, medical referral, and food and nutrition support.</li><li>Help young people and the wider community understand good nutrition and health through home-based care and feeding programmes.</li><li>Promote awareness of preventing mother-to-child HIV transmission, and maternal, newborn and child health among young women.</li><li>Encourage exchange between Smile and local, national and international organisations to build capacity and share ideas and culture.</li><li>Provide psychological support through counselling for teenagers, youth and women.</li><li>Develop talent through sports and games.</li><li>Advocate for human rights and the right to live positively.</li></ul></section><section><p>Long-term goals</p><h2>Expanding our reach</h2><p>When sustainable donor funding allows, Smile hopes to mobilise more communities across Kenya by opening further rescue centres for orphaned and vulnerable children, and to build a community school and health facility. These are aspirations, not current services.</p><p><a href=\"/partner-with-us/\">Partner With Smile</a></p></section>"

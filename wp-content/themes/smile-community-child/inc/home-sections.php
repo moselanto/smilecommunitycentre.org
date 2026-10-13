@@ -677,3 +677,70 @@ add_shortcode(
 		return $out . '</ul>';
 	}
 );
+
+
+/* ---------- Mission and vision statements ---------- */
+add_shortcode(
+	'smile_mv',
+	function () {
+		$out  = '<div class="smile-mvx">';
+		$out .= '<article class="smile-mvx__card smile-mvx__card--mission smile-reveal">' . smile_icon( 'heart' ) . '<p class="smile-mvx__label">' . esc_html__( 'Our mission', 'smile-community' ) . '</p><p class="smile-mvx__text">' . esc_html__( 'To promote self-reliance, education and wellbeing of orphaned and vulnerable children, women and youth in the informal settlements.', 'smile-community' ) . '</p></article>';
+		$out .= '<article class="smile-mvx__card smile-mvx__card--vision smile-reveal" style="--i:1">' . smile_icon( 'star' ) . '<p class="smile-mvx__label">' . esc_html__( 'Our vision', 'smile-community' ) . '</p><p class="smile-mvx__text">' . esc_html__( 'To see a community free from illiteracy, lack of sustainable income and poor health.', 'smile-community' ) . '</p></article>';
+		return $out . '</div>';
+	}
+);
+
+/* ---------- Objectives grid ---------- */
+add_shortcode(
+	'smile_objectives',
+	function () {
+		$items = array(
+			array( 'home', __( 'Provide food, shelter and education for orphaned and vulnerable children.', 'smile-community' ) ),
+			array( 'shield', __( 'Raise awareness of HIV/AIDS, which has left many children orphaned, and fight stigma and discrimination.', 'smile-community' ) ),
+			array( 'water', __( 'Offer training in hygiene, environmental management, and skills and technical training.', 'smile-community' ) ),
+			array( 'health', __( 'Offer counselling, medical referral, and food and nutrition support.', 'smile-community' ) ),
+			array( 'bowl', __( 'Help young people and the wider community understand good nutrition and health through home-based care and feeding programmes.', 'smile-community' ) ),
+			array( 'heart', __( 'Promote awareness of preventing mother-to-child HIV transmission, and maternal, newborn and child health among young women.', 'smile-community' ) ),
+			array( 'users', __( 'Encourage exchange between Smile and local, national and international organisations to build capacity and share ideas and culture.', 'smile-community' ) ),
+			array( 'chat', __( 'Provide psychological support through counselling for teenagers, youth and women.', 'smile-community' ) ),
+			array( 'ball', __( 'Develop talent through sports and games.', 'smile-community' ) ),
+			array( 'hands', __( 'Advocate for human rights and the right to live positively.', 'smile-community' ) ),
+		);
+		$out = '<ol class="smile-objx">';
+		foreach ( $items as $i => $it ) {
+			$out .= '<li class="smile-reveal" style="--i:' . (int) ( $i % 2 ) . '"><span class="smile-objx__n" aria-hidden="true">' . esc_html( sprintf( '%02d', $i + 1 ) ) . '</span>' . smile_icon( $it[0] ) . '<p>' . esc_html( $it[1] ) . '</p></li>';
+		}
+		return $out . '</ol>';
+	}
+);
+
+/* ---------- Looking ahead / dream band ---------- */
+add_shortcode(
+	'smile_dream',
+	function () {
+		$goals = array(
+			array( 'home', __( 'More space', 'smile-community' ), __( 'Room to care for more children comfortably.', 'smile-community' ) ),
+			array( 'book', __( 'A community school', 'smile-community' ), __( 'Learning close to home for the children we serve.', 'smile-community' ) ),
+			array( 'health', __( 'A health facility', 'smile-community' ), __( 'Care for the centre and the community around it.', 'smile-community' ) ),
+			array( 'pin', __( 'More rescue centres', 'smile-community' ), __( 'Reaching more communities across Kenya.', 'smile-community' ) ),
+		);
+		$partner = get_page_by_path( 'partner-with-us' );
+		$out     = '<div class="smile-dream"><div class="smile-dream__intro"><p class="smile-dream__kicker">' . esc_html__( 'Looking ahead', 'smile-community' ) . '</p><h2 class="smile-dream__title">' . esc_html__( 'The future we are', 'smile-community' ) . ' <em>' . esc_html__( 'building towards', 'smile-community' ) . '</em></h2><p>' . esc_html__( 'These are aspirations, not current services. Each one depends on sustainable support from partners and friends of Smile.', 'smile-community' ) . '</p>';
+		if ( $partner ) {
+			$out .= '<a class="smile-btn smile-btn--sun" href="' . esc_url( get_permalink( $partner ) ) . '">' . esc_html__( 'Partner With Smile', 'smile-community' ) . '</a>';
+		}
+		$out .= '</div><ul class="smile-dream__goals">';
+		foreach ( $goals as $i => $g ) {
+			$out .= '<li class="smile-reveal" style="--i:' . (int) $i . '">' . smile_icon( $g[0] ) . '<strong>' . esc_html( $g[1] ) . '</strong><span>' . esc_html( $g[2] ) . '</span></li>';
+		}
+		return $out . '</ul></div>';
+	}
+);
+
+/* ---------- Founder: closing words ---------- */
+add_shortcode(
+	'smile_founder_words',
+	function () {
+		return '<figure class="smile-fwords smile-reveal"><span class="smile-fwords__mark" aria-hidden="true">&ldquo;</span><blockquote>' . esc_html__( 'That her smile combined with other aspects of life can change the world.', 'smile-community' ) . '</blockquote><figcaption><span class="smile-fwords__line" aria-hidden="true"></span>' . esc_html__( 'What Margret believes, and what every day at Smile is built on.', 'smile-community' ) . '<span class="smile-signature">Margret Nekesa</span></figcaption></figure>';
+	}
+);

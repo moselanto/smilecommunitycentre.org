@@ -659,3 +659,65 @@ html, body { overflow-x: hidden; }
 .smile-use__note p { padding: 1rem 1.1rem; border-left: 3px solid var(--smile-sun); background: var(--smile-cream); border-radius: 0 14px 14px 0; font-size: .95rem; }
 @media (max-width: 560px) { .smile-use { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .smile-hub__card, .smile-hub__btn span { transition: none \!important; transform: none \!important; } .smile-hub__dot { animation: none \!important; } }
+
+/* =========================================================
+   v2.8 Balanced titles + About, Founder, Goals components
+   ========================================================= */
+/* Balanced titles everywhere: no lonely last words, steady widths */
+h1, h2, h3, h4, .elementor-heading-title, .smile-story__title, .smile-lead__title, .smile-dream__title { text-wrap: balance; }
+p, li, blockquote, figcaption { text-wrap: pretty; }
+.smile-pagehero h1, .smile-pagehero .elementor-heading-title:not(p) { max-width: 18ch; }
+.smile-sec:not(.smile-center):not(.smile-pagehero) h2.elementor-heading-title { max-width: 22ch; }
+.smile-center h2.elementor-heading-title { margin-inline: auto; max-width: 24ch; }
+.smile-sec h2.elementor-heading-title { font-size: clamp(2rem, 1.5rem + 1.8vw, 2.9rem) \!important; line-height: 1.1 \!important; letter-spacing: -.015em; }
+.smile-sec .smile-eyebrow + .elementor-widget-heading h2, .smile-sec .smile-eyebrow + .elementor-element h2 { margin-top: .35rem; }
+.smile-sec h2.elementor-heading-title em { font-style: italic; color: var(--smile-teal); }
+
+/* Mission and vision statements */
+.smile-mvx { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; }
+.smile-mvx__card { position: relative; overflow: hidden; border-radius: 28px; padding: clamp(2rem, 1.5rem + 2.5vw, 3.5rem); display: flex; flex-direction: column; gap: .75rem; min-height: 320px; justify-content: flex-end; }
+.smile-mvx__card .smile-icon { position: absolute; top: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem); left: clamp(2rem, 1.5rem + 2.5vw, 3.5rem); width: 52px; height: 52px; padding: 13px; border-radius: 14px; box-sizing: border-box; }
+.smile-mvx__card--mission { background: var(--smile-forest); color: #fff; }
+.smile-mvx__card--mission::after { content: ""; position: absolute; right: -90px; top: -90px; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(244,201,93,.25); box-shadow: 0 0 0 40px rgba(244,201,93,.05); }
+.smile-mvx__card--mission .smile-icon { background: var(--smile-sun); color: var(--smile-forest); }
+.smile-mvx__card--vision { background: var(--smile-sun); color: var(--smile-forest); }
+.smile-mvx__card--vision .smile-icon { background: var(--smile-forest); color: var(--smile-sun); }
+.smile-mvx__label { margin: 0; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.smile-mvx__card--mission .smile-mvx__label { color: var(--smile-sun); }
+.smile-mvx__text { margin: 0; font-family: var(--smile-font-display); font-weight: 400; font-size: clamp(1.45rem, 1.15rem + 1.2vw, 2.15rem); line-height: 1.25; letter-spacing: -.01em; text-wrap: balance; }
+@media (max-width: 860px) { .smile-mvx { grid-template-columns: 1fr; } .smile-mvx__card { min-height: 260px; } }
+
+/* Objectives grid */
+.smile-objx { list-style: none; margin: 2.25rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; counter-reset: none; }
+.smile-objx li { position: relative; display: flex; gap: 1.1rem; align-items: flex-start; padding: 1.4rem 1.5rem; background: #fff; border: 1px solid var(--smile-line); border-radius: 20px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
+.smile-objx li:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(22,75,63,.10); }
+.smile-objx .smile-icon { width: 48px; height: 48px; flex: 0 0 48px; padding: 12px; border-radius: 14px; background: var(--smile-cream); color: var(--smile-teal); box-sizing: border-box; }
+.smile-objx p { margin: 0; padding-right: 2rem; font-size: 1rem; line-height: 1.55; color: var(--smile-ink); }
+.smile-objx__n { position: absolute; top: 1.1rem; right: 1.25rem; font-family: var(--smile-font-display); font-style: italic; font-size: 1.2rem; color: var(--smile-sun); }
+@media (max-width: 760px) { .smile-objx { grid-template-columns: 1fr; } }
+
+/* Dream band */
+.smile-sec--dream { background: var(--smile-forest) \!important; color: #EAF2EE; position: relative; overflow: hidden; }
+.smile-sec--dream::before { content: ""; position: absolute; left: -120px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(244,201,93,.18), rgba(244,201,93,0) 70%); pointer-events: none; }
+.smile-dream { position: relative; display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+.smile-dream__kicker { display: flex; align-items: center; gap: .75rem; margin: 0 0 .75rem; font-size: .8rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--smile-sun); }
+.smile-dream__kicker::before { content: ""; width: 36px; height: 2px; background: var(--smile-sun); }
+.smile-dream__title { margin: 0 0 1rem; color: #fff; font-family: var(--smile-font-display); font-weight: 400; font-size: clamp(2rem, 1.5rem + 1.8vw, 2.9rem); line-height: 1.1; letter-spacing: -.015em; max-width: 16ch; }
+.smile-dream__title em { color: var(--smile-sun); font-style: italic; }
+.smile-dream__intro p { color: rgba(234,242,238,.85); font-size: 1.05rem; line-height: 1.65; max-width: 34rem; margin: 0 0 1.5rem; }
+.smile-dream__goals { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.smile-dream__goals li { display: flex; flex-direction: column; gap: .35rem; padding: 1.5rem; border-radius: 20px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(2px); }
+.smile-dream__goals .smile-icon { width: 46px; height: 46px; padding: 11px; border-radius: 12px; background: rgba(244,201,93,.16); color: var(--smile-sun); box-sizing: border-box; margin-bottom: .5rem; }
+.smile-dream__goals strong { font-family: var(--smile-font-display); font-weight: 500; font-size: 1.2rem; color: #fff; }
+.smile-dream__goals span { color: rgba(234,242,238,.75); font-size: .93rem; line-height: 1.5; }
+@media (max-width: 900px) { .smile-dream { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .smile-dream__goals { grid-template-columns: 1fr; } }
+
+/* Founder closing words */
+.smile-fwords { position: relative; max-width: 860px; margin: 0 auto; text-align: center; padding: clamp(2.5rem, 2rem + 2vw, 4rem) clamp(1.5rem, 1rem + 3vw, 4rem); background: #fff; border: 1px solid var(--smile-line); border-radius: 32px; box-shadow: 0 30px 70px rgba(22,75,63,.10); }
+.smile-fwords__mark { position: absolute; top: -.35em; left: 50%; transform: translateX(-50%); font-family: var(--smile-font-display); font-size: 8rem; line-height: 1; color: var(--smile-sun); }
+.smile-fwords blockquote { margin: 1rem 0 1.5rem; font-family: var(--smile-font-display); font-style: italic; font-weight: 400; font-size: clamp(1.7rem, 1.2rem + 2vw, 2.7rem); line-height: 1.2; color: var(--smile-forest); text-wrap: balance; }
+.smile-fwords figcaption { display: flex; flex-direction: column; align-items: center; gap: .5rem; color: var(--smile-muted); font-size: 1rem; }
+.smile-fwords__line { width: 48px; height: 2px; background: var(--smile-sun); }
+.smile-fwords .smile-signature { font-family: var(--smile-font-hand); font-size: 2rem; color: var(--smile-teal); }
+@media (prefers-reduced-motion: reduce) { .smile-objx li { transition: none \!important; transform: none \!important; } }
