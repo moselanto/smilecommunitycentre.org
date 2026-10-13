@@ -276,3 +276,109 @@ add_shortcode(
 		return $out;
 	}
 );
+
+
+/* ---------- Programme page components ---------- */
+/**
+ * Verified content per programme.
+ *
+ * @return array
+ */
+function smile_programme_data() {
+	return array(
+		'education' => array(
+			'glance' => array( array( 'book', __( 'Every child in our care is enrolled in school', 'smile-community' ) ), array( 'calendar', __( 'Support through primary and secondary school', 'smile-community' ) ), array( 'star', __( 'Former residents now at Kenyan universities', 'smile-community' ) ) ),
+			'quote'  => array( 'highschool', __( 'Education is light to all people in the world.', 'smile-community' ), __( 'From the centre’s founding vision', 'smile-community' ) ),
+			'help'   => array(
+				array( 'gift', __( 'Pay towards school fees', 'smile-community' ), __( 'Fees, uniforms and the costs that keep a child in class.', 'smile-community' ), __( 'Give for education', 'smile-community' ), 'donate' ),
+				array( 'book', __( 'Donate books and stationery', 'smile-community' ), __( 'Textbooks, exercise books, pens and school bags.', 'smile-community' ), __( 'Arrange a donation', 'smile-community' ), '/contact-us/' ),
+				array( 'hands', __( 'Tutor or mentor', 'smile-community' ), __( 'Help with homework, reading or career guidance.', 'smile-community' ), __( 'Volunteer', 'smile-community' ), '/volunteer/' ),
+				array( 'users', __( 'Support life after school', 'smile-community' ), __( 'Help young people into college, training and work.', 'smile-community' ), __( 'Partner with us', 'smile-community' ), '/partner-with-us/' ),
+			),
+		),
+		'feeding'   => array(
+			'glance' => array( array( 'bowl', __( 'Daily meals for every child at home', 'smile-community' ) ), array( 'users', __( '300+ children reached by community feeding', 'smile-community' ) ), array( 'home', __( 'Run with homes in Kayole, Donholm and Soweto', 'smile-community' ) ) ),
+			'quote'  => array( 'mealtime', __( 'No child should learn or grow on an empty stomach.', 'smile-community' ), __( 'Smile Community Centre', 'smile-community' ) ),
+			'help'   => array(
+				array( 'bowl', __( 'Give for meals and water', 'smile-community' ), __( 'About KES 2,500 fills both of our water tanks.', 'smile-community' ), __( 'Give now', 'smile-community' ), 'donate' ),
+				array( 'gift', __( 'Donate food', 'smile-community' ), __( 'Flour, cereals and cooking essentials.', 'smile-community' ), __( 'Arrange a donation', 'smile-community' ), '/contact-us/' ),
+				array( 'users', __( 'Host a feeding day', 'smile-community' ), __( 'Bring your group, church or company to serve a meal.', 'smile-community' ), __( 'Plan with us', 'smile-community' ), '/partner-with-us/' ),
+			),
+		),
+		'care'      => array(
+			'glance' => array( array( 'shield', __( 'Placements authorised by police, courts or children’s office', 'smile-community' ) ), array( 'home', __( 'Shelter, meals, clothing and medical care', 'smile-community' ) ), array( 'heart', __( 'Reunited with family where it is safe', 'smile-community' ) ) ),
+			'quote'  => array( 'gift', __( 'Every child deserves a safe place to sleep, eat, learn and heal.', 'smile-community' ), __( 'Smile Community Centre', 'smile-community' ) ),
+			'help'   => array(
+				array( 'heart', __( 'Give for daily care', 'smile-community' ), __( 'Food, hygiene and safe care for children in our home.', 'smile-community' ), __( 'Give now', 'smile-community' ), 'donate' ),
+				array( 'gift', __( 'Donate clothing and bedding', 'smile-community' ), __( 'Clean clothes, blankets, mattresses and shoes.', 'smile-community' ), __( 'Arrange a donation', 'smile-community' ), '/contact-us/' ),
+				array( 'hands', __( 'Volunteer alongside staff', 'smile-community' ), __( 'Under supervision and our code of conduct.', 'smile-community' ), __( 'Volunteer', 'smile-community' ), '/volunteer/' ),
+			),
+		),
+		'health'    => array(
+			'glance' => array( array( 'health', __( 'Medical care and referrals for every child', 'smile-community' ) ), array( 'heart', __( 'HIV/AIDS counselling and support', 'smile-community' ) ), array( 'water', __( 'Clean water stored in 1,500L and 3,000L tanks', 'smile-community' ) ) ),
+			'quote'  => array( 'doctors', __( 'Caring for body and mind, for every child in our home.', 'smile-community' ), __( 'Smile Community Centre', 'smile-community' ) ),
+			'help'   => array(
+				array( 'health', __( 'Give for medical care', 'smile-community' ), __( 'Treatment for children who arrive needing urgent care.', 'smile-community' ), __( 'Give now', 'smile-community' ), 'donate' ),
+				array( 'water', __( 'Give for clean water', 'smile-community' ), __( 'About KES 2,500 fills both tanks for a week.', 'smile-community' ), __( 'Give for water', 'smile-community' ), 'donate' ),
+				array( 'hands', __( 'Volunteer your skills', 'smile-community' ), __( 'Doctors, nurses and counsellors are always welcome.', 'smile-community' ), __( 'Volunteer', 'smile-community' ), '/volunteer/' ),
+			),
+		),
+		'sports'    => array(
+			'glance' => array( array( 'ball', __( 'Football and basketball', 'smile-community' ) ), array( 'calendar', __( 'Weekend matches at Jacaranda Grounds', 'smile-community' ) ), array( 'gift', __( 'Kit and equipment always welcome', 'smile-community' ) ) ),
+			'quote'  => array( 'skipping', __( 'Even half an hour of play can make a difference in a child’s growth.', 'smile-community' ), __( 'From the centre’s sports programme', 'smile-community' ) ),
+			'help'   => array(
+				array( 'ball', __( 'Donate sports kit', 'smile-community' ), __( 'Footballs, gloves, kits and boots.', 'smile-community' ), __( 'Arrange a donation', 'smile-community' ), '/contact-us/' ),
+				array( 'hands', __( 'Volunteer as a coach', 'smile-community' ), __( 'Share your game and your time on weekends.', 'smile-community' ), __( 'Volunteer', 'smile-community' ), '/volunteer/' ),
+				array( 'users', __( 'Sponsor a team day', 'smile-community' ), __( 'Bring your club or company for a match day.', 'smile-community' ), __( 'Partner with us', 'smile-community' ), '/partner-with-us/' ),
+			),
+		),
+	);
+}
+
+/**
+ * Programme data by key.
+ *
+ * @param array $atts Attributes.
+ * @return array
+ */
+function smile_programme( $atts ) {
+	$atts = shortcode_atts( array( 'p' => 'education' ), $atts );
+	$all  = smile_programme_data();
+	return isset( $all[ $atts['p'] ] ) ? $all[ $atts['p'] ] : $all['education'];
+}
+
+add_shortcode(
+	'smile_glance',
+	function ( $atts ) {
+		$d   = smile_programme( $atts );
+		$out = '<ul class="smile-glance">';
+		foreach ( $d['glance'] as $i => $g ) {
+			$out .= '<li class="smile-reveal" style="--i:' . (int) $i . '">' . smile_icon( $g[0] ) . '<span>' . esc_html( $g[1] ) . '</span></li>';
+		}
+		return $out . '</ul>';
+	}
+);
+
+add_shortcode(
+	'smile_pull',
+	function ( $atts ) {
+		$d = smile_programme( $atts );
+		$q = $d['quote'];
+		return '<figure class="smile-pull">' . smile_img( $q[0], 'smile-hero', 'smile-pull__img' ) . '<span class="smile-pull__shade" aria-hidden="true"></span>'
+			. '<div class="smile-container smile-pull__inner smile-reveal"><span class="smile-pull__mark" aria-hidden="true">&ldquo;</span><blockquote>' . esc_html( $q[1] ) . '</blockquote><figcaption>' . esc_html( $q[2] ) . '</figcaption></div></figure>';
+	}
+);
+
+add_shortcode(
+	'smile_help_ways',
+	function ( $atts ) {
+		$d   = smile_programme( $atts );
+		$out = '<div class="smile-ways smile-ways--' . count( $d['help'] ) . '">';
+		foreach ( $d['help'] as $i => $h ) {
+			$url  = 'donate' === $h[4] ? smile_donate_url() : home_url( $h[4] );
+			$main = 'donate' === $h[4];
+			$out .= '<article class="smile-way' . ( $main ? ' smile-way--main' : '' ) . ' smile-reveal" style="--i:' . (int) $i . '">' . smile_icon( $h[0] ) . '<h3>' . esc_html( $h[1] ) . '</h3><p>' . esc_html( $h[2] ) . '</p><a class="smile-btn ' . ( $main ? 'smile-btn--sun' : 'smile-btn--ghost' ) . '" href="' . esc_url( $url ) . '">' . esc_html( $h[3] ) . '</a></article>';
+		}
+		return $out . '</div>';
+	}
+);

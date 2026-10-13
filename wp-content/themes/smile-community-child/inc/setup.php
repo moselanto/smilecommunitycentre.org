@@ -102,12 +102,14 @@ function smile_theme_assets() {
 	list( $js_url, $js_ver ) = smile_asset( 'assets/js/main.js', 'assets/build/main.min.js' );
 	wp_enqueue_script( 'smile-community', $js_url, array(), $js_ver, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
+	// Section components (programme cards, timeline, community, related rows) are used on many pages,
+	// so their styles load everywhere; only the slider script is home-only.
+	list( $h_url, $h_ver ) = smile_asset( 'assets/css/home.css', 'assets/build/home.min.css' );
+	wp_enqueue_style( 'smile-home', $h_url, array( 'smile-community' ), $h_ver );
+	if ( ! file_exists( SMILE_THEME_DIR . '/assets/build/home.min.css' ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
+		wp_enqueue_style( 'smile-slider', SMILE_THEME_URI . '/assets/css/slider.css', array( 'smile-community' ), SMILE_THEME_VERSION );
+	}
 	if ( smile_is_home_layout() ) {
-		list( $h_url, $h_ver ) = smile_asset( 'assets/css/home.css', 'assets/build/home.min.css' );
-		wp_enqueue_style( 'smile-home', $h_url, array( 'smile-community' ), $h_ver );
-		if ( ! file_exists( SMILE_THEME_DIR . '/assets/build/home.min.css' ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
-			wp_enqueue_style( 'smile-slider', SMILE_THEME_URI . '/assets/css/slider.css', array( 'smile-community' ), SMILE_THEME_VERSION );
-		}
 		list( $s_url, $s_ver ) = smile_asset( 'assets/js/slider.js', 'assets/build/slider.min.js' );
 		wp_enqueue_script( 'smile-slider', $s_url, array(), $s_ver, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
