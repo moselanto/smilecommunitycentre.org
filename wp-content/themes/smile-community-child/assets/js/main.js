@@ -249,13 +249,13 @@
 
 	/* Count-up numbers */
 	function initCounters() {
-		var els = document.querySelectorAll( '[data-count]' );
+		var els = document.querySelectorAll( '.smile-stats [data-smile-count]' );
 		if ( !els.length || !( 'IntersectionObserver' in window ) || window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) { return; }
 		var io = new IntersectionObserver( function ( entries ) {
 			entries.forEach( function ( e ) {
 				if ( !e.isIntersecting ) { return; }
 				io.unobserve( e.target );
-				var el = e.target, end = parseInt( el.getAttribute( 'data-count' ), 10 ), start = end > 1000 ? end - 40 : 0, t0 = null;
+				var el = e.target, end = parseInt( el.getAttribute( 'data-smile-count' ), 10 ), start = end > 1000 ? end - 40 : 0, t0 = null;
 				function step( t ) { if ( !t0 ) { t0 = t; } var p = Math.min( 1, ( t - t0 ) / 1400 ), v = Math.round( start + ( end - start ) * ( 1 - Math.pow( 1 - p, 3 ) ) ); el.textContent = String( v ); if ( p < 1 ) { requestAnimationFrame( step ); } }
 				requestAnimationFrame( step );
 			} );

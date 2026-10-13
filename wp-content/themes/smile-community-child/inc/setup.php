@@ -250,3 +250,10 @@ add_filter( 'wp_img_tag_add_decoding_attr', '__return_true' );
  */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+
+/**
+ * Speed: Elementor's own Google Fonts (Roboto etc.) are never shown, because the
+ * theme sets Newsreader and Figtree everywhere. Skipping them saves several requests.
+ */
+add_filter( 'elementor/frontend/print_google_fonts', '__return_false' );

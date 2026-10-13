@@ -497,7 +497,7 @@ add_shortcode(
 		);
 		$out = '<ul class="smile-stats">';
 		foreach ( $items as $i => $it ) {
-			$out .= '<li class="smile-reveal" style="--i:' . (int) $i . '"><strong><span data-count="' . (int) $it[0] . '">' . (int) $it[0] . '</span>' . esc_html( $it[1] ) . '</strong><span>' . esc_html( $it[2] ) . '</span></li>';
+			$out .= '<li class="smile-reveal" style="--i:' . (int) $i . '"><strong><span data-smile-count="' . (int) $it[0] . '">' . (int) $it[0] . '</span>' . esc_html( $it[1] ) . '</strong><span>' . esc_html( $it[2] ) . '</span></li>';
 		}
 		return $out . '</ul>';
 	}

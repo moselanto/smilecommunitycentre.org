@@ -1195,3 +1195,9 @@ p, li { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
 	.smile-story, .smile-story__media img, .smile-lead__media img, .smile-story__more svg { transition: none \!important; transform: none \!important; }
 }
+
+/* =========================================================
+   v2.8.2 Speed: skip painting far-down sections until needed
+   ========================================================= */
+.elementor-section.smile-sec ~ .elementor-section.smile-sec ~ .elementor-section.smile-sec:not(.smile-sec--pathnav):not(.smile-sec--stats):not(.smile-sec--hub):not(.smile-sec--overlap),
+.smile-footer { content-visibility: auto; contain-intrinsic-size: auto 720px; }
