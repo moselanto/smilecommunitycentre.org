@@ -1,4 +1,4 @@
-#\!/usr/bin/env bash
+#!/usr/bin/env bash
 # Builds minified assets (if rcssmin/rjsmin are installed) and dist/smile-community-child.zip.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -16,6 +16,7 @@ PY
 else
   echo "rcssmin/rjsmin not installed: keeping existing assets/build files (pip install rcssmin rjsmin)"
 fi
+python3 "$(dirname "$0")/check-theme.py" || { echo "Build stopped: fix the problems above first."; exit 1; }
 mkdir -p dist
 rm -f dist/smile-community-child.zip
 (cd wp-content/themes && zip -r -q ../../dist/smile-community-child.zip smile-community-child -x "*.DS_Store")
