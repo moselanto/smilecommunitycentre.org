@@ -45,6 +45,7 @@ Rule: **presentation in the theme, data in the plugin.** If the theme is ever sw
 | `components.php` | Icon set, story images, category labels, shared shortcodes |
 | `home-sections.php` | Section shortcodes used across pages |
 | `slider.php` | Hero slider and its data (up to four slides; bundled slide photos in `assets/images/slides/`; "split" layout for slide 1) |
+| `careers.php` | Jobs post type `smile_job` (details in `_smile_job_*` meta; open = published and closing date not passed, Nairobi time), admin box and columns, `[smile_careers]`, `[smile_careers_values]`, `[smile_careers_process]`, `[smile_careers_talent]`, `[smile_careers_faq]`, JobPosting JSON-LD, noindex for closed roles, one-time creation of the Careers page and menu links. Job pages render `template-parts/job.php` (routed from `template-parts/single.php`); URLs `/careers/jobs/<role>/` |
 | `whatsapp-chat.php` | Floating WhatsApp button and chat card (no third-party scripts); toggle `smile_wa_chat` in the Customizer; behaviour in `initWhatsApp()` in `main.js` |
 | `images.php` | Photo key to attachment lookups (cached) |
 | `customizer.php` | Donate label, top bar, footer |

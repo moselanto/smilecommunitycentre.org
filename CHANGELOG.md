@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.25.0
+- **Careers.** New Careers page (/careers/, under Get Involved and in the footer) created automatically on first admin visit: hero, "Why work at Smile" values, open roles, "How we hire" four-step process, talent community form and a Careers FAQ with a recruitment-fraud warning.
+- **Jobs** admin (Jobs > Add New Job): title, description, excerpt and a Job details box (type, team, location, hours, pay, start, closing date, reference, apply email or link). Roles list on Careers while published and before their closing date (Nairobi time), then drop off automatically; admin list shows type, closing date and whether the role is live.
+- Open roles list with type filter chips, "Closes in N days" flag, and a polished "no open positions" state. Job pages with hero, at-a-glance card, Apply button (email with prefilled subject or external link), share links, safeguarding commitment, closed-role notice.
+- Google for Jobs JobPosting structured data on open roles; closed roles are noindex.
+- Smile Community Core 1.2.0: new "careers" talent community form (area of work, CV/LinkedIn link, consent to keep details 12 months), stored in Enquiries. Email fallback until the plugin is updated.
+- New files inc/careers.php and template-parts/job.php; docs updated.
+
 ## 2.24.0
 - Social profiles: Instagram, Facebook (facebook.com/smilecommunitycentre) and LinkedIn (linkedin.com/company/smile-community-centre) as matching round icon buttons in the top bar and in a new "Follow us" row in the footer Contact column. Shared helper smile_social_profiles()/smile_social_icons() in inc/template-tags.php; links open in a new tab with accessible labels; also used for the organisation sameAs in structured data. New LinkedIn URL field and Facebook default in Smile Centre settings.
 

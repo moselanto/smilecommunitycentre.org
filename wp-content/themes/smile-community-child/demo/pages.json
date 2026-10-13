@@ -6545,6 +6545,405 @@
     "html": "<section><p>Donate</p><h1>We make a life by what we give</h1><p>Your donation directly supports a child’s daily life: shelter, meals, school and medical care.</p><p><img src=\"smile-img:feeding3\" alt=\"Children sharing a meal at the centre\"></p></section><section>[smile_mpesa][smile_bank][smile_online_giving]<h2>What your gift can do</h2>[smile_giving_tiers]</section><section><h2>Where help is needed now</h2><ul><li><strong>School fees:</strong> some of our children risk missing school without support. Gifts pay fees, learning materials and required school costs.</li><li><strong>Water:</strong> water reaches Soweto about once a week. About KES 2,500 (US$25) fills our tanks for drinking, cooking and hygiene.</li><li><strong>Food and school supplies:</strong> daily meals, uniforms and school materials are always needed.</li><li><strong>Medical care:</strong> some rescued children need urgent treatment.</li></ul><p><img src=\"smile-img:pupils\" alt=\"Young pupils in school uniform outside the centre\"></p></section><section><h2>How we use donations</h2><p>Donations are used for the daily care of the children in our home and for our community programmes, where the need is greatest unless you ask us to direct your gift to a particular area such as education or meals. We do not sell donated goods. Extra clothes are given to families in need during outreach.</p><p>Questions about giving, a large gift or confirming that we received your donation? Use the form below or call or WhatsApp us.</p><h3>Tell us about your gift</h3>[smile_form type=\"donation\" button=\"Send\"]</section>"
   },
   {
+    "slug": "careers",
+    "title": "Careers",
+    "order": 54,
+    "seo_title": "Careers at Smile Community Centre | Jobs in Kayole, Nairobi",
+    "seo_desc": "Work with Smile Community Centre, a children's home in Soweto, Kayole, Nairobi. See open roles, how we hire, and join our talent community.",
+    "image": "staff-serving",
+    "elementor": [
+      {
+        "id": "93204e7",
+        "elType": "section",
+        "isInner": false,
+        "settings": {
+          "gap": "extended",
+          "css_classes": "smile-sec smile-pagehero",
+          "structure": "10",
+          "background_background": "classic",
+          "background_image": {
+            "url": "smile-img:staff-serving",
+            "id": ""
+          },
+          "background_position": "center center",
+          "background_size": "cover"
+        },
+        "elements": [
+          {
+            "id": "e7b48dc",
+            "elType": "column",
+            "isInner": false,
+            "settings": {
+              "_column_size": 100,
+              "_inline_size": null
+            },
+            "elements": [
+              {
+                "id": "ff8cb02",
+                "elType": "widget",
+                "widgetType": "shortcode",
+                "settings": {
+                  "shortcode": "[smile_breadcrumbs]"
+                },
+                "elements": []
+              },
+              {
+                "id": "c91d1b2",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Careers",
+                  "header_size": "p",
+                  "_css_classes": "smile-eyebrow"
+                },
+                "elements": []
+              },
+              {
+                "id": "00776f8",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Work where every day <em>counts</em>",
+                  "header_size": "h1"
+                },
+                "elements": []
+              },
+              {
+                "id": "71e3c85",
+                "elType": "widget",
+                "widgetType": "text-editor",
+                "settings": {
+                  "editor": "<p>Join a small, dedicated team giving orphaned and vulnerable children in Soweto, Kayole a safe home, daily meals, schooling and care.</p>",
+                  "_css_classes": "smile-lead smile-measure"
+                },
+                "elements": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "a9733e2",
+        "elType": "section",
+        "isInner": false,
+        "settings": {
+          "gap": "extended",
+          "css_classes": "smile-sec",
+          "structure": "10"
+        },
+        "elements": [
+          {
+            "id": "663bb25",
+            "elType": "column",
+            "isInner": false,
+            "settings": {
+              "_column_size": 100,
+              "_inline_size": null
+            },
+            "elements": [
+              {
+                "id": "6cb5752",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Why work at Smile",
+                  "header_size": "p",
+                  "_css_classes": "smile-eyebrow"
+                },
+                "elements": []
+              },
+              {
+                "id": "0aea036",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Meaningful work with a <em>caring team</em>",
+                  "header_size": "h2"
+                },
+                "elements": []
+              },
+              {
+                "id": "139698c",
+                "elType": "widget",
+                "widgetType": "text-editor",
+                "settings": {
+                  "editor": "<p>At Smile, your skills turn directly into safety, learning and hope for children. We look for people who bring patience, honesty and a big heart, and we support them to grow.</p>",
+                  "_css_classes": "smile-measure"
+                },
+                "elements": []
+              },
+              {
+                "id": "a4abfff",
+                "elType": "widget",
+                "widgetType": "shortcode",
+                "settings": {
+                  "shortcode": "[smile_careers_values]"
+                },
+                "elements": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "5a504a4",
+        "elType": "section",
+        "isInner": false,
+        "settings": {
+          "gap": "extended",
+          "css_classes": "smile-sec smile-sec--cream",
+          "structure": "10",
+          "css_id": "open-roles"
+        },
+        "elements": [
+          {
+            "id": "9c9a1a5",
+            "elType": "column",
+            "isInner": false,
+            "settings": {
+              "_column_size": 100,
+              "_inline_size": null
+            },
+            "elements": [
+              {
+                "id": "5a387a3",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Open roles",
+                  "header_size": "p",
+                  "_css_classes": "smile-eyebrow"
+                },
+                "elements": []
+              },
+              {
+                "id": "047e7d8",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Current <em>opportunities</em>",
+                  "header_size": "h2"
+                },
+                "elements": []
+              },
+              {
+                "id": "3d0ba9e",
+                "elType": "widget",
+                "widgetType": "text-editor",
+                "settings": {
+                  "editor": "<p>Every genuine role at Smile Community Centre is listed here with a closing date and clear instructions on how to apply.</p>",
+                  "_css_classes": "smile-measure"
+                },
+                "elements": []
+              },
+              {
+                "id": "aa89460",
+                "elType": "widget",
+                "widgetType": "shortcode",
+                "settings": {
+                  "shortcode": "[smile_careers]"
+                },
+                "elements": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "6ce479f",
+        "elType": "section",
+        "isInner": false,
+        "settings": {
+          "gap": "extended",
+          "css_classes": "smile-sec smile-sec--sand",
+          "structure": "10"
+        },
+        "elements": [
+          {
+            "id": "54f5a03",
+            "elType": "column",
+            "isInner": false,
+            "settings": {
+              "_column_size": 100,
+              "_inline_size": null
+            },
+            "elements": [
+              {
+                "id": "4764fe5",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "How we hire",
+                  "header_size": "p",
+                  "_css_classes": "smile-eyebrow"
+                },
+                "elements": []
+              },
+              {
+                "id": "289cbae",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "A fair, <em>safe</em> recruitment process",
+                  "header_size": "h2"
+                },
+                "elements": []
+              },
+              {
+                "id": "0102bb5",
+                "elType": "widget",
+                "widgetType": "text-editor",
+                "settings": {
+                  "editor": "<p>We follow safer recruitment practice to protect the children in our care. Here is what to expect after you apply.</p>",
+                  "_css_classes": "smile-measure"
+                },
+                "elements": []
+              },
+              {
+                "id": "b1316a6",
+                "elType": "widget",
+                "widgetType": "shortcode",
+                "settings": {
+                  "shortcode": "[smile_careers_process]"
+                },
+                "elements": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "4d18049",
+        "elType": "section",
+        "isInner": false,
+        "settings": {
+          "gap": "extended",
+          "css_classes": "smile-sec smile-sec--talent",
+          "structure": "20",
+          "css_id": "talent"
+        },
+        "elements": [
+          {
+            "id": "f1c694e",
+            "elType": "column",
+            "isInner": false,
+            "settings": {
+              "_column_size": 50,
+              "_inline_size": 50.0
+            },
+            "elements": [
+              {
+                "id": "9b172f5",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Talent community",
+                  "header_size": "p",
+                  "_css_classes": "smile-eyebrow"
+                },
+                "elements": []
+              },
+              {
+                "id": "2e63d79",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Not the right role yet? <em>Stay in touch</em>",
+                  "header_size": "h2"
+                },
+                "elements": []
+              },
+              {
+                "id": "5879236",
+                "elType": "widget",
+                "widgetType": "text-editor",
+                "settings": {
+                  "editor": "<p>Share your details and the kind of work you are interested in. When a suitable role opens, we will let you know before it is widely advertised.</p><ul><li>We keep your details for up to 12 months</li><li>We only contact you about relevant roles</li><li>You can ask us to remove your details at any time</li></ul>",
+                  "_css_classes": "smile-ticks"
+                },
+                "elements": []
+              }
+            ]
+          },
+          {
+            "id": "d3790ec",
+            "elType": "column",
+            "isInner": false,
+            "settings": {
+              "_column_size": 50,
+              "_inline_size": 50.0
+            },
+            "elements": [
+              {
+                "id": "a7800eb",
+                "elType": "widget",
+                "widgetType": "shortcode",
+                "settings": {
+                  "shortcode": "[smile_careers_talent]"
+                },
+                "elements": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "e2ddf0f",
+        "elType": "section",
+        "isInner": false,
+        "settings": {
+          "gap": "extended",
+          "css_classes": "smile-sec smile-sec--cream",
+          "structure": "10"
+        },
+        "elements": [
+          {
+            "id": "65c1fc5",
+            "elType": "column",
+            "isInner": false,
+            "settings": {
+              "_column_size": 100,
+              "_inline_size": null
+            },
+            "elements": [
+              {
+                "id": "ad76f6c",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Questions",
+                  "header_size": "p",
+                  "_css_classes": "smile-eyebrow"
+                },
+                "elements": []
+              },
+              {
+                "id": "bdeaa2f",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Careers <em>FAQ</em>",
+                  "header_size": "h2"
+                },
+                "elements": []
+              },
+              {
+                "id": "1326410",
+                "elType": "widget",
+                "widgetType": "shortcode",
+                "settings": {
+                  "shortcode": "[smile_careers_faq]"
+                },
+                "elements": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "html": "<section><p>Careers</p><h1>Work where every day counts</h1><p>Join a small, dedicated team giving orphaned and vulnerable children in Soweto, Kayole a safe home, daily meals, schooling and care.</p></section><section><h2>Why work at Smile</h2>[smile_careers_values]</section><section id=\"open-roles\"><h2>Current opportunities</h2>[smile_careers]</section><section><h2>How we hire</h2>[smile_careers_process]</section><section id=\"talent\"><h2>Stay in touch</h2>[smile_careers_talent]</section><section><h2>Careers FAQ</h2>[smile_careers_faq]</section>"
+  },
+  {
     "slug": "gallery",
     "title": "Gallery",
     "order": 31,

@@ -7,6 +7,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
+if ( is_singular( 'smile_job' ) ) {
+	get_template_part( 'template-parts/job' );
+	return;
+}
+
 while ( have_posts() ) :
 	the_post();
 	$smile_is_post = is_singular( 'post' );

@@ -19,6 +19,8 @@ Everything here is done from the WordPress dashboard (`/wp-admin`). No code is n
 | Menus | **Appearance > Menus** |
 | Stories and news | **Posts** |
 | Form messages from visitors | **Smile Centre > Enquiries** |
+| Advertise a job, close a job | **Jobs > Add New Job** / **Jobs > All Jobs** |
+| Talent community CVs | **Smile Centre > Enquiries** (type "Talent community / CV") |
 
 ## Change wording anywhere (Site text & photos)
 
@@ -65,6 +67,23 @@ A green WhatsApp button sits on every page (a round button above the bottom bar 
 ## Home slider photos
 
 Slides 1 and 2 use photos bundled with the theme (the feeding photo with its printed text removed, and an enhanced pupils photo). Choosing a photo for a slide in **Appearance > Customize > Smile: Home slider** replaces the bundled one; removing it brings the bundled photo back. Use landscape photos at least 1600px wide without text printed on them; the headline and buttons are added by the site.
+
+## Advertise a job (Careers)
+
+The Careers page (Get Involved > Careers, and in the footer) lists open roles automatically. When there are none it shows a "no open positions right now" message and the talent community form.
+
+To add a role: **Jobs > Add New Job**.
+1. **Title:** the role name, for example "Child Care Officer".
+2. **Main editor:** the full description. Use headings such as *About the role*, *What you will do*, *What we are looking for*, *What we offer*, with bullet lists.
+3. **Excerpt** (in the side panel; turn it on under Options/Preferences if hidden): one or two sentences shown on the Careers page.
+4. **Job details** box: employment type, team, location (default Soweto, Kayole, Nairobi), hours, pay (optional), start date, **closing date**, reference, and how to apply (an email address, or a link such as a Google Form). If both are empty, applications go to the centre email in Centre details.
+5. **Publish.**
+
+The role appears on the Careers page straight away and disappears on its own the day after the closing date. Its page stays online marked "Closed", is hidden from Google, and points people to the talent community. To remove a role early, set it to Draft or move it to the bin. **Jobs > All Jobs** shows each role's type, closing date and whether it is currently on the Careers page.
+
+Open roles are described to Google in the format Google for Jobs reads, so they can appear in Google job search.
+
+Never ask applicants for money; the Careers FAQ tells visitors that any request for payment is a scam.
 
 ## Publish a story
 

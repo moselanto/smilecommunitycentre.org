@@ -100,6 +100,10 @@
      {
       "title": "Partner With Us",
       "page": "partner-with-us"
+     },
+     {
+      "title": "Careers",
+      "page": "careers"
      }
     ]
    },
@@ -136,6 +140,10 @@
    {
     "title": "Donate",
     "page": "donate"
+   },
+   {
+    "title": "Careers",
+    "page": "careers"
    },
    {
     "title": "Contact",

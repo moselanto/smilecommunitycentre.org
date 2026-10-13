@@ -26,6 +26,9 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] WhatsApp chat: the button sits above the bottom bar on phones and does not cover it; the card opens and closes (button, X, Escape, click outside); a topic button fills the message; Send opens WhatsApp to the right number with the text.
 - [ ] Desktop menu: on an About or Impact page no dropdown is stuck open; only one dropdown shows at a time.
 - [ ] Top bar and footer: Instagram, Facebook and LinkedIn icons open the right pages in a new tab.
+- [ ] Careers: the page exists at /careers/ and is linked under Get Involved and in the footer. With no jobs it shows "There are no open positions right now"; "Join our talent community" scrolls to the form; the form submits and appears in Enquiries as "Talent community / CV".
+- [ ] Add a test job with a closing date tomorrow: it shows on Careers with "Closes in 1 day"; its page shows the at-a-glance card, Apply button (email with subject, or link), share links and safeguarding note. Google's Rich Results Test finds a JobPosting. Set the closing date to yesterday: it leaves the list, its page says "Closed" and is noindex. Delete the test job.
+- [ ] With two job types, the filter chips show and filter the list.
 - [ ] "What people say" shows the three Google reviews and the rating bar; "Read all reviews on Google" opens the reviews.
 
 ## Mobile and accessibility (WCAG 2.2 AA)

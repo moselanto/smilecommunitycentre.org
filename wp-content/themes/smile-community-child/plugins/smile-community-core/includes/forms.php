@@ -1,6 +1,6 @@
 <?php
 /**
- * Public enquiry forms: [smile_form type="contact|visit|volunteer|partner|donation|removal"].
+ * Public enquiry forms: [smile_form type="contact|visit|volunteer|partner|donation|removal|careers"].
  *
  * Security: nonce, honeypot, signed minimum fill time, per-IP rate limit,
  * server-side validation and sanitisation, PRG redirect, honest status messages.
@@ -70,6 +70,16 @@ function smile_core_form_fields( $type ) {
 				'relationship' => array( __( 'Your relationship to the person concerned', 'smile-core' ), 'select', true, array( 'I am the person in the photo or story', 'Parent or guardian', 'Smile staff member', 'Social worker or children\'s officer', 'Other concern' ) ),
 				'page_url'     => array( __( 'Link to the page or image (if known)', 'smile-core' ), 'url', false ),
 				'message'      => array( __( 'What should we review or remove, and why?', 'smile-core' ), 'textarea', true ),
+			);
+		case 'careers':
+			return array(
+				'name'    => $name,
+				'email'   => $email,
+				'phone'   => $phone,
+				'area'    => array( __( 'Area of work you are interested in', 'smile-core' ), 'select', true, array( 'Child care and social work', 'Teaching and tutoring', 'Health and nutrition', 'Kitchen and household', 'Administration and finance', 'Fundraising and communications', 'Internship or college attachment', 'Other' ) ),
+				'cv_link' => array( __( 'Link to your CV or LinkedIn profile (optional)', 'smile-core' ), 'url', false ),
+				'message' => array( __( 'Tell us briefly about your experience and qualifications', 'smile-core' ), 'textarea', true ),
+				'consent' => array( __( 'I agree that Smile Community Centre may keep my details for up to 12 months to contact me about suitable roles', 'smile-core' ), 'checkbox', true ),
 			);
 		case 'contact':
 		default:

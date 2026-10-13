@@ -12,6 +12,534 @@
 "section": "smile_brand_logo"
 },
 {
+"text": "Full-time",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_types"
+},
+{
+"text": "Part-time",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_types"
+},
+{
+"text": "Contract",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_types"
+},
+{
+"text": "Temporary",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_types"
+},
+{
+"text": "Internship / attachment",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_types"
+},
+{
+"text": "Volunteer role",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_types"
+},
+{
+"text": "Employment type",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Team or area",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "For example: Child care, Education, Kitchen, Administration",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Location",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Default: Soweto, Kayole, Nairobi",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Working hours",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "For example: Monday to Friday, 8am to 5pm",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Pay (optional)",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "For example: KES 25,000 to 30,000 per month. Leave empty to hide.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Start date (optional)",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "For example: January 2027, or As soon as possible",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Closing date",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "The role leaves the open list after this day. Leave empty to keep it open until you unpublish it.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Reference (optional)",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "For example: SCC/CC/2027/01",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Apply by email to",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Leave empty to use the centre email from Centre details.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Or apply through this link (optional)",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "For example a Google Form. If filled, the Apply button opens this link.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_fields"
+},
+{
+"text": "Jobs",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "Job",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "Add New Job",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "Edit Job",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "New Job",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "View Job",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "Search Jobs",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "No jobs yet. Click \"Add New Job\" when you have a role to advertise.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "No jobs in the bin.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "All Jobs",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_register_jobs"
+},
+{
+"text": "Soweto, Kayole, Nairobi",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job"
+},
+{
+"text": "Job details",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_metabox"
+},
+{
+"text": "Write the full role description in the editor above (about the role, responsibilities, what we are looking for, and anything else applicants should know). Use the Excerpt box for a one or two sentence summary shown on the Careers page.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_metabox_render"
+},
+{
+"text": "Type",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_columns"
+},
+{
+"text": "On Careers page",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_columns"
+},
+{
+"text": "No closing date",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_column_value"
+},
+{
+"text": "Open",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_column_value"
+},
+{
+"text": "Not shown (closed or not published)",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_job_column_value"
+},
+{
+"text": "Open roles",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "There are no open positions right now",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "We are not recruiting at the moment. New roles are always posted on this page first, with a clear closing date and how to apply. Leave your details with our talent community and we will get in touch when a suitable role opens.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "Join our talent community",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "Follow us on LinkedIn",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "Filter roles by type",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "All",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "Closes today",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "Apply by %s",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "View role",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers"
+},
+{
+"text": "Work that matters",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "Every shift helps a child eat well, stay in school and feel safe. You will see the difference your work makes, day after day.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "A close, caring team",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "We are a small team that works side by side with children, families, volunteers and partners in Soweto, Kayole.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "Room to learn and grow",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "Induction, on-the-job mentoring and safeguarding training help you build your skills and your career.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "Safe by design",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "Clear policies, safer recruitment and a culture where anyone can raise a concern protect children and staff alike.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_values"
+},
+{
+"text": "Apply",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Send your CV and a short cover letter as described in the role. Applications close on the date shown.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Any time before the closing date",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Shortlist and interview",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Shortlisted candidates are invited to an interview at the centre or by phone. We contact everyone we shortlist.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Usually within 2 weeks of closing",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "References and checks",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Before any offer we take up two references and ask for a Certificate of Good Conduct, as part of safer recruitment.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "About 1 to 2 weeks",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Welcome and induction",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "You sign our safeguarding and code of conduct policies, meet the team and settle in with a guided induction.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Your first weeks with us",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_process"
+},
+{
+"text": "Join the talent community",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_talent"
+},
+{
+"text": "Talent community: my CV",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_talent"
+},
+{
+"text": "Email your CV and a few lines about the kind of role you are interested in. We keep your details on file for up to 12 months.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_talent"
+},
+{
+"text": "Email your CV",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_talent"
+},
+{
+"text": "Do you charge a fee to apply or to be hired?",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "Never. Smile Community Centre does not ask for money at any stage of recruitment. If anyone asks you to pay for an application, interview, medical or job offer in our name, it is a scam. Please report it to us.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "Where are jobs advertised?",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "Every genuine role is posted on this page, with a closing date and the way to apply. We may also share it on our Facebook and LinkedIn pages, always linking back here.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "Can I send my CV when there are no openings?",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "Yes. Join the talent community on this page. We keep your details for up to 12 months and contact you if a suitable role opens.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "Do you offer internships or college attachments?",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "From time to time, in areas such as social work, education and administration. They are posted here as \"Internship / attachment\" roles.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "I would like to help but not as an employee.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "You are very welcome to volunteer, partner with us or give. See the Get Involved pages for all the ways to help.",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_sc_careers_faq"
+},
+{
+"text": "Careers",
+"domain": "smile-community",
+"file": "inc/careers.php",
+"section": "smile_careers_setup"
+},
+{
 "text": "Call us",
 "domain": "smile-community",
 "file": "inc/components.php",
@@ -3102,6 +3630,30 @@
 "section": "smile_core_form_fields"
 },
 {
+"text": "Area of work you are interested in",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Link to your CV or LinkedIn profile (optional)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Tell us briefly about your experience and qualifications",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "I agree that Smile Community Centre may keep my details for up to 12 months to contact me about suitable roles",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
 "text": "Subject",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",
@@ -3678,16 +4230,154 @@
 "section": "header"
 },
 {
-"text": "Soweto, Kayole, Nairobi",
+"text": "Main",
 "domain": "smile-community",
 "file": "template-parts/header.php",
 "section": "header"
 },
 {
-"text": "Main",
+"text": "Application: %1$s%2$s",
 "domain": "smile-community",
-"file": "template-parts/header.php",
-"section": "header"
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Closed",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Posted %s",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "This role is now closed.",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Thank you for your interest. See current openings or join our talent community to hear about future roles.",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "View open roles",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "How to apply",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Apply through the link below. Have your CV and a short cover letter ready.",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Email your CV and a one-page cover letter to %1$s with the subject \"%2$s\".",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Applications close at midnight on %s. We will contact shortlisted candidates only.",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Apply for this role",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Safer recruitment",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Our commitment to safeguarding",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Smile Community Centre is committed to keeping children safe. All appointments are subject to two satisfactory references, a Certificate of Good Conduct and agreement to our safeguarding policy and code of conduct. We never ask for money at any stage of recruitment.",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Role at a glance",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Team",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Hours",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Pay",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Start",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "today",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Reference",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Share this role",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "Copy link",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
+},
+{
+"text": "All open roles",
+"domain": "smile-community",
+"file": "template-parts/job.php",
+"section": "job"
 },
 {
 "text": "Search results for \"%s\"",

@@ -20,6 +20,7 @@ function smile_core_form_types() {
 		'partner'   => __( 'Partnership enquiry', 'smile-core' ),
 		'donation'  => __( 'Donation / pledge', 'smile-core' ),
 		'removal'   => __( 'Safeguarding / photo removal', 'smile-core' ),
+		'careers'   => __( 'Talent community / CV', 'smile-core' ),
 	);
 }
 
