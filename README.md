@@ -11,7 +11,7 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-21759B?logo=wordpress&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B%20(8.2%20recommended)-777BB4?logo=php&logoColor=white)
 ![Elementor](https://img.shields.io/badge/Layouts-Elementor-92003B?logo=elementor&logoColor=white)
-![Child theme](https://img.shields.io/badge/Child%20theme-v2.17.0-164B3F)
+![Child theme](https://img.shields.io/badge/Child%20theme-v2.18.0-164B3F)
 ![Core plugin](https://img.shields.io/badge/Smile%20Community%20Core-v1.1.0-176B5B)
 ![Giving](https://img.shields.io/badge/Giving-M--Pesa%20Paybill%20247247-4CAF50)
 ![Security](https://img.shields.io/badge/Security-audited-2e7d32)
@@ -286,6 +286,7 @@ Highlights below; every change is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Highlights |
 |---|---|
+| 2.18.0 | The Smile curve from the logo used as the site's signature mark |
 | 2.17.0 | Every text and photo editable; self-hosted fonts; instant navigation |
 | 2.16.0 | New logo and site icons |
 | 2.15.x | SEO: schema graph, titles and descriptions for every page, story and topic |

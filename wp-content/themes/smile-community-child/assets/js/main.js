@@ -151,7 +151,7 @@
 		ems.forEach( function ( em ) {
 			if ( em.querySelector( '.smile-swash' ) ) { return; }
 			em.classList.add( 'smile-em' );
-			em.insertAdjacentHTML( 'beforeend', '<svg class="smile-swash" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 8 C 45 22, 150 24, 196 5"/></svg>' );
+			em.insertAdjacentHTML( 'beforeend', '<svg class="smile-swash" viewBox="0 0 200 34" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M10 2.3 Q100 41.5 189 0.3 Q100 57.7 10 7 Z"/></svg>' );
 		} );
 		if ( reduce || !( 'IntersectionObserver' in window ) ) {
 			ems.forEach( function ( em ) { em.classList.add( 'is-drawn' ); } );

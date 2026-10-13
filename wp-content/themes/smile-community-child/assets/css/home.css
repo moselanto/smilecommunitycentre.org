@@ -871,3 +871,66 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 	.smile-calc__pay { grid-template-columns: 1fr !important; }
 	.smile-calc__pay > div { justify-content: space-between; }
 }
+
+
+/* =========================================================
+   v2.18 The Smile curve: the yellow crescent from the logo,
+   used as the site's signature mark everywhere
+   ========================================================= */
+:root {
+	--smile-logo-yellow: #FDE406;
+	--smile-logo-green: #0A281A;
+	--smile-sun: #FCD923;                 /* warmer, closer to the logo yellow */
+	--smile-curve: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 34'%3E%3Cpath fill='%23FDE406' d='M10 2.3 Q100 41.5 189 0.3 Q100 57.7 10 7 Z'/%3E%3C/svg%3E");
+}
+
+/* 1. Under highlighted (italic) words in every heading: the logo crescent, drawn in from the left */
+.smile-swash { left: -3%; width: 106%; bottom: -.22em; height: .42em; clip-path: inset(0 100% 0 0); transition: clip-path .9s cubic-bezier(.65,0,.35,1) .15s; }
+.smile-swash path { fill: var(--smile-logo-yellow) !important; stroke: none !important; stroke-dasharray: none !important; opacity: 1 !important; }
+.smile-em.is-drawn .smile-swash { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) { .smile-swash { clip-path: none; transition: none; } }
+
+/* 2. Small labels above headings: a mini smile instead of a straight dash */
+.smile-eyebrow .elementor-heading-title::before,
+.smile-dream__kicker::before,
+.smile-stories__kicker span {
+	width: 30px !important; height: 7px !important; background: var(--smile-curve) center / 100% 100% no-repeat !important; border-radius: 0 !important; transform: translateY(1px);
+}
+
+/* 3. Page banners: a smile under the main title, like the logo */
+.smile-pagehero h1.elementor-heading-title::after,
+.smile-stories__hero h1::after {
+	content: ""; display: block; width: clamp(110px, 18vw, 190px); height: clamp(14px, 2vw, 22px); margin-top: .45em; background: var(--smile-curve) left center / 100% 100% no-repeat;
+}
+.smile-pagehero h1.elementor-heading-title:has(.smile-em)::after,
+.smile-stories__hero h1:has(em)::after { display: none; }
+
+/* 4. Centred section titles without a highlighted word get a smile underneath */
+.smile-center h2.elementor-heading-title:not(:has(em))::after,
+.smile-touch__title::after {
+	content: ""; display: block; width: 120px; height: 16px; margin: .5rem auto 0; background: var(--smile-curve) center / 100% 100% no-repeat;
+}
+.smile-touch__title::after { margin-left: 0; }
+
+/* 5. Main menu: the active and hovered link gets a smile, not a line */
+.smile-nav__list > li > a::before { height: 7px !important; bottom: .05rem !important; background: var(--smile-curve) center / 100% 100% no-repeat !important; }
+
+/* 6. Phone bottom bar: smile under the current tab */
+.smile-tabbar__item { position: relative; }
+.smile-tabbar__item.is-current::after { content: ""; position: absolute; bottom: 4px; left: 50%; width: 26px; height: 6px; transform: translateX(-50%); background: var(--smile-curve) center / 100% 100% no-repeat; }
+
+/* 7. Story cards: a smile slides in under the card on hover */
+.smile-story::after { left: 50% !important; right: auto !important; width: 70% !important; height: 12px !important; bottom: 6px !important; background: var(--smile-curve) center / 100% 100% no-repeat !important; transform: translateX(-50%) scaleX(0) !important; transform-origin: center !important; }
+.smile-story:hover::after { transform: translateX(-50%) scaleX(1) !important; }
+
+/* 8. Founder quote and signatures */
+.smile-fwords__line, .elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords) .smile-signature::before {
+	width: 64px !important; height: 10px !important; background: var(--smile-curve) center / 100% 100% no-repeat !important;
+}
+
+/* 9. Footer: one wide smile across the top edge */
+.smile-footer { position: relative; }
+.smile-footer::before { content: ""; position: absolute; top: -1px; left: 50%; width: min(520px, 70vw); height: 26px; transform: translateX(-50%); background: var(--smile-curve) center top / 100% 100% no-repeat; opacity: .95; pointer-events: none; }
+
+/* 10. Closing teal band and impact figures: a smile under the big number */
+.smile-stats strong::after { content: ""; display: block; width: 46px; height: 8px; margin-top: .45rem; background: var(--smile-curve) left center / 100% 100% no-repeat; }

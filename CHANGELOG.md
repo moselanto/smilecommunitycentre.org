@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.18.0
+- **The Smile curve:** the yellow crescent from the new logo becomes the site's signature mark: under highlighted heading words (drawn in), beside every small label, under page titles and centred section titles, active menu link, phone tab bar, story card hover, founder quote, impact figures and the top of the footer. Accent yellow warmed towards the logo yellow.
+
 ## 2.17.0 (13 Oct 2026)
 - **Editable content:** new Smile Centre > Site text & photos screen. All 589 visitor-facing texts are listed by section with search; an empty box restores the original. Photos tab replaces any section photo from the Media Library.
 - Testimonial names, partner names, founder signature, impact figures and gift amounts are now editable.
