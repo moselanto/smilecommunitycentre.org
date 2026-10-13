@@ -62,7 +62,7 @@
 			steps.push( 'categories', 'pages' );
 			if ( opt( 'smile-o-retire' ) ) { steps.push( 'retire' ); }
 			steps.push( 'reading', 'menus', 'logo', 'slider' );
-			if ( opt( 'smile-o-posts' ) ) { steps.push( 'posts-index' ); }
+			if ( opt( 'smile-o-posts' ) ) { steps.push( 'posts-index', 'tidy-stories' ); }
 			if ( opt( 'smile-o-enhance' ) ) { steps.push( 'enhance-index' ); }
 			if ( opt( 'smile-o-kit' ) ) { steps.push( 'kit' ); }
 			steps.push( 'finish' );

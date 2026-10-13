@@ -142,6 +142,18 @@ function smile_demo_ajax_step() {
 			}
 			wp_send_json_success( array( 'message' => __( 'Home slider photos set (edit in Customize > Smile: Home slider)', 'smile-community' ) ) );
 			break;
+		case 'tidy-stories':
+			$fixed = 0;
+			foreach ( get_posts( array( 'post_type' => 'post', 'post_status' => 'any', 'posts_per_page' => 200, 'meta_key' => '_smile_source_id' ) ) as $story ) { // phpcs:ignore WordPress.DB.SlowDBQuery
+				$t = smile_demo_fix_caps( $story->post_title );
+				$e = smile_demo_clean_excerpt( $story->post_excerpt, $story->post_content );
+				if ( $t !== $story->post_title || $e !== $story->post_excerpt ) {
+					wp_update_post( array( 'ID' => $story->ID, 'post_title' => $t, 'post_excerpt' => $e ) );
+					++$fixed;
+				}
+			}
+			wp_send_json_success( array( 'message' => sprintf( /* translators: %d */ __( 'Tidied %d story titles and summaries', 'smile-community' ), $fixed ) ) );
+			break;
 		case 'posts-index':
 			$ids = smile_demo_live_post_ids();
 			if ( is_wp_error( $ids ) ) {
@@ -317,7 +329,7 @@ function smile_demo_import_pages( $overwrite ) {
 			'post_status'  => 'publish',
 			'post_title'   => $page['title'],
 			'post_name'    => $page['slug'],
-			'post_content' => wp_kses_post( $html ),
+			'post_content' => wp_kses_post( smile_demo_fix_links( $html ) ),
 			'menu_order'   => isset( $page['order'] ) ? (int) $page['order'] : 0,
 		);
 		if ( $existing ) {
@@ -345,7 +357,7 @@ function smile_demo_import_pages( $overwrite ) {
 			update_post_meta( $id, '_elementor_edit_mode', 'builder' );
 			update_post_meta( $id, '_elementor_template_type', 'wp-page' );
 			update_post_meta( $id, '_elementor_version', defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : '3.20.0' );
-			update_post_meta( $id, '_elementor_data', wp_slash( wp_json_encode( smile_demo_swap_images( $page['elementor'], $images ) ) ) );
+			update_post_meta( $id, '_elementor_data', wp_slash( wp_json_encode( smile_demo_fix_links( smile_demo_swap_images( $page['elementor'], $images ) ) ) ) );
 			update_post_meta( $id, '_elementor_page_settings', array( 'hide_title' => 'yes' ) );
 		}
 		if ( ! empty( $page['seo_title'] ) ) {
@@ -574,7 +586,7 @@ function smile_demo_import_post( $live_id ) {
 	}
 	$rules   = smile_demo_post_rules();
 	$status  = isset( $rules[ $p['slug'] ] ) && 'draft' === $rules[ $p['slug'] ] ? 'draft' : 'publish';
-	$title   = wp_strip_all_tags( html_entity_decode( $p['title']['rendered'], ENT_QUOTES, 'UTF-8' ) );
+	$title   = smile_demo_fix_caps( wp_strip_all_tags( html_entity_decode( $p['title']['rendered'], ENT_QUOTES, 'UTF-8' ) ) );
 	$content = (string) $p['content']['rendered'];
 	$short   = substr( sanitize_title( $p['slug'] ), 0, 40 );
 	$live    = preg_quote( wp_parse_url( smile_demo_live_site(), PHP_URL_HOST ), '#' );
@@ -613,7 +625,7 @@ function smile_demo_import_post( $live_id ) {
 				'post_title'    => $title,
 				'post_name'     => $p['slug'],
 				'post_content'  => wp_kses_post( $content ),
-				'post_excerpt'  => wp_strip_all_tags( html_entity_decode( $p['excerpt']['rendered'], ENT_QUOTES, 'UTF-8' ) ),
+				'post_excerpt'  => smile_demo_clean_excerpt( $p['excerpt']['rendered'], (string) $p['content']['rendered'] ),
 				'post_date'     => $p['date'],
 				'post_date_gmt' => isset( $p['date_gmt'] ) ? $p['date_gmt'] : '',
 				'post_author'   => get_current_user_id(),
@@ -656,4 +668,67 @@ function smile_demo_import_post( $live_id ) {
 		}
 	}
 	return ( 'draft' === $status ? __( 'Story imported as DRAFT for safeguarding review: ', 'smile-community' ) : __( 'Story imported: ', 'smile-community' ) ) . $title;
+}
+
+
+/**
+ * Make site-relative links (/donate/) work when WordPress lives in a sub-folder
+ * (e.g. staging at /smilescommunity/). Walks Elementor data and HTML strings.
+ *
+ * @param mixed $node Elementor data or HTML.
+ * @return mixed
+ */
+function smile_demo_fix_links( $node ) {
+	$home = untrailingslashit( home_url() );
+	if ( is_string( $node ) ) {
+		return preg_replace( '#href="/(?!/)#', 'href="' . $home . '/', $node );
+	}
+	if ( is_array( $node ) ) {
+		if ( isset( $node['url'] ) && is_string( $node['url'] ) && 0 === strpos( $node['url'], '/' ) && 0 !== strpos( $node['url'], '//' ) && isset( $node['is_external'] ) ) {
+			$node['url'] = $home . $node['url'];
+		}
+		foreach ( $node as $k => $v ) {
+			$node[ $k ] = smile_demo_fix_links( $v );
+		}
+	}
+	return $node;
+}
+
+/**
+ * Title-case a heading that was typed in ALL CAPS.
+ *
+ * @param string $title Title.
+ * @return string
+ */
+function smile_demo_fix_caps( $title ) {
+	$letters = preg_replace( '/[^A-Za-z]/', '', $title );
+	if ( strlen( $letters ) < 6 || strtoupper( $letters ) !== $letters ) {
+		return $title;
+	}
+	$small = array( 'a', 'an', 'and', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'your', 'with' );
+	$words = explode( ' ', mb_strtolower( $title ) );
+	foreach ( $words as $i => $word ) {
+		if ( 0 === $i || ! in_array( $word, $small, true ) ) {
+			$words[ $i ] = mb_strtoupper( mb_substr( $word, 0, 1 ) ) . mb_substr( $word, 1 );
+		}
+	}
+	return str_replace( array( "Children's", 'Children’s' ), array( "Children's", 'Children’s' ), implode( ' ', $words ) );
+}
+
+/**
+ * A clean excerpt: the live site's excerpt, unless it is just image alt text.
+ *
+ * @param string $rendered_excerpt Excerpt HTML.
+ * @param string $content          Post content HTML.
+ * @return string
+ */
+function smile_demo_clean_excerpt( $rendered_excerpt, $content ) {
+	$ex = trim( wp_strip_all_tags( html_entity_decode( $rendered_excerpt, ENT_QUOTES, 'UTF-8' ) ) );
+	$ex = trim( preg_replace( '/\s*(Read More|\[&hellip;\]|\[…\]|…)\s*$/i', '', $ex ) );
+	if ( str_word_count( $ex ) < 12 ) {
+		$text = preg_replace( '#<figure.*?</figure>#is', '', $content );
+		$text = preg_replace( '#<img[^>]*>#i', '', $text );
+		$ex   = wp_trim_words( wp_strip_all_tags( html_entity_decode( $text, ENT_QUOTES, 'UTF-8' ) ), 32, '…' );
+	}
+	return $ex;
 }

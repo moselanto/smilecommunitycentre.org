@@ -239,8 +239,9 @@ function smile_core_sc_posts( $atts ) {
 	while ( $q->have_posts() ) {
 		$q->the_post();
 		$out .= '<article class="smile-card smile-card--story">';
-		if ( has_post_thumbnail() ) {
-			$out .= '<a class="smile-card__media" href="' . esc_url( get_permalink() ) . '" tabindex="-1" aria-hidden="true">' . get_the_post_thumbnail( null, 'smile-card', array( 'alt' => '', 'loading' => 'lazy' ) ) . '</a>';
+		$media = function_exists( 'smile_story_image' ) ? smile_story_image( get_the_ID() ) : ( has_post_thumbnail() ? get_the_post_thumbnail( null, 'smile-card', array( 'alt' => '', 'loading' => 'lazy' ) ) : '' );
+		if ( $media ) {
+			$out .= '<a class="smile-card__media" href="' . esc_url( get_permalink() ) . '" tabindex="-1" aria-hidden="true">' . $media . '</a>';
 		}
 		$out .= '<div class="smile-card__body"><p class="smile-card__meta"><time datetime="' . esc_attr( get_the_date( 'c' ) ) . '">' . esc_html( get_the_date() ) . '</time></p>';
 		$out .= '<h3 class="smile-card__title"><a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></h3>';

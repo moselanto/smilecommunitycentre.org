@@ -13,7 +13,7 @@ if ( ! $smile_title ) {
 }
 ?>
 <main id="content" class="smile-archive">
-	<header class="smile-page-hero">
+	<header class="smile-page-hero smile-page-hero--archive">
 		<div class="smile-container">
 			<?php smile_breadcrumbs(); ?>
 			<h1><?php echo esc_html( $smile_title ); ?></h1>
@@ -38,6 +38,22 @@ if ( ! $smile_title ) {
 
 	<div class="smile-container smile-section">
 		<?php if ( have_posts() ) : ?>
+			<?php
+			$smile_first = ! is_paged();
+			if ( $smile_first && have_posts() ) :
+				the_post();
+				?>
+				<article <?php post_class( 'smile-feature' ); ?>>
+					<a class="smile-feature__media" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true"><?php echo smile_story_image( get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+					<div class="smile-feature__body">
+						<p class="smile-eyebrow"><?php esc_html_e( 'Latest story', 'smile-community' ); ?></p>
+						<h2 class="smile-feature__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						<p class="smile-card__meta"><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time> &middot; <?php echo esc_html( sprintf( /* translators: %d */ __( '%d min read', 'smile-community' ), smile_reading_time() ) ); ?></p>
+						<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 40 ) ); ?></p>
+						<a class="smile-btn smile-btn--teal" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read the story', 'smile-community' ); ?></a>
+					</div>
+				</article>
+			<?php endif; ?>
 			<div class="smile-grid smile-grid--3">
 				<?php
 				while ( have_posts() ) :
