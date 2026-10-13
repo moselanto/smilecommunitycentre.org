@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.18.1
+- Favicon and phone icons: the umbrella with the three children only (no yellow box), transparent for browser tabs, on white for the iPhone home screen.
+
 ## 2.18.0
 - **The Smile curve:** the yellow crescent from the new logo becomes the site's signature mark: under highlighted heading words (drawn in), beside every small label, under page titles and centred section titles, active menu link, phone tab bar, story card hover, founder quote, impact figures and the top of the footer. Accent yellow warmed towards the logo yellow.
 
