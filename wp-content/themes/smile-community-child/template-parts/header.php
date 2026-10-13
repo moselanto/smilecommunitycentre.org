@@ -41,11 +41,7 @@ $smile_heart     = '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true
 <header class="smile-header" id="site-header">
 	<div class="smile-container smile-header__inner">
 		<div class="smile-header__brand">
-			<?php if ( has_custom_logo() ) : ?>
-				<?php the_custom_logo(); ?>
-			<?php else : ?>
-				<a class="smile-header__name" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-			<?php endif; ?>
+			<?php echo smile_brand_logo( 'header' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in smile_brand_logo(). ?>
 		</div>
 
 		<nav class="smile-nav" id="smile-primary-nav" aria-label="<?php esc_attr_e( 'Main', 'smile-community' ); ?>">

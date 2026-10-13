@@ -118,7 +118,7 @@ function smile_seo_organization() {
 	$same  = array_values( array_filter( array( smile_setting( 'instagram_url', 'https://www.instagram.com/smile_kenya_/' ), smile_setting( 'facebook_url', '' ) ) ) );
 
 	$logo_id  = (int) get_theme_mod( 'custom_logo' );
-	$logo_url = $logo_id ? wp_get_attachment_image_url( $logo_id, 'full' ) : '';
+	$logo_url = function_exists( 'smile_brand_logo_url' ) && apply_filters( 'smile_use_brand_logo', true ) ? smile_brand_logo_url() : ( $logo_id ? wp_get_attachment_image_url( $logo_id, 'full' ) : '' );
 
 	$org = array(
 		'@type'         => array( 'NGO', 'Organization' ),

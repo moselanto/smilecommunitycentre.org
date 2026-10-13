@@ -1378,3 +1378,17 @@ p, li { text-wrap: pretty; }
 .smile-mv .elementor-column:first-child .smile-icon { background: var(--smile-sun) !important; color: var(--smile-forest) !important; }
 .smile-mv .elementor-column:last-child .smile-icon { background: var(--smile-forest) !important; color: var(--smile-sun) !important; }
 @media (max-width: 767px) { .smile-mv .elementor-column > .elementor-widget-wrap, .smile-mv .elementor-column > div { min-height: 240px; } }
+
+
+/* =========================================================
+   v2.16 New Smile logo (bundled, sharp on every screen)
+   ========================================================= */
+.smile-brand { display: inline-flex; align-items: center; line-height: 0; border-radius: 6px; }
+.smile-brand picture { display: block; line-height: 0; }
+.smile-brand__img { display: block; width: auto; height: 60px; max-width: none; image-rendering: auto; transition: height .25s ease; }
+.smile-header.is-scrolled .smile-brand__img { height: 50px; }
+.smile-brand:focus-visible { outline: 3px solid var(--smile-sun); outline-offset: 4px; }
+.smile-footer__logo { display: inline-block; background: #fff; padding: 10px 14px; border-radius: 14px; margin-bottom: 1rem; }
+.smile-footer__logo .smile-brand__img { height: 56px; }
+@media (max-width: 900px) { .smile-brand__img { height: 48px; } .smile-header.is-scrolled .smile-brand__img { height: 44px; } }
+@media (max-width: 380px) { .smile-brand__img { height: 40px; } }

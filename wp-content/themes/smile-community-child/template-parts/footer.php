@@ -17,11 +17,7 @@ $smile_facebook  = smile_setting( 'facebook_url', '' );
 <footer class="smile-footer" id="site-footer">
 	<div class="smile-container smile-footer__grid">
 		<div class="smile-footer__about">
-			<?php if ( has_custom_logo() ) : ?>
-				<div class="smile-footer__logo"><?php the_custom_logo(); ?></div>
-			<?php else : ?>
-				<p class="smile-footer__name"><?php bloginfo( 'name' ); ?></p>
-			<?php endif; ?>
+			<div class="smile-footer__logo"><?php echo smile_brand_logo( 'footer' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in smile_brand_logo(). ?></div>
 			<p><?php echo esc_html( get_theme_mod( 'smile_footer_tagline', __( 'A safe home, daily meals, education and care for orphaned and vulnerable children in Soweto, Kayole, Nairobi.', 'smile-community' ) ) ); ?></p>
 			<a class="smile-btn smile-btn--sun" href="<?php echo esc_url( smile_donate_url() ); ?>"><?php esc_html_e( 'Donate Now', 'smile-community' ); ?></a>
 		</div>
