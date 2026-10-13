@@ -199,6 +199,16 @@
 		} );
 	}
 
+
+	/* Bottom bar "Menu" button opens the main menu */
+	function initTabbarMenu() {
+		var btn = document.querySelector( '[data-smile-open-menu]' );
+		var toggle = document.querySelector( '.smile-nav-toggle' );
+		if ( btn && toggle ) {
+			btn.addEventListener( 'click', function () { toggle.click(); } );
+		}
+	}
+
 	function initForms() {
 		// Move focus to the status / first error after a server round-trip so screen readers announce it.
 		var target = document.querySelector( '.smile-form__status[tabindex="-1"]' );
@@ -206,8 +216,8 @@
 	}
 
 	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); } );
+		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); } );
 	} else {
-		initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc();
+		initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu();
 	}
 }() );

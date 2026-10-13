@@ -49,6 +49,7 @@ $smile_heart     = '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true
 		</div>
 
 		<nav class="smile-nav" id="smile-primary-nav" aria-label="<?php esc_attr_e( 'Main', 'smile-community' ); ?>">
+			<p class="smile-nav__title" aria-hidden="true"><?php esc_html_e( 'Menu', 'smile-community' ); ?></p>
 			<?php
 			wp_nav_menu(
 				array(
@@ -60,7 +61,16 @@ $smile_heart     = '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true
 				)
 			);
 			?>
-			<a class="smile-btn smile-btn--sun smile-nav__donate-mobile" href="<?php echo esc_url( smile_donate_url() ); ?>"><?php echo $smile_heart; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><?php echo esc_html( $smile_donate ); ?></a>
+			<div class="smile-nav__extra">
+				<a class="smile-btn smile-btn--sun smile-nav__donate-mobile" href="<?php echo esc_url( smile_donate_url() ); ?>"><?php echo $smile_heart; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><?php echo esc_html( $smile_donate ); ?></a>
+				<div class="smile-nav__contact">
+					<a href="<?php echo esc_url( smile_tel_href( $smile_phone ) ); ?>"><span><?php esc_html_e( 'Call us', 'smile-community' ); ?></span><strong><?php echo esc_html( $smile_phone ); ?></strong></a>
+					<?php if ( $smile_whatsapp ) : ?>
+						<a href="<?php echo esc_url( 'https://wa.me/' . preg_replace( '/\D/', '', $smile_whatsapp ) ); ?>" rel="noopener"><span><?php esc_html_e( 'WhatsApp', 'smile-community' ); ?></span><strong><?php esc_html_e( 'Message us', 'smile-community' ); ?></strong></a>
+					<?php endif; ?>
+				</div>
+				<p class="smile-nav__hours"><?php echo esc_html( $smile_hours ); ?> &middot; <?php esc_html_e( 'Soweto, Kayole, Nairobi', 'smile-community' ); ?></p>
+			</div>
 		</nav>
 
 		<a class="smile-btn smile-btn--sun smile-header__donate" href="<?php echo esc_url( smile_donate_url() ); ?>"><?php echo $smile_heart; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><?php echo esc_html( $smile_donate ); ?></a>

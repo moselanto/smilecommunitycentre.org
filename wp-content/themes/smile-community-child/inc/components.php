@@ -155,19 +155,22 @@ add_shortcode(
 );
 
 /**
- * Mobile action bar (Donate + WhatsApp) shown on small screens.
+ * Mobile bottom navigation (static tab bar): Home, Programmes, Donate, Get Involved, Menu.
  */
 function smile_mobile_bar() {
-	if ( is_page( 'donate' ) ) {
-		return;
+	$pages = array(
+		'home'       => array( home_url( '/' ), 'home', __( 'Home', 'smile-community' ), is_front_page() ),
+		'programmes' => array( home_url( '/our-programmes/' ), 'book', __( 'Programmes', 'smile-community' ), is_page( array( 'our-programmes', 'education-program', 'feeding-program', 'child-care-and-shelter', 'health-and-wellbeing', 'sports' ) ) ),
+		'donate'     => array( smile_donate_url(), 'heart', __( 'Donate', 'smile-community' ), is_page( 'donate' ) ),
+		'involved'   => array( home_url( '/get-involved/' ), 'hands', __( 'Get involved', 'smile-community' ), is_page( array( 'get-involved', 'volunteer', 'partner-with-us' ) ) ),
+	);
+	echo '<nav class="smile-tabbar" aria-label="' . esc_attr__( 'Quick navigation', 'smile-community' ) . '">';
+	foreach ( $pages as $key => $p ) {
+		$cls = 'smile-tabbar__item smile-tabbar__item--' . $key . ( $p[3] ? ' is-current' : '' );
+		echo '<a class="' . esc_attr( $cls ) . '" href="' . esc_url( $p[0] ) . '"' . ( $p[3] ? ' aria-current="page"' : '' ) . '>' . smile_icon( $p[1] ) . '<span>' . esc_html( $p[2] ) . '</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static icon.
 	}
-	$wa = preg_replace( '/\D/', '', smile_setting( 'whatsapp', '254721318869' ) );
-	echo '<div class="smile-mbar" role="region" aria-label="' . esc_attr__( 'Quick actions', 'smile-community' ) . '">';
-	echo '<a class="smile-mbar__donate" href="' . esc_url( smile_donate_url() ) . '">' . smile_icon( 'heart' ) . esc_html__( 'Donate', 'smile-community' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static icon.
-	if ( $wa ) {
-		echo '<a class="smile-mbar__wa" href="' . esc_url( 'https://wa.me/' . $wa ) . '" rel="noopener">' . smile_icon( 'chat' ) . esc_html__( 'WhatsApp', 'smile-community' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static icon.
-	}
-	echo '</div>';
+	echo '<button type="button" class="smile-tabbar__item smile-tabbar__item--menu" data-smile-open-menu aria-controls="smile-primary-nav" aria-expanded="false"><span class="smile-tabbar__burger" aria-hidden="true"><i></i><i></i><i></i></span><span>' . esc_html__( 'Menu', 'smile-community' ) . '</span></button>';
+	echo '</nav>';
 }
 add_action( 'wp_footer', 'smile_mobile_bar', 5 );
 
