@@ -1143,3 +1143,17 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 .smile-slide--split .smile-slide__line--accent { padding-bottom: .22em; }
 .smile-slide__word { position: relative; display: inline-block; white-space: nowrap; }
 .smile-slide__word::after { content: ""; position: absolute; left: 4%; right: 10%; bottom: -.2em; height: .26em; background: var(--smile-curve) no-repeat center / 100% 100%; pointer-events: none; }
+
+
+/* v2.22.4 Photo CTA: M-Pesa Paybill and Account with copy buttons */
+.smile-ctaphoto__pay { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .75rem; margin: 1.4rem auto 0 !important; padding: .55rem .6rem .55rem 1.1rem; border-radius: 999px; background: rgba(10,40,30,.55); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-size: 1rem !important; letter-spacing: 0 !important; color: #fff !important; }
+.smile-ctaphoto__mpesa { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--smile-sun); }
+.smile-ctaphoto__num { display: inline-flex; align-items: center; gap: .45rem; padding: .3rem .35rem .3rem .8rem; border-radius: 999px; background: rgba(255,255,255,.1); }
+.smile-ctaphoto__num small { font-size: .75rem; font-weight: 600; color: rgba(255,255,255,.75); }
+.smile-ctaphoto__num strong { font-size: 1.15rem; font-weight: 800; letter-spacing: .04em; color: #fff; font-variant-numeric: tabular-nums; }
+.smile-ctaphoto__num .smile-copy { padding: .3rem .7rem !important; border: 0 !important; border-radius: 999px !important; background: var(--smile-sun) !important; color: var(--smile-forest, #164B3F) !important; font: 700 .75rem/1 var(--smile-font-body) !important; cursor: pointer; }
+.smile-ctaphoto__num .smile-copy:hover { background: #fff !important; }
+@media (max-width: 600px) {
+	.smile-ctaphoto__pay { flex-direction: column; border-radius: 18px; padding: .8rem; width: 100%; max-width: 320px; }
+	.smile-ctaphoto__num { width: 100%; justify-content: space-between; }
+}

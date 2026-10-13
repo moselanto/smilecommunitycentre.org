@@ -1002,7 +1002,7 @@
 "section": "smile_cta_photo"
 },
 {
-"text": "M-Pesa Paybill %s",
+"text": "Give by M-Pesa",
 "domain": "smile-community",
 "file": "inc/home-sections.php",
 "section": "smile_cta_photo"
@@ -1465,12 +1465,6 @@
 },
 {
 "text": "Amount",
-"domain": "smile-community",
-"file": "inc/home-sections.php",
-"section": "smile_gift_calc"
-},
-{
-"text": "Give by M-Pesa",
 "domain": "smile-community",
 "file": "inc/home-sections.php",
 "section": "smile_gift_calc"

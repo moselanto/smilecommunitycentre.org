@@ -215,12 +215,18 @@ add_shortcode(
 	'smile_cta_photo',
 	function () {
 		$paybill = function_exists( 'smile_core_get' ) ? smile_core_get( 'mpesa_paybill' ) : '247247';
+		$account = function_exists( 'smile_core_get' ) ? smile_core_get( 'mpesa_account' ) : '147516';
+		$paybill = $paybill ? $paybill : '247247';
+		$account = $account ? $account : '147516';
 		return '<section class="smile-ctaphoto">' . smile_img( 'highschool', 'smile-hero', 'smile-ctaphoto__img' ) . '<span class="smile-ctaphoto__shade" aria-hidden="true"></span>'
 			. '<div class="smile-container smile-ctaphoto__inner smile-reveal"><p class="smile-ctaphoto__kicker">' . esc_html__( 'Be part of their story', 'smile-community' ) . '</p>'
 			. '<h2>' . esc_html__( 'Give a child a reason to smile today', 'smile-community' ) . '</h2>'
 			. '<p>' . esc_html__( 'Every gift, big or small, helps provide a safe home, meals, schooling and care. Thank you for standing with the children of Soweto.', 'smile-community' ) . '</p>'
 			. '<div class="smile-btn-row"><a class="smile-btn smile-btn--sun" href="' . esc_url( smile_donate_url() ) . '">' . esc_html__( 'Donate Now', 'smile-community' ) . '</a><a class="smile-btn smile-btn--ghost-light" href="' . smile_link( '/volunteer/' ) . '">' . esc_html__( 'Volunteer With Us', 'smile-community' ) . '</a></div>'
-			. '<p class="smile-ctaphoto__pay">' . esc_html( sprintf( /* translators: %s paybill */ __( 'M-Pesa Paybill %s', 'smile-community' ), $paybill ) ) . '</p></div></section>';
+			. '<div class="smile-ctaphoto__pay"><span class="smile-ctaphoto__mpesa">' . esc_html__( 'Give by M-Pesa', 'smile-community' ) . '</span>'
+			. '<span class="smile-ctaphoto__num"><small>' . esc_html__( 'Paybill', 'smile-community' ) . '</small><strong>' . esc_html( $paybill ) . '</strong><button type="button" class="smile-copy" data-smile-copy="' . esc_attr( $paybill ) . '" aria-label="' . esc_attr__( 'Copy Paybill number', 'smile-community' ) . '">' . esc_html__( 'Copy', 'smile-community' ) . '</button></span>'
+			. '<span class="smile-ctaphoto__num"><small>' . esc_html__( 'Account', 'smile-community' ) . '</small><strong>' . esc_html( $account ) . '</strong><button type="button" class="smile-copy" data-smile-copy="' . esc_attr( $account ) . '" aria-label="' . esc_attr__( 'Copy account number', 'smile-community' ) . '">' . esc_html__( 'Copy', 'smile-community' ) . '</button></span>'
+			. '</div></div></section>';
 	}
 );
 
