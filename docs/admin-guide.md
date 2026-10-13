@@ -52,6 +52,6 @@ Each page and post has a SEOPress box below the editor. Keep titles under about 
 These arrive in Enquiries as "Safeguarding / photo removal". Unpublish the item first (set the post to Draft, or delete the image from the Media Library), then look into it.
 
 ## What only an administrator should change
-Plugins, themes, Smile Centre > Site setup, Smile Centre > Redirects, the Forms and privacy settings, users and roles, and Settings > Reading (search engine visibility).
+Plugins, themes, Appearance > Smile Setup, Smile Centre > Redirects, the Forms and privacy settings, users and roles, and Settings > Reading (search engine visibility).
 
 Give staff the **Editor** role, not Administrator. Administrators should use two-factor login (WP 2FA).

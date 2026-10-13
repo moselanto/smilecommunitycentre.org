@@ -2,6 +2,13 @@
 
 Tick each item and note the device or browser you used. Do not mark anything as passed unless you actually tested it.
 
+## Install flow
+- [ ] Upload the zip on a site without Hello Elementor. WordPress installs the parent automatically, and activation works.
+- [ ] After activation you are taken straight to Appearance > Smile Setup.
+- [ ] Step 1 installs and activates Elementor and Smile Community Core. No Elementor or WP Mail SMTP welcome screen interrupts the wizard.
+- [ ] Until the required plugins are active, the admin notice shows on other screens.
+- [ ] Step 2 imports with no FAILED lines in Details. Running it a second time creates no duplicate photos or pages.
+
 ## Journeys
 - [ ] Home > About > Founder reads correctly. No placeholder text and no empty sections.
 - [ ] Home > Our Programmes > each programme page > Donate works.
@@ -12,7 +19,7 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] With email deliberately broken (for example a wrong SMTP password), the form shows "saved, but our email notification did not go through", not a false success.
 - [ ] Send six messages within an hour. The sixth is rate-limited.
 - [ ] Contact: the map loads, and the phone, WhatsApp and email links open the right apps.
-- [ ] An editor (not an admin) can edit a page in Elementor, publish a post and change the M-Pesa details, but cannot see Site setup or Redirects.
+- [ ] An editor (not an admin) can edit a page in Elementor, publish a post and change the M-Pesa details, but cannot see Smile Setup or Redirects.
 - [ ] A new post appears in "Latest from Smile" on the home page and on /stories/.
 
 ## Mobile and accessibility (WCAG 2.2 AA)

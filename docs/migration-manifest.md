@@ -39,7 +39,7 @@ Import all posts with the WordPress exporter, then:
 - **Retire (5):** Titanic submarine, Hustler Fund, Comoros/Kenya, COVID announcement, and "Did you know children account for half...". Set them to Draft. Their redirects to `/stories/` are already set up.
 - **Stock images:** replace the Pexels stock images used as featured images with real, approved photos, or leave the featured image empty.
 
-## Photographs imported by Site setup (24)
+## Photographs imported by Smile Setup (24)
 Every photo is renamed, stripped of metadata and given alt text. Each file is tagged `_smile_source` (original URL) and `_smile_consent = pending-review` in WordPress.
 
 | Key | Original file (uploads/) | New filename | Alt text | Consent |
