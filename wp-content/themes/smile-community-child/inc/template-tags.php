@@ -116,3 +116,45 @@ function smile_stories_per_page( $q ) {
 	}
 }
 add_action( 'pre_get_posts', 'smile_stories_per_page' );
+
+/**
+ * Social profiles (Instagram, Facebook, LinkedIn), in display order.
+ * URLs come from Smile Centre settings; an empty setting hides that network.
+ *
+ * @return array[] Each: key, label, url, svg.
+ */
+function smile_social_profiles() {
+	$nets = array(
+		'instagram' => array( __( 'Instagram', 'smile-community' ), smile_setting( 'instagram_url', 'https://www.instagram.com/smile_kenya_/' ), '<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>' ),
+		'facebook'  => array( __( 'Facebook', 'smile-community' ), smile_setting( 'facebook_url', 'https://www.facebook.com/smilecommunitycentre' ), '<path fill="currentColor" d="M13.5 21v-7.6h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2H8v3h2.5V21z"/>' ),
+		'linkedin'  => array( __( 'LinkedIn', 'smile-community' ), smile_setting( 'linkedin_url', 'https://www.linkedin.com/company/smile-community-centre/' ), '<path fill="currentColor" d="M5 3.4a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2zM3.2 9.2h3.6V21H3.2zM9.2 9.2h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5V21h-3.6v-5.8c0-1.4 0-3.2-1.9-3.2s-2.2 1.5-2.2 3.1V21H9.2z"/>' ),
+	);
+	$out = array();
+	foreach ( $nets as $key => $n ) {
+		if ( $n[1] ) {
+			$out[] = array( 'key' => $key, 'label' => $n[0], 'url' => $n[1], 'svg' => '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' . $n[2] . '</svg>' );
+		}
+	}
+	return $out;
+}
+
+/**
+ * Social icon links.
+ *
+ * @param string $class Wrapper class.
+ * @return string HTML.
+ */
+function smile_social_icons( $class ) {
+	$items = smile_social_profiles();
+	if ( '' === implode( '', wp_list_pluck( $items, 'url' ) ) ) {
+		return '';
+	}
+	$html = '<ul class="' . esc_attr( $class ) . '">';
+	foreach ( $items as $it ) {
+		/* translators: %s network name */
+		$label = sprintf( __( 'Smile Community Centre on %s (opens in a new tab)', 'smile-community' ), $it['label'] );
+		$html .= '<li><a class="smile-social smile-social--' . esc_attr( $it['key'] ) . '" href="' . esc_url( $it['url'] ) . '" target="_blank" rel="noopener" aria-label="' . esc_attr( $label ) . '" title="' . esc_attr( $it['label'] ) . '">' . $it['svg'] . '</a></li>';
+	}
+	return $html . '</ul>';
+}
+

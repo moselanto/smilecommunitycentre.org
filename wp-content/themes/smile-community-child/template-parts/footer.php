@@ -11,8 +11,6 @@ $smile_email     = smile_setting( 'email', 'info@smilecommunitycentre.org' );
 $smile_phone     = smile_setting( 'phone_primary', '0721 318 869' );
 $smile_address   = smile_setting( 'address', __( 'Mzesa, Soweto, Kayole (near Donholm Phase 8), Nairobi, Kenya', 'smile-community' ) );
 $smile_postal    = smile_setting( 'postal_address', 'P.O. Box 196-00518, Nairobi' );
-$smile_instagram = smile_setting( 'instagram_url', 'https://www.instagram.com/smile_kenya_/' );
-$smile_facebook  = smile_setting( 'facebook_url', '' );
 ?>
 <footer class="smile-footer" id="site-footer">
 	<div class="smile-container smile-footer__grid">
@@ -40,14 +38,10 @@ $smile_facebook  = smile_setting( 'facebook_url', '' );
 				<a href="<?php echo esc_url( smile_tel_href( $smile_phone ) ); ?>"><?php echo esc_html( $smile_phone ); ?></a>
 				<a href="<?php echo esc_url( 'mailto:' . antispambot( $smile_email ) ); ?>"><?php echo esc_html( antispambot( $smile_email ) ); ?></a>
 			</address>
-			<ul class="smile-footer__social">
-				<?php if ( $smile_instagram ) : ?>
-					<li><a href="<?php echo esc_url( $smile_instagram ); ?>" rel="noopener"><?php esc_html_e( 'Instagram', 'smile-community' ); ?></a></li>
-				<?php endif; ?>
-				<?php if ( $smile_facebook ) : ?>
-					<li><a href="<?php echo esc_url( $smile_facebook ); ?>" rel="noopener"><?php esc_html_e( 'Facebook', 'smile-community' ); ?></a></li>
-				<?php endif; ?>
-			</ul>
+			<div class="smile-footer__follow">
+				<p class="smile-footer__follow-label"><?php esc_html_e( 'Follow us', 'smile-community' ); ?></p>
+				<?php echo smile_social_icons( 'smile-footer__social' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in smile_social_icons(). ?>
+			</div>
 		</div>
 	</div>
 

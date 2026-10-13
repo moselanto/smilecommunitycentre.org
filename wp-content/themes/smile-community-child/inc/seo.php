@@ -115,7 +115,7 @@ function smile_seo_organization() {
 		$intl = '+254' . substr( $intl, 1 );
 	}
 	$email = smile_setting( 'email', 'info@smilecommunitycentre.org' );
-	$same  = array_values( array_filter( array( smile_setting( 'instagram_url', 'https://www.instagram.com/smile_kenya_/' ), smile_setting( 'facebook_url', '' ) ) ) );
+	$same  = array_values( array_filter( wp_list_pluck( smile_social_profiles(), 'url' ) ) );
 
 	$logo_id  = (int) get_theme_mod( 'custom_logo' );
 	$logo_url = function_exists( 'smile_brand_logo_url' ) && apply_filters( 'smile_use_brand_logo', true ) ? smile_brand_logo_url() : ( $logo_id ? wp_get_attachment_image_url( $logo_id, 'full' ) : '' );

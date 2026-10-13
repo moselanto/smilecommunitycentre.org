@@ -31,7 +31,8 @@ function smile_core_defaults() {
 		'map_query'          => "Smile Community Centre Children's Home, Soweto, Kayole, Nairobi",
 		'directions'         => "From Nairobi town, go to the Ambassadeur bus stage and board a 19C Double M bus (Donholm - Savannah - Jacaranda route).\nGet off at the Jacaranda roundabout stage.\nWalk along the road next to Jacaranda grounds towards Soweto.\nAt the junction, turn right towards Embakasi Garrison Road.\nContinue until you reach Soweto Mzesa, just before the riverbank bridge. The centre is on the left side of the road, opposite the Edelvale Primary School fence.",
 		'instagram_url'      => 'https://www.instagram.com/smile_kenya_/',
-		'facebook_url'       => '',
+		'facebook_url'       => 'https://www.facebook.com/smilecommunitycentre',
+		'linkedin_url'       => 'https://www.linkedin.com/company/smile-community-centre/',
 		// Donations.
 		'mpesa_paybill'      => '247247',
 		'mpesa_account'      => '147516',
@@ -92,6 +93,7 @@ function smile_core_fields() {
 				'directions'     => array( 'Directions by matatu (one step per line)', 'textarea' ),
 				'instagram_url'  => array( 'Instagram URL', 'url' ),
 				'facebook_url'   => array( 'Facebook URL (leave empty to hide)', 'url' ),
+				'linkedin_url'   => array( 'LinkedIn URL (leave empty to hide)', 'url' ),
 			),
 		),
 		'donations' => array(

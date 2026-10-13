@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.24.0
+- Social profiles: Instagram, Facebook (facebook.com/smilecommunitycentre) and LinkedIn (linkedin.com/company/smile-community-centre) as matching round icon buttons in the top bar and in a new "Follow us" row in the footer Contact column. Shared helper smile_social_profiles()/smile_social_icons() in inc/template-tags.php; links open in a new tab with accessible labels; also used for the organisation sameAs in structured data. New LinkedIn URL field and Facebook default in Smile Centre settings.
+
 ## 2.23.1
 - "Read all reviews on Google" now opens the reviews panel of the centre's Google listing directly.
 

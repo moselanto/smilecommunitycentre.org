@@ -11,7 +11,6 @@ $smile_phone     = smile_setting( 'phone_primary', '0721 318 869' );
 $smile_whatsapp  = smile_setting( 'whatsapp', '254721318869' );
 $smile_hours     = smile_setting( 'office_hours', __( 'Office: 9am - 5pm', 'smile-community' ) );
 $smile_email     = smile_setting( 'email', 'info@smilecommunitycentre.org' );
-$smile_instagram = smile_setting( 'instagram_url', 'https://www.instagram.com/smile_kenya_/' );
 $smile_donate    = get_theme_mod( 'smile_donate_label', __( 'Donate', 'smile-community' ) );
 $smile_heart     = '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2 0 3.5 1.1 4.3 2.6.8-1.5 2.3-2.6 4.3-2.6 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>';
 ?>
@@ -30,9 +29,7 @@ $smile_heart     = '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true
 				<a href="<?php echo esc_url( 'https://wa.me/' . preg_replace( '/\D/', '', $smile_whatsapp ) ); ?>" rel="noopener"><?php esc_html_e( 'WhatsApp', 'smile-community' ); ?></a>
 			<?php endif; ?>
 			<a class="smile-topbar__email" href="<?php echo esc_url( 'mailto:' . antispambot( $smile_email ) ); ?>"><?php echo esc_html( antispambot( $smile_email ) ); ?></a>
-			<?php if ( $smile_instagram ) : ?>
-				<a href="<?php echo esc_url( $smile_instagram ); ?>" rel="noopener" aria-label="<?php esc_attr_e( 'Instagram', 'smile-community' ); ?>"><svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg></a>
-			<?php endif; ?>
+			<?php echo smile_social_icons( 'smile-topbar__social' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in smile_social_icons(). ?>
 		</span>
 	</div>
 </div>

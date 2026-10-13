@@ -2832,6 +2832,30 @@
 "section": "smile_breadcrumbs"
 },
 {
+"text": "Instagram",
+"domain": "smile-community",
+"file": "inc/template-tags.php",
+"section": "smile_social_profiles"
+},
+{
+"text": "Facebook",
+"domain": "smile-community",
+"file": "inc/template-tags.php",
+"section": "smile_social_profiles"
+},
+{
+"text": "LinkedIn",
+"domain": "smile-community",
+"file": "inc/template-tags.php",
+"section": "smile_social_profiles"
+},
+{
+"text": "Smile Community Centre on %s (opens in a new tab)",
+"domain": "smile-community",
+"file": "inc/template-tags.php",
+"section": "smile_social_icons"
+},
+{
 "text": "I would like to donate",
 "domain": "smile-community",
 "file": "inc/whatsapp-chat.php",
@@ -3636,13 +3660,7 @@
 "section": "footer"
 },
 {
-"text": "Instagram",
-"domain": "smile-community",
-"file": "template-parts/footer.php",
-"section": "footer"
-},
-{
-"text": "Facebook",
+"text": "Follow us",
 "domain": "smile-community",
 "file": "template-parts/footer.php",
 "section": "footer"
