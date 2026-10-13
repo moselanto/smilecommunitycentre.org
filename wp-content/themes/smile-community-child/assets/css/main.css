@@ -1346,3 +1346,35 @@ p, li { text-wrap: pretty; }
 /* "Also new": small, quiet date line */
 .smile-lead__item .smile-story__meta, .smile-lead__item .smile-story__meta time { font-family: var(--smile-font-body) !important; font-size: .78rem !important; font-weight: 600 !important; color: var(--smile-muted) !important; gap: .35rem; }
 .smile-lead__aside-title { font-size: .78rem !important; letter-spacing: .16em; }
+
+/* =========================================================
+   v2.13.2 Upgrades that work on the current live layouts
+   (no "Apply latest design" needed)
+   ========================================================= */
+/* Tick lists everywhere (Safeguarding commitments, Volunteer, Donate):
+   neat cards in an even grid instead of a long plain list */
+.smile-ticks ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; margin: 1.25rem 0 1.5rem !important; columns: auto !important; }
+.smile-ticks li { margin: 0 !important; padding: 1rem 1.15rem 1rem 3.1rem !important; background: #fff; border: 1px solid var(--smile-line); border-radius: 16px; line-height: 1.55; color: var(--smile-ink) !important; transition: border-color .25s, box-shadow .25s; break-inside: avoid; }
+.smile-ticks li:hover { border-color: transparent; box-shadow: 0 14px 32px rgba(22,75,63,.10); }
+.smile-ticks li::before { left: 1.1rem !important; top: 1.15rem !important; }
+.smile-sec--cream .smile-ticks li, .smile-sec--sand .smile-ticks li { background: #fff; }
+
+/* Our Goals objectives: numbered two-column cards */
+.smile-ticks--cols ul { counter-reset: smileobj; grid-template-columns: repeat(2, 1fr); gap: 14px 18px; }
+.smile-ticks--cols li { counter-increment: smileobj; padding-right: 3.25rem !important; }
+.smile-ticks--cols li::after { content: counter(smileobj, decimal-leading-zero); position: absolute; top: .95rem; right: 1.1rem; font-family: var(--smile-font-display); font-style: italic; font-size: 1.15rem; color: var(--smile-sun); }
+@media (max-width: 767px) { .smile-ticks--cols ul { grid-template-columns: 1fr; } }
+
+/* Mission and Vision (current layout): two bold statement cards */
+.smile-mv > .elementor-container { gap: 20px !important; align-items: stretch !important; }
+.smile-mv .elementor-column > .elementor-widget-wrap, .smile-mv .elementor-column > div { border: 0 !important; border-radius: 28px !important; padding: clamp(2rem, 1.5rem + 2.5vw, 3.25rem) !important; min-height: 300px; align-content: flex-end; position: relative; overflow: hidden; }
+.smile-mv .elementor-column:first-child > .elementor-widget-wrap, .smile-mv .elementor-column:first-child > div { background: var(--smile-forest) !important; }
+.smile-mv .elementor-column:last-child > .elementor-widget-wrap, .smile-mv .elementor-column:last-child > div { background: var(--smile-sun) !important; }
+.smile-mv .elementor-column:first-child .smile-eyebrow .elementor-heading-title { color: var(--smile-sun) !important; }
+.smile-mv .elementor-column:last-child .smile-eyebrow .elementor-heading-title { color: var(--smile-forest) !important; }
+.smile-mv .smile-lead p, .smile-mv p.smile-lead { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2.05rem) !important; line-height: 1.28 !important; text-wrap: balance; margin: 0; }
+.smile-mv .elementor-column:first-child .smile-lead p, .smile-mv .elementor-column:first-child p.smile-lead { color: #fff !important; }
+.smile-mv .elementor-column:last-child .smile-lead p, .smile-mv .elementor-column:last-child p.smile-lead { color: var(--smile-forest) !important; }
+.smile-mv .elementor-column:first-child .smile-icon { background: var(--smile-sun) !important; color: var(--smile-forest) !important; }
+.smile-mv .elementor-column:last-child .smile-icon { background: var(--smile-forest) !important; color: var(--smile-sun) !important; }
+@media (max-width: 767px) { .smile-mv .elementor-column > .elementor-widget-wrap, .smile-mv .elementor-column > div { min-height: 240px; } }
