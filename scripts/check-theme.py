@@ -86,6 +86,28 @@ for k, v in ids.items():
     if v > 1:
         errors.append('pages.json: element id %s is used %d times' % (k, v))
 
+# 6. Security patterns (fail the build on risky code)
+SEC_RULES = [
+    (r'\beval\s*\(', 'eval() is not allowed'),
+    (r'\bcreate_function\s*\(', 'create_function() is not allowed'),
+    (r'\bbase64_decode\s*\(', 'base64_decode() is not allowed'),
+    (r'unserialize\s*\(\s*\$_', 'unserialize() of request data'),
+    (r'echo\s+\$_(GET|POST|REQUEST|COOKIE|SERVER)', 'unescaped request data in output'),
+    (r'\bwp_remote_get\s*\(', 'use wp_safe_remote_get() for remote URLs'),
+    (r'\$wpdb->(query|get_results|get_row|get_var|get_col)\(\s*"[^"]*\$(?!wpdb)', 'SQL with a variable must use $wpdb->prepare()'),
+]
+for f in glob.glob('**/*.php', recursive=True):
+    src_txt = open(f, encoding='utf-8', errors='ignore').read()
+    for pattern, msg in SEC_RULES:
+        for m in re.finditer(pattern, src_txt):
+            line = src_txt.count('\n', 0, m.start()) + 1
+            errors.append('SECURITY %s:%d: %s' % (f, line, msg))
+for f in glob.glob('assets/js/*.js') + glob.glob('assets/admin/*.js'):
+    js = open(f, encoding='utf-8', errors='ignore').read()
+    for m in re.finditer(r'\.innerHTML\s*=\s*(?![\'"][^\'"+]*[\'"]\s*;)', js):
+        line = js.count('\n', 0, m.start()) + 1
+        errors.append('SECURITY %s:%d: innerHTML built from data (use textContent / createElement)' % (f, line))
+
 for n in notes:
     print('note:', n)
 if errors:

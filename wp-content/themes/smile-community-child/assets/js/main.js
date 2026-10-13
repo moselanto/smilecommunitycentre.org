@@ -71,7 +71,14 @@
 			btn.className = 'smile-sub-toggle';
 			btn.setAttribute( 'aria-expanded', 'false' );
 			btn.setAttribute( 'aria-controls', id );
-			btn.innerHTML = '<span class="screen-reader-text">' + link.textContent + '</span><span aria-hidden="true">+</span>';
+			var srText = document.createElement( 'span' );
+			srText.className = 'screen-reader-text';
+			srText.textContent = link.textContent;
+			var sign = document.createElement( 'span' );
+			sign.setAttribute( 'aria-hidden', 'true' );
+			sign.textContent = '+';
+			btn.appendChild( srText );
+			btn.appendChild( sign );
 			link.insertAdjacentElement( 'afterend', btn );
 			btn.addEventListener( 'click', function () {
 				var open = btn.getAttribute( 'aria-expanded' ) !== 'true';

@@ -62,7 +62,7 @@ function smile_image_by_key( $key ) {
 		$map = get_transient( 'smile_image_map' );
 		if ( ! is_array( $map ) ) {
 			global $wpdb;
-			$rows = $wpdb->get_results( "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_smile_img_key'" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$rows = $wpdb->get_results( $wpdb->prepare( "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = %s", '_smile_img_key' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 			$map  = array();
 			foreach ( (array) $rows as $r ) {
 				$map[ $r->meta_value ] = (int) $r->post_id;

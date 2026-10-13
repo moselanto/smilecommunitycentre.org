@@ -517,7 +517,7 @@ function smile_demo_post_rules() {
  * @return int[]|WP_Error
  */
 function smile_demo_live_post_ids() {
-	$res = wp_remote_get( smile_demo_live_site() . '/wp-json/wp/v2/posts?per_page=100&_fields=id,slug', array( 'timeout' => 30 ) );
+	$res = wp_safe_remote_get( smile_demo_live_site() . '/wp-json/wp/v2/posts?per_page=100&_fields=id,slug', array( 'timeout' => 30 ) );
 	if ( is_wp_error( $res ) ) {
 		return $res;
 	}
@@ -579,7 +579,7 @@ function smile_demo_import_post( $live_id ) {
 	if ( $existing ) {
 		return sprintf( /* translators: %s title */ __( 'Story already imported: %s', 'smile-community' ), get_the_title( $existing[0] ) );
 	}
-	$res = wp_remote_get( smile_demo_live_site() . '/wp-json/wp/v2/posts/' . $live_id . '?_embed=wp:featuredmedia,wp:term', array( 'timeout' => 30 ) );
+	$res = wp_safe_remote_get( smile_demo_live_site() . '/wp-json/wp/v2/posts/' . $live_id . '?_embed=wp:featuredmedia,wp:term', array( 'timeout' => 30 ) );
 	if ( is_wp_error( $res ) ) {
 		return 'FAILED story ' . $live_id . ': ' . $res->get_error_message();
 	}

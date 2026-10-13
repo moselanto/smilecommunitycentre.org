@@ -268,11 +268,21 @@ function smile_core_form_submit() {
 		smile_core_form_redirect( $return, $type, 'ok' ); // Bot speed: silently drop.
 	}
 
-	// Rate limit: 5 per hour per IP hash.
-	$rl_key = 'smile_rl_' . substr( smile_core_ip_hash(), 0, 32 );
-	$count  = (int) get_transient( $rl_key );
-	if ( $count >= 5 ) {
+	// Rate limits per IP hash: 5 accepted messages an hour, and 20 attempts an hour
+	// in total (so a bot cannot hammer the form with invalid posts either).
+	$rl_key  = 'smile_rl_' . substr( smile_core_ip_hash(), 0, 32 );
+	$try_key = 'smile_try_' . substr( smile_core_ip_hash(), 0, 32 );
+	$count   = (int) get_transient( $rl_key );
+	$tries   = (int) get_transient( $try_key );
+	if ( $count >= 5 || $tries >= 20 ) {
 		smile_core_form_redirect( $return, $type, 'limit' );
+	}
+	set_transient( $try_key, $tries + 1, HOUR_IN_SECONDS );
+
+	// Reject oversized posts outright (normal forms are well under 20 KB).
+	$length = isset( $_SERVER['CONTENT_LENGTH'] ) ? absint( $_SERVER['CONTENT_LENGTH'] ) : 0;
+	if ( $length > 20 * KB_IN_BYTES ) {
+		smile_core_form_redirect( $return, $type, 'expired' );
 	}
 
 	// Validate.
@@ -369,9 +379,15 @@ function smile_core_form_submit() {
 			$body .= $label . ":\n" . $v . "\n\n";
 		}
 		$body   .= "View in WordPress: " . admin_url( 'post.php?post=' . $post_id . '&action=edit' ) . "\n";
-		$headers = array( 'Reply-To: ' . $values['name'] . ' <' . $values['email'] . '>' );
+		// Header-safe name: no line breaks, angle brackets, commas, semicolons or quotes
+		// (prevents email header injection through the Reply-To line).
+		$safe_name = trim( preg_replace( '/[\r\n<>,;"]+/', ' ', $values['name'] ) );
+		$headers   = array( 'Content-Type: text/plain; charset=UTF-8' );
+		if ( is_email( $values['email'] ) ) {
+			$headers[] = 'Reply-To: ' . $safe_name . ' <' . $values['email'] . '>';
+		}
 		/* translators: 1: form type 2: name */
-		$sent = wp_mail( $to, sprintf( __( '[Smile website] %1$s from %2$s', 'smile-core' ), $types[ $type ], $values['name'] ), $body, $headers );
+		$sent = wp_mail( $to, sprintf( __( '[Smile website] %1$s from %2$s', 'smile-core' ), $types[ $type ], $safe_name ), $body, $headers );
 	}
 	update_post_meta( $post_id, '_smile_mail_sent', $sent ? '1' : '0' );
 
