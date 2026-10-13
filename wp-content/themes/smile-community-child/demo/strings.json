@@ -2592,6 +2592,12 @@
 "section": "smile_theme_palette"
 },
 {
+"text": "Children at Smile Community Centre sitting together and enjoying a meal",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
 "text": "Because of you,",
 "domain": "smile-community",
 "file": "inc/slider.php",
@@ -2652,6 +2658,12 @@
 "section": "smile_slider_defaults"
 },
 {
+"text": "Young pupils in their school tracksuits outside the centre",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
 "text": "Education programme",
 "domain": "smile-community",
 "file": "inc/slider.php",
@@ -2701,12 +2713,6 @@
 },
 {
 "text": "%1$d of %2$d",
-"domain": "smile-community",
-"file": "inc/slider.php",
-"section": "smile_hero_slider"
-},
-{
-"text": "Children at Smile Community Centre sitting together and enjoying a meal",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_hero_slider"

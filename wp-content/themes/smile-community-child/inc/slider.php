@@ -20,6 +20,7 @@ function smile_slider_defaults() {
 		0 => array(
 			'img'     => '',
 			'file'    => 'feeding-smiles',
+			'alt'     => __( 'Children at Smile Community Centre sitting together and enjoying a meal', 'smile-community' ),
 			'layout'  => 'split',
 			'eyebrow' => __( 'Because of you,', 'smile-community' ),
 			'title'   => __( 'They eat. They dream. They smile.', 'smile-community' ),
@@ -42,6 +43,8 @@ function smile_slider_defaults() {
 		),
 		2 => array(
 			'img'     => 'pupils',
+			'file'    => 'pupils',
+			'alt'     => __( 'Young pupils in their school tracksuits outside the centre', 'smile-community' ),
 			'eyebrow' => __( 'Education programme', 'smile-community' ),
 			'title'   => __( 'Keep every child in school', 'smile-community' ),
 			'text'    => __( 'Your gift pays school fees, uniforms and books so the children in our care never miss a term.', 'smile-community' ),
@@ -119,7 +122,7 @@ function smile_slider_slides() {
 			continue;
 		}
 		$img = absint( get_theme_mod( 'smile_slide_' . $n . '_image', 0 ) );
-		if ( ! $img ) {
+		if ( ! $img && empty( $d['file'] ) ) {
 			$img = smile_image_by_key( $d['img'] );
 		}
 		$slides[] = array(
@@ -134,6 +137,7 @@ function smile_slider_slides() {
 			'file'    => ( $img || empty( $d['file'] ) ) ? '' : $d['file'],
 			'layout'  => isset( $d['layout'] ) ? $d['layout'] : '',
 			'note'    => isset( $d['note'] ) ? $d['note'] : '',
+			'alt'     => isset( $d['alt'] ) ? $d['alt'] : '',
 		);
 	}
 	return $slides;
@@ -189,7 +193,7 @@ function smile_hero_slider() {
 								'<img class="smile-slide__img" src="%1$s" srcset="%1$s 1600w, %2$s 960w" sizes="(min-width: 901px) 62vw, 100vw" width="1600" height="871" alt="%3$s" loading="%4$s" fetchpriority="%5$s" decoding="async">',
 								esc_url( $base . '-1600.webp' ),
 								esc_url( $base . '-960.webp' ),
-								esc_attr__( 'Children at Smile Community Centre sitting together and enjoying a meal', 'smile-community' ),
+								esc_attr( $s['alt'] ),
 								0 === $i ? 'eager' : 'lazy',
 								0 === $i ? 'high' : 'low'
 							);

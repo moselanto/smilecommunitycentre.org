@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.22.5
+- "Keep every child in school" slide: enhanced photo of the pupils (noise removed, upscaled from 770px to 1600px, local contrast, colour and sharpening), bundled as assets/images/slides/pupils-1600.webp and -960.webp and used instead of the original imported photo. A photo chosen in the Customizer still wins. Slide photos now have their own alt text.
+
 ## 2.22.4
 - Home page photo banner ("Give a child a reason to smile today"): the M-Pesa line now shows both Paybill 247247 and Account 147516 in a glass pill, each with a Copy button.
 
