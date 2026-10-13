@@ -3,8 +3,8 @@
   "slug": "home",
   "title": "Home",
   "order": 0,
-  "seo_title": "Smile Community Centre | Children's Home in Kayole, Nairobi",
-  "seo_desc": "A safe home, daily meals, education and care for orphaned and vulnerable children in Soweto, Kayole, Nairobi. Donate, volunteer or partner with Smile.",
+  "seo_title": "Children's Home in Nairobi, Kenya | Smile Community Centre",
+  "seo_desc": "Smile Community Centre Children's Home in Kayole, Nairobi gives orphaned and vulnerable children shelter, meals, school and care. Donate, volunteer or partner.",
   "image": "founder-serving",
   "elementor": [
    {
@@ -1030,8 +1030,8 @@
   "slug": "about-us",
   "title": "About Us",
   "order": 10,
-  "seo_title": "About Us | Smile Community Centre",
-  "seo_desc": "How Smile Community Centre grew from a 2009 self-help group into a children's home in Soweto, Kayole, Nairobi. Our history, mission and vision.",
+  "seo_title": "About Us | Children's Home in Kayole, Nairobi | Smile",
+  "seo_desc": "Since 2009 Smile Community Centre has grown from one woman's commitment into a children's home in Soweto, Kayole, Nairobi. Our story, mission and milestones.",
   "image": "centre-new",
   "elementor": [
    {
@@ -1539,8 +1539,8 @@
   "slug": "our-founder",
   "title": "Our Founder",
   "order": 11,
-  "seo_title": "Our Founder, Margret Nekesa | Smile Community Centre",
-  "seo_desc": "The story of Margret Nekesa, founder of Smile Community Centre Children's Home in Soweto, Kayole, Nairobi.",
+  "seo_title": "Our Founder Margret Nekesa | Smile Community Centre",
+  "seo_desc": "Meet Margret Nekesa, who founded Smile Community Centre in Kayole, Nairobi, and turned her own hardship into a safe home for orphaned and vulnerable children.",
   "image": "founder-serving",
   "elementor": [
    {
@@ -1967,8 +1967,8 @@
   "slug": "our-goals",
   "title": "Our Goals",
   "order": 12,
-  "seo_title": "Our Goals, Mission and Vision | Smile Community Centre",
-  "seo_desc": "The mission, vision and objectives of Smile Community Centre Children's Home in Nairobi, and our long-term goals.",
+  "seo_title": "Mission, Vision and Objectives | Smile Community Centre",
+  "seo_desc": "Our mission: self-reliance, education and wellbeing for orphaned and vulnerable children, women and youth in Nairobi's informal settlements. Our ten objectives.",
   "image": null,
   "elementor": [
    {
@@ -2165,8 +2165,8 @@
   "slug": "our-programmes",
   "title": "Our Programmes",
   "order": 20,
-  "seo_title": "Our Programmes | Smile Community Centre",
-  "seo_desc": "Education, feeding, shelter, health and sports programmes for orphaned and vulnerable children in Soweto, Kayole, Nairobi.",
+  "seo_title": "Programmes for Vulnerable Children in Nairobi | Smile",
+  "seo_desc": "Education, feeding, child care and shelter, health and sports programmes for orphaned and vulnerable children at Smile Community Centre, Kayole, Nairobi.",
   "image": "mealtime",
   "elementor": [
    {
@@ -2493,8 +2493,8 @@
   "slug": "education-program",
   "title": "Education Programme",
   "order": 21,
-  "seo_title": "Education Programme | Smile Community Centre",
-  "seo_desc": "How Smile Community Centre supports orphaned and vulnerable children in Nairobi through school fees, learning materials and mentoring.",
+  "seo_title": "Sponsor a Child's Education in Kenya | Smile Nairobi",
+  "seo_desc": "Help a child in Kayole, Nairobi stay in school. Support school fees, uniforms, books and mentoring through Smile Community Centre's education programme.",
   "image": "pupils",
   "elementor": [
    {
@@ -2905,8 +2905,8 @@
   "slug": "feeding-program",
   "title": "Feeding Programme",
   "order": 22,
-  "seo_title": "Feeding Programme for Vulnerable Children in Nairobi | Smile Community Centre",
-  "seo_desc": "Daily meals for children in our care and a community feeding programme reaching more than 300 children in Soweto and Kayole.",
+  "seo_title": "Feeding Programme for Children in Nairobi | Smile",
+  "seo_desc": "Daily meals and clean water for orphaned and vulnerable children in Soweto, Kayole, Nairobi. See how food and water donations support Smile's feeding programme.",
   "image": "feeding1",
   "elementor": [
    {
@@ -3317,8 +3317,8 @@
   "slug": "child-care-and-shelter",
   "title": "Child Care and Shelter",
   "order": 23,
-  "seo_title": "Child Care and Shelter | Smile Community Centre",
-  "seo_desc": "How Smile Community Centre receives and cares for orphaned, abandoned and vulnerable children in Nairobi, working with children’s officers and police.",
+  "seo_title": "Child Care and Shelter in Nairobi | Smile Children's Home",
+  "seo_desc": "A safe home, care and protection for orphaned and vulnerable children in Soweto, Kayole, Nairobi, working with children's officers and Kenya's care reform.",
   "image": "staff-serving",
   "elementor": [
    {
@@ -3818,8 +3818,8 @@
   "slug": "health-and-wellbeing",
   "title": "Health and Wellbeing",
   "order": 24,
-  "seo_title": "Health, Wellbeing and HIV/AIDS Support | Smile Community Centre",
-  "seo_desc": "Medical care, counselling and HIV/AIDS support for children and women in Soweto and Kayole, Nairobi.",
+  "seo_title": "Health Support for Vulnerable Children in Kenya | Smile",
+  "seo_desc": "Medical care, hygiene, nutrition and counselling for the children at Smile Community Centre in Kayole, Nairobi. Learn how you can help.",
   "image": "doctors",
   "elementor": [
    {
@@ -4206,8 +4206,8 @@
   "slug": "sports",
   "title": "Sports and Talent",
   "order": 25,
-  "seo_title": "Sports and Talent | Smile Community Centre",
-  "seo_desc": "Football, basketball and play for children at Smile Community Centre, including weekend matches at Jacaranda Grounds.",
+  "seo_title": "Sports and Talent for Children in Kayole, Nairobi | Smile",
+  "seo_desc": "Football, games and talent development for children at Smile Community Centre, Nairobi. Support sports kit and coaching for vulnerable children.",
   "image": "football",
   "elementor": [
    {
@@ -4535,8 +4535,8 @@
   "slug": "our-impact",
   "title": "Our Impact",
   "order": 30,
-  "seo_title": "Our Impact | Smile Community Centre",
-  "seo_desc": "Verified milestones and outcomes from Smile Community Centre Children’s Home in Soweto, Kayole, Nairobi.",
+  "seo_title": "Our Impact | Children's Home in Nairobi, Kenya | Smile",
+  "seo_desc": "How Smile Community Centre has grown since 2009 and what support makes possible for orphaned and vulnerable children in Soweto, Kayole, Nairobi.",
   "image": "highschool",
   "elementor": [
    {
@@ -4995,8 +4995,8 @@
   "slug": "stories",
   "title": "Stories & News",
   "order": 40,
-  "seo_title": "Stories and News | Smile Community Centre",
-  "seo_desc": "Stories, news and guides from Smile Community Centre Children’s Home in Nairobi.",
+  "seo_title": "Stories and News | Children's Homes in Kenya | Smile",
+  "seo_desc": "News, practical guides and everyday moments from Smile Community Centre Children's Home in Soweto, Kayole, Nairobi.",
   "image": null,
   "html": "",
   "elementor": []
@@ -5005,8 +5005,8 @@
   "slug": "get-involved",
   "title": "Get Involved",
   "order": 50,
-  "seo_title": "Get Involved | Smile Community Centre",
-  "seo_desc": "Donate, volunteer, partner, visit or donate goods to support children at Smile Community Centre in Nairobi.",
+  "seo_title": "Get Involved | Support a Children's Home in Kenya | Smile",
+  "seo_desc": "Give, volunteer, partner, visit or donate goods. Every way to support orphaned and vulnerable children at Smile Community Centre in Nairobi, Kenya.",
   "image": "volunteer",
   "elementor": [
    {
@@ -5313,8 +5313,8 @@
   "slug": "volunteer",
   "title": "Volunteer With Us",
   "order": 51,
-  "seo_title": "Volunteer at a Children’s Home in Kenya | Smile Community Centre",
-  "seo_desc": "Volunteer at Smile Community Centre in Nairobi: roles, requirements, safeguarding expectations and how to apply.",
+  "seo_title": "Volunteer at a Children's Home in Kenya | Smile, Nairobi",
+  "seo_desc": "Volunteer with children in Nairobi: teaching, mentoring, sports, counselling and daily care at Smile Community Centre, Kayole. Local and overseas volunteers.",
   "image": "volunteer",
   "elementor": [
    {
@@ -5708,8 +5708,8 @@
   "slug": "partner-with-us",
   "title": "Partner With Us",
   "order": 52,
-  "seo_title": "Partner With Smile | Smile Community Centre",
-  "seo_desc": "Corporate, school, church and community partnerships with Smile Community Centre: education sponsorship, feeding support, CSR and more.",
+  "seo_title": "Partner With Us | CSR for Children in Kenya | Smile",
+  "seo_desc": "Companies, schools, churches and foundations: partner with Smile Community Centre on education, feeding, supplies and CSR days for children in Nairobi, Kenya.",
   "image": "iebc",
   "elementor": [
    {
@@ -6258,8 +6258,8 @@
   "slug": "donate",
   "title": "Donate",
   "order": 53,
-  "seo_title": "Donate to Children in Kenya by M-Pesa | Smile Community Centre",
-  "seo_desc": "Donate to Smile Community Centre by M-Pesa Paybill to support school fees, meals, water and medical care for vulnerable children in Nairobi.",
+  "seo_title": "Donate to a Children's Home in Kenya | M-Pesa | Smile",
+  "seo_desc": "Donate to Smile Community Centre Children's Home in Nairobi by M-Pesa Paybill 247247, bank transfer or in kind. Your gift provides meals, school and care.",
   "image": "feeding3",
   "elementor": [
    {
@@ -6699,8 +6699,8 @@
   "slug": "gallery",
   "title": "Gallery",
   "order": 31,
-  "seo_title": "Photo Gallery | Smile Community Centre",
-  "seo_desc": "Photos of daily life, learning, sports and community visits at Smile Community Centre in Soweto, Kayole, Nairobi.",
+  "seo_title": "Gallery | Life at Smile Children's Home, Nairobi",
+  "seo_desc": "Everyday moments at Smile Community Centre in Soweto, Kayole: meals, learning, sport and visits from friends, shared with care for the children's privacy.",
   "image": "mealtime",
   "elementor": [
    {
@@ -6876,8 +6876,8 @@
   "slug": "contact-us",
   "title": "Contact Us",
   "order": 60,
-  "seo_title": "Contact and Visit Us | Smile Community Centre",
-  "seo_desc": "Contact Smile Community Centre Children’s Home in Soweto, Kayole, Nairobi by phone, WhatsApp or email, and get directions to visit.",
+  "seo_title": "Contact and Visit | Children's Home in Kayole | Smile",
+  "seo_desc": "Call, WhatsApp or email Smile Community Centre, or arrange a visit to our children's home at Mzesa, Soweto, Kayole, near Donholm Phase 8, Nairobi.",
   "image": null,
   "elementor": [
    {
@@ -7239,8 +7239,8 @@
   "slug": "faq-page",
   "title": "FAQ",
   "order": 61,
-  "seo_title": "Frequently Asked Questions | Smile Community Centre",
-  "seo_desc": "Answers about Smile Community Centre: our children, outreach, adoption, donations by M-Pesa and visiting.",
+  "seo_title": "FAQ | Supporting a Children's Home in Nairobi | Smile",
+  "seo_desc": "Answers to common questions about donating, volunteering, visiting and how Smile Community Centre cares for children in Nairobi, Kenya.",
   "image": null,
   "elementor": [
    {
@@ -7421,7 +7421,7 @@
   "title": "Safeguarding and Child Protection",
   "order": 62,
   "seo_title": "Safeguarding and Child Protection | Smile Community Centre",
-  "seo_desc": "How Smile Community Centre protects children’s safety, dignity and privacy, and how to raise a concern or request a photo removal.",
+  "seo_desc": "How Smile Community Centre protects every child's dignity, safety and privacy, and how to raise a concern or request removal of a photo or story.",
   "image": null,
   "elementor": [
    {

@@ -9,7 +9,7 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-21759B?logo=wordpress&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B%20(8.1%2B%20recommended)-777BB4?logo=php&logoColor=white)
 ![Elementor](https://img.shields.io/badge/Built%20with-Elementor-92003B?logo=elementor&logoColor=white)
-![Child theme](https://img.shields.io/badge/Child%20theme-v2.14.0-164B3F)
+![Child theme](https://img.shields.io/badge/Child%20theme-v2.15.0-164B3F)
 ![Core plugin](https://img.shields.io/badge/Smile%20Community%20Core-v1.1.0-176B5B)
 ![Giving](https://img.shields.io/badge/Giving-M--Pesa%20Paybill-4CAF50)
 ![Security](https://img.shields.io/badge/Security-audited-2e7d32)
@@ -204,6 +204,7 @@ Full routine: [docs/workflow.md](docs/workflow.md).
 
 | Version | Highlights |
 |---|---|
+| 2.15.0 | SEO: connected schema graph (NGO, WebSite, pages, breadcrumbs, articles), keyword-mapped titles and descriptions, indexing rules |
 | 2.14.0 | Security hardening module, form hardening, SSRF-safe importer, documentation set |
 | 2.13.x | Stories lead card, Founder quote band, upgrades that work without re-applying layouts |
 | 2.12.x | Stories top stories, Volunteer notice restored |
@@ -226,6 +227,7 @@ Full routine: [docs/workflow.md](docs/workflow.md).
 | [docs/install-and-deploy.md](docs/install-and-deploy.md) | Install, launch and roll back |
 | [docs/qa-checklist.md](docs/qa-checklist.md) | Pre-launch checks |
 | [docs/performance.md](docs/performance.md) | Speed decisions |
+| [docs/SEO.md](docs/SEO.md) | Keyword map, schema and search setup |
 | [docs/workflow.md](docs/workflow.md) | Release routine |
 
 ## Organisation
