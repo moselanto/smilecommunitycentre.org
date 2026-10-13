@@ -57,9 +57,31 @@ function smile_slider_defaults() {
  * @return int
  */
 function smile_image_by_key( $key ) {
-	$ids = get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'fields' => 'ids', 'posts_per_page' => 1, 'meta_key' => '_smile_img_key', 'meta_value' => $key ) ); // phpcs:ignore WordPress.DB.SlowDBQuery
-	return $ids ? (int) $ids[0] : 0;
+	static $map = null;
+	if ( null === $map ) {
+		$map = get_transient( 'smile_image_map' );
+		if ( ! is_array( $map ) ) {
+			global $wpdb;
+			$rows = $wpdb->get_results( "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_smile_img_key'" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$map  = array();
+			foreach ( (array) $rows as $r ) {
+				$map[ $r->meta_value ] = (int) $r->post_id;
+			}
+			set_transient( 'smile_image_map', $map, DAY_IN_SECONDS );
+		}
+	}
+	return isset( $map[ $key ] ) ? (int) $map[ $key ] : 0;
 }
+
+/**
+ * Forget the cached photo map when attachments change.
+ */
+function smile_flush_image_map() {
+	delete_transient( 'smile_image_map' );
+}
+add_action( 'add_attachment', 'smile_flush_image_map' );
+add_action( 'delete_attachment', 'smile_flush_image_map' );
+add_action( 'added_post_meta', function ( $mid, $obj, $key ) { if ( '_smile_img_key' === $key ) { smile_flush_image_map(); } }, 10, 3 );
 
 /**
  * Resolved slides.

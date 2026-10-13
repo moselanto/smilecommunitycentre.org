@@ -40,6 +40,13 @@ function smile_theme_plugins() {
 			'required' => false,
 			'why'      => __( 'SEO titles, descriptions and XML sitemap (already used on the live site).', 'smile-community' ),
 		),
+		'wp-super-cache'       => array(
+			'name'     => 'WP Super Cache',
+			'file'     => 'wp-super-cache/wp-cache.php',
+			'source'   => 'repo',
+			'required' => false,
+			'why'      => __( 'Page caching: serves ready-made pages so the site opens in about a second. Skip if your host or WP Rocket already caches pages.', 'smile-community' ),
+		),
 		'wp-mail-smtp'         => array(
 			'name'     => 'WP Mail SMTP',
 			'file'     => 'wp-mail-smtp/wp_mail_smtp.php',

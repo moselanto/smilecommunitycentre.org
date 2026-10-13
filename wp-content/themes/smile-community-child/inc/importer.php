@@ -473,7 +473,12 @@ function smile_demo_import_kit() {
 	$s['link_normal_color'] = '#176B5B';
 	update_post_meta( $kit_id, '_elementor_page_settings', $s );
 	update_option( 'elementor_font_display', 'swap' );
-	update_option( 'elementor_google_font', '1' );
+	update_option( 'elementor_google_font', '0' );
+	update_option( 'elementor_font_display', 'swap' );
+	update_option( 'elementor_experiment-e_font_icon_svg', 'active' );
+	update_option( 'elementor_experiment-e_optimized_markup', 'active' );
+	update_option( 'elementor_experiment-e_element_cache', 'active' );
+	update_option( 'elementor_lazy_load_background_images', '1' );
 	return __( 'Elementor colours and fonts applied', 'smile-community' );
 }
 

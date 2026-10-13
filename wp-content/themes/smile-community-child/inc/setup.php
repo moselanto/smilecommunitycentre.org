@@ -37,7 +37,8 @@ function smile_theme_setup() {
 
 	add_image_size( 'smile-card', 720, 480, true );
 	add_image_size( 'smile-hero', 1920, 1080, true );
-	add_image_size( 'smile-hero-md', 1280, 900, true );
+	add_image_size( 'smile-hero-md', 1280, 720, true );
+	add_image_size( 'smile-hero-sm', 768, 432, true );
 }
 add_action( 'after_setup_theme', 'smile_theme_setup', 20 );
 
@@ -56,54 +57,142 @@ add_action(
 );
 
 /**
- * Enqueue styles and scripts.
+ * Is this a page that uses the home components (slider, home sections)?
+ *
+ * @return bool
+ */
+function smile_is_home_layout() {
+	return is_front_page();
+}
+
+/**
+ * Asset URL: minified build when available (and SCRIPT_DEBUG is off), else source.
+ *
+ * @param string $rel  Path relative to the theme, e.g. assets/css/main.css.
+ * @param string $min  Minified path.
+ * @return array [url, version]
+ */
+function smile_asset( $rel, $min ) {
+	$use_min = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) && file_exists( SMILE_THEME_DIR . '/' . $min );
+	$path    = $use_min ? $min : $rel;
+	$file    = SMILE_THEME_DIR . '/' . $path;
+	return array( SMILE_THEME_URI . '/' . $path, file_exists( $file ) ? SMILE_THEME_VERSION . '.' . filemtime( $file ) : SMILE_THEME_VERSION );
+}
+
+/**
+ * Enqueue styles and scripts (lean: home-only assets load on the home page only).
  */
 function smile_theme_assets() {
 	if ( apply_filters( 'smile_load_google_fonts', true ) ) {
+		// Two families, five files. Loaded without blocking first paint (see smile_async_fonts).
 		wp_enqueue_style(
 			'smile-fonts',
-			'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap',
+			'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&family=Figtree:wght@400;500;600&display=swap',
 			array(),
 			null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		);
+		if ( is_page( array( 'about-us', 'our-founder', 'faq-page' ) ) ) {
+			wp_enqueue_style( 'smile-fonts-hand', 'https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap', array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+		}
 	}
-	$css = SMILE_THEME_DIR . '/assets/css/main.css';
-	$js  = SMILE_THEME_DIR . '/assets/js/main.js';
 
-	wp_enqueue_style(
-		'smile-community',
-		SMILE_THEME_URI . '/assets/css/main.css',
-		array( 'hello-elementor' ),
-		file_exists( $css ) ? (string) filemtime( $css ) : SMILE_THEME_VERSION
-	);
+	list( $css_url, $css_ver ) = smile_asset( 'assets/css/main.css', 'assets/build/main.min.css' );
+	wp_enqueue_style( 'smile-community', $css_url, array(), $css_ver );
 
-	wp_enqueue_script(
-		'smile-community',
-		SMILE_THEME_URI . '/assets/js/main.js',
-		array(),
-		file_exists( $js ) ? (string) filemtime( $js ) : SMILE_THEME_VERSION,
-		array(
-			'in_footer' => true,
-			'strategy'  => 'defer',
-		)
-	);
+	list( $js_url, $js_ver ) = smile_asset( 'assets/js/main.js', 'assets/build/main.min.js' );
+	wp_enqueue_script( 'smile-community', $js_url, array(), $js_ver, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
-	wp_enqueue_style( 'smile-slider', SMILE_THEME_URI . '/assets/css/slider.css', array( 'smile-community' ), SMILE_THEME_VERSION );
-	wp_enqueue_style( 'smile-home', SMILE_THEME_URI . '/assets/css/home.css', array( 'smile-community' ), SMILE_THEME_VERSION );
-	wp_enqueue_script( 'smile-slider', SMILE_THEME_URI . '/assets/js/slider.js', array(), SMILE_THEME_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	if ( smile_is_home_layout() ) {
+		list( $h_url, $h_ver ) = smile_asset( 'assets/css/home.css', 'assets/build/home.min.css' );
+		wp_enqueue_style( 'smile-home', $h_url, array( 'smile-community' ), $h_ver );
+		if ( ! file_exists( SMILE_THEME_DIR . '/assets/build/home.min.css' ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
+			wp_enqueue_style( 'smile-slider', SMILE_THEME_URI . '/assets/css/slider.css', array( 'smile-community' ), SMILE_THEME_VERSION );
+		}
+		list( $s_url, $s_ver ) = smile_asset( 'assets/js/slider.js', 'assets/build/slider.min.js' );
+		wp_enqueue_script( 'smile-slider', $s_url, array(), $s_ver, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
 
 	wp_localize_script(
 		'smile-community',
 		'smileTheme',
 		array(
-			'copied'   => __( 'Copied', 'smile-community' ),
-			'copyFail' => __( 'Press and hold to copy', 'smile-community' ),
-			'menuOpen' => __( 'Open menu', 'smile-community' ),
-			'menuClose'=> __( 'Close menu', 'smile-community' ),
+			'copied'    => __( 'Copied', 'smile-community' ),
+			'copyFail'  => __( 'Press and hold to copy', 'smile-community' ),
+			'menuOpen'  => __( 'Open menu', 'smile-community' ),
+			'menuClose' => __( 'Close menu', 'smile-community' ),
 		)
 	);
+
+	// Not needed with the Smile header/footer and Elementor pages.
+	wp_dequeue_style( 'hello-elementor-theme-style' );
+	wp_dequeue_script( 'hello-theme-frontend' );
+	if ( is_page() || is_front_page() ) {
+		wp_dequeue_style( 'wp-block-library' );
+		wp_dequeue_style( 'wp-block-library-theme' );
+		wp_dequeue_style( 'global-styles' );
+		wp_dequeue_style( 'classic-theme-styles' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'smile_theme_assets', 20 );
+
+/**
+ * Load Google Fonts without blocking rendering (text shows immediately in fallback fonts).
+ *
+ * @param string $tag    Link tag.
+ * @param string $handle Handle.
+ * @return string
+ */
+function smile_async_fonts( $tag, $handle ) {
+	if ( in_array( $handle, array( 'smile-fonts', 'smile-fonts-hand' ), true ) ) {
+		$noscript = '<noscript>' . $tag . '</noscript>';
+		$tag      = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
+		return $tag . $noscript;
+	}
+	return $tag;
+}
+add_filter( 'style_loader_tag', 'smile_async_fonts', 10, 2 );
+
+/**
+ * Drop jQuery Migrate on the front end (Elementor and the theme do not need it).
+ *
+ * @param WP_Scripts $scripts Scripts.
+ */
+function smile_drop_jquery_migrate( $scripts ) {
+	if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+		$scripts->registered['jquery']->deps = array_diff( $scripts->registered['jquery']->deps, array( 'jquery-migrate' ) );
+	}
+}
+add_action( 'wp_default_scripts', 'smile_drop_jquery_migrate' );
+
+/**
+ * Preload the first slider photo (the largest element on the home page) so it starts downloading at once.
+ */
+function smile_preload_lcp() {
+	if ( ! smile_is_home_layout() || ! function_exists( 'smile_slider_slides' ) ) {
+		return;
+	}
+	$slides = smile_slider_slides();
+	if ( empty( $slides[0]['image'] ) ) {
+		return;
+	}
+	$id     = (int) $slides[0]['image'];
+	$src    = wp_get_attachment_image_url( $id, 'smile-hero' );
+	$srcset = wp_get_attachment_image_srcset( $id, 'smile-hero' );
+	if ( ! $src ) {
+		return;
+	}
+	echo '<link rel="preload" as="image" href="' . esc_url( $src ) . '"' . ( $srcset ? ' imagesrcset="' . esc_attr( $srcset ) . '" imagesizes="100vw"' : '' ) . ' fetchpriority="high">' . "\n";
+}
+add_action( 'wp_head', 'smile_preload_lcp', 2 );
+
+/**
+ * Remove head clutter that costs bytes and requests on every page.
+ */
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+add_filter( 'emoji_svg_url', '__return_false' );
 
 /**
  * Preconnect to Google Fonts.
