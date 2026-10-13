@@ -382,3 +382,49 @@ add_shortcode(
 		return $out . '</div>';
 	}
 );
+
+
+/* ---------- Gift calculator: see what your gift can do ---------- */
+add_shortcode(
+	'smile_gift_calc',
+	function ( $atts ) {
+		$atts    = shortcode_atts( array( 'cta' => 'yes' ), $atts, 'smile_gift_calc' );
+		$paybill = function_exists( 'smile_core_get' ) ? smile_core_get( 'mpesa_paybill' ) : '247247';
+		$account = function_exists( 'smile_core_get' ) ? smile_core_get( 'mpesa_account' ) : '147516';
+		$amounts = array( 500, 1000, 2500, 5000, 8000, 15000 );
+		$uid     = wp_unique_id( 'smile-calc-' );
+		ob_start();
+		?>
+		<div class="smile-calc smile-reveal" data-meal="500" data-water="2500" data-fees="15000" data-usd="100">
+			<div class="smile-calc__pick">
+				<p class="smile-calc__label" id="<?php echo esc_attr( $uid ); ?>-l"><?php esc_html_e( 'Choose an amount', 'smile-community' ); ?></p>
+				<div class="smile-calc__chips" role="group" aria-labelledby="<?php echo esc_attr( $uid ); ?>-l">
+					<?php foreach ( $amounts as $a ) : ?>
+						<button type="button" class="smile-calc__chip<?php echo 2500 === $a ? ' is-active' : ''; ?>" data-amount="<?php echo esc_attr( $a ); ?>" aria-pressed="<?php echo 2500 === $a ? 'true' : 'false'; ?>">KES <?php echo esc_html( number_format_i18n( $a ) ); ?></button>
+					<?php endforeach; ?>
+				</div>
+				<label class="smile-calc__label" for="<?php echo esc_attr( $uid ); ?>-in"><?php esc_html_e( 'Or type your own amount (KES)', 'smile-community' ); ?></label>
+				<div class="smile-calc__input"><span aria-hidden="true">KES</span><input id="<?php echo esc_attr( $uid ); ?>-in" type="number" inputmode="numeric" min="50" step="50" value="2500"></div>
+				<p class="smile-calc__note"><?php esc_html_e( 'Estimates from the centre’s own giving guide. Gifts are used where the need is greatest unless you tell us otherwise.', 'smile-community' ); ?></p>
+			</div>
+			<div class="smile-calc__result" aria-live="polite">
+				<p class="smile-calc__amount"><span data-out="amount">KES 2,500</span><small data-out="usd">about US$25</small></p>
+				<ul class="smile-calc__list">
+					<li><?php echo smile_icon( 'bowl' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span><strong data-out="meals">5</strong> <?php esc_html_e( 'days of meals and clean water for 3 children', 'smile-community' ); ?></span></li>
+					<li><?php echo smile_icon( 'water' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span><?php esc_html_e( 'or', 'smile-community' ); ?> <strong data-out="water">1</strong> <span data-out="water-unit"><?php esc_html_e( 'week', 'smile-community' ); ?></span> <?php esc_html_e( 'of clean water for the whole home', 'smile-community' ); ?></span></li>
+					<li class="smile-calc__big" data-out="fees" hidden><?php echo smile_icon( 'book' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span><?php esc_html_e( 'Enough to help cover school fees or medical treatment for one child', 'smile-community' ); ?></span></li>
+				</ul>
+				<div class="smile-calc__pay">
+					<div><span><?php esc_html_e( 'Paybill', 'smile-community' ); ?></span><strong><?php echo esc_html( $paybill ); ?></strong><button type="button" class="smile-copy" data-smile-copy="<?php echo esc_attr( $paybill ); ?>"><?php esc_html_e( 'Copy', 'smile-community' ); ?></button></div>
+					<div><span><?php esc_html_e( 'Account', 'smile-community' ); ?></span><strong><?php echo esc_html( $account ); ?></strong><button type="button" class="smile-copy" data-smile-copy="<?php echo esc_attr( $account ); ?>"><?php esc_html_e( 'Copy', 'smile-community' ); ?></button></div>
+					<div><span><?php esc_html_e( 'Amount', 'smile-community' ); ?></span><strong data-out="amount-plain">2,500</strong><button type="button" class="smile-copy" data-out="amount-copy" data-smile-copy="2500"><?php esc_html_e( 'Copy', 'smile-community' ); ?></button></div>
+				</div>
+				<?php if ( 'yes' === $atts['cta'] ) : ?>
+					<a class="smile-btn smile-btn--sun smile-calc__cta" href="<?php echo esc_url( smile_donate_url() ); ?>"><?php esc_html_e( 'Give by M-Pesa', 'smile-community' ); ?></a>
+				<?php endif; ?>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+);
