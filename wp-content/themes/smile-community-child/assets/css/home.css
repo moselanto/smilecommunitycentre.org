@@ -1129,3 +1129,10 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 	.smile-slide--split .smile-slide__img { object-position: 35% 45% !important; }
 	.smile-slide__note { display: none; }
 }
+
+
+/* v2.22.2 Home page: hide "See your impact" and "Get involved" even before "Apply latest design" (both stay on Donate / Get Involved) */
+.home .elementor-element-f39bc38, .home .elementor-element-01f35ef, .home .elementor-element-5ccedc7,
+.home .elementor-section:has(.smile-calc), .home .e-con:has(.smile-calc),
+.home .elementor-section:has(.smile-involve), .home .e-con:has(.smile-involve),
+.home .elementor-section:has(+ .elementor-section .smile-involve), .home .e-con:has(+ .e-con .smile-involve) { display: none !important; }

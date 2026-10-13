@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.22.2
+- Home page: "See your impact" and "Get involved" are now hidden by the theme itself, so they disappear on upload even if "Apply latest design" is not run or the home page was edited in Elementor.
+
 ## 2.22.1
 - Home page shortened: removed the "See your impact" gift calculator and the "Get involved" section (both remain on the Donate and Get Involved pages). Community section now on cream and Latest stories on white to keep the alternating rhythm.
 
