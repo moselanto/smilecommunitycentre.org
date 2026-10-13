@@ -1157,3 +1157,9 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 	.smile-ctaphoto__pay { flex-direction: column; border-radius: 18px; padding: .8rem; width: 100%; max-width: 320px; }
 	.smile-ctaphoto__num { width: 100%; justify-content: space-between; }
 }
+
+
+/* v2.22.7 Desktop: only one dropdown at a time - hovering a menu item hides any other open dropdown */
+@media (min-width: 1201px) {
+	.smile-nav__list:hover > li:not(:hover) > .sub-menu { opacity: 0 !important; visibility: hidden !important; pointer-events: none; }
+}

@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.22.7
+- Desktop menu: only one dropdown shows at a time. Hovering a menu item hides any other open dropdown (e.g. Impact on the Our Impact page no longer stays open beside Get Involved).
+
 ## 2.22.6
 - Fix: on desktop, the dropdown of the section you are in (e.g. About on the About pages) no longer stays stuck open. The current section now auto-opens only in the phone/tablet menu. Desktop dropdowns opened with the arrow close on a click elsewhere or Escape, and resizing to desktop closes any open sub-menus.
 
