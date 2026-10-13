@@ -5439,6 +5439,16 @@
       },
       "elements": [
        {
+        "id": "8f01aa",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_volunteer_notice]",
+         "_css_classes": "smile-vnotice"
+        },
+        "elements": []
+       },
+       {
         "id": "5b02ab",
         "elType": "widget",
         "widgetType": "heading",
