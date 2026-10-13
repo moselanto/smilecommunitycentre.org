@@ -58,7 +58,7 @@ add_shortcode(
 	'smile_programmes',
 	function () {
 		$items = array(
-			array( 'pupils', 'book', __( 'Education and school support', 'smile-community' ), __( 'Every child in our care goes to school, with fees, uniforms, books and mentoring.', 'smile-community' ), '/education-program/' ),
+			array( 'highschool', 'book', __( 'Education and school support', 'smile-community' ), __( 'Every child in our care goes to school, with fees, uniforms, books and mentoring.', 'smile-community' ), '/education-program/' ),
 			array( 'feeding1', 'bowl', __( 'Feeding programme', 'smile-community' ), __( 'Daily meals at home and community feeding for 300+ children.', 'smile-community' ), '/feeding-program/' ),
 			array( 'staff-serving', 'home', __( 'Shelter and child care', 'smile-community' ), __( 'A safe, stable home for children referred by the authorities.', 'smile-community' ), '/child-care-and-shelter/' ),
 			array( 'doctors', 'health', __( 'Health and wellbeing', 'smile-community' ), __( 'Medical care, counselling and HIV/AIDS support.', 'smile-community' ), '/health-and-wellbeing/' ),

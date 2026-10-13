@@ -865,3 +865,67 @@ p, li { text-wrap: pretty; }
 /* FAQ layout */
 .smile-faq .elementor-tab-title { font-family: var(--smile-font-body); font-weight: 600 !important; font-size: 1.05rem; }
 .smile-faq .elementor-tab-content { color: #3A4843; font-size: 1.02rem; line-height: 1.7; }
+
+/* =========================================================
+   v1.5.1 fixes from live staging screenshots + image blending
+   ========================================================= */
+/* Hello Elementor's reset paints buttons pink (#c36) on hover/focus. Neutralise it for our controls. */
+.smile-slider button, .smile-slider button:hover, .smile-slider button:focus,
+.smile-copy:focus, .smile-nav-toggle:hover, .smile-nav-toggle:focus, .smile-sub-toggle:hover, .smile-sub-toggle:focus { background-color: transparent; color: inherit; }
+.smile-slider__dot, .smile-slider__dot:hover, .smile-slider__dot:focus { background: none !important; border: 0 !important; box-shadow: none !important; }
+.smile-slider__dot:focus-visible span { outline: 2px solid var(--smile-sun); outline-offset: 4px; }
+.smile-slider__btn:hover, .smile-slider__btn:focus-visible { background: #fff !important; color: var(--smile-forest) !important; }
+.smile-slider__btn { background: rgba(14,40,33,.35) !important; color: #fff !important; }
+.smile-nav-toggle, .smile-nav-toggle:hover, .smile-nav-toggle:focus { background: #fff !important; }
+.smile-sub-toggle, .smile-sub-toggle:hover, .smile-sub-toggle:focus { background: none !important; color: var(--smile-forest) !important; }
+.smile-copy:hover { background: var(--smile-teal) !important; color: #fff !important; }
+
+/* Bento: titles always light (links were turning dark on hover), lighter shade so photos breathe. */
+.smile-bento__tile, .smile-bento__tile:hover, .smile-bento__tile:focus { color: #fff !important; }
+.smile-bento__title { color: #fff !important; text-shadow: 0 1px 12px rgba(0,0,0,.25); }
+.smile-bento__text { color: rgba(255,255,255,.9) !important; }
+.smile-bento__shade { background: linear-gradient(180deg, rgba(14,40,33,0) 40%, rgba(14,40,33,.82) 100%); }
+.smile-bento__tile:hover .smile-bento__shade { background: linear-gradient(180deg, rgba(23,107,91,.12) 0%, rgba(14,40,33,.88) 100%); }
+.smile-bento__tile--1 .smile-bento__img { object-position: center 30%; }
+.smile-bento__img { object-position: center 35%; }
+
+/* Journey heading accent on the dark band */
+.smile-sec--journey .elementor-heading-title em { color: var(--smile-sun) !important; }
+
+/* ---------- Blending photos with content ---------- */
+/* One gentle, warm grade across every photo so different cameras feel like one story. */
+.smile-photo img, .smile-bento__img, .smile-prio__img, .smile-related__img, .smile-intro__img, .smile-mag__media img,
+.smile-card__media img, .smile-founder__img, .smile-gallery .gallery-item img, .smile-slide__img, .smile-ctaphoto__img {
+	filter: saturate(1.06) contrast(1.04) brightness(1.02) sepia(.04);
+}
+
+/* Split-section photos sit on a soft offset shape that ties them to the page colours. */
+.smile-photo .elementor-widget-container { position: relative; isolation: isolate; }
+.smile-photo .elementor-widget-container::before { content: ""; position: absolute; z-index: -1; inset: 1.25rem -1.25rem -1.25rem 1.25rem; border-radius: 28px; background: var(--smile-sun); opacity: .35; }
+.smile-sec--sand .smile-photo .elementor-widget-container::before, .smile-sec--cream .smile-photo .elementor-widget-container::before { background: var(--smile-teal); opacity: .14; }
+.smile-photo .elementor-widget-container::after { content: ""; position: absolute; inset: 0; border-radius: var(--smile-radius-lg); pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), inset 0 -60px 80px -40px rgba(14,40,33,.28); }
+.smile-photo img { border-radius: var(--smile-radius-lg); display: block; }
+@media (max-width: 767px) { .smile-photo .elementor-widget-container::before { inset: .75rem -.6rem -.75rem .6rem; } }
+
+/* Card photos fade softly into the card instead of a hard edge. */
+.smile-prio__media::after, .smile-card__media::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38%; pointer-events: none; background: linear-gradient(180deg, transparent, rgba(255,255,255,.0) 40%, rgba(255,255,255,.18)); }
+.smile-card-col .elementor-widget-image { position: relative; overflow: hidden; }
+.smile-card-col .elementor-widget-image img { transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.smile-card-col:hover .elementor-widget-image img { transform: scale(1.05); }
+
+/* Intro collage: warmer frame and a soft brand glow behind the photos. */
+.smile-intro::before { content: ""; position: absolute; inset: 8% -6% 10% 14%; background: radial-gradient(circle at 60% 40%, rgba(244,201,93,.35), transparent 60%); z-index: -1; filter: blur(10px); }
+.smile-intro { isolation: isolate; }
+
+/* Gallery: consistent crops, caption fade, gentle zoom. */
+.smile-gallery .gallery-item a { position: relative; }
+.smile-gallery .gallery-item a::after { content: ""; position: absolute; inset: 0; border-radius: var(--smile-radius); background: linear-gradient(180deg, transparent 55%, rgba(14,40,33,.35)); opacity: 0; transition: opacity .3s; }
+.smile-gallery .gallery-item a:hover::after { opacity: 1; }
+
+/* Page banners: photo blends into the cream page below with a soft curve. */
+.smile-pagehero { overflow: hidden; }
+.smile-pagehero::after { content: ""; position: absolute; left: -5%; right: -5%; bottom: -1px; height: 44px; background: var(--smile-white); border-radius: 50% 50% 0 0 / 100% 100% 0 0; z-index: 1; }
+.smile-pagehero + .smile-sec--cream, .smile-pagehero + .smile-sec--sand { margin-top: 0; }
+.smile-pagehero:has(+ .smile-sec--cream)::after { background: var(--smile-cream); }
+.smile-pagehero:has(+ .smile-sec--sand)::after { background: var(--smile-sand); }
+.smile-pagehero > .elementor-container { padding-bottom: 1.5rem; }
