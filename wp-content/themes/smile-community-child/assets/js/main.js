@@ -115,13 +115,28 @@
 					toggleSub();
 				}
 			} );
-			if ( item.classList.contains( 'current-menu-ancestor' ) || item.classList.contains( 'current-menu-item' ) ) {
+			// Auto-open the current section only in the phone/tablet drawer, never on the desktop header.
+			if ( mq.matches && ( item.classList.contains( 'current-menu-ancestor' ) || item.classList.contains( 'current-menu-item' ) ) ) {
 				setSub( true );
 			}
 		} );
 
+		function closeAllSubs() {
+			nav.querySelectorAll( '.menu-item-has-children.is-open' ).forEach( function ( it ) {
+				it.classList.remove( 'is-open' );
+				var b = it.querySelector( ':scope > .smile-sub-toggle' );
+				if ( b ) { b.setAttribute( 'aria-expanded', 'false' ); }
+			} );
+		}
 		mq.addEventListener( 'change', function ( e ) {
-			if ( ! e.matches ) { setOpen( false ); }
+			if ( !e.matches ) { setOpen( false ); closeAllSubs(); }
+		} );
+		// Desktop: a dropdown opened with its arrow closes on a click elsewhere or on Escape.
+		document.addEventListener( 'click', function ( e ) {
+			if ( !mq.matches && !nav.contains( e.target ) ) { closeAllSubs(); }
+		} );
+		document.addEventListener( 'keydown', function ( e ) {
+			if ( e.key === 'Escape' && !mq.matches ) { closeAllSubs(); if ( document.activeElement && nav.contains( document.activeElement ) ) { document.activeElement.blur(); } }
 		} );
 	}
 

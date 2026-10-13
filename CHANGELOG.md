@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.22.6
+- Fix: on desktop, the dropdown of the section you are in (e.g. About on the About pages) no longer stays stuck open. The current section now auto-opens only in the phone/tablet menu. Desktop dropdowns opened with the arrow close on a click elsewhere or Escape, and resizing to desktop closes any open sub-menus.
+
 ## 2.22.5
 - "Keep every child in school" slide: enhanced photo of the pupils (noise removed, upscaled from 770px to 1600px, local contrast, colour and sharpening), bundled as assets/images/slides/pupils-1600.webp and -960.webp and used instead of the original imported photo. A photo chosen in the Customizer still wins. Slide photos now have their own alt text.
 
