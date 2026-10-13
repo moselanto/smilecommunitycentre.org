@@ -799,3 +799,31 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 .smile-vnotice .smile-notice { display: flex; align-items: center; gap: .9rem; margin: 0; padding: 1rem 1.25rem; border: 1px solid #F3D9AE; border-left: 0; border-radius: 16px; background: #FFF6E6; }
 .smile-vnotice .smile-notice::before { content: ""; flex: 0 0 10px; width: 10px; height: 10px; border-radius: 50%; background: #C9822B; box-shadow: 0 0 0 5px rgba(201,130,43,.15); }
 .smile-vnotice .smile-notice p { margin: 0; font-weight: 600; color: var(--smile-ink); font-size: .97rem; line-height: 1.5; }
+
+/* =========================================================
+   v2.13.1 Our Founder: Margret's quote as a full-width band
+   ========================================================= */
+/* A. Works on the CURRENT live page straight away (older layout, before "Apply latest design") */
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords) { background: var(--smile-forest) !important; padding-block: clamp(4rem, 3rem + 4vw, 7rem) !important; position: relative; overflow: hidden; }
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords)::before { content: "\201C"; position: absolute; left: 50%; top: clamp(.5rem, 1vw, 1.5rem); transform: translateX(-50%); font-family: var(--smile-font-display); font-size: clamp(7rem, 5rem + 6vw, 12rem); line-height: 1; color: rgba(244,201,93,.22); pointer-events: none; }
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords)::after { content: ""; position: absolute; right: -140px; bottom: -180px; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(244,201,93,.16), rgba(244,201,93,0) 70%); pointer-events: none; }
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords) > .elementor-container { position: relative; z-index: 1; max-width: 1100px; }
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords) .smile-lead,
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords) .elementor-widget-text-editor p { max-width: 30ch !important; margin: 0 auto 1.75rem !important; font-family: var(--smile-font-display) !important; font-style: italic; font-weight: 400; font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3.1rem) !important; line-height: 1.2 !important; color: #fff !important; text-align: center; text-wrap: balance; }
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords) .smile-signature { display: block; text-align: center; font-family: var(--smile-font-hand); font-size: clamp(2rem, 1.6rem + 1.2vw, 2.6rem); color: var(--smile-sun) !important; }
+.elementor-section.smile-sec:has(.smile-signature):not(.smile-sec--fwords) .smile-signature::before { content: ""; display: block; width: 56px; height: 2px; margin: 0 auto 1rem; background: var(--smile-sun); }
+
+/* B. The redesigned layout (after "Apply latest design"): photo and quote edge to edge */
+.smile-sec--fwords { padding: 0 !important; background: var(--smile-forest) !important; }
+.smile-sec--fwords > .elementor-container { max-width: none !important; width: 100%; }
+.smile-sec--fwords .elementor-column > .elementor-widget-wrap, .smile-sec--fwords .elementor-column > div { padding: 0 !important; }
+.smile-fwords.has-photo { max-width: none; width: 100%; margin: 0; border: 0; border-radius: 0; box-shadow: none; background: var(--smile-forest); grid-template-columns: 1fr 1fr; min-height: clamp(460px, 42vw, 620px); }
+.smile-fwords.has-photo .smile-fwords__photo { min-height: 100%; }
+.smile-fwords.has-photo .smile-fwords__body { padding: clamp(2.5rem, 2rem + 4vw, 6rem); max-width: 720px; }
+.smile-fwords.has-photo .smile-fwords__kicker { color: var(--smile-sun); }
+.smile-fwords.has-photo .smile-fwords__mark { color: var(--smile-sun); }
+.smile-fwords.has-photo blockquote { color: #fff; font-size: clamp(1.9rem, 1.3rem + 2.2vw, 3.1rem); }
+.smile-fwords.has-photo .smile-signature { color: var(--smile-sun); font-size: 2.4rem; }
+.smile-fwords.has-photo .smile-fwords__role { color: #fff; }
+.smile-fwords.has-photo .smile-fwords__note { color: rgba(234,242,238,.8); border-top-color: rgba(255,255,255,.18); }
+@media (max-width: 860px) { .smile-fwords.has-photo { grid-template-columns: 1fr; } .smile-fwords.has-photo .smile-fwords__photo { min-height: 320px; } }
