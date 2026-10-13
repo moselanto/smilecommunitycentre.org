@@ -117,6 +117,24 @@
 		update();
 	}
 
+	function initReveal() {
+		var items = document.querySelectorAll( '.smile-reveal' );
+		if ( ! items.length ) { return; }
+		if ( ! ( 'IntersectionObserver' in window ) || window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
+			items.forEach( function ( el ) { el.classList.add( 'is-in' ); } );
+			return;
+		}
+		var io = new IntersectionObserver( function ( entries ) {
+			entries.forEach( function ( e ) {
+				if ( e.isIntersecting ) { e.target.classList.add( 'is-in' ); io.unobserve( e.target ); }
+			} );
+		}, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 } );
+		items.forEach( function ( el, i ) {
+			if ( ! el.style.getPropertyValue( '--i' ) ) { el.style.setProperty( '--i', String( i % 4 ) ); }
+			io.observe( el );
+		} );
+	}
+
 	function initForms() {
 		// Move focus to the status / first error after a server round-trip so screen readers announce it.
 		var target = document.querySelector( '.smile-form__status[tabindex="-1"]' );
@@ -124,8 +142,8 @@
 	}
 
 	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); } );
+		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); initReveal(); } );
 	} else {
-		initNav(); initCopy(); initForms(); initScroll();
+		initNav(); initCopy(); initForms(); initScroll(); initReveal();
 	}
 }() );
