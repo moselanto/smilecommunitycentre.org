@@ -464,3 +464,12 @@ html, body { overflow-x: hidden; }
 .smile-pagehero .elementor-widget-wrap { max-width: 720px; }
 .smile-pagehero .elementor-widget-text-editor p { max-width: 56ch; }
 .smile-pagehero .elementor-widget-button { margin-top: .5rem; }
+
+/* v2.3.1: the open menu sat under its own backdrop (the header's stacking context was below it). */
+@media (max-width: 1200px) {
+	body.smile-nav-open .smile-header { z-index: 1002 \!important; position: relative; }
+	.smile-nav-backdrop { z-index: 1001 \!important; }
+	body.smile-nav-open .smile-nav { z-index: 1003 \!important; }
+	body.smile-nav-open .smile-nav-toggle { z-index: 1004 \!important; }
+	.admin-bar.smile-nav-open .smile-header { top: 0; }
+}

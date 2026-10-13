@@ -155,14 +155,14 @@ add_shortcode(
 );
 
 /**
- * Mobile bottom navigation (static tab bar): Home, Programmes, Donate, Get Involved, Menu.
+ * Mobile bottom navigation (static tab bar): Home, Programmes, Donate, Contact, Menu.
  */
 function smile_mobile_bar() {
 	$pages = array(
 		'home'       => array( home_url( '/' ), 'home', __( 'Home', 'smile-community' ), is_front_page() ),
 		'programmes' => array( home_url( '/our-programmes/' ), 'book', __( 'Programmes', 'smile-community' ), is_page( array( 'our-programmes', 'education-program', 'feeding-program', 'child-care-and-shelter', 'health-and-wellbeing', 'sports' ) ) ),
 		'donate'     => array( smile_donate_url(), 'heart', __( 'Donate', 'smile-community' ), is_page( 'donate' ) ),
-		'involved'   => array( home_url( '/get-involved/' ), 'hands', __( 'Get involved', 'smile-community' ), is_page( array( 'get-involved', 'volunteer', 'partner-with-us' ) ) ),
+		'contact'    => array( home_url( '/contact-us/' ), 'chat', __( 'Contact', 'smile-community' ), is_page( 'contact-us' ) ),
 	);
 	echo '<nav class="smile-tabbar" aria-label="' . esc_attr__( 'Quick navigation', 'smile-community' ) . '">';
 	foreach ( $pages as $key => $p ) {
