@@ -109,6 +109,15 @@ $smile_lead   = ( 1 === $smile_paged && $smile_total > 3 );
 	<div class="smile-container smile-stories__wrap">
 		<?php if ( have_posts() ) : ?>
 			<?php if ( $smile_lead ) : ?>
+				<div class="smile-stories__head smile-stories__head--top">
+					<h2><?php esc_html_e( 'Top stories', 'smile-community' ); ?></h2>
+					<p>
+						<?php
+						/* translators: %s: date of the latest story */
+						echo esc_html( sprintf( __( 'Updated %s', 'smile-community' ), get_the_date( 'j F Y', $GLOBALS['wp_query']->posts[0] ) ) );
+						?>
+					</p>
+				</div>
 				<section class="smile-lead" aria-label="<?php esc_attr_e( 'Latest stories', 'smile-community' ); ?>">
 					<?php
 					the_post();
@@ -117,10 +126,11 @@ $smile_lead   = ( 1 === $smile_paged && $smile_total > 3 );
 					<article <?php post_class( 'smile-lead__main' ); ?>>
 						<div class="smile-lead__media"><?php echo smile_story_image( get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 						<div class="smile-lead__body">
-							<p class="smile-lead__label"><?php esc_html_e( 'Latest story', 'smile-community' ); ?><?php if ( $smile_cat ) : ?> <span aria-hidden="true">/</span> <?php echo esc_html( smile_cat_label( $smile_cat->name ) ); ?><?php endif; ?></p>
+							<p class="smile-lead__chips"><span class="smile-lead__label"><?php esc_html_e( 'Latest story', 'smile-community' ); ?></span><?php if ( $smile_cat ) : ?><span class="smile-lead__cat"><?php echo esc_html( smile_cat_label( $smile_cat->name ) ); ?></span><?php endif; ?></p>
 							<h2 class="smile-lead__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							<p class="smile-lead__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 34 ) ); ?></p>
 							<p class="smile-story__meta"><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date( 'j F Y' ) ); ?></time><span aria-hidden="true">&middot;</span><?php echo esc_html( sprintf( /* translators: %d */ __( '%d min read', 'smile-community' ), smile_reading_time() ) ); ?></p>
+							<span class="smile-lead__cta" aria-hidden="true"><?php esc_html_e( 'Read the story', 'smile-community' ); ?> &rarr;</span>
 						</div>
 					</article>
 					<aside class="smile-lead__aside" aria-label="<?php esc_attr_e( 'Also new', 'smile-community' ); ?>">
@@ -132,13 +142,14 @@ $smile_lead   = ( 1 === $smile_paged && $smile_total > 3 );
 								the_post();
 								++$smile_i;
 								?>
+								<?php $smile_icat = smile_primary_cat( get_the_ID() ); ?>
 								<li <?php post_class( 'smile-lead__item' ); ?>>
-									<span class="smile-lead__num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $smile_i ) ); ?></span>
-									<div>
+									<div class="smile-lead__thumb"><?php echo smile_story_image( get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+									<div class="smile-lead__text">
+										<?php if ( $smile_icat ) : ?><span class="smile-lead__kicker"><?php echo esc_html( smile_cat_label( $smile_icat->name ) ); ?></span><?php endif; ?>
 										<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 										<p class="smile-story__meta"><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date( 'j M Y' ) ); ?></time><span aria-hidden="true">&middot;</span><?php echo esc_html( sprintf( /* translators: %d */ __( '%d min read', 'smile-community' ), smile_reading_time() ) ); ?></p>
 									</div>
-									<div class="smile-lead__thumb"><?php echo smile_story_image( get_the_ID() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 								</li>
 							<?php endwhile; ?>
 						</ol>
@@ -202,4 +213,19 @@ $smile_lead   = ( 1 === $smile_paged && $smile_total > 3 );
 			</div>
 		<?php endif; ?>
 	</div>
+	<section class="smile-touch" aria-labelledby="smile-touch-title">
+		<div class="smile-container smile-touch__inner">
+			<div>
+				<p class="smile-touch__kicker"><?php esc_html_e( 'Stay close to Smile', 'smile-community' ); ?></p>
+				<h2 id="smile-touch-title" class="smile-touch__title"><?php esc_html_e( 'Follow everyday life at the centre', 'smile-community' ); ?></h2>
+				<p class="smile-touch__text"><?php esc_html_e( 'Photos and updates from Soweto, Kayole, shared with care for the children\'s privacy.', 'smile-community' ); ?></p>
+			</div>
+			<div class="smile-touch__actions">
+				<?php $smile_ig = smile_setting( 'instagram_url', 'https://www.instagram.com/smile_kenya_/' ); ?>
+				<?php if ( $smile_ig ) : ?><a class="smile-btn smile-btn--sun" href="<?php echo esc_url( $smile_ig ); ?>" rel="noopener" target="_blank"><?php esc_html_e( 'Follow on Instagram', 'smile-community' ); ?></a><?php endif; ?>
+				<?php $smile_ct = get_page_by_path( 'contact-us' ); ?>
+				<?php if ( $smile_ct ) : ?><a class="smile-btn smile-btn--ghost-light" href="<?php echo esc_url( get_permalink( $smile_ct ) ); ?>"><?php esc_html_e( 'Share a story idea', 'smile-community' ); ?></a><?php endif; ?>
+			</div>
+		</div>
+	</section>
 </main>
