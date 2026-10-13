@@ -438,6 +438,12 @@
 "section": "smile_customize_register"
 },
 {
+"text": "Show the WhatsApp chat button on every page",
+"domain": "smile-community",
+"file": "inc/customizer.php",
+"section": "smile_customize_register"
+},
+{
 "text": "A safe home, daily meals, education and care for orphaned and vulnerable children in Soweto, Kayole, Nairobi.",
 "domain": "smile-community",
 "file": "inc/customizer.php",
@@ -2788,6 +2794,120 @@
 "domain": "smile-community",
 "file": "inc/template-tags.php",
 "section": "smile_breadcrumbs"
+},
+{
+"text": "I would like to donate",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "I want to volunteer",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "I would like to sponsor a child",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "I would like to visit the centre",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "I have a question",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Online now, usually replies within minutes",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "We will reply when the office opens",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Dismiss",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Hello there",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Questions about giving, visiting or volunteering? Chat with us on WhatsApp.",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Usually replies during office hours",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Close chat",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Hello and welcome. Thank you for caring about the children at Smile Community Centre.",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "How can we help you today?",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Pick a topic or type your own message",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Your message",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Type a message",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Send on WhatsApp",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
+"text": "Opens WhatsApp. Please do not share private details about a child here.",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
 },
 {
 "text": "Full name",

@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.21.0
+- WhatsApp chat: floating green button on every page (round above the tab bar on phones, "Chat with us" pill on larger screens) opening a branded chat card with the centre's avatar, online/offline status from Nairobi office hours, a welcome message, quick topic chips and a message box that opens WhatsApp with the message ready to send. One gentle nudge per visit after 12 seconds (not on Contact or Donate). Keyboard and screen-reader friendly, no third-party scripts. New file inc/whatsapp-chat.php; Customizer toggle under Smile: Header & Footer; all text editable in Site text & photos.
+
 ## 2.20.2
 - Mobile menu polish: no dot on the parent section (only on the exact page), "Go to <section> →" text link instead of "Overview:", flatter evenly inset sub-menu card, tidier spacing.
 

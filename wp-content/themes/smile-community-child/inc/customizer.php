@@ -30,6 +30,9 @@ function smile_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'smile_show_topbar', array( 'default' => true, 'sanitize_callback' => 'wp_validate_boolean' ) );
 	$wp_customize->add_control( 'smile_show_topbar', array( 'label' => __( 'Show the slim contact bar above the header', 'smile-community' ), 'section' => 'smile_header', 'type' => 'checkbox' ) );
 
+	$wp_customize->add_setting( 'smile_wa_chat', array( 'default' => true, 'sanitize_callback' => 'wp_validate_boolean' ) );
+	$wp_customize->add_control( 'smile_wa_chat', array( 'label' => __( 'Show the WhatsApp chat button on every page', 'smile-community' ), 'section' => 'smile_header', 'type' => 'checkbox' ) );
+
 	$wp_customize->add_setting( 'smile_footer_tagline', array( 'default' => __( 'A safe home, daily meals, education and care for orphaned and vulnerable children in Soweto, Kayole, Nairobi.', 'smile-community' ), 'sanitize_callback' => 'sanitize_textarea_field' ) );
 	$wp_customize->add_control( 'smile_footer_tagline', array( 'label' => __( 'Footer mission line', 'smile-community' ), 'section' => 'smile_header', 'type' => 'textarea' ) );
 }
