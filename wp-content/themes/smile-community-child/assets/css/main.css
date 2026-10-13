@@ -730,3 +730,49 @@ img { max-width: 100%; height: auto; }
 /* New timeline (v1.4 layout): same compact rhythm */
 .smile-sec--journey { padding-block: clamp(2.75rem, 2rem + 2.5vw, 4rem) !important; }
 .smile-sec--journey .smile-measure p { font-size: .9rem; color: rgba(231,240,236,.72); }
+
+/* =========================================================
+   v1.4.3 fixes from the staging review
+   ========================================================= */
+/* Consecutive same-background sections: small, consistent gap (no collisions). */
+.smile-sec--cream + .smile-sec--cream,
+.smile-sec--sand + .smile-sec--sand,
+.smile-sec--forest + .smile-sec--forest,
+.smile-sec--tight + .smile-sec--tight:not(.smile-sec--cream):not(.smile-sec--sand):not(.smile-sec--forest) { padding-top: 1.5rem !important; }
+.smile-sec--cream:has(+ .smile-sec--cream),
+.smile-sec--sand:has(+ .smile-sec--sand),
+.smile-sec--forest:has(+ .smile-sec--forest),
+.smile-sec--tight:has(+ .smile-sec--tight) { padding-bottom: 0 !important; }
+
+/* Journey band: cards fill the full width, heading never leaves a one-word line. */
+.smile-sec--forest > .elementor-container:has(.smile-fact) { margin-inline: auto !important; max-width: calc(var(--smile-container) + 20px) !important; }
+.smile-sec--forest .elementor-column:has(.smile-fact) { padding: 0 .5rem !important; }
+.smile-sec--forest .elementor-column:has(.smile-fact):first-child { padding-left: 0 !important; }
+.smile-sec--forest .elementor-column:has(.smile-fact):last-child { padding-right: 0 !important; }
+.smile-sec--forest.smile-sec--tight .elementor-widget-heading h2.elementor-heading-title,
+.smile-sec .elementor-widget-heading h2.elementor-heading-title { max-width: 24ch; text-wrap: balance; }
+.smile-sec--forest.smile-sec--tight { padding-bottom: 2rem !important; }
+
+/* Card links: left-aligned under the text, pinned to the bottom of the card. */
+.smile-card-col > .elementor-widget-wrap { display: flex !important; flex-direction: column; align-items: stretch; }
+.smile-card-col .elementor-widget-button.smile-btn-el { align-self: flex-start; margin-top: auto !important; width: auto !important; display: block; }
+.smile-card-col .elementor-widget-button .elementor-button-wrapper, .smile-card-col .elementor-widget-button { text-align: left !important; }
+
+/* Button groups (CTA band, split sections): one neat row, vertically aligned. */
+.elementor-widget-wrap:has(> .elementor-widget-button.smile-btn-el + .elementor-widget-button.smile-btn-el) { column-gap: .75rem; align-items: center; }
+.elementor-widget-button.smile-btn-el { vertical-align: middle; margin-right: 0 !important; }
+.smile-center .elementor-widget-wrap { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: .75rem; row-gap: .75rem; }
+.smile-center .elementor-widget-heading, .smile-center .elementor-widget-text-editor { width: 100%; }
+.smile-center .elementor-widget-button.smile-btn-el { margin: 0 !important; }
+
+/* Old single-image hero: keep the headline readable over busy photos. */
+.smile-hero .elementor-background-overlay { background-image: linear-gradient(90deg, rgba(14,40,33,.94) 0%, rgba(14,40,33,.82) 42%, rgba(14,40,33,.35) 75%, rgba(14,40,33,.15) 100%) !important; }
+.smile-hero .elementor-widget-text-editor p { max-width: 46ch; }
+
+/* Section heading rows: breathing space before the content. */
+.smile-sec--head + .elementor-section { padding-top: 1.5rem !important; }
+.smile-sec .elementor-widget-heading + .elementor-widget-text-editor.smile-measure { margin-top: .5rem; }
+
+/* Story cards: uniform title style, consistent image area. */
+.smile-card__title, .smile-card--story .smile-card__title { text-transform: none; }
+.smile-posts .smile-card__media img, .smile-posts .smile-card__placeholder { aspect-ratio: 3 / 2; width: 100%; object-fit: cover; display: block; }

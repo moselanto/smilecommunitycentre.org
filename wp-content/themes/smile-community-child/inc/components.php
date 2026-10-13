@@ -182,3 +182,52 @@ function smile_story_image( $post_id ) {
 	}
 	return '<span class="smile-card__placeholder">' . smile_icon( 'heart' ) . '</span>';
 }
+
+
+/**
+ * Display-time tidy-ups so older imported stories look right without re-importing:
+ * ALL CAPS titles become title case; summaries that are only image captions are
+ * rebuilt from the story text.
+ */
+function smile_tidy_title( $title, $post_id = 0 ) {
+	if ( is_admin() || ! $post_id || 'post' !== get_post_type( $post_id ) ) {
+		return $title;
+	}
+	$letters = preg_replace( '/[^A-Za-z]/', '', $title );
+	if ( strlen( $letters ) < 6 || strtoupper( $letters ) !== $letters ) {
+		return $title;
+	}
+	$small = array( 'a', 'an', 'and', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to', 'your', 'with' );
+	$words = explode( ' ', mb_strtolower( $title ) );
+	foreach ( $words as $i => $word ) {
+		if ( 0 === $i || ! in_array( $word, $small, true ) ) {
+			$words[ $i ] = mb_strtoupper( mb_substr( $word, 0, 1 ) ) . mb_substr( $word, 1 );
+		}
+	}
+	return implode( ' ', $words );
+}
+add_filter( 'the_title', 'smile_tidy_title', 10, 2 );
+
+/**
+ * Rebuild weak excerpts.
+ *
+ * @param string  $excerpt Excerpt.
+ * @param WP_Post $post    Post.
+ * @return string
+ */
+function smile_tidy_excerpt( $excerpt, $post = null ) {
+	if ( is_admin() ) {
+		return $excerpt;
+	}
+	$clean = trim( preg_replace( '/\s*(Read More|\[&hellip;\]|\[…\]|…)\s*$/i', '', wp_strip_all_tags( (string) $excerpt ) ) );
+	if ( str_word_count( $clean ) >= 12 ) {
+		return $clean;
+	}
+	$post = get_post( $post );
+	if ( ! $post ) {
+		return $clean;
+	}
+	$text = preg_replace( array( '#<figure.*?</figure>#is', '#<img[^>]*>#i', '#<figcaption.*?</figcaption>#is' ), '', (string) $post->post_content );
+	return wp_trim_words( wp_strip_all_tags( strip_shortcodes( $text ) ), 32, '…' );
+}
+add_filter( 'get_the_excerpt', 'smile_tidy_excerpt', 20, 2 );

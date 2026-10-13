@@ -188,3 +188,22 @@ function smile_wizard_render() {
 	</div>
 	<?php
 }
+
+
+/**
+ * Prompt to apply the latest page designs after a theme update.
+ */
+function smile_design_update_notice() {
+	if ( ! current_user_can( 'manage_options' ) || ! get_option( 'smile_demo_imported' ) ) {
+		return;
+	}
+	if ( get_option( 'smile_design_version' ) === SMILE_THEME_VERSION ) {
+		return;
+	}
+	$screen = get_current_screen();
+	if ( $screen && 'appearance_page_smile-setup' === $screen->id ) {
+		return;
+	}
+	echo '<div class="notice notice-info" style="border-left-color:#176B5B;padding:12px 14px"><p style="font-size:14px"><strong>' . esc_html( sprintf( /* translators: %s version */ __( 'Smile theme %s: new page designs are ready.', 'smile-community' ), SMILE_THEME_VERSION ) ) . '</strong> ' . esc_html__( 'Apply them to update the home page, inner pages, menus and photos. Pages you created yourself are not touched.', 'smile-community' ) . '</p><p><a class="button button-primary" href="' . esc_url( admin_url( 'themes.php?page=smile-setup&step=content&apply=1' ) ) . '">' . esc_html__( 'Apply latest design', 'smile-community' ) . '</a></p></div>';
+}
+add_action( 'admin_notices', 'smile_design_update_notice' );

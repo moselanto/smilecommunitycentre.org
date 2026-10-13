@@ -51,6 +51,11 @@
 
 	// Step 2: content.
 	var importBtn = document.getElementById( 'smile-import' );
+	if ( importBtn && /[?&]apply=1/.test( window.location.search ) ) {
+		var ow = document.getElementById( 'smile-o-overwrite' );
+		if ( ow ) { ow.checked = true; }
+		setTimeout( function () { importBtn.click(); }, 400 );
+	}
 	if ( importBtn ) {
 		importBtn.addEventListener( 'click', function () {
 			var opt = function ( id ) { var el = document.getElementById( id ); return el && el.checked ? '1' : ''; };

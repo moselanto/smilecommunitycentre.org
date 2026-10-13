@@ -228,6 +228,7 @@ function smile_demo_ajax_step() {
 				\Elementor\Plugin::$instance->files_manager->clear_cache();
 			}
 			update_option( 'smile_demo_imported', time() );
+			update_option( 'smile_design_version', SMILE_THEME_VERSION );
 			wp_send_json_success( array( 'message' => __( 'All done', 'smile-community' ) ) );
 			break;
 	}
