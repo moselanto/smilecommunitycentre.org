@@ -407,3 +407,60 @@ html, body { overflow-x: hidden; }
 	.smile-slider__controls { bottom: .75rem !important; }
 	.smile-slider__arrow { display: none !important; }
 }
+
+/* =========================================================
+   v2.3 Balance layer: one icon system, balanced splits, even cards
+   ========================================================= */
+/* One icon system everywhere: 48px rounded-square chips, 1.8 stroke, cream + teal;
+   the "lead" item in a group uses sunshine. */
+:root { --smile-chip: 48px; --smile-chip-lg: 56px; --smile-chip-r: 14px; }
+.smile-icon svg { stroke-width: 1.8; }
+.smile-icon--card, .smile-needs .smile-icon, .smile-involve__way .smile-icon, .smile-commit .smile-icon,
+.smile-way .smile-icon, .smile-glance .smile-icon, .smile-trust .smile-icon, .smile-cc .smile-icon,
+.smile-ccard .smile-icon, .smile-help .smile-icon, .smile-calc__list .smile-icon {
+	width: var(--smile-chip) !important; height: var(--smile-chip) !important; flex: 0 0 var(--smile-chip) !important;
+	padding: 12px !important; border-radius: var(--smile-chip-r) !important; box-sizing: border-box;
+}
+.smile-prog__icon, .smile-prio__icon { width: var(--smile-chip-lg) !important; height: var(--smile-chip-lg) !important; padding: 14px !important; border-radius: 16px !important; }
+.smile-prio__icon { border-radius: 16px !important; }
+.smile-icon--card { margin-bottom: 1rem !important; }
+.smile-trust .smile-icon, .smile-help .smile-icon { background: var(--smile-cream) !important; }
+.smile-sec--cream .smile-trust .smile-icon, .smile-sec--sand .smile-trust .smile-icon, .smile-help .smile-icon { background: #fff !important; }
+
+/* Balanced split sections: equal columns, text centred against a photo of matched height */
+.smile-sec:has(.smile-photo) > .elementor-container > .elementor-column { width: 50% !important; }
+.elementor-widget-image.smile-photo img { max-height: 480px !important; aspect-ratio: 5 / 4 !important; }
+.smile-photo--tall img { aspect-ratio: 4 / 5 !important; max-height: 520px !important; }
+.smile-sec:has(.smile-photo) .elementor-column:not(:has(.smile-photo)) > .elementor-widget-wrap { max-width: 540px; margin-inline: auto; }
+@media (max-width: 1024px) { .smile-sec:has(.smile-photo) > .elementor-container > .elementor-column { width: 100% !important; } .elementor-widget-image.smile-photo img, .smile-photo--tall img { aspect-ratio: 4 / 3 !important; max-height: 420px !important; } }
+
+/* Heading rhythm: eyebrow -> heading -> text -> action, same gaps everywhere */
+.smile-sec .smile-eyebrow { margin-bottom: .6rem !important; }
+.smile-sec .elementor-widget-heading h2.elementor-heading-title { font-size: clamp(1.9rem, 1.4rem + 1.7vw, 2.7rem) !important; line-height: 1.12 !important; margin: 0 0 .25rem !important; }
+.smile-sec .elementor-widget-heading h3.elementor-heading-title { font-size: clamp(1.25rem, 1.1rem + .5vw, 1.45rem) !important; line-height: 1.25; }
+.smile-sec .elementor-widget-heading + .elementor-widget-text-editor { margin-top: .5rem !important; }
+.smile-sec .elementor-widget-text-editor + .elementor-widget-button, .smile-sec .elementor-widget-text-editor + .elementor-widget-shortcode { margin-top: .75rem; }
+.smile-sec .elementor-widget-text-editor p { max-width: 65ch; }
+.smile-center .elementor-widget-text-editor p { margin-inline: auto; }
+
+/* Even cards: same padding, title and text sizes, actions pinned to the bottom */
+.smile-prog__body, .smile-prio__body { padding: 0 1.5rem 1.5rem !important; }
+.smile-way, .smile-commit li, .smile-involve__way, .smile-needs li { padding: 1.5rem !important; }
+.smile-involve__way { padding: 1.15rem 1.25rem !important; }
+.smile-needs li { padding: 1.1rem 1.25rem !important; align-items: center; }
+.smile-prog__title, .smile-way h3, .smile-commit h3, .smile-prio__body h3, .smile-card-col .elementor-widget-heading h3 { font-size: 1.3rem !important; line-height: 1.25 !important; }
+.smile-prog__text, .smile-way p, .smile-commit p, .smile-prio__body p, .smile-card-col .elementor-widget-text-editor p { font-size: .98rem !important; line-height: 1.6 !important; }
+.smile-progs, .smile-prio, .smile-ways, .smile-commit, .smile-related { align-items: stretch; }
+.smile-way, .smile-prog, .smile-prio__card { height: 100%; }
+
+/* Grids: consistent gutters */
+.smile-progs, .smile-prio, .smile-ways, .smile-commit, .smile-voices, .smile-related, .smile-ccards { gap: 20px !important; }
+
+/* Related programme tiles: label sits balanced at the bottom */
+.smile-related__label { font-size: 1.1rem; gap: .6rem; }
+.smile-related__label .smile-icon { width: 34px !important; height: 34px !important; padding: 8px !important; border-radius: 10px !important; }
+
+/* Page banner text block: consistent width and spacing */
+.smile-pagehero .elementor-widget-wrap { max-width: 720px; }
+.smile-pagehero .elementor-widget-text-editor p { max-width: 56ch; }
+.smile-pagehero .elementor-widget-button { margin-top: .5rem; }
