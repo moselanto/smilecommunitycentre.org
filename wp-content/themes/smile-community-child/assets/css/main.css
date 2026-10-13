@@ -929,3 +929,65 @@ p, li { text-wrap: pretty; }
 .smile-pagehero:has(+ .smile-sec--cream)::after { background: var(--smile-cream); }
 .smile-pagehero:has(+ .smile-sec--sand)::after { background: var(--smile-sand); }
 .smile-pagehero > .elementor-container { padding-bottom: 1.5rem; }
+
+/* =========================================================
+   v1.8 Inner pages: image blending, spacing, alignment
+   Works with Elementor's optimised markup (no .elementor-widget-container).
+   ========================================================= */
+/* Split-section photos: soft brand shape behind, gentle frame, consistent crop */
+.elementor-widget-image.smile-photo { position: relative; isolation: isolate; }
+.elementor-widget-image.smile-photo::before { content: ""; position: absolute; z-index: -1; inset: 1.1rem -1.1rem -1.1rem 1.1rem; border-radius: 28px; background: var(--smile-sun); opacity: .28; }
+.smile-sec--sand .elementor-widget-image.smile-photo::before, .smile-sec--cream .elementor-widget-image.smile-photo::before { background: var(--smile-teal); opacity: .12; }
+.elementor-widget-image.smile-photo img { width: 100%; border-radius: 24px; display: block; object-fit: cover; box-shadow: 0 22px 50px rgba(22,75,63,.16); }
+.smile-photo--tall img { aspect-ratio: 4 / 5; max-height: 560px; }
+.smile-photo--wide img { aspect-ratio: 4 / 3; max-height: 520px; }
+.elementor-widget-image.smile-photo img { object-position: center 30%; }
+@media (max-width: 767px) { .elementor-widget-image.smile-photo::before { inset: .7rem -.6rem -.7rem .6rem; } .smile-photo--tall img { aspect-ratio: 4 / 3; } }
+
+/* Text beside photos: comfortable measure, vertically centred */
+.smile-gap-lg > .elementor-container, .smile-sec:has(.smile-photo) > .elementor-container { gap: clamp(1.75rem, 4vw, 4rem); align-items: center; }
+.smile-sec:has(.smile-photo) .elementor-column:not(:has(.smile-photo)) > .elementor-widget-wrap { max-width: 560px; }
+.smile-sec:has(.smile-photo) .elementor-column:not(:has(.smile-photo)) .elementor-widget-text-editor p { color: #3A4843; }
+
+/* First section after a page banner: same breathing space on every page, never under the curve */
+.smile-pagehero + .elementor-section { position: relative; z-index: 2; padding-top: clamp(2.75rem, 2rem + 2.5vw, 4.25rem) !important; }
+.smile-pagehero::after { height: 34px; }
+
+/* Forms beside text: align to the top, not the middle */
+.smile-sec:has(.smile-form-wrap) > .elementor-container, .smile-sec:has(.smile-help) > .elementor-container { align-items: flex-start !important; }
+.smile-sec:has(.smile-form-wrap) .elementor-column:not(:has(.smile-form-wrap)) > .elementor-widget-wrap { position: sticky; top: 110px; }
+
+/* FAQ accordion (classic widget) */
+.smile-faq .elementor-accordion { display: grid; gap: .75rem; }
+.smile-faq .elementor-accordion-item { border: 1px solid var(--smile-line) !important; border-radius: 16px !important; background: #fff; overflow: hidden; margin: 0 !important; transition: box-shadow .2s, border-color .2s; }
+.smile-faq .elementor-accordion-item:has(.elementor-active) { border-color: rgba(23,107,91,.35) !important; box-shadow: 0 12px 28px rgba(22,75,63,.08); }
+.smile-faq .elementor-tab-title { display: flex !important; align-items: center; gap: .9rem; padding: 1.1rem 1.35rem !important; margin: 0 !important; border: 0 !important; line-height: 1.4 !important; cursor: pointer; background: transparent !important; }
+.smile-faq .elementor-tab-title .elementor-accordion-title, .smile-faq .elementor-tab-title a { flex: 1; color: var(--smile-forest) !important; font-family: var(--smile-font-body); font-weight: 600; font-size: 1.05rem; text-decoration: none; line-height: 1.4; }
+.smile-faq .elementor-accordion-icon { float: none !important; order: 2; flex: 0 0 32px; width: 32px !important; height: 32px; border-radius: 50%; background: var(--smile-cream); color: var(--smile-teal) !important; display: grid !important; place-items: center; font-size: .8rem; text-align: center !important; }
+.smile-faq .elementor-tab-title.elementor-active .elementor-accordion-icon { background: var(--smile-teal); color: #fff !important; }
+.smile-faq .elementor-accordion-icon svg { width: 12px; height: 12px; fill: currentColor; }
+.smile-faq .elementor-tab-content { padding: 0 1.35rem 1.25rem !important; border: 0 !important; color: #3A4843; }
+.smile-faq .elementor-tab-content p:last-child { margin-bottom: 0; }
+
+/* About: milestones as connected cards */
+.smile-timeline ol { list-style: none; margin: 1.5rem 0 0; padding: 0; border: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; counter-reset: ms; }
+.smile-timeline li { counter-increment: ms; position: relative; background: #fff; border: 1px solid var(--smile-line); border-radius: 20px; padding: 1.4rem 1.4rem 1.4rem 4.2rem; margin: 0; color: var(--smile-muted); line-height: 1.6; }
+.smile-timeline li::before { content: counter(ms); position: absolute; left: 1.2rem; top: 1.3rem; width: 2.1rem; height: 2.1rem; border-radius: 50%; border: 0; background: var(--smile-sun); color: var(--smile-forest); display: grid; place-items: center; font-family: var(--smile-font-display); font-size: 1.05rem; }
+.smile-timeline li strong { display: block; color: var(--smile-forest); font-family: var(--smile-font-display); font-weight: 500; font-size: 1.2rem; margin-bottom: .3rem; }
+.smile-measure.smile-timeline, .smile-timeline.smile-measure { max-width: none; }
+@media (max-width: 767px) { .smile-timeline ol { grid-template-columns: 1fr; } }
+
+/* Ticked lists in two balanced columns where flagged */
+.smile-ticks--cols ul { columns: 2; column-gap: 2.5rem; }
+.smile-ticks--cols li { break-inside: avoid; }
+@media (max-width: 767px) { .smile-ticks--cols ul { columns: 1; } }
+.smile-ticks li { color: #3A4843; }
+
+/* Mission / vision pair */
+.smile-mv > .elementor-container { gap: 1.25rem; }
+.smile-mv .elementor-column > .elementor-widget-wrap { background: #fff; border: 1px solid var(--smile-line); border-top: 4px solid var(--smile-sun); border-radius: 22px; padding: 1.75rem !important; height: 100%; align-content: flex-start; }
+.smile-mv .smile-lead p, .smile-mv p.smile-lead { font-family: var(--smile-font-display); font-size: 1.35rem !important; line-height: 1.45; color: var(--smile-forest); }
+
+/* Programme / inner page lists and copy rhythm */
+.smile-sec .elementor-widget-text-editor ul { padding-left: 0; }
+.smile-sec .elementor-widget-heading h3.elementor-heading-title { margin-bottom: .35rem; }
