@@ -188,7 +188,51 @@ function smile_story_image( $post_id ) {
 	if ( preg_match( '/wp-image-(\d+)/', $content, $m ) && wp_attachment_is_image( (int) $m[1] ) ) {
 		return wp_get_attachment_image( (int) $m[1], 'smile-card', false, array( 'alt' => '', 'loading' => 'lazy' ) );
 	}
+	if ( function_exists( 'smile_image_by_key' ) ) {
+		$pool = array( 'mealtime', 'pupils', 'feeding1', 'schoolkids', 'feeding3', 'education', 'highschool', 'staff-serving', 'football', 'feeding2', 'skipping', 'founder-school' );
+		$key  = $pool[ absint( $post_id ) % count( $pool ) ];
+		$img  = smile_image_by_key( $key );
+		if ( $img ) {
+			return wp_get_attachment_image( $img, 'smile-card', false, array( 'alt' => '', 'loading' => 'lazy', 'class' => 'is-fallback' ) );
+		}
+	}
 	return '<span class="smile-card__placeholder">' . smile_icon( 'heart' ) . '</span>';
+}
+
+/**
+ * Category label in clean title case (fixes ALL CAPS or all-lowercase names).
+ *
+ * @param string $name Raw category name.
+ * @return string
+ */
+function smile_cat_label( $name ) {
+	$letters = preg_replace( '/[^A-Za-z]/', '', $name );
+	if ( '' === $letters || ( strtoupper( $letters ) !== $letters && strtolower( $letters ) !== $letters ) ) {
+		return $name;
+	}
+	$small = array( 'a', 'an', 'and', 'at', 'by', 'for', 'in', 'of', 'on', 'or', 'the', 'to' );
+	$words = explode( ' ', mb_strtolower( $name ) );
+	foreach ( $words as $i => $w ) {
+		if ( 0 === $i || ! in_array( $w, $small, true ) ) {
+			$words[ $i ] = mb_strtoupper( mb_substr( $w, 0, 1 ) ) . mb_substr( $w, 1 );
+		}
+	}
+	return implode( ' ', $words );
+}
+
+/**
+ * First real category of a post (skips Uncategorized).
+ *
+ * @param int $post_id Post ID.
+ * @return WP_Term|null
+ */
+function smile_primary_cat( $post_id = 0 ) {
+	foreach ( (array) get_the_category( $post_id ) as $c ) {
+		if ( 'uncategorized' !== $c->slug ) {
+			return $c;
+		}
+	}
+	return null;
 }
 
 
