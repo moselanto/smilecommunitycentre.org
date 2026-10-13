@@ -94,7 +94,45 @@ function smile_demo_ajax_step() {
 	if ( 0 === strpos( $step, 'image:' ) ) {
 		wp_send_json_success( array( 'message' => smile_demo_import_image( substr( $step, 6 ) ) ) );
 	}
+	if ( 0 === strpos( $step, 'post:' ) ) {
+		wp_send_json_success( array( 'message' => smile_demo_import_post( absint( substr( $step, 5 ) ) ) ) );
+	}
 	switch ( $step ) {
+		case 'cleanup':
+			$removed = array();
+			$hello   = get_page_by_path( 'hello-world', OBJECT, 'post' );
+			if ( $hello && ! get_post_meta( $hello->ID, '_smile_source_id', true ) ) {
+				wp_delete_post( $hello->ID, true );
+				$removed[] = 'Hello world post';
+			}
+			$sample = get_page_by_path( 'sample-page' );
+			if ( $sample && ! get_post_meta( $sample->ID, '_smile_setup', true ) ) {
+				wp_delete_post( $sample->ID, true );
+				$removed[] = 'Sample Page';
+			}
+			$privacy_draft = get_posts( array( 'post_type' => 'page', 'post_status' => 'draft', 'name' => 'privacy-policy-2', 'fields' => 'ids' ) );
+			foreach ( $privacy_draft as $pid ) {
+				wp_delete_post( $pid, true );
+			}
+			wp_send_json_success( array( 'message' => $removed ? __( 'Removed WordPress sample content: ', 'smile-community' ) . implode( ', ', $removed ) : __( 'No sample content found', 'smile-community' ) ) );
+			break;
+		case 'sitetitle':
+			update_option( 'blogname', "Smile Community Centre" );
+			update_option( 'blogdescription', "Children's home in Soweto, Kayole, Nairobi" );
+			wp_send_json_success( array( 'message' => __( 'Site title set to Smile Community Centre', 'smile-community' ) ) );
+			break;
+		case 'posts-index':
+			$ids = smile_demo_live_post_ids();
+			if ( is_wp_error( $ids ) ) {
+				wp_send_json_success( array( 'message' => 'FAILED reading posts from smilecommunitycentre.org: ' . $ids->get_error_message() ) );
+			}
+			wp_send_json_success(
+				array(
+					'message'   => sprintf( /* translators: %d */ __( 'Found %d stories to bring across', 'smile-community' ), count( $ids ) ),
+					'add_steps' => array_map( function ( $id ) { return 'post:' . $id; }, $ids ),
+				)
+			);
+			break;
 		case 'categories':
 			foreach ( array( 'Stories of Hope', 'News', 'Guides', 'Community' ) as $cat ) {
 				if ( ! term_exists( $cat, 'category' ) ) {
@@ -403,4 +441,198 @@ function smile_demo_import_kit() {
 	update_option( 'elementor_font_display', 'swap' );
 	update_option( 'elementor_google_font', '1' );
 	return __( 'Elementor colours and fonts applied', 'smile-community' );
+}
+
+
+/**
+ * Live site used as the source of stories.
+ *
+ * @return string
+ */
+function smile_demo_live_site() {
+	return apply_filters( 'smile_demo_live_site', 'https://smilecommunitycentre.org' );
+}
+
+/**
+ * Story decisions from the content audit.
+ *
+ * @return array slug => 'skip' | 'draft'
+ */
+function smile_demo_post_rules() {
+	return array(
+		'a-journey-cut-short-reflections-on-the-titanic-submarine-experience'                                         => 'skip',
+		'empowering-kenyan-youth-the-significance-of-the-hustler-fund-in-informal-settlements'                        => 'skip',
+		'building-bridges-the-shared-commitment-of-comoros-and-kenya-in-supporting-orphaned-and-vulnerable-children' => 'skip',
+		'smile-community-centre-childrens-home-announcement-in-regards-to-the-fifteenth-15th-presidential-address-on-the-coronavirus-pandemic' => 'skip',
+		'did-you-know-children-account-for-half-of-the-worlds-extreme-poor'                                          => 'skip',
+		'a-day-in-the-life-of-our-founder-margrets-work-routine-in-slums'                                            => 'draft',
+		'real-life-stories-from-smile-community-centre-childrens-home'                                               => 'draft',
+		'life-as-it-is'                                                                                              => 'draft',
+		'what-vulnerability-feels-like'                                                                              => 'draft',
+	);
+}
+
+/**
+ * IDs of posts on the live site that should be brought across.
+ *
+ * @return int[]|WP_Error
+ */
+function smile_demo_live_post_ids() {
+	$res = wp_remote_get( smile_demo_live_site() . '/wp-json/wp/v2/posts?per_page=100&_fields=id,slug', array( 'timeout' => 30 ) );
+	if ( is_wp_error( $res ) ) {
+		return $res;
+	}
+	$rows = json_decode( wp_remote_retrieve_body( $res ), true );
+	if ( ! is_array( $rows ) ) {
+		return new WP_Error( 'smile_posts', 'Unexpected response' );
+	}
+	$rules = smile_demo_post_rules();
+	$ids   = array();
+	foreach ( $rows as $row ) {
+		if ( isset( $rules[ $row['slug'] ] ) && 'skip' === $rules[ $row['slug'] ] ) {
+			continue;
+		}
+		$ids[] = (int) $row['id'];
+	}
+	return $ids;
+}
+
+/**
+ * Sideload a live-site image once (deduplicated by source URL).
+ *
+ * @param string $url      Source URL.
+ * @param string $filename Neutral filename.
+ * @param string $alt      Alt text.
+ * @return int Attachment ID or 0.
+ */
+function smile_demo_sideload_once( $url, $filename, $alt ) {
+	$found = get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'fields' => 'ids', 'posts_per_page' => 1, 'meta_key' => '_smile_source', 'meta_value' => esc_url_raw( $url ) ) ); // phpcs:ignore WordPress.DB.SlowDBQuery
+	if ( $found ) {
+		return (int) $found[0];
+	}
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	$tmp = download_url( $url, 45 );
+	if ( is_wp_error( $tmp ) ) {
+		return 0;
+	}
+	$id = media_handle_sideload( array( 'name' => $filename, 'tmp_name' => $tmp ), 0 );
+	if ( is_wp_error( $id ) ) {
+		@unlink( $tmp ); // phpcs:ignore WordPress.PHP.NoSilencedErrors, WordPress.WP.AlternativeFunctions
+		return 0;
+	}
+	update_post_meta( $id, '_wp_attachment_image_alt', sanitize_text_field( $alt ) );
+	update_post_meta( $id, '_smile_source', esc_url_raw( $url ) );
+	update_post_meta( $id, '_smile_consent', 'pending-review' );
+	wp_update_post( array( 'ID' => $id, 'post_content' => '', 'post_excerpt' => '' ) );
+	return (int) $id;
+}
+
+/**
+ * Bring one story across from the live site, with its images.
+ *
+ * @param int $live_id Post ID on the live site.
+ * @return string
+ */
+function smile_demo_import_post( $live_id ) {
+	$existing = get_posts( array( 'post_type' => 'post', 'post_status' => 'any', 'fields' => 'ids', 'posts_per_page' => 1, 'meta_key' => '_smile_source_id', 'meta_value' => $live_id ) ); // phpcs:ignore WordPress.DB.SlowDBQuery
+	if ( $existing ) {
+		return sprintf( /* translators: %s title */ __( 'Story already imported: %s', 'smile-community' ), get_the_title( $existing[0] ) );
+	}
+	$res = wp_remote_get( smile_demo_live_site() . '/wp-json/wp/v2/posts/' . $live_id . '?_embed=wp:featuredmedia,wp:term', array( 'timeout' => 30 ) );
+	if ( is_wp_error( $res ) ) {
+		return 'FAILED story ' . $live_id . ': ' . $res->get_error_message();
+	}
+	$p = json_decode( wp_remote_retrieve_body( $res ), true );
+	if ( ! is_array( $p ) || empty( $p['slug'] ) ) {
+		return 'FAILED story ' . $live_id . ': unexpected response';
+	}
+	if ( get_page_by_path( $p['slug'], OBJECT, 'post' ) ) {
+		return sprintf( 'Story with this address already exists, skipped: %s', $p['slug'] );
+	}
+	$rules   = smile_demo_post_rules();
+	$status  = isset( $rules[ $p['slug'] ] ) && 'draft' === $rules[ $p['slug'] ] ? 'draft' : 'publish';
+	$title   = wp_strip_all_tags( html_entity_decode( $p['title']['rendered'], ENT_QUOTES, 'UTF-8' ) );
+	$content = (string) $p['content']['rendered'];
+	$short   = substr( sanitize_title( $p['slug'] ), 0, 40 );
+	$live    = preg_quote( wp_parse_url( smile_demo_live_site(), PHP_URL_HOST ), '#' );
+
+	// Copy inline images into this site's Media Library.
+	$n = 0;
+	if ( preg_match_all( '#<img[^>]+>#i', $content, $tags ) ) {
+		foreach ( $tags[0] as $tag ) {
+			if ( ! preg_match( '#src="(https?://(?:www\.)?' . $live . '/wp-content/uploads/[^"]+)"#i', $tag, $m ) ) {
+				continue;
+			}
+			$alt = preg_match( '#alt="([^"]*)"#i', $tag, $a ) ? html_entity_decode( $a[1], ENT_QUOTES, 'UTF-8' ) : '';
+			$src = preg_replace( '#-\d+x\d+(\.[a-z]+)$#i', '$1', $m[1] ); // Prefer the original size.
+			++$n;
+			$ext = strtolower( pathinfo( wp_parse_url( $src, PHP_URL_PATH ), PATHINFO_EXTENSION ) );
+			$id  = smile_demo_sideload_once( $src, 'story-' . $short . '-' . $n . '.' . ( $ext ? $ext : 'jpg' ), $alt );
+			if ( ! $id && $src !== $m[1] ) {
+				$id = smile_demo_sideload_once( $m[1], 'story-' . $short . '-' . $n . '.' . ( $ext ? $ext : 'jpg' ), $alt );
+			}
+			if ( $id ) {
+				$new_tag = preg_replace( '#\s(srcset|sizes)="[^"]*"#i', '', $tag );
+				$new_tag = str_replace( $m[1], (string) wp_get_attachment_image_url( $id, 'large' ), $new_tag );
+				$new_tag = preg_replace( '#wp-image-\d+#', 'wp-image-' . $id, $new_tag );
+				$content = str_replace( $tag, $new_tag, $content );
+			}
+		}
+	}
+	// Point internal links at this site.
+	$content = preg_replace( '#https?://(?:www\.)?' . $live . '/(?!wp-content)#i', trailingslashit( home_url() ), $content );
+
+	$post_id = wp_insert_post(
+		wp_slash(
+			array(
+				'post_type'     => 'post',
+				'post_status'   => $status,
+				'post_title'    => $title,
+				'post_name'     => $p['slug'],
+				'post_content'  => wp_kses_post( $content ),
+				'post_excerpt'  => wp_strip_all_tags( html_entity_decode( $p['excerpt']['rendered'], ENT_QUOTES, 'UTF-8' ) ),
+				'post_date'     => $p['date'],
+				'post_date_gmt' => isset( $p['date_gmt'] ) ? $p['date_gmt'] : '',
+				'post_author'   => get_current_user_id(),
+			)
+		),
+		true
+	);
+	if ( is_wp_error( $post_id ) ) {
+		return 'FAILED story ' . $title . ': ' . $post_id->get_error_message();
+	}
+	update_post_meta( $post_id, '_smile_source_id', $live_id );
+	update_post_meta( $post_id, '_smile_source', esc_url_raw( $p['link'] ) );
+
+	// Categories.
+	$cats = array();
+	if ( ! empty( $p['_embedded']['wp:term'][0] ) ) {
+		foreach ( $p['_embedded']['wp:term'][0] as $term ) {
+			if ( 'uncategorized' === $term['slug'] ) {
+				continue;
+			}
+			$cats[] = (int) wp_create_category( html_entity_decode( $term['name'], ENT_QUOTES, 'UTF-8' ) );
+		}
+	}
+	if ( ! $cats ) {
+		$guide  = preg_match( '/^(how|what|why|best|debunking|meeting|the importance|the mental|5 things|is there)/i', $title );
+		$cats[] = (int) wp_create_category( $guide ? 'Guides' : 'Stories of Hope' );
+	}
+	wp_set_post_categories( $post_id, array_filter( $cats ) );
+
+	// Featured image (stock photos are left out on purpose).
+	if ( ! empty( $p['_embedded']['wp:featuredmedia'][0]['source_url'] ) ) {
+		$fm  = $p['_embedded']['wp:featuredmedia'][0];
+		$url = $fm['source_url'];
+		if ( false === stripos( $url, 'pexels' ) ) {
+			$ext = strtolower( pathinfo( wp_parse_url( $url, PHP_URL_PATH ), PATHINFO_EXTENSION ) );
+			$id  = smile_demo_sideload_once( $url, 'story-' . $short . '-cover.' . ( $ext ? $ext : 'jpg' ), isset( $fm['alt_text'] ) ? $fm['alt_text'] : '' );
+			if ( $id ) {
+				set_post_thumbnail( $post_id, $id );
+			}
+		}
+	}
+	return ( 'draft' === $status ? __( 'Story imported as DRAFT for safeguarding review: ', 'smile-community' ) : __( 'Story imported: ', 'smile-community' ) ) . $title;
 }

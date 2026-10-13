@@ -41,14 +41,31 @@ function smile_theme_setup() {
 add_action( 'after_setup_theme', 'smile_theme_setup', 20 );
 
 /**
- * Hello Elementor: keep its reset/theme CSS, skip its own header/footer CSS when ours is used.
+ * Hello Elementor must keep displaying a header and footer (our template-parts
+ * override its markup). Its own header/footer stylesheet is not needed.
  */
-add_filter( 'hello_elementor_header_footer', '__return_false' );
+add_filter( 'hello_elementor_header_footer', '__return_true' );
+add_filter( 'hello_elementor_enqueue_theme_style', '__return_true' );
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		wp_dequeue_style( 'hello-elementor-header-footer' );
+	},
+	30
+);
 
 /**
  * Enqueue styles and scripts.
  */
 function smile_theme_assets() {
+	if ( apply_filters( 'smile_load_google_fonts', true ) ) {
+		wp_enqueue_style(
+			'smile-fonts',
+			'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap',
+			array(),
+			null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+		);
+	}
 	$css = SMILE_THEME_DIR . '/assets/css/main.css';
 	$js  = SMILE_THEME_DIR . '/assets/js/main.js';
 
@@ -82,6 +99,22 @@ function smile_theme_assets() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'smile_theme_assets', 20 );
+
+/**
+ * Preconnect to Google Fonts.
+ *
+ * @param array  $urls          URLs.
+ * @param string $relation_type Relation.
+ * @return array
+ */
+function smile_theme_resource_hints( $urls, $relation_type ) {
+	if ( 'preconnect' === $relation_type && apply_filters( 'smile_load_google_fonts', true ) ) {
+		$urls[] = 'https://fonts.googleapis.com';
+		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
+	}
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'smile_theme_resource_hints', 10, 2 );
 
 /**
  * Editor styles so Gutenberg long-form posts look like the front end.

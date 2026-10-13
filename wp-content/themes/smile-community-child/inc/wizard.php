@@ -146,6 +146,9 @@ function smile_wizard_render() {
 				<div class="notice notice-warning inline"><p><?php esc_html_e( 'Take a backup first if this site already has content.', 'smile-community' ); ?></p></div>
 				<fieldset class="smile-wizard__opts">
 					<label><input type="checkbox" id="smile-o-images" checked> <?php esc_html_e( 'Import photographs', 'smile-community' ); ?></label>
+					<label><input type="checkbox" id="smile-o-posts" checked> <?php esc_html_e( 'Bring across the stories (blog posts) from smilecommunitycentre.org, with their photos. Off-topic posts are skipped; posts naming children are imported as drafts for review.', 'smile-community' ); ?></label>
+					<label><input type="checkbox" id="smile-o-cleanup" checked> <?php esc_html_e( 'Remove the WordPress sample post and sample page', 'smile-community' ); ?></label>
+					<label><input type="checkbox" id="smile-o-title" checked> <?php esc_html_e( 'Set the site title to "Smile Community Centre"', 'smile-community' ); ?></label>
 					<label><input type="checkbox" id="smile-o-overwrite"> <?php esc_html_e( 'Replace existing pages with the same address (old content kept as a revision). Tick this if the site is a copy of the old website.', 'smile-community' ); ?></label>
 					<label><input type="checkbox" id="smile-o-retire" checked> <?php esc_html_e( 'Move replaced old pages (Photos, Blog, Sitemap, HIV/AIDS) to Draft so redirects work', 'smile-community' ); ?></label>
 					<label><input type="checkbox" id="smile-o-kit" checked> <?php esc_html_e( 'Apply Smile colours and fonts to Elementor', 'smile-community' ); ?></label>
@@ -174,7 +177,7 @@ function smile_wizard_render() {
 			<ol>
 				<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=smile-centre' ) ); ?>"><?php esc_html_e( 'Check centre details', 'smile-community' ); ?></a> <?php esc_html_e( '(phones, M-Pesa, where form emails go).', 'smile-community' ); ?></li>
 				<li><?php esc_html_e( 'Set up email delivery in WP Mail SMTP, then send a test from the Contact form.', 'smile-community' ); ?></li>
-				<li><?php esc_html_e( 'Import the old blog posts: on the old site Tools > Export > Posts, here Tools > Import > WordPress.', 'smile-community' ); ?></li>
+				<li><a href="<?php echo esc_url( admin_url( 'edit.php?post_status=draft&post_type=post' ) ); ?>"><?php esc_html_e( 'Review the draft stories', 'smile-community' ); ?></a> <?php esc_html_e( '(they name children or adults; remove names or keep them unpublished).', 'smile-community' ); ?></li>
 				<li><?php esc_html_e( 'Elementor > Settings > Advanced: load Google Fonts locally.', 'smile-community' ); ?></li>
 				<li><?php esc_html_e( 'At launch: untick "Discourage search engines" in Settings > Reading.', 'smile-community' ); ?></li>
 			</ol>

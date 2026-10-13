@@ -224,7 +224,7 @@ img { max-width: 100%; height: auto; }
 .smile-hero .elementor-heading-title { color: var(--smile-white); }
 .smile-hero h1.elementor-heading-title { font-size: var(--smile-fs-h1); max-width: 15ch; }
 .smile-hero .smile-lead p { color: #F1F5F3; max-width: 46ch; }
-.smile-hero .elementor-background-overlay { background-image: linear-gradient(180deg, rgba(22,75,63,.15) 0%, rgba(22,75,63,.55) 55%, rgba(18,45,38,.9) 100%) !important; opacity: 1 !important; }
+.smile-hero .elementor-background-overlay { background-color: transparent !important; background-image: linear-gradient(180deg, rgba(22,75,63,.15) 0%, rgba(22,75,63,.55) 55%, rgba(18,45,38,.9) 100%) !important; opacity: 1 !important; }
 
 .smile-page-hero { background: var(--smile-cream); padding-block: var(--smile-s8) var(--smile-s7); }
 .smile-page-hero h1 { margin-bottom: var(--smile-s3); }
@@ -404,3 +404,51 @@ img { max-width: 100%; height: auto; }
 	.smile-nav__list .menu-item-has-children > a::after { display: none; }
 	.smile-sub-toggle { display: block; width: 48px; min-height: 48px; border: 0; border-bottom: 1px solid var(--smile-line); background: none; font-size: 1.4rem; color: var(--smile-forest); cursor: pointer; }
 }
+
+/* ---------- v1.1 fixes and polish ---------- */
+/* Button variants: beat Elementor kit/global button colours. */
+.elementor-widget-button.smile-btn-el .elementor-button { border-radius: 999px !important; padding: .85em 1.6em !important; font-weight: 700 !important; font-size: 1rem !important; min-height: 48px; border: 2px solid transparent; }
+.elementor-widget-button.smile-btn-el--sun .elementor-button { background-color: var(--smile-sun) !important; color: var(--smile-ink) !important; }
+.elementor-widget-button.smile-btn-el--sun .elementor-button:hover, .elementor-widget-button.smile-btn-el--sun .elementor-button:focus { background-color: var(--smile-sun-600) !important; color: var(--smile-ink) !important; }
+.elementor-widget-button.smile-btn-el--teal .elementor-button { background-color: var(--smile-teal) !important; color: var(--smile-white) !important; }
+.elementor-widget-button.smile-btn-el--teal .elementor-button:hover, .elementor-widget-button.smile-btn-el--teal .elementor-button:focus { background-color: var(--smile-forest) !important; }
+.elementor-widget-button.smile-btn-el--ghost .elementor-button { background-color: transparent !important; color: var(--smile-teal) !important; border-color: var(--smile-teal) !important; }
+.elementor-widget-button.smile-btn-el--ghost .elementor-button:hover { background-color: var(--smile-teal) !important; color: var(--smile-white) !important; }
+.elementor-widget-button.smile-btn-el--ghost-light .elementor-button { background-color: transparent !important; color: var(--smile-white) !important; border-color: rgba(255,255,255,.85) !important; }
+.elementor-widget-button.smile-btn-el--ghost-light .elementor-button:hover { background-color: var(--smile-white) !important; color: var(--smile-forest) !important; }
+.elementor-widget-button.smile-btn-el--link .elementor-button { background: none !important; color: var(--smile-teal) !important; padding: 0 !important; min-height: 0; border: 0; text-decoration: underline; text-underline-offset: .2em; font-size: var(--smile-fs-sm) !important; }
+.elementor-widget-button.smile-btn-el--link .elementor-button::after { content: " \2192"; text-decoration: none; display: inline-block; margin-left: .3em; }
+
+/* Consecutive buttons sit side by side. */
+.elementor-widget-button.smile-btn-el { width: auto !important; display: inline-block; margin-right: var(--smile-s3); }
+.smile-center .elementor-widget-button.smile-btn-el { margin-inline: var(--smile-s2); }
+.smile-center .elementor-widget-wrap { justify-content: center; text-align: center; }
+.smile-center .elementor-widget-text-editor p { max-width: 60ch; margin-inline: auto; }
+
+/* Hero layout. */
+.smile-hero { min-height: min(88vh, 780px) !important; }
+.smile-hero > .elementor-container { align-items: flex-end; padding-bottom: clamp(2.5rem, 6vw, 5rem); }
+.smile-hero .smile-eyebrow .elementor-heading-title { background: rgba(244,201,93,.16); padding: .35em .8em; border-radius: 999px; }
+.smile-hero .elementor-widget-text-editor { margin-bottom: var(--smile-s5); }
+
+/* Plain cards get a warm accent and consistent height. */
+.smile-card-col--plain > .elementor-widget-wrap { border-top: 4px solid var(--smile-sun) !important; }
+.smile-card-col--plain .elementor-widget-button:last-child { margin-top: auto; }
+.smile-card-col > .elementor-widget-wrap { display: flex; flex-direction: column; }
+.smile-card-col .elementor-widget-button.smile-btn-el--link { margin-top: auto; padding-bottom: var(--smile-s5); }
+
+/* Heading-only section directly above a card row. */
+.smile-sec--head { padding-bottom: 0 !important; }
+.smile-sec--head + .smile-sec, .smile-sec--head + .elementor-section { padding-top: var(--smile-s5) !important; }
+
+/* Section rhythm on small screens. */
+@media (max-width: 767px) {
+	.smile-sec { padding-block: var(--smile-s7) !important; }
+	.smile-hero h1.elementor-heading-title { font-size: clamp(2rem, 8vw, 2.6rem); }
+	.elementor-widget-button.smile-btn-el { display: block; margin: 0 0 var(--smile-s3) 0; }
+	.elementor-widget-button.smile-btn-el .elementor-button { width: 100%; justify-content: center; }
+}
+
+/* Quotes. */
+.smile-quote blockquote { position: relative; padding-top: var(--smile-s5); }
+.smile-quote blockquote::before { content: "\201C"; position: absolute; top: -.3em; left: 0; font-size: 3.5rem; line-height: 1; color: var(--smile-sun); font-family: var(--smile-font-display); }

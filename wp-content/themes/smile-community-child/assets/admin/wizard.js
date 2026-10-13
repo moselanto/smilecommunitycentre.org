@@ -57,9 +57,12 @@
 			var opts = { overwrite: opt( 'smile-o-overwrite' ), noindex: opt( 'smile-o-noindex' ) };
 			var steps = [];
 			if ( opt( 'smile-o-images' ) ) { cfg.images.forEach( function ( k ) { steps.push( 'image:' + k ); } ); }
+			if ( opt( 'smile-o-cleanup' ) ) { steps.push( 'cleanup' ); }
+			if ( opt( 'smile-o-title' ) ) { steps.push( 'sitetitle' ); }
 			steps.push( 'categories', 'pages' );
 			if ( opt( 'smile-o-retire' ) ) { steps.push( 'retire' ); }
 			steps.push( 'reading', 'menus', 'logo' );
+			if ( opt( 'smile-o-posts' ) ) { steps.push( 'posts-index' ); }
 			if ( opt( 'smile-o-kit' ) ) { steps.push( 'kit' ); }
 			steps.push( 'finish' );
 
@@ -92,6 +95,11 @@
 					li.textContent = msg;
 					if ( ! res.success || 0 === msg.indexOf( 'FAILED' ) ) { li.className = 'is-err'; errors++; }
 					log.appendChild( li );
+					if ( res.success && res.data && res.data.add_steps && res.data.add_steps.length ) {
+						var fin = steps.indexOf( 'finish' );
+						var at = fin > i ? fin : i + 1;
+						Array.prototype.splice.apply( steps, [ at, 0 ].concat( res.data.add_steps ) );
+					}
 					run( i + 1 );
 				} ).catch( function () {
 					var li = document.createElement( 'li' ); li.className = 'is-err'; li.textContent = steps[ i ] + ': ' + cfg.i18n.failed; log.appendChild( li ); errors++; run( i + 1 );
