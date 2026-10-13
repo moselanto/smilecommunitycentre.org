@@ -5141,7 +5141,7 @@
      "structure": "10",
      "background_background": "classic",
      "background_image": {
-      "url": "smile-img:volunteer",
+      "url": "smile-img:gift",
       "id": ""
      },
      "background_position": "center center",
@@ -5194,6 +5194,38 @@
         "settings": {
          "editor": "<p>Give, volunteer, partner, visit or donate goods. Every kind of help matters.</p>",
          "_css_classes": "smile-lead smile-measure"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "s5a01aa",
+    "elType": "section",
+    "isInner": false,
+    "settings": {
+     "gap": "extended",
+     "css_classes": "smile-sec smile-sec--pathnav",
+     "structure": "10"
+    },
+    "elements": [
+     {
+      "id": "c5a01aa0",
+      "elType": "column",
+      "isInner": false,
+      "settings": {
+       "_column_size": 100,
+       "_inline_size": null
+      },
+      "elements": [
+       {
+        "id": "5a01aaw",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_involve_nav]"
         },
         "elements": []
        }
@@ -5306,6 +5338,95 @@
       ]
      }
     ]
+   },
+   {
+    "id": "057a4g9",
+    "elType": "section",
+    "settings": {
+     "gap": "extended",
+     "css_classes": "smile-sec smile-sec--teal smile-center",
+     "content_position": "middle",
+     "structure": "10",
+     "_title": "CTA"
+    },
+    "elements": [
+     {
+      "id": "21882g9",
+      "elType": "column",
+      "settings": {
+       "_column_size": 100,
+       "_inline_size": null
+      },
+      "elements": [
+       {
+        "id": "effddg9",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Help a child stay safe, fed and in school",
+         "header_size": "h2"
+        },
+        "elements": []
+       },
+       {
+        "id": "59b44g9",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p>Your gift, your time or your organisation’s support makes daily care possible at Smile Community Centre.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "27e9eg9",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Donate Now",
+         "link": {
+          "url": "/donate/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "smile-btn-el smile-btn-el--sun"
+        },
+        "elements": []
+       },
+       {
+        "id": "8c74fg9",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Volunteer With Us",
+         "link": {
+          "url": "/volunteer/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
+        },
+        "elements": []
+       },
+       {
+        "id": "8c5c7g9",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Partner With Smile",
+         "link": {
+          "url": "/partner-with-us/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
+        },
+        "elements": []
+       }
+      ],
+      "isInner": false
+     }
+    ],
+    "isInner": false
    }
   ],
   "html": "<section><p>Get involved</p><h1>Join the people who make Smile possible</h1><p>Give, volunteer, partner, visit or donate goods. Every kind of help matters.</p><p><img src=\"smile-img:volunteer\" alt=\"A volunteer spending time with children at the centre\"></p></section><section><h3>Donate</h3><p>Give by M-Pesa in a few steps and choose what you would like to support.</p><p><a href=\"/donate/\">Donate Now</a></p><h3>Volunteer</h3><p>Bring your skills to the centre, from teaching to cooking to fundraising.</p><p><a href=\"/volunteer/\">Volunteer With Us</a></p><h3>Partner</h3><p>Companies, schools, churches and groups can support education, food and outreach.</p><p><a href=\"/partner-with-us/\">Partner With Smile</a></p></section><section><h3>Donate goods</h3><p>Food, clothes, books, stationery and sports equipment. Extra clothes are shared with families in need, never sold.</p><p><a href=\"/contact-us/\">Contact the Centre</a></p><h3>Visit</h3><p>Visits are welcome by arrangement. Please call or WhatsApp us first.</p><p><a href=\"/contact-us/\">Plan a visit</a></p><h3>Spread the word</h3><p>Follow us on Instagram and share our stories with friends.</p><p><a href=\"/stories/\">Read our stories</a></p></section>"
@@ -5328,7 +5449,7 @@
      "structure": "10",
      "background_background": "classic",
      "background_image": {
-      "url": "smile-img:volunteer",
+      "url": "smile-img:education",
       "id": ""
      },
      "background_position": "center center",
@@ -5389,89 +5510,121 @@
     ]
    },
    {
-    "id": "6bae4b5",
+    "id": "s5b01aa",
     "elType": "section",
+    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--tight",
-     "content_position": "middle",
+     "css_classes": "smile-sec smile-sec--pathnav",
      "structure": "10"
     },
     "elements": [
      {
-      "id": "844a703",
+      "id": "c5b01aa0",
       "elType": "column",
+      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
       },
       "elements": [
        {
-        "id": "e77ffe4",
+        "id": "5b01aaw",
         "elType": "widget",
         "widgetType": "shortcode",
         "settings": {
-         "shortcode": "[smile_volunteer_notice]"
+         "shortcode": "[smile_involve_nav]"
         },
         "elements": []
        }
-      ],
-      "isInner": false
+      ]
      }
-    ],
-    "isInner": false
+    ]
    },
    {
-    "id": "26debfd",
+    "id": "s5b02aa",
     "elType": "section",
+    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec",
-     "content_position": "middle",
-     "structure": "20"
+     "structure": "10"
     },
     "elements": [
      {
-      "id": "e0cfab4",
+      "id": "c5b02aa0",
       "elType": "column",
+      "isInner": false,
       "settings": {
-       "_column_size": 50,
+       "_column_size": 100,
        "_inline_size": null
       },
       "elements": [
        {
-        "id": "d3bf6d0",
+        "id": "5b02ab",
         "elType": "widget",
         "widgetType": "heading",
         "settings": {
          "title": "Ways to volunteer",
+         "header_size": "p",
+         "_css_classes": "smile-eyebrow"
+        },
+        "elements": []
+       },
+       {
+        "id": "5b02ac",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+         "title": "Find the role that <em>fits you</em>",
          "header_size": "h2"
         },
         "elements": []
        },
        {
-        "id": "eaefc4d",
+        "id": "5b02ad",
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<ul><li>Teaching and tutoring</li><li>Mentoring young people</li><li>Counselling (for qualified volunteers)</li><li>Organising youth activities and community awareness events with our staff</li><li>Proposal writing and record keeping</li><li>Online and community fundraising</li><li>Sports coaching</li><li>Cooking, cleaning and daily care alongside staff</li><li>Welcoming visitors</li></ul><p>If you have other ideas for Smile, please tell us.</p>",
-         "_css_classes": "smile-ticks"
+         "editor": "<p>Whether you can give a morning or a few months, there is a place for your skills at Smile.</p>",
+         "_css_classes": "smile-lead smile-measure"
+        },
+        "elements": []
+       },
+       {
+        "id": "5b02ae",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_roles]"
         },
         "elements": []
        }
-      ],
-      "isInner": false
-     },
+      ]
+     }
+    ]
+   },
+   {
+    "id": "s5b03aa",
+    "elType": "section",
+    "isInner": false,
+    "settings": {
+     "gap": "extended",
+     "css_classes": "smile-sec smile-sec--cream smile-sec--fit",
+     "structure": "20"
+    },
+    "elements": [
      {
-      "id": "8825ae5",
+      "id": "c5b03aa0",
       "elType": "column",
+      "isInner": false,
       "settings": {
        "_column_size": 50,
-       "_inline_size": null
+       "_inline_size": 50.0
       },
       "elements": [
        {
-        "id": "806c10b",
+        "id": "5b03ab",
         "elType": "widget",
         "widgetType": "heading",
         "settings": {
@@ -5481,41 +5634,27 @@
         "elements": []
        },
        {
-        "id": "2179b37",
+        "id": "5b03ac",
         "elType": "widget",
-        "widgetType": "text-editor",
+        "widgetType": "shortcode",
         "settings": {
-         "editor": "<ul><li>Aged 18 or over</li><li>Good communication and listening skills</li><li>Patience, and care for people with special needs</li><li>Basic knowledge of HIV/AIDS, with zero discrimination towards anyone affected</li><li>A real interest in helping people in need</li></ul>",
-         "_css_classes": "smile-ticks"
+         "shortcode": "[smile_lookfor]"
         },
         "elements": []
        }
-      ],
-      "isInner": false
-     }
-    ],
-    "isInner": false
-   },
-   {
-    "id": "df70301",
-    "elType": "section",
-    "settings": {
-     "gap": "extended",
-     "css_classes": "smile-sec smile-sec--cream",
-     "content_position": "middle",
-     "structure": "10"
-    },
-    "elements": [
+      ]
+     },
      {
-      "id": "04c9d78",
+      "id": "c5b03aa1",
       "elType": "column",
+      "isInner": false,
       "settings": {
-       "_column_size": 100,
-       "_inline_size": null
+       "_column_size": 50,
+       "_inline_size": 50.0
       },
       "elements": [
        {
-        "id": "8604871",
+        "id": "5b03ad",
         "elType": "widget",
         "widgetType": "heading",
         "settings": {
@@ -5525,20 +5664,18 @@
         "elements": []
        },
        {
-        "id": "82b3359",
+        "id": "5b03ae",
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Children’s safety comes first. Every volunteer signs a volunteer agreement and is expected to:</p><ul><li>Follow staff guidance at all times and never be alone with a child out of sight of staff.</li><li>Never photograph, film or post about children without the centre’s permission, and never share children’s names, locations or stories online.</li><li>Never give children personal contact details or contact them outside the centre.</li><li>Treat every child and community member with dignity and respect.</li><li>Report any concern about a child’s safety to the centre’s management immediately.</li></ul><p>We may ask for references or a police clearance certificate as part of our approval process. We will explain how to share these securely. Please do not send identity documents through the form below.</p>",
-         "_css_classes": "smile-ticks smile-measure"
+         "_css_classes": "smile-ticks smile-safecard"
         },
         "elements": []
        }
-      ],
-      "isInner": false
+      ]
      }
-    ],
-    "isInner": false
+    ]
    },
    {
     "id": "9271a86",
@@ -5589,7 +5726,8 @@
      "gap": "extended",
      "css_classes": "smile-sec",
      "content_position": "middle",
-     "structure": "20"
+     "structure": "20",
+     "css_id": "apply"
     },
     "elements": [
      {
@@ -5737,6 +5875,38 @@
     ]
    },
    {
+    "id": "s5c01aa",
+    "elType": "section",
+    "isInner": false,
+    "settings": {
+     "gap": "extended",
+     "css_classes": "smile-sec smile-sec--pathnav",
+     "structure": "10"
+    },
+    "elements": [
+     {
+      "id": "c5c01aa0",
+      "elType": "column",
+      "isInner": false,
+      "settings": {
+       "_column_size": 100,
+       "_inline_size": null
+      },
+      "elements": [
+       {
+        "id": "5c01aaw",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_involve_nav]"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   },
+   {
     "id": "aead44b",
     "elType": "section",
     "settings": {
@@ -5770,6 +5940,15 @@
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p>These are areas where partners can make a lasting difference. They are opportunities, not existing arrangements.</p>"
+        },
+        "elements": []
+       },
+       {
+        "id": "5c02aa",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_partner_types]"
         },
         "elements": []
        }
@@ -6238,6 +6417,38 @@
         "settings": {
          "editor": "<p>Your donation directly supports a child’s daily life: shelter, meals, school and medical care.</p>",
          "_css_classes": "smile-lead smile-measure"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "s5d01aa",
+    "elType": "section",
+    "isInner": false,
+    "settings": {
+     "gap": "extended",
+     "css_classes": "smile-sec smile-sec--pathnav",
+     "structure": "10"
+    },
+    "elements": [
+     {
+      "id": "c5d01aa0",
+      "elType": "column",
+      "isInner": false,
+      "settings": {
+       "_column_size": 100,
+       "_inline_size": null
+      },
+      "elements": [
+       {
+        "id": "5d01aaw",
+        "elType": "widget",
+        "widgetType": "shortcode",
+        "settings": {
+         "shortcode": "[smile_involve_nav]"
         },
         "elements": []
        }

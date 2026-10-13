@@ -502,3 +502,86 @@ add_shortcode(
 		return $out . '</ul>';
 	}
 );
+
+
+/* ---------- Get involved: shared pathway navigation ---------- */
+add_shortcode(
+	'smile_involve_nav',
+	function () {
+		$paths = array(
+			array( 'get-involved', 'hands', __( 'Get involved', 'smile-community' ), __( 'Every way to help', 'smile-community' ) ),
+			array( 'donate', 'heart', __( 'Donate', 'smile-community' ), __( 'M-Pesa, bank or online', 'smile-community' ) ),
+			array( 'volunteer', 'users', __( 'Volunteer', 'smile-community' ), __( 'Share your time and skills', 'smile-community' ) ),
+			array( 'partner-with-us', 'building', __( 'Partner with us', 'smile-community' ), __( 'Companies, schools, groups', 'smile-community' ) ),
+		);
+		$out = '<nav class="smile-pathnav" aria-label="' . esc_attr__( 'Ways to support Smile', 'smile-community' ) . '"><ul>';
+		foreach ( $paths as $pt ) {
+			$on   = is_page( $pt[0] );
+			$out .= '<li><a class="smile-pathnav__item' . ( $on ? ' is-current' : '' ) . '" href="' . smile_link( '/' . $pt[0] . '/' ) . '"' . ( $on ? ' aria-current="page"' : '' ) . '>' . smile_icon( $pt[1] ) . '<span><strong>' . esc_html( $pt[2] ) . '</strong><small>' . esc_html( $pt[3] ) . '</small></span></a></li>';
+		}
+		return $out . '</ul></nav>';
+	}
+);
+
+/* ---------- Volunteer: role cards ---------- */
+add_shortcode(
+	'smile_roles',
+	function () {
+		$roles = array(
+			array( 'book', __( 'Teaching and tutoring', 'smile-community' ) ),
+			array( 'users', __( 'Mentoring young people', 'smile-community' ) ),
+			array( 'chat', __( 'Counselling', 'smile-community' ), __( 'For qualified volunteers', 'smile-community' ) ),
+			array( 'calendar', __( 'Youth activities and community awareness events', 'smile-community' ), __( 'Organised with our staff', 'smile-community' ) ),
+			array( 'receipt', __( 'Proposal writing and record keeping', 'smile-community' ) ),
+			array( 'heart', __( 'Online and community fundraising', 'smile-community' ) ),
+			array( 'ball', __( 'Sports coaching', 'smile-community' ) ),
+			array( 'bowl', __( 'Cooking, cleaning and daily care', 'smile-community' ), __( 'Alongside our staff', 'smile-community' ) ),
+			array( 'home', __( 'Welcoming visitors', 'smile-community' ) ),
+		);
+		$out = '<ul class="smile-roles">';
+		foreach ( $roles as $i => $r ) {
+			$out .= '<li class="smile-roles__item smile-reveal" style="--i:' . (int) ( $i % 3 ) . '"><span class="smile-roles__n" aria-hidden="true">' . esc_html( sprintf( '%02d', $i + 1 ) ) . '</span>' . smile_icon( $r[0], 'smile-roles__icon' ) . '<strong>' . esc_html( $r[1] ) . '</strong>' . ( isset( $r[2] ) ? '<small>' . esc_html( $r[2] ) . '</small>' : '' ) . '</li>';
+		}
+		$out .= '<li class="smile-roles__item smile-roles__item--idea smile-reveal"><strong>' . esc_html__( 'Have another idea?', 'smile-community' ) . '</strong><small>' . esc_html__( 'Tell us in the form below. We are always glad to hear it.', 'smile-community' ) . '</small><a href="#apply" class="smile-roles__link">' . esc_html__( 'Apply or express interest', 'smile-community' ) . ' &rarr;</a></li>';
+		return $out . '</ul>';
+	}
+);
+
+/* ---------- Volunteer: what we look for ---------- */
+add_shortcode(
+	'smile_lookfor',
+	function () {
+		$items = array(
+			__( 'Aged 18 or over', 'smile-community' ),
+			__( 'Good communication and listening skills', 'smile-community' ),
+			__( 'Patience, and care for people with special needs', 'smile-community' ),
+			__( 'Basic knowledge of HIV/AIDS, with zero discrimination towards anyone affected', 'smile-community' ),
+			__( 'A real interest in helping people in need', 'smile-community' ),
+		);
+		$out = '<ul class="smile-lookfor">';
+		foreach ( $items as $it ) {
+			$out .= '<li>' . smile_icon( 'check' ) . '<span>' . esc_html( $it ) . '</span></li>';
+		}
+		return $out . '</ul>';
+	}
+);
+
+/* ---------- Partner: who we work with ---------- */
+add_shortcode(
+	'smile_partner_types',
+	function () {
+		$types = array(
+			array( 'building', __( 'Companies', 'smile-community' ) ),
+			array( 'book', __( 'Schools and universities', 'smile-community' ) ),
+			array( 'home', __( 'Churches', 'smile-community' ) ),
+			array( 'users', __( 'Community groups', 'smile-community' ) ),
+			array( 'hands', __( 'NGOs and foundations', 'smile-community' ) ),
+			array( 'heart', __( 'Individual supporters', 'smile-community' ) ),
+		);
+		$out = '<ul class="smile-ptypes" aria-label="' . esc_attr__( 'Who we work with', 'smile-community' ) . '">';
+		foreach ( $types as $t ) {
+			$out .= '<li>' . smile_icon( $t[0] ) . esc_html( $t[1] ) . '</li>';
+		}
+		return $out . '</ul>';
+	}
+);
