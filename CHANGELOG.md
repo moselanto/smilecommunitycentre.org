@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.23.1
+- "Read all reviews on Google" now opens the reviews panel of the centre's Google listing directly.
+
 ## 2.23.0
 - "What people say / Voices from our community" (Our Impact and Get Involved pages) now uses real Google reviews: Melissa Nz, Eugene Emmanuel and Maureen Ngobili (all 5 stars). Added a rating summary bar: 4.7 out of 5 from 111 Google reviews, with a "Read all reviews on Google" link (https://share.google/xseS4IIjXcfL36FcG). Rating checked 13 Oct 2026.
 
