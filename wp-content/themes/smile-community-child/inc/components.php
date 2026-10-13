@@ -134,6 +134,11 @@ add_shortcode(
 				array( __( 'Plan together', 'smile-community' ), __( 'We agree what is most useful for the children and how it will work.', 'smile-community' ) ),
 				array( __( 'Make it happen', 'smile-community' ), __( 'Your support reaches the children, and we keep you updated.', 'smile-community' ) ),
 			),
+			'concern'   => array(
+				array( __( 'Tell us', 'smile-community' ), __( 'Call, WhatsApp or email the centre, or use the form. Share only what you know.', 'smile-community' ) ),
+				array( __( 'We listen in confidence', 'smile-community' ), __( 'The centre’s management reviews every concern promptly and privately.', 'smile-community' ) ),
+				array( __( 'We act to protect the child', 'smile-community' ), __( 'Where a child may be at risk, we work with the children’s office and police, as we do for every referral.', 'smile-community' ) ),
+			),
 			'donate'    => array(
 				array( __( 'Open M-Pesa', 'smile-community' ), __( 'Choose Lipa na M-Pesa, then Pay Bill.', 'smile-community' ) ),
 				array( __( 'Enter our details', 'smile-community' ), __( 'Paybill and account number are shown on this page.', 'smile-community' ) ),
@@ -231,3 +236,59 @@ function smile_tidy_excerpt( $excerpt, $post = null ) {
 	return wp_trim_words( wp_strip_all_tags( strip_shortcodes( $text ) ), 32, '…' );
 }
 add_filter( 'get_the_excerpt', 'smile_tidy_excerpt', 20, 2 );
+
+
+/* ---------- Safeguarding components ---------- */
+add_shortcode(
+	'smile_commitments',
+	function () {
+		$items = array(
+			array( 'shield', __( 'Authorised care only', 'smile-community' ), __( 'We care for a child only with the authorisation required by the police, the courts or the children’s office.', 'smile-community' ) ),
+			array( 'users', __( 'Privacy protected', 'smile-community' ), __( 'We never publish children’s full names, personal histories, schools or details that could identify them.', 'smile-community' ) ),
+			array( 'star', __( 'Photos with permission', 'smile-community' ), __( 'We share photographs only with permission and remove location data from every image on this website.', 'smile-community' ) ),
+			array( 'home', __( 'No public child profiles', 'smile-community' ), __( 'There are no child profiles on this website, and no way to contact a child directly through it.', 'smile-community' ) ),
+			array( 'hands', __( 'Supervised visits', 'smile-community' ), __( 'Visitors and volunteers follow a code of conduct and are supervised by staff at all times.', 'smile-community' ) ),
+			array( 'heart', __( 'Dignity in every story', 'smile-community' ), __( 'We do not use distressing images or stories to pressure anyone to give.', 'smile-community' ) ),
+		);
+		$out = '<ul class="smile-commit">';
+		foreach ( $items as $i => $it ) {
+			$out .= '<li class="smile-reveal" style="--i:' . (int) ( $i % 3 ) . '">' . smile_icon( $it[0] ) . '<h3>' . esc_html( $it[1] ) . '</h3><p>' . esc_html( $it[2] ) . '</p></li>';
+		}
+		return $out . '</ul>';
+	}
+);
+
+add_shortcode(
+	'smile_urgent',
+	function () {
+		$phone = smile_setting( 'phone_primary', '0721 318 869' );
+		return '<div class="smile-urgent" role="note"><div class="smile-urgent__lead">' . smile_icon( 'shield' ) . '<div><p class="smile-urgent__kicker">' . esc_html__( 'If a child is in immediate danger', 'smile-community' ) . '</p><p class="smile-urgent__title">' . esc_html__( 'Call for help now. Do not wait to fill in a form.', 'smile-community' ) . '</p></div></div>'
+			. '<div class="smile-urgent__actions">'
+			. '<a class="smile-urgent__btn smile-urgent__btn--main" href="tel:116"><strong>116</strong><span>' . esc_html__( 'Childline Kenya, free, 24 hours', 'smile-community' ) . '</span></a>'
+			. '<a class="smile-urgent__btn" href="tel:999"><strong>999 / 112</strong><span>' . esc_html__( 'Police emergency', 'smile-community' ) . '</span></a>'
+			. '<a class="smile-urgent__btn" href="' . esc_url( smile_tel_href( $phone ) ) . '"><strong>' . esc_html( $phone ) . '</strong><span>' . esc_html__( 'Smile Community Centre', 'smile-community' ) . '</span></a>'
+			. '</div></div>';
+	}
+);
+
+add_shortcode(
+	'smile_concern_contacts',
+	function () {
+		$phone = smile_setting( 'phone_primary', '0721 318 869' );
+		$wa    = preg_replace( '/\D/', '', smile_setting( 'whatsapp', '254721318869' ) );
+		$email = smile_setting( 'email', 'info@smilecommunitycentre.org' );
+		$rows  = array(
+			array( 'phone', __( 'Call the centre', 'smile-community' ), $phone, smile_tel_href( $phone ) ),
+			array( 'chat', __( 'WhatsApp', 'smile-community' ), __( 'Message us privately', 'smile-community' ), $wa ? 'https://wa.me/' . $wa : '' ),
+			array( 'mail', __( 'Email', 'smile-community' ), antispambot( $email ), 'mailto:' . antispambot( $email ) ),
+		);
+		$out = '<ul class="smile-cc">';
+		foreach ( $rows as $r ) {
+			if ( ! $r[3] ) {
+				continue;
+			}
+			$out .= '<li><a href="' . esc_url( $r[3] ) . '"' . ( 0 === strpos( $r[3], 'http' ) ? ' rel="noopener"' : '' ) . '>' . smile_icon( $r[0] ) . '<span><small>' . esc_html( $r[1] ) . '</small><strong>' . esc_html( $r[2] ) . '</strong></span><span class="smile-cc__arrow" aria-hidden="true">&rarr;</span></a></li>';
+		}
+		return $out . '</ul><p class="smile-cc__note">' . smile_icon( 'shield' ) . esc_html__( 'Concerns are handled confidentially by the centre’s management.', 'smile-community' ) . '</p>';
+	}
+);
