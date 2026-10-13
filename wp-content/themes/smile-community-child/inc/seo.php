@@ -76,6 +76,10 @@ function smile_seo_current_url() {
  * @return string
  */
 function smile_seo_description() {
+	$resolved = smile_seo_resolve( 'desc' );
+	if ( '' !== $resolved ) {
+		return $resolved;
+	}
 	$id   = get_queried_object_id();
 	$desc = '';
 	if ( $id && ( is_singular() || is_home() ) ) {
@@ -375,7 +379,7 @@ add_action( 'wp_head', 'smile_seo_print_schema', 30 );
  * Meta description, Open Graph and Twitter card fallback.
  */
 function smile_seo_fallback_meta() {
-	if ( smile_seo_plugin_active() || is_admin() ) {
+	if ( smile_seo_plugin_handles_meta() || is_admin() ) {
 		return;
 	}
 	$desc  = smile_seo_description();
@@ -488,10 +492,183 @@ add_action( 'admin_init', 'smile_seo_sync_meta' );
  * @return string
  */
 function smile_seo_document_title( $title ) {
-	if ( smile_seo_plugin_active() || ! is_singular() && ! is_front_page() ) {
-		return $title;
-	}
-	$custom = (string) get_post_meta( get_queried_object_id(), '_seopress_titles_title', true );
-	return '' !== $custom ? $custom : $title;
+	$t = smile_seo_resolve( 'title' );
+	return '' !== $t ? $t : $title;
 }
-add_filter( 'pre_get_document_title', 'smile_seo_document_title', 20 );
+add_filter( 'pre_get_document_title', 'smile_seo_document_title', 99 );
+
+
+/* -------------------------------------------------------------------------
+ * Title and description for every page, story and topic
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Is SEOPress (or another SEO plugin) actively printing titles and meta descriptions?
+ *
+ * @return bool
+ */
+function smile_seo_plugin_handles_meta() {
+	if ( defined( 'SEOPRESS_VERSION' ) ) {
+		$toggle = get_option( 'seopress_toggle' );
+		return is_array( $toggle ) && ! empty( $toggle['toggle-titles'] );
+	}
+	return defined( 'WPSEO_VERSION' ) || class_exists( 'RankMath' ) || defined( 'AIOSEO_VERSION' );
+}
+
+/**
+ * Theme titles and descriptions keyed by page slug, from demo/pages.json.
+ *
+ * @return array slug => [title, desc]
+ */
+function smile_seo_theme_map() {
+	static $map = null;
+	if ( null !== $map ) {
+		return $map;
+	}
+	$map  = array();
+	$file = SMILE_THEME_DIR . '/demo/pages.json';
+	$rows = json_decode( (string) file_get_contents( $file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local theme file.
+	foreach ( (array) $rows as $row ) {
+		if ( ! empty( $row['slug'] ) ) {
+			$map[ $row['slug'] ] = array( (string) ( $row['seo_title'] ?? '' ), (string) ( $row['seo_desc'] ?? '' ) );
+		}
+	}
+	return $map;
+}
+
+/**
+ * Older theme-written values (safe to replace).
+ *
+ * @param string $field title|desc.
+ * @return array
+ */
+function smile_seo_old_values( $field ) {
+	static $hist = null;
+	if ( null === $hist ) {
+		$hist = json_decode( (string) file_get_contents( SMILE_THEME_DIR . '/demo/seo-history.json' ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local theme file.
+		$hist = is_array( $hist ) ? $hist : array();
+	}
+	$key = 'title' === $field ? 'titles' : 'descs';
+	return isset( $hist[ $key ] ) ? (array) $hist[ $key ] : array();
+}
+
+/**
+ * Shorten to a limit on a word boundary.
+ *
+ * @param string $text  Text.
+ * @param int    $limit Characters.
+ * @return string
+ */
+function smile_seo_clip( $text, $limit ) {
+	$text = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( html_entity_decode( (string) $text, ENT_QUOTES, 'UTF-8' ) ) ) );
+	if ( mb_strlen( $text ) <= $limit ) {
+		return $text;
+	}
+	$cut = mb_substr( $text, 0, $limit - 1 );
+	$cut = preg_replace( '/\s+\S*$/u', '', $cut );
+	return rtrim( $cut, ' ,;:-' ) . '…';
+}
+
+/**
+ * Best title or description for the current view.
+ *
+ * Order: a value typed by hand in SEOPress wins; then the theme's keyword-mapped
+ * value for its pages; then a pattern for stories and topics.
+ *
+ * @param string $field title|desc.
+ * @return string Empty when WordPress should use its default.
+ */
+function smile_seo_resolve( $field ) {
+	if ( is_admin() || is_feed() ) {
+		return '';
+	}
+	$meta_key = 'title' === $field ? '_seopress_titles_title' : '_seopress_titles_desc';
+	$site     = 'Smile Community Centre';
+
+	// Pages (including the front page and the Stories page).
+	$page_id = 0;
+	if ( is_front_page() && 'page' === get_option( 'show_on_front' ) ) {
+		$page_id = (int) get_option( 'page_on_front' );
+	} elseif ( is_home() ) {
+		$page_id = (int) get_option( 'page_for_posts' );
+	} elseif ( is_page() ) {
+		$page_id = get_queried_object_id();
+	}
+	if ( $page_id ) {
+		$custom = trim( (string) get_post_meta( $page_id, $meta_key, true ) );
+		if ( '' !== $custom && ! in_array( $custom, smile_seo_old_values( $field ), true ) && false === strpos( $custom, '%%' ) ) {
+			return $custom;
+		}
+		$slug = get_post_field( 'post_name', $page_id );
+		if ( is_front_page() ) {
+			$slug = 'home';
+		}
+		$map = smile_seo_theme_map();
+		if ( isset( $map[ $slug ] ) ) {
+			$value = 'title' === $field ? $map[ $slug ][0] : $map[ $slug ][1];
+			if ( '' !== $value ) {
+				return $value;
+			}
+		}
+		if ( 'title' === $field ) {
+			return smile_seo_clip( get_the_title( $page_id ) . ' | ' . $site, 60 );
+		}
+		return smile_seo_clip( get_post_field( 'post_excerpt', $page_id ) ? get_post_field( 'post_excerpt', $page_id ) : __( 'Smile Community Centre Children\'s Home in Soweto, Kayole, Nairobi, Kenya.', 'smile-community' ), 158 );
+	}
+
+	// Stories.
+	if ( is_singular( 'post' ) ) {
+		$id     = get_queried_object_id();
+		$custom = trim( (string) get_post_meta( $id, $meta_key, true ) );
+		if ( '' !== $custom && false === strpos( $custom, '%%' ) ) {
+			return $custom;
+		}
+		if ( 'title' === $field ) {
+			$title = wp_strip_all_tags( get_the_title( $id ) );
+			return mb_strlen( $title . ' | Smile' ) <= 60 ? $title . ' | Smile' : smile_seo_clip( $title, 60 );
+		}
+		$excerpt = get_post_field( 'post_excerpt', $id );
+		if ( '' === trim( (string) $excerpt ) ) {
+			$excerpt = get_post_field( 'post_content', $id );
+		}
+		return smile_seo_clip( strip_shortcodes( (string) $excerpt ), 158 );
+	}
+
+	// Topics.
+	if ( is_category() ) {
+		$name = function_exists( 'smile_cat_label' ) ? smile_cat_label( single_cat_title( '', false ) ) : single_cat_title( '', false );
+		if ( 'title' === $field ) {
+			return smile_seo_clip( $name . ' | Stories from Smile Community Centre', 60 );
+		}
+		$desc = wp_strip_all_tags( term_description() );
+		/* translators: %s topic */
+		return smile_seo_clip( '' !== trim( $desc ) ? $desc : sprintf( __( 'Stories and guides about %s from Smile Community Centre Children\'s Home in Soweto, Kayole, Nairobi, Kenya.', 'smile-community' ), mb_strtolower( $name ) ), 158 );
+	}
+
+	return '';
+}
+
+/**
+ * Feed the same values to SEOPress, so its title tag, meta description and
+ * social tags all match.
+ *
+ * @param string $value SEOPress value.
+ * @return string
+ */
+function smile_seo_seopress_title( $value ) {
+	$t = smile_seo_resolve( 'title' );
+	return '' !== $t ? $t : $value;
+}
+add_filter( 'seopress_titles_title', 'smile_seo_seopress_title', 99 );
+
+/**
+ * SEOPress meta description.
+ *
+ * @param string $value SEOPress value.
+ * @return string
+ */
+function smile_seo_seopress_desc( $value ) {
+	$d = smile_seo_resolve( 'desc' );
+	return '' !== $d ? $d : $value;
+}
+add_filter( 'seopress_titles_desc', 'smile_seo_seopress_desc', 99 );
