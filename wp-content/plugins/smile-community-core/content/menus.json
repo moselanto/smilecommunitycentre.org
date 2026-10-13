@@ -1,0 +1,190 @@
+[
+ {
+  "name": "Main menu",
+  "location": "menu-1",
+  "items": [
+   {
+    "title": "Home",
+    "page": "home"
+   },
+   {
+    "title": "About Us",
+    "page": "about-us",
+    "children": [
+     {
+      "title": "Our Story",
+      "page": "about-us"
+     },
+     {
+      "title": "Our Founder",
+      "page": "our-founder"
+     },
+     {
+      "title": "Mission and Goals",
+      "page": "our-goals"
+     },
+     {
+      "title": "Safeguarding",
+      "page": "safeguarding"
+     },
+     {
+      "title": "FAQ",
+      "page": "faq-page"
+     }
+    ]
+   },
+   {
+    "title": "Our Programmes",
+    "page": "our-programmes",
+    "children": [
+     {
+      "title": "All Programmes",
+      "page": "our-programmes"
+     },
+     {
+      "title": "Education",
+      "page": "education-program"
+     },
+     {
+      "title": "Feeding Programme",
+      "page": "feeding-program"
+     },
+     {
+      "title": "Child Care and Shelter",
+      "page": "child-care-and-shelter"
+     },
+     {
+      "title": "Health and Wellbeing",
+      "page": "health-and-wellbeing"
+     },
+     {
+      "title": "Sports and Talent",
+      "page": "sports"
+     }
+    ]
+   },
+   {
+    "title": "Our Impact",
+    "page": "our-impact",
+    "children": [
+     {
+      "title": "Our Impact",
+      "page": "our-impact"
+     },
+     {
+      "title": "Gallery",
+      "page": "gallery"
+     }
+    ]
+   },
+   {
+    "title": "Stories & News",
+    "page": "stories"
+   },
+   {
+    "title": "Get Involved",
+    "page": "get-involved",
+    "children": [
+     {
+      "title": "Ways to Help",
+      "page": "get-involved"
+     },
+     {
+      "title": "Donate",
+      "page": "donate"
+     },
+     {
+      "title": "Volunteer",
+      "page": "volunteer"
+     },
+     {
+      "title": "Partner With Us",
+      "page": "partner-with-us"
+     }
+    ]
+   },
+   {
+    "title": "Contact",
+    "page": "contact-us"
+   }
+  ]
+ },
+ {
+  "name": "Footer menu",
+  "location": "menu-2",
+  "items": [
+   {
+    "title": "About Us",
+    "page": "about-us"
+   },
+   {
+    "title": "Our Impact",
+    "page": "our-impact"
+   },
+   {
+    "title": "Stories & News",
+    "page": "stories"
+   },
+   {
+    "title": "Volunteer",
+    "page": "volunteer"
+   },
+   {
+    "title": "Partner With Us",
+    "page": "partner-with-us"
+   },
+   {
+    "title": "Donate",
+    "page": "donate"
+   },
+   {
+    "title": "Contact",
+    "page": "contact-us"
+   }
+  ]
+ },
+ {
+  "name": "Footer programmes",
+  "location": "smile-footer-programmes",
+  "items": [
+   {
+    "title": "Education",
+    "page": "education-program"
+   },
+   {
+    "title": "Feeding Programme",
+    "page": "feeding-program"
+   },
+   {
+    "title": "Child Care and Shelter",
+    "page": "child-care-and-shelter"
+   },
+   {
+    "title": "Health and Wellbeing",
+    "page": "health-and-wellbeing"
+   },
+   {
+    "title": "Sports and Talent",
+    "page": "sports"
+   }
+  ]
+ },
+ {
+  "name": "Footer legal",
+  "location": "smile-footer-legal",
+  "items": [
+   {
+    "title": "Privacy Policy",
+    "page": "privacy-policy"
+   },
+   {
+    "title": "Safeguarding",
+    "page": "safeguarding"
+   },
+   {
+    "title": "FAQ",
+    "page": "faq-page"
+   }
+  ]
+ }
+]
