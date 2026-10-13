@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.19.1
+- **Smile curve toned down:** now used only under words an editor highlights in a heading (slimmer) and on the founder's signature. Removed from small labels, page banner titles, centred titles, the menu, the phone bar, story cards, impact figures and the footer; those return to clean straight lines or a small dot.
+
 ## 2.19.0
 - **Mobile menu redesign:** full-width panel with the logo at the top and a round close button; large airy links without boxes or dividers; rotating chevrons instead of +/-; sub-menus indented with a fine guide line; current page marked with the smile curve; staggered slide-in; Donate pill plus Call and WhatsApp quick buttons with icons. Phone bottom bar lighter and glassy, Donate button ringed in white.
 
