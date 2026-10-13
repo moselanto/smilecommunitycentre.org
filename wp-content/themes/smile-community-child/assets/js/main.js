@@ -80,11 +80,44 @@
 			btn.appendChild( srText );
 			btn.appendChild( sign );
 			link.insertAdjacentElement( 'afterend', btn );
-			btn.addEventListener( 'click', function () {
-				var open = btn.getAttribute( 'aria-expanded' ) !== 'true';
+			// Phones and tablets: a short "Overview" link to the parent page sits at the top of
+			// each sub-menu, so tapping the parent name can open the sub-menu instead.
+			var ov = document.createElement( 'li' );
+			ov.className = 'smile-sub-overview';
+			var ova = document.createElement( 'a' );
+			ova.href = link.href;
+			ova.textContent = ( i18n.overview || 'Overview' ) + ': ' + link.textContent.trim();
+			ov.appendChild( ova );
+			sub.insertBefore( ov, sub.firstChild );
+
+			function setSub( open ) {
 				btn.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
 				item.classList.toggle( 'is-open', open );
+			}
+			function toggleSub() {
+				var open = btn.getAttribute( 'aria-expanded' ) !== 'true';
+				if ( open ) {
+					// One section open at a time keeps the menu short and tidy.
+					nav.querySelectorAll( '.menu-item-has-children.is-open' ).forEach( function ( other ) {
+						if ( other !== item ) {
+							other.classList.remove( 'is-open' );
+							var ob = other.querySelector( ':scope > .smile-sub-toggle' );
+							if ( ob ) { ob.setAttribute( 'aria-expanded', 'false' ); }
+						}
+					} );
+				}
+				setSub( open );
+			}
+			btn.addEventListener( 'click', toggleSub );
+			link.addEventListener( 'click', function ( e ) {
+				if ( mq.matches ) {
+					e.preventDefault();
+					toggleSub();
+				}
 			} );
+			if ( item.classList.contains( 'current-menu-ancestor' ) || item.classList.contains( 'current-menu-item' ) ) {
+				setSub( true );
+			}
 		} );
 
 		mq.addEventListener( 'change', function ( e ) {

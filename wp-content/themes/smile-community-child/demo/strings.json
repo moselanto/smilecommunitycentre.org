@@ -2544,6 +2544,12 @@
 "section": "smile_theme_assets"
 },
 {
+"text": "Overview",
+"domain": "smile-community",
+"file": "inc/setup.php",
+"section": "smile_theme_assets"
+},
+{
 "text": "Teal",
 "domain": "smile-community",
 "file": "inc/setup.php",

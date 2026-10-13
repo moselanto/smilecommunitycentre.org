@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.20.0
+- **Mobile sub-menus:** tapping a section name (e.g. Get Involved) now opens its sub-menu instead of leaving the menu; an "Overview" link at the top still reaches the section page. One section open at a time; the section you are in opens automatically. Sub-menus are white cards with arrows and a yellow dot for the current page.
+- Call and WhatsApp buttons in the menu: label above the number, no wrapping.
+- Header menu button: three even bars in a soft round button.
+
 ## 2.19.1
 - **Smile curve toned down:** now used only under words an editor highlights in a heading (slimmer) and on the founder's signature. Removed from small labels, page banner titles, centred titles, the menu, the phone bar, story cards, impact figures and the footer; those return to clean straight lines or a small dot.
 
