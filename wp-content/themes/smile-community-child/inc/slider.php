@@ -17,6 +17,19 @@ defined( 'ABSPATH' ) || exit;
  */
 function smile_slider_defaults() {
 	return array(
+		0 => array(
+			'img'     => '',
+			'file'    => 'feeding-smiles',
+			'layout'  => 'split',
+			'eyebrow' => __( 'Because of you,', 'smile-community' ),
+			'title'   => __( 'They eat. They dream. They smile.', 'smile-community' ),
+			'text'    => __( 'Your kindness puts a nutritious meal on every plate and gives the children of Soweto, Kayole hope and a brighter future.', 'smile-community' ),
+			'note'    => __( 'Change a life today.', 'smile-community' ),
+			'b1'      => __( 'Donate Now', 'smile-community' ),
+			'u1'      => '/donate/',
+			'b2'      => __( 'Feeding Programme', 'smile-community' ),
+			'u2'      => '/feeding-program/',
+		),
 		1 => array(
 			'img'     => 'founder-serving',
 			'eyebrow' => __( "Children's home in Soweto, Kayole", 'smile-community' ),
@@ -118,6 +131,9 @@ function smile_slider_slides() {
 			'u1'      => $get( 'u1' ),
 			'b2'      => $get( 'b2' ),
 			'u2'      => $get( 'u2' ),
+			'file'    => ( $img || empty( $d['file'] ) ) ? '' : $d['file'],
+			'layout'  => isset( $d['layout'] ) ? $d['layout'] : '',
+			'note'    => isset( $d['note'] ) ? $d['note'] : '',
 		);
 	}
 	return $slides;
@@ -151,7 +167,7 @@ function smile_hero_slider() {
 	<section class="smile-slider" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Highlights from Smile Community Centre', 'smile-community' ); ?>" data-count="<?php echo esc_attr( $count ); ?>">
 		<div class="smile-slider__track" aria-live="off">
 			<?php foreach ( $slides as $i => $s ) : ?>
-				<div class="smile-slide<?php echo 0 === $i ? ' is-active' : ''; ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( sprintf( /* translators: 1 current 2 total */ __( '%1$d of %2$d', 'smile-community' ), $i + 1, $count ) ); ?>"<?php echo 0 === $i ? '' : ' aria-hidden="true" inert'; ?>>
+				<div class="smile-slide<?php echo 0 === $i ? ' is-active' : ''; ?><?php echo 'split' === $s['layout'] ? ' smile-slide--split' : ''; ?>" role="group" aria-roledescription="slide" aria-label="<?php echo esc_attr( sprintf( /* translators: 1 current 2 total */ __( '%1$d of %2$d', 'smile-community' ), $i + 1, $count ) ); ?>"<?php echo 0 === $i ? '' : ' aria-hidden="true" inert'; ?>>
 					<div class="smile-slide__media">
 						<?php
 						if ( $s['image'] ) {
@@ -167,6 +183,16 @@ function smile_hero_slider() {
 									'decoding'      => 0 === $i ? 'sync' : 'async',
 								)
 							);
+						} elseif ( $s['file'] ) {
+							$base = SMILE_THEME_URI . '/assets/images/slides/' . $s['file'];
+							printf(
+								'<img class="smile-slide__img" src="%1$s" srcset="%1$s 1600w, %2$s 960w" sizes="(min-width: 901px) 62vw, 100vw" width="1600" height="871" alt="%3$s" loading="%4$s" fetchpriority="%5$s" decoding="async">',
+								esc_url( $base . '-1600.webp' ),
+								esc_url( $base . '-960.webp' ),
+								esc_attr__( 'Children at Smile Community Centre sitting together and enjoying a meal', 'smile-community' ),
+								0 === $i ? 'eager' : 'lazy',
+								0 === $i ? 'high' : 'low'
+							);
 						}
 						?>
 					</div>
@@ -174,7 +200,17 @@ function smile_hero_slider() {
 					<div class="smile-container smile-slide__content">
 						<p class="smile-slide__eyebrow"><?php echo esc_html( $s['eyebrow'] ); ?></p>
 						<?php $tag = 0 === $i ? 'h1' : 'h2'; ?>
-						<<?php echo esc_html( $tag ); ?> class="smile-slide__title"><?php echo esc_html( $s['title'] ); ?></<?php echo esc_html( $tag ); ?>>
+						<<?php echo esc_html( $tag ); ?> class="smile-slide__title"><?php
+						if ( 'split' === $s['layout'] ) {
+							$lines = preg_split( '/(?<=[.!?])\s+/', trim( $s['title'] ) );
+							$last  = count( $lines ) - 1;
+							foreach ( $lines as $li => $line ) {
+								echo '<span class="smile-slide__line' . ( $li === $last && $last > 0 ? ' smile-slide__line--accent' : '' ) . '">' . esc_html( $line ) . '</span> ';
+							}
+						} else {
+							echo esc_html( $s['title'] );
+						}
+						?></<?php echo esc_html( $tag ); ?>>
 						<?php if ( $s['text'] ) : ?>
 							<p class="smile-slide__text"><?php echo esc_html( $s['text'] ); ?></p>
 						<?php endif; ?>
@@ -186,6 +222,9 @@ function smile_hero_slider() {
 								<a class="smile-btn smile-btn--ghost-light" href="<?php echo esc_url( smile_slider_url( $s['u2'] ) ); ?>"><?php echo esc_html( $s['b2'] ); ?></a>
 							<?php endif; ?>
 						</div>
+						<?php if ( $s['note'] ) : ?>
+							<p class="smile-slide__note"><?php echo esc_html( $s['note'] ); ?></p>
+						<?php endif; ?>
 					</div>
 				</div>
 			<?php endforeach; ?>
@@ -217,7 +256,7 @@ add_shortcode( 'smile_hero_slider', 'smile_hero_slider' );
  * @param WP_Customize_Manager $c Manager.
  */
 function smile_slider_customize( $c ) {
-	$c->add_section( 'smile_slider', array( 'title' => __( 'Smile: Home slider', 'smile-community' ), 'priority' => 31, 'description' => __( 'Up to three slides. Leave a slide title empty to hide that slide. Use bright, landscape photos at least 1600px wide.', 'smile-community' ) ) );
+	$c->add_section( 'smile_slider', array( 'title' => __( 'Smile: Home slider', 'smile-community' ), 'priority' => 31, 'description' => __( 'Up to four slides. Leave a slide title empty to hide that slide. Use bright, landscape photos at least 1600px wide.', 'smile-community' ) ) );
 	$labels = array(
 		'eyebrow' => __( 'Small label', 'smile-community' ),
 		'title'   => __( 'Headline', 'smile-community' ),
@@ -229,7 +268,7 @@ function smile_slider_customize( $c ) {
 	);
 	foreach ( smile_slider_defaults() as $n => $d ) {
 		/* translators: %d slide number */
-		$prefix = sprintf( __( 'Slide %d: ', 'smile-community' ), $n );
+		$prefix = sprintf( __( 'Slide %d: ', 'smile-community' ), $n + 1 );
 		$c->add_setting( 'smile_slide_' . $n . '_image', array( 'default' => 0, 'sanitize_callback' => 'absint' ) );
 		$c->add_control( new WP_Customize_Media_Control( $c, 'smile_slide_' . $n . '_image', array( 'label' => $prefix . __( 'Photo', 'smile-community' ), 'section' => 'smile_slider', 'mime_type' => 'image' ) ) );
 		foreach ( $labels as $field => $label ) {

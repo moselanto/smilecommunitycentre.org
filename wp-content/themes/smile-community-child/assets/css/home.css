@@ -1104,3 +1104,28 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 	.smile-wa__fab, .smile-wa__send { transition: none; }
 }
 @media print { .smile-wa { display: none; } }
+
+
+/* v2.22.0 Split slide: photo on the right, message on a deep green panel */
+.smile-slide--split { background: var(--smile-forest, #164B3F); }
+.smile-slide__line { display: block; }
+.smile-slide--split .smile-slide__title { max-width: none !important; min-height: 0 !important; display: block !important; font-family: var(--smile-font-body) !important; font-weight: 800 !important; text-transform: uppercase; letter-spacing: -.01em; font-size: clamp(2.2rem, 1.3rem + 2.9vw, 3.9rem) !important; line-height: .98 !important; }
+.smile-slide--split .smile-slide__line:nth-child(2) { color: var(--smile-sun); }
+.smile-slide--split .smile-slide__line--accent { margin-top: .12em; font-family: var(--smile-font-display); font-style: italic; font-weight: 600; text-transform: none; letter-spacing: -.02em; font-size: 1.05em; color: #fff; }
+.smile-slide--split .smile-slide__line--accent::after { content: ""; display: block; width: 3.2em; height: .3em; margin-top: .05em; background: var(--smile-curve) no-repeat center / 100% 100%; background-color: transparent; }
+.smile-slide--split .smile-slide__eyebrow { font-family: "Caveat", var(--smile-font-body); font-size: clamp(1.5rem, 1.1rem + 1vw, 2.1rem) !important; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--smile-sun); margin-bottom: .6rem !important; }
+.smile-slide--split .smile-slide__eyebrow::before { display: none !important; }
+.smile-slide--split .smile-slide__text { max-width: 440px !important; }
+.smile-slide__note { margin: 1rem 0 0; font-family: "Caveat", var(--smile-font-body); font-size: 1.45rem; font-weight: 700; line-height: 1; color: rgba(255,255,255,.88); }
+@media (min-width: 901px) {
+	.smile-slide--split .smile-slide__media { left: 40%; }
+	.smile-slide--split .smile-slide__img { object-position: 30% 40% !important; }
+	.smile-slide--split .smile-slide__shade { background: linear-gradient(90deg, var(--smile-forest, #164B3F) 0%, var(--smile-forest, #164B3F) 40%, rgba(22,75,63,.75) 48%, rgba(22,75,63,.15) 62%, rgba(22,75,63,0) 75%), linear-gradient(0deg, rgba(14,40,33,.35) 0%, rgba(14,40,33,0) 30%) !important; }
+	.smile-slide--split .smile-slide__content > * { max-width: 520px; }
+}
+@media (max-width: 900px) {
+	.smile-slide--split .smile-slide__title { font-size: clamp(1.75rem, 1.2rem + 3vw, 2.4rem) !important; }
+	.smile-slide--split .smile-slide__eyebrow { font-size: 1.35rem !important; margin-bottom: .2rem !important; }
+	.smile-slide--split .smile-slide__img { object-position: 35% 45% !important; }
+	.smile-slide__note { display: none; }
+}

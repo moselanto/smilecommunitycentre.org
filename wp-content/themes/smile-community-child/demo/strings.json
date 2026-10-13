@@ -2598,6 +2598,36 @@
 "section": "smile_theme_palette"
 },
 {
+"text": "Because of you,",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
+"text": "They eat. They dream. They smile.",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
+"text": "Your kindness puts a nutritious meal on every plate and gives the children of Soweto, Kayole hope and a brighter future.",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
+"text": "Change a life today.",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
+"text": "Feeding Programme",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
 "text": "Children's home in Soweto, Kayole",
 "domain": "smile-community",
 "file": "inc/slider.php",
@@ -2670,12 +2700,6 @@
 "section": "smile_slider_defaults"
 },
 {
-"text": "Feeding Programme",
-"domain": "smile-community",
-"file": "inc/slider.php",
-"section": "smile_slider_defaults"
-},
-{
 "text": "Highlights from Smile Community Centre",
 "domain": "smile-community",
 "file": "inc/slider.php",
@@ -2683,6 +2707,12 @@
 },
 {
 "text": "%1$d of %2$d",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_hero_slider"
+},
+{
+"text": "Children at Smile Community Centre sitting together and enjoying a meal",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_hero_slider"
@@ -2724,7 +2754,7 @@
 "section": "smile_slider_customize"
 },
 {
-"text": "Up to three slides. Leave a slide title empty to hide that slide. Use bright, landscape photos at least 1600px wide.",
+"text": "Up to four slides. Leave a slide title empty to hide that slide. Use bright, landscape photos at least 1600px wide.",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_slider_customize"

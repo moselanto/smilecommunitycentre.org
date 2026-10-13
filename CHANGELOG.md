@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.22.0
+- New first home slide "They eat. They dream. They smile.": the feeding photo with its baked-in text cropped away (bundled in assets/images/slides, 1600 and 960 px WebP), and the message rebuilt as real, editable text on a deep green panel (script "Because of you,", bold headline, italic "They smile." with the smile curve, Donate Now and Feeding Programme buttons, "Change a life today." note). Photo can be swapped in Customizer > Smile: Home slider > Slide 1. Slider now supports up to four slides.
+
 ## 2.21.0
 - WhatsApp chat: floating green button on every page (round above the tab bar on phones, "Chat with us" pill on larger screens) opening a branded chat card with the centre's avatar, online/offline status from Nairobi office hours, a welcome message, quick topic chips and a message box that opens WhatsApp with the message ready to send. One gentle nudge per visit after 12 seconds (not on Contact or Donate). Keyboard and screen-reader friendly, no third-party scripts. New file inc/whatsapp-chat.php; Customizer toggle under Smile: Header & Footer; all text editable in Site text & photos.
 
