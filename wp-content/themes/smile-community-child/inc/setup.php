@@ -62,7 +62,7 @@ function smile_theme_assets() {
 	if ( apply_filters( 'smile_load_google_fonts', true ) ) {
 		wp_enqueue_style(
 			'smile-fonts',
-			'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap',
+			'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap',
 			array(),
 			null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		);

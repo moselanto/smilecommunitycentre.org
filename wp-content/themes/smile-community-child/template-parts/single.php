@@ -46,11 +46,43 @@ while ( have_posts() ) :
 		<?php if ( $smile_is_post ) : ?>
 			<div class="smile-container smile-container--narrow">
 				<?php the_tags( '<p class="smile-tags">', ' ', '</p>' ); ?>
+				<div class="smile-byline">
+					<span class="smile-byline__mark" aria-hidden="true"><?php echo smile_icon( 'heart' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+					<p><strong><?php esc_html_e( 'Smile Community Centre', 'smile-community' ); ?></strong><?php esc_html_e( 'Stories from our home in Soweto, Kayole. Shared with care for every child’s privacy.', 'smile-community' ); ?></p>
+				</div>
 				<nav class="smile-post-nav" aria-label="<?php esc_attr_e( 'More stories', 'smile-community' ); ?>">
 					<?php previous_post_link( '<span class="smile-post-nav__prev">%link</span>', '&larr; %title' ); ?>
 					<?php next_post_link( '<span class="smile-post-nav__next">%link</span>', '%title &rarr;' ); ?>
 				</nav>
 			</div>
+			<?php
+			$smile_rel = new WP_Query(
+				array(
+					'post_type'           => 'post',
+					'posts_per_page'      => 3,
+					'post__not_in'        => array( get_the_ID() ),
+					'category__in'        => wp_get_post_categories( get_the_ID() ),
+					'ignore_sticky_posts' => true,
+					'no_found_rows'       => true,
+				)
+			);
+			if ( $smile_rel->have_posts() ) :
+				?>
+				<section class="smile-section smile-related-stories" aria-labelledby="smile-rel-title">
+					<div class="smile-container">
+						<h2 id="smile-rel-title"><?php esc_html_e( 'More stories', 'smile-community' ); ?></h2>
+						<div class="smile-grid smile-grid--3">
+							<?php
+							while ( $smile_rel->have_posts() ) :
+								$smile_rel->the_post();
+								get_template_part( 'template-parts/content-card' );
+							endwhile;
+							wp_reset_postdata();
+							?>
+						</div>
+					</div>
+				</section>
+			<?php endif; ?>
 			<?php smile_cta_band(); ?>
 		<?php endif; ?>
 

@@ -463,10 +463,10 @@ function smile_demo_import_kit() {
 		array( '_id' => 'smwhite', 'title' => 'White', 'color' => '#FFFFFF' ),
 	);
 	$s['system_typography'] = array(
-		array( '_id' => 'primary', 'title' => 'Headings', 'typography_typography' => 'custom', 'typography_font_family' => 'Fraunces', 'typography_font_weight' => '600' ),
-		array( '_id' => 'secondary', 'title' => 'Sub-headings', 'typography_typography' => 'custom', 'typography_font_family' => 'Inter', 'typography_font_weight' => '700' ),
-		array( '_id' => 'text', 'title' => 'Body', 'typography_typography' => 'custom', 'typography_font_family' => 'Inter', 'typography_font_weight' => '400' ),
-		array( '_id' => 'accent', 'title' => 'Buttons', 'typography_typography' => 'custom', 'typography_font_family' => 'Inter', 'typography_font_weight' => '700' ),
+		array( '_id' => 'primary', 'title' => 'Headings', 'typography_typography' => 'custom', 'typography_font_family' => 'Newsreader', 'typography_font_weight' => '500' ),
+		array( '_id' => 'secondary', 'title' => 'Sub-headings', 'typography_typography' => 'custom', 'typography_font_family' => 'Figtree', 'typography_font_weight' => '700' ),
+		array( '_id' => 'text', 'title' => 'Body', 'typography_typography' => 'custom', 'typography_font_family' => 'Figtree', 'typography_font_weight' => '400' ),
+		array( '_id' => 'accent', 'title' => 'Buttons', 'typography_typography' => 'custom', 'typography_font_family' => 'Figtree', 'typography_font_weight' => '700' ),
 	);
 	$s['container_width']   = array( 'unit' => 'px', 'size' => 1200 );
 	$s['body_color']        = '#24312D';

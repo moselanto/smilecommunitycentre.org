@@ -224,3 +224,56 @@ add_shortcode(
 			. '<p class="smile-ctaphoto__pay">' . esc_html( sprintf( /* translators: %s paybill */ __( 'M-Pesa Paybill %s', 'smile-community' ), $paybill ) ) . '</p></div></section>';
 	}
 );
+
+
+/* ---------- Related programmes (programme pages) ---------- */
+add_shortcode(
+	'smile_related',
+	function ( $atts ) {
+		$atts  = shortcode_atts( array( 'current' => '' ), $atts, 'smile_related' );
+		$items = array(
+			'education-program'      => array( 'pupils', 'book', __( 'Education', 'smile-community' ) ),
+			'feeding-program'        => array( 'feeding1', 'bowl', __( 'Feeding programme', 'smile-community' ) ),
+			'child-care-and-shelter' => array( 'staff-serving', 'home', __( 'Shelter and care', 'smile-community' ) ),
+			'health-and-wellbeing'   => array( 'doctors', 'health', __( 'Health and wellbeing', 'smile-community' ) ),
+			'sports'                 => array( 'football', 'ball', __( 'Sports and talent', 'smile-community' ) ),
+		);
+		$out = '<div class="smile-related">';
+		foreach ( $items as $slug => $it ) {
+			if ( $slug === $atts['current'] ) {
+				continue;
+			}
+			$out .= '<a class="smile-related__item smile-reveal" href="' . smile_link( '/' . $slug . '/' ) . '">' . smile_img( $it[0], 'smile-card', 'smile-related__img' ) . '<span class="smile-related__shade" aria-hidden="true"></span><span class="smile-related__label">' . smile_icon( $it[1] ) . esc_html( $it[2] ) . '</span></a>';
+		}
+		return $out . '</div>';
+	}
+);
+
+/* ---------- Founder quote ---------- */
+add_shortcode(
+	'smile_founder_quote',
+	function () {
+		return '<figure class="smile-founder smile-reveal"><div class="smile-founder__photo">' . smile_img( 'founder-serving', 'medium_large', 'smile-founder__img' ) . '</div>'
+			. '<div class="smile-founder__body"><blockquote>' . esc_html__( 'A simple smile, joined with practical care, can change a child’s world. That belief is why Smile exists.', 'smile-community' ) . '</blockquote>'
+			. '<figcaption><span class="smile-signature">Margret Nekesa</span><span class="smile-founder__role">' . esc_html__( 'Founder, Smile Community Centre', 'smile-community' ) . '</span></figcaption>'
+			. '<a class="smile-btn smile-btn--ghost" href="' . smile_link( '/our-founder/' ) . '">' . esc_html__( 'Read Margret’s story', 'smile-community' ) . '</a></div></figure>';
+	}
+);
+
+/* ---------- Help card (FAQ, sidebars) ---------- */
+add_shortcode(
+	'smile_help_card',
+	function () {
+		$phone = smile_setting( 'phone_primary', '0721 318 869' );
+		$wa    = preg_replace( '/\D/', '', smile_setting( 'whatsapp', '254721318869' ) );
+		$email = smile_setting( 'email', 'info@smilecommunitycentre.org' );
+		$out   = '<aside class="smile-help"><p class="smile-hand">' . esc_html__( 'Still have a question?', 'smile-community' ) . '</p><p>' . esc_html__( 'Our team is happy to help. Reach us during office hours, Monday to Friday.', 'smile-community' ) . '</p><ul>';
+		$out  .= '<li><a href="' . esc_url( smile_tel_href( $phone ) ) . '">' . smile_icon( 'phone' ) . esc_html( $phone ) . '</a></li>';
+		if ( $wa ) {
+			$out .= '<li><a href="' . esc_url( 'https://wa.me/' . $wa ) . '" rel="noopener">' . smile_icon( 'chat' ) . esc_html__( 'WhatsApp us', 'smile-community' ) . '</a></li>';
+		}
+		$out .= '<li><a href="' . esc_url( 'mailto:' . antispambot( $email ) ) . '">' . smile_icon( 'mail' ) . esc_html( antispambot( $email ) ) . '</a></li></ul>';
+		$out .= '<a class="smile-btn smile-btn--teal" href="' . smile_link( '/contact-us/' ) . '">' . esc_html__( 'Send us a message', 'smile-community' ) . '</a></aside>';
+		return $out;
+	}
+);
