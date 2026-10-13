@@ -721,3 +721,10 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 .smile-fwords__line { width: 48px; height: 2px; background: var(--smile-sun); }
 .smile-fwords .smile-signature { font-family: var(--smile-font-hand); font-size: 2rem; color: var(--smile-teal); }
 @media (prefers-reduced-motion: reduce) { .smile-objx li { transition: none !important; transform: none !important; } }
+
+/* v2.9.2 Closing band title on one full line (desktop), balanced on smaller screens */
+.smile-sec--teal.smile-center .elementor-widget-wrap, .smile-sec--teal.smile-center .elementor-widget-heading, .smile-cta-band__inner { max-width: none !important; }
+.smile-sec--teal.smile-center h2.elementor-heading-title, .smile-cta-band h2 { max-width: none !important; margin-inline: auto; font-size: clamp(1.9rem, 1.2rem + 2.2vw, 3rem) !important; line-height: 1.12 !important; text-wrap: balance; }
+@media (min-width: 1024px) {
+	.smile-sec--teal.smile-center h2.elementor-heading-title, .smile-cta-band h2 { white-space: nowrap; }
+}
