@@ -209,6 +209,60 @@
 		}
 	}
 
+
+	/* Wall of hope: filters + lightbox */
+	function initWall() {
+		document.querySelectorAll( '[data-smile-wall]' ).forEach( function ( wall ) {
+			var chips = wall.querySelectorAll( '.smile-wall__chip' );
+			var items = Array.prototype.slice.call( wall.querySelectorAll( '.smile-wall__item' ) );
+			chips.forEach( function ( chip ) {
+				chip.addEventListener( 'click', function () {
+					var f = chip.getAttribute( 'data-filter' );
+					chips.forEach( function ( c ) { var on = c === chip; c.classList.toggle( 'is-active', on ); c.setAttribute( 'aria-pressed', on ? 'true' : 'false' ); } );
+					items.forEach( function ( it ) { it.classList.toggle( 'is-hidden', f !== 'all' && it.getAttribute( 'data-cat' ) !== f ); } );
+				} );
+			} );
+			var box = wall.querySelector( '.smile-lightbox' );
+			if ( !box || typeof box.showModal !== 'function' ) { return; }
+			var img = box.querySelector( 'img' ), cap = box.querySelector( 'figcaption' ), idx = 0, lastFocus = null;
+			function visible() { return items.filter( function ( it ) { return !it.classList.contains( 'is-hidden' ); } ); }
+			function open( i ) {
+				var list = visible(); if ( !list.length ) { return; }
+				idx = ( i + list.length ) % list.length;
+				var a = list[ idx ].querySelector( 'a' );
+				img.src = a.getAttribute( 'href' ); img.alt = a.getAttribute( 'data-alt' ) || ''; cap.textContent = a.getAttribute( 'data-caption' ) || '';
+				if ( !box.open ) { box.showModal(); }
+			}
+			items.forEach( function ( it ) {
+				it.querySelector( 'a' ).addEventListener( 'click', function ( e ) {
+					e.preventDefault(); lastFocus = this; open( visible().indexOf( it ) );
+				} );
+			} );
+			box.querySelector( '.smile-lightbox__close' ).addEventListener( 'click', function () { box.close(); } );
+			box.querySelector( '.smile-lightbox__prev' ).addEventListener( 'click', function () { open( idx - 1 ); } );
+			box.querySelector( '.smile-lightbox__next' ).addEventListener( 'click', function () { open( idx + 1 ); } );
+			box.addEventListener( 'click', function ( e ) { if ( e.target === box ) { box.close(); } } );
+			box.addEventListener( 'keydown', function ( e ) { if ( e.key === 'ArrowRight' ) { open( idx + 1 ); } if ( e.key === 'ArrowLeft' ) { open( idx - 1 ); } } );
+			box.addEventListener( 'close', function () { if ( lastFocus ) { lastFocus.focus(); } } );
+		} );
+	}
+
+	/* Count-up numbers */
+	function initCounters() {
+		var els = document.querySelectorAll( '[data-count]' );
+		if ( !els.length || !( 'IntersectionObserver' in window ) || window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) { return; }
+		var io = new IntersectionObserver( function ( entries ) {
+			entries.forEach( function ( e ) {
+				if ( !e.isIntersecting ) { return; }
+				io.unobserve( e.target );
+				var el = e.target, end = parseInt( el.getAttribute( 'data-count' ), 10 ), start = end > 1000 ? end - 40 : 0, t0 = null;
+				function step( t ) { if ( !t0 ) { t0 = t; } var p = Math.min( 1, ( t - t0 ) / 1400 ), v = Math.round( start + ( end - start ) * ( 1 - Math.pow( 1 - p, 3 ) ) ); el.textContent = String( v ); if ( p < 1 ) { requestAnimationFrame( step ); } }
+				requestAnimationFrame( step );
+			} );
+		}, { threshold: 0.6 } );
+		els.forEach( function ( el ) { io.observe( el ); } );
+	}
+
 	function initForms() {
 		// Move focus to the status / first error after a server round-trip so screen readers announce it.
 		var target = document.querySelector( '.smile-form__status[tabindex="-1"]' );
@@ -216,8 +270,8 @@
 	}
 
 	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); } );
+		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); initWall(); initCounters(); } );
 	} else {
-		initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu();
+		initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); initWall(); initCounters();
 	}
 }() );

@@ -428,3 +428,77 @@ add_shortcode(
 		return ob_get_clean();
 	}
 );
+
+
+/* ---------- Wall of hope (Gallery) ---------- */
+add_shortcode(
+	'smile_wall',
+	function () {
+		$cats  = array(
+			'life'     => __( 'Daily life', 'smile-community' ),
+			'learning' => __( 'Learning', 'smile-community' ),
+			'play'     => __( 'Sport and play', 'smile-community' ),
+			'friends'  => __( 'Friends and visitors', 'smile-community' ),
+		);
+		$items = array(
+			array( 'mealtime', 'life', __( 'Lunch together', 'smile-community' ) ),
+			array( 'founder-serving', 'life', __( 'Margret serving a meal', 'smile-community' ) ),
+			array( 'pupils', 'learning', __( 'Ready for school', 'smile-community' ) ),
+			array( 'feeding1', 'life', __( 'Community feeding day', 'smile-community' ) ),
+			array( 'football', 'play', __( 'Match day at Jacaranda', 'smile-community' ) ),
+			array( 'highschool', 'learning', __( 'Secondary school students', 'smile-community' ) ),
+			array( 'staff-serving', 'life', __( 'Breakfast time', 'smile-community' ) ),
+			array( 'doctors', 'friends', __( 'Volunteer doctors visit', 'smile-community' ) ),
+			array( 'schoolkids', 'learning', __( 'Pupils at the centre', 'smile-community' ) ),
+			array( 'feeding3', 'life', __( 'A shared meal', 'smile-community' ) ),
+			array( 'skipping', 'play', __( 'Skipping rope', 'smile-community' ) ),
+			array( 'founder-school', 'learning', __( 'Margret with the school children', 'smile-community' ) ),
+			array( 'iebc', 'friends', __( 'A visit from IEBC staff', 'smile-community' ) ),
+			array( 'feeding2', 'life', __( 'Mealtime', 'smile-community' ) ),
+			array( 'gift', 'friends', __( 'Gifts from a visitor', 'smile-community' ) ),
+			array( 'education', 'learning', __( 'Homework time', 'smile-community' ) ),
+			array( 'volunteer', 'friends', __( 'A volunteer at Smile', 'smile-community' ) ),
+			array( 'founder-serving-2021', 'life', __( 'Serving the children', 'smile-community' ) ),
+			array( 'centre-new', 'friends', __( 'Our home at Mzesa', 'smile-community' ) ),
+		);
+		$out  = '<div class="smile-wall" data-smile-wall>';
+		$out .= '<div class="smile-wall__filters" role="group" aria-label="' . esc_attr__( 'Filter photos', 'smile-community' ) . '"><button type="button" class="smile-wall__chip is-active" data-filter="all" aria-pressed="true">' . esc_html__( 'All photos', 'smile-community' ) . '</button>';
+		foreach ( $cats as $k => $label ) {
+			$out .= '<button type="button" class="smile-wall__chip" data-filter="' . esc_attr( $k ) . '" aria-pressed="false">' . esc_html( $label ) . '</button>';
+		}
+		$out .= '</div><ul class="smile-wall__grid">';
+		foreach ( $items as $i => $it ) {
+			$id = smile_image_by_key( $it[0] );
+			if ( \! $id ) {
+				continue;
+			}
+			$full = wp_get_attachment_image_url( $id, 'large' );
+			$alt  = get_post_meta( $id, '_wp_attachment_image_alt', true );
+			$out .= '<li class="smile-wall__item" data-cat="' . esc_attr( $it[1] ) . '" style="--r:' . esc_attr( ( ( $i * 37 ) % 5 ) - 2 ) . 'deg">'
+				. '<a href="' . esc_url( $full ) . '" class="smile-wall__link" data-caption="' . esc_attr( $it[2] ) . '" data-alt="' . esc_attr( $alt ) . '">'
+				. wp_get_attachment_image( $id, 'smile-card', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'class' => 'smile-wall__img' ) )
+				. '<span class="smile-wall__cap">' . esc_html( $it[2] ) . '</span></a></li>';
+		}
+		$out .= '</ul>';
+		$out .= '<dialog class="smile-lightbox" aria-label="' . esc_attr__( 'Photo viewer', 'smile-community' ) . '"><button type="button" class="smile-lightbox__close" aria-label="' . esc_attr__( 'Close', 'smile-community' ) . '">&times;</button><button type="button" class="smile-lightbox__nav smile-lightbox__prev" aria-label="' . esc_attr__( 'Previous photo', 'smile-community' ) . '">&#8249;</button><figure><img alt=""><figcaption></figcaption></figure><button type="button" class="smile-lightbox__nav smile-lightbox__next" aria-label="' . esc_attr__( 'Next photo', 'smile-community' ) . '">&#8250;</button></dialog>';
+		return $out . '</div>';
+	}
+);
+
+/* ---------- Impact stats (animated count) ---------- */
+add_shortcode(
+	'smile_stats',
+	function () {
+		$items = array(
+			array( 2009, '', __( 'Smile begins as a registered self-help group', 'smile-community' ) ),
+			array( 2016, '', __( 'Registered as a Community Based Organisation', 'smile-community' ) ),
+			array( 300, '+', __( 'Children reached by community feeding', 'smile-community' ) ),
+			array( 4, '', __( 'Homes, from Margret’s house to Mzesa', 'smile-community' ) ),
+		);
+		$out = '<ul class="smile-stats">';
+		foreach ( $items as $i => $it ) {
+			$out .= '<li class="smile-reveal" style="--i:' . (int) $i . '"><strong><span data-count="' . (int) $it[0] . '">' . (int) $it[0] . '</span>' . esc_html( $it[1] ) . '</strong><span>' . esc_html( $it[2] ) . '</span></li>';
+		}
+		return $out . '</ul>';
+	}
+);
