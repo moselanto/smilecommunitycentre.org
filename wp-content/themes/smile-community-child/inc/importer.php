@@ -94,6 +94,9 @@ function smile_demo_ajax_step() {
 	if ( 0 === strpos( $step, 'image:' ) ) {
 		wp_send_json_success( array( 'message' => smile_demo_import_image( substr( $step, 6 ) ) ) );
 	}
+	if ( 0 === strpos( $step, 'enhance:' ) ) {
+		wp_send_json_success( array( 'message' => smile_enhance_attachment( absint( substr( $step, 8 ) ) ) ) );
+	}
 	if ( 0 === strpos( $step, 'post:' ) ) {
 		wp_send_json_success( array( 'message' => smile_demo_import_post( absint( substr( $step, 5 ) ) ) ) );
 	}
@@ -120,6 +123,24 @@ function smile_demo_ajax_step() {
 			update_option( 'blogname', "Smile Community Centre" );
 			update_option( 'blogdescription', "Children's home in Soweto, Kayole, Nairobi" );
 			wp_send_json_success( array( 'message' => __( 'Site title set to Smile Community Centre', 'smile-community' ) ) );
+			break;
+		case 'enhance-index':
+			$queue = smile_enhance_queue();
+			wp_send_json_success(
+				array(
+					'message'   => sprintf( /* translators: %d */ __( '%d photos to enhance', 'smile-community' ), count( $queue ) ),
+					'add_steps' => array_map( function ( $id ) { return 'enhance:' . $id; }, $queue ),
+				)
+			);
+			break;
+		case 'slider':
+			foreach ( smile_slider_defaults() as $n => $d ) {
+				$id = smile_image_by_key( $d['img'] );
+				if ( $id && ! get_theme_mod( 'smile_slide_' . $n . '_image' ) ) {
+					set_theme_mod( 'smile_slide_' . $n . '_image', $id );
+				}
+			}
+			wp_send_json_success( array( 'message' => __( 'Home slider photos set (edit in Customize > Smile: Home slider)', 'smile-community' ) ) );
 			break;
 		case 'posts-index':
 			$ids = smile_demo_live_post_ids();

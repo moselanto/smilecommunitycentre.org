@@ -37,6 +37,7 @@ function smile_theme_setup() {
 
 	add_image_size( 'smile-card', 720, 480, true );
 	add_image_size( 'smile-hero', 1920, 1080, true );
+	add_image_size( 'smile-hero-md', 1280, 900, true );
 }
 add_action( 'after_setup_theme', 'smile_theme_setup', 20 );
 
@@ -86,6 +87,9 @@ function smile_theme_assets() {
 			'strategy'  => 'defer',
 		)
 	);
+
+	wp_enqueue_style( 'smile-slider', SMILE_THEME_URI . '/assets/css/slider.css', array( 'smile-community' ), SMILE_THEME_VERSION );
+	wp_enqueue_script( 'smile-slider', SMILE_THEME_URI . '/assets/js/slider.js', array(), SMILE_THEME_VERSION, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 	wp_localize_script(
 		'smile-community',

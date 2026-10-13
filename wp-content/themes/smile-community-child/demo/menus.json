@@ -8,7 +8,7 @@
     "page": "home"
    },
    {
-    "title": "About Us",
+    "title": "About",
     "page": "about-us",
     "children": [
      {
@@ -34,7 +34,7 @@
     ]
    },
    {
-    "title": "Our Programmes",
+    "title": "Programmes",
     "page": "our-programmes",
     "children": [
      {
@@ -64,7 +64,7 @@
     ]
    },
    {
-    "title": "Our Impact",
+    "title": "Impact",
     "page": "our-impact",
     "children": [
      {
@@ -78,7 +78,7 @@
     ]
    },
    {
-    "title": "Stories & News",
+    "title": "Stories",
     "page": "stories"
    },
    {

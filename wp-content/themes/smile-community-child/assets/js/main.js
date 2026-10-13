@@ -16,7 +16,7 @@
 		}
 		var label = toggle.querySelector( '.smile-nav-toggle__label' );
 		var backdrop = null;
-		var mq = window.matchMedia( '(max-width: 1080px)' );
+		var mq = window.matchMedia( '(max-width: 1200px)' );
 
 		function setOpen( open ) {
 			toggle.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
@@ -108,6 +108,15 @@
 		} );
 	}
 
+	function initScroll() {
+		var header = document.getElementById( 'site-header' );
+		if ( ! header ) { return; }
+		var ticking = false;
+		var update = function () { header.classList.toggle( 'is-scrolled', window.scrollY > 40 ); ticking = false; };
+		window.addEventListener( 'scroll', function () { if ( ! ticking ) { ticking = true; window.requestAnimationFrame( update ); } }, { passive: true } );
+		update();
+	}
+
 	function initForms() {
 		// Move focus to the status / first error after a server round-trip so screen readers announce it.
 		var target = document.querySelector( '.smile-form__status[tabindex="-1"]' );
@@ -115,8 +124,8 @@
 	}
 
 	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); } );
+		document.addEventListener( 'DOMContentLoaded', function () { initNav(); initCopy(); initForms(); initScroll(); } );
 	} else {
-		initNav(); initCopy(); initForms();
+		initNav(); initCopy(); initForms(); initScroll();
 	}
 }() );

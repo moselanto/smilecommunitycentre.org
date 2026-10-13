@@ -61,8 +61,9 @@
 			if ( opt( 'smile-o-title' ) ) { steps.push( 'sitetitle' ); }
 			steps.push( 'categories', 'pages' );
 			if ( opt( 'smile-o-retire' ) ) { steps.push( 'retire' ); }
-			steps.push( 'reading', 'menus', 'logo' );
+			steps.push( 'reading', 'menus', 'logo', 'slider' );
 			if ( opt( 'smile-o-posts' ) ) { steps.push( 'posts-index' ); }
+			if ( opt( 'smile-o-enhance' ) ) { steps.push( 'enhance-index' ); }
 			if ( opt( 'smile-o-kit' ) ) { steps.push( 'kit' ); }
 			steps.push( 'finish' );
 
@@ -96,8 +97,7 @@
 					if ( ! res.success || 0 === msg.indexOf( 'FAILED' ) ) { li.className = 'is-err'; errors++; }
 					log.appendChild( li );
 					if ( res.success && res.data && res.data.add_steps && res.data.add_steps.length ) {
-						var fin = steps.indexOf( 'finish' );
-						var at = fin > i ? fin : i + 1;
+						var at = i + 1;
 						Array.prototype.splice.apply( steps, [ at, 0 ].concat( res.data.add_steps ) );
 					}
 					run( i + 1 );
