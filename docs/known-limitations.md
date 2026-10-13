@@ -6,7 +6,8 @@
 3. **M-Pesa:** confirm that Paybill 247247 and account 147516 are current, and add the account name donors will see (Centre details).
 4. **Bank details and online giving:** the old page referred to bank details, but none were published. Add them in Centre details, or leave them hidden.
 5. **Volunteer programme:** places are currently shown as **closed**, matching the live site. Confirm the US$165 fee and the safeguarding conduct rules.
-6. **Testimonials:** three Google review quotes with names are on the home page. Confirm the reviewers are happy, or remove the names.
+6. **Testimonials:** "What people say" (Our Impact and Get Involved) shows three real Google reviews by Melissa Nz, Eugene Emmanuel and Maureen Ngobili, plus "4.7 out of 5 from 111 Google reviews" (checked 13 Oct 2026). Eugene's review has a small typo fix and is shortened. Confirm the centre is happy to show the names. The rating and count do not update automatically.
+10. **WhatsApp office hours:** the chat shows "Online now" Monday to Friday, 9am to 5pm Nairobi time. Confirm these hours and whether anyone replies at weekends.
 7. **Photo consent:** all 24 imported photos are tagged "pending-review" until the centre approves them.
 8. **Privacy Policy:** this is a draft and needs review by the centre or its adviser.
 9. **Giving amounts:** the KES/USD examples are kept from the live site and labelled as estimates. Confirm they are still accurate.
@@ -21,7 +22,7 @@
 - **No online card or M-Pesa STK payments are built.** There are no approved credentials or provider, so only the verified manual M-Pesa method is shown. A Daraja STK Push or card gateway can be added once the centre approves a provider and supplies credentials. It needs server-side callback verification and a sandbox test first.
 - **Email delivery** depends on SMTP being configured on the host. The forms report honestly if email fails, and every message is also stored.
 - **Automated checks:** every build runs PHP 8.3 syntax checks, JavaScript and CSS checks and security patterns. Visual checks still need a person on staging.
-- **Images are imported from the live site at their existing size.** Some are small or low quality. A consented, recent photo shoot of the Mzesa centre, staff and activities is recommended.
+- **Images are imported from the live site at their existing size.** Some are small or low quality. The two bundled slide photos were enlarged from small sources (the feeding photo is about 950px after its printed text was cropped away; the pupils photo was 770px) and may look slightly soft on large screens. Originals from the camera or designer would fix this. A consented, recent photo shoot of the Mzesa centre, staff and activities is recommended.
 - **Fonts** (Newsreader, Figtree, Caveat) are self-hosted by the theme since 2.17.0.
 - **Performance:** the theme work is done; reaching 1 to 3 seconds also needs page caching, `.htaccess` caching and PHP 8.2 on the host (docs/performance.md). Measure with PageSpeed Insights.
 - **Logo source:** the new logo was supplied as a flat image; an SVG from the designer would make it razor sharp at any size.

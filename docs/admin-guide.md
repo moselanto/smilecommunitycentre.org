@@ -10,7 +10,11 @@ Everything here is done from the WordPress dashboard (`/wp-admin`). No code is n
 | Any other wording on the site (cards, lists, footer, forms, Stories page, messages) | **Smile Centre > Site text & photos > Text** |
 | A photo inside a section (programme cards, gallery, founder, story fallbacks) | **Smile Centre > Site text & photos > Photos** |
 | Phone numbers, WhatsApp, email, address, office hours, M-Pesa, bank, volunteer notice | **Smile Centre > Centre details** |
-| The home page slider | **Appearance > Customize > Smile: Home slider** |
+| The home page slider (up to four slides; Slide 1 is "They eat. They dream. They smile.") | **Appearance > Customize > Smile: Home slider** |
+| WhatsApp chat button: turn on or off | **Appearance > Customize > Smile: Header & Footer** |
+| WhatsApp chat wording (greeting, topic buttons, note) | **Smile Centre > Site text & photos > Text** |
+| Instagram, Facebook and LinkedIn links (top bar and footer) | **Smile Centre > Centre details** (empty a link to hide its icon) |
+| Google reviews and the "4.7 from 111 reviews" line | **Smile Centre > Site text & photos > Text** (the large "4.7" number needs a theme update) |
 | Donate button text or link, top bar, footer line | **Appearance > Customize > Smile: Header & Footer** |
 | Menus | **Appearance > Menus** |
 | Stories and news | **Posts** |
@@ -47,9 +51,20 @@ Keep the section layout; change the words and pictures inside it. A "Shortcode" 
 
 ## Change phone numbers, M-Pesa, bank details or the volunteer notice
 
-**Smile Centre > Centre details**, edit, **Save details**. This updates the header, footer, Donate, Contact, forms and Google's organisation details everywhere.
+**Smile Centre > Centre details**, edit, **Save details**. This updates the header, footer, Donate, Contact, forms, the WhatsApp chat, the M-Pesa Paybill and Account on the home photo banner, the social icons and Google's organisation details everywhere.
 - Bank transfer and online giving stay hidden until filled in.
 - Tick **Volunteer places are open** when accepting volunteers.
+
+## WhatsApp chat
+
+A green WhatsApp button sits on every page (a round button above the bottom bar on phones, "Chat with us" on larger screens). It opens a small chat card: the centre's name and logo, "Online now" during office hours (Monday to Friday, 9am to 5pm Nairobi time) and "We will reply when the office opens" otherwise, a welcome message, topic buttons and a message box. **Send** opens WhatsApp with the message ready to send to the number in Centre details. A small "Hello there" bubble appears once per visit after 12 seconds (not on Contact or Donate).
+- Turn it off: **Appearance > Customize > Smile: Header & Footer**.
+- Change the wording: **Smile Centre > Site text & photos > Text** (search for "WhatsApp" or the greeting).
+- No outside chat service or tracking is used; conversations happen in WhatsApp.
+
+## Home slider photos
+
+Slides 1 and 2 use photos bundled with the theme (the feeding photo with its printed text removed, and an enhanced pupils photo). Choosing a photo for a slide in **Appearance > Customize > Smile: Home slider** replaces the bundled one; removing it brings the bundled photo back. Use landscape photos at least 1600px wide without text printed on them; the headline and buttons are added by the site.
 
 ## Publish a story
 

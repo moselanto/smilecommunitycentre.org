@@ -11,7 +11,7 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-21759B?logo=wordpress&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B%20(8.2%20recommended)-777BB4?logo=php&logoColor=white)
 ![Elementor](https://img.shields.io/badge/Layouts-Elementor-92003B?logo=elementor&logoColor=white)
-![Child theme](https://img.shields.io/badge/Child%20theme-v2.18.0-164B3F)
+![Child theme](https://img.shields.io/badge/Child%20theme-v2.24.0-164B3F)
 ![Core plugin](https://img.shields.io/badge/Smile%20Community%20Core-v1.1.0-176B5B)
 ![Giving](https://img.shields.io/badge/Giving-M--Pesa%20Paybill%20247247-4CAF50)
 ![Security](https://img.shields.io/badge/Security-audited-2e7d32)
@@ -286,6 +286,11 @@ Highlights below; every change is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Highlights |
 |---|---|
+| 2.24.0 | Facebook and LinkedIn icons beside Instagram in the top bar and a "Follow us" row in the footer |
+| 2.23.x | Real Google reviews in "What people say", with a 4.7 out of 5 rating bar linking to the Google listing |
+| 2.22.x | New first slide "They eat. They dream. They smile.", enhanced pupils photo, shorter home page, Paybill + Account on the photo banner, desktop dropdown fixes |
+| 2.21.0 | WhatsApp chat button and chat card on every page |
+| 2.19 to 2.20 | Mobile menu redesign with tap-to-open sub-menus; current logo and favicon |
 | 2.18.0 | The Smile curve from the logo used as the site's signature mark |
 | 2.17.0 | Every text and photo editable; self-hosted fonts; instant navigation |
 | 2.16.0 | New logo and site icons |

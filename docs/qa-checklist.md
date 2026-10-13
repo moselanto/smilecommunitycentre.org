@@ -21,6 +21,12 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] Contact: the map loads, and the phone, WhatsApp and email links open the right apps.
 - [ ] An editor (not an admin) can edit a page in Elementor, publish a post and change the M-Pesa details, but cannot see Smile Setup or Redirects.
 - [ ] A new post appears in "Latest from Smile" on the home page and on /stories/.
+- [ ] Home page: slide 1 reads "Because of you, / They eat. / They dream. / They smile." with the arc under "smile."; "See your impact" and "Get involved" do not appear on the home page (they remain on Donate and Get Involved).
+- [ ] Home photo banner shows Paybill 247247 and Account 147516; both Copy buttons work on a phone.
+- [ ] WhatsApp chat: the button sits above the bottom bar on phones and does not cover it; the card opens and closes (button, X, Escape, click outside); a topic button fills the message; Send opens WhatsApp to the right number with the text.
+- [ ] Desktop menu: on an About or Impact page no dropdown is stuck open; only one dropdown shows at a time.
+- [ ] Top bar and footer: Instagram, Facebook and LinkedIn icons open the right pages in a new tab.
+- [ ] "What people say" shows the three Google reviews and the rating bar; "Read all reviews on Google" opens the reviews.
 
 ## Mobile and accessibility (WCAG 2.2 AA)
 - [ ] Test at 360 px, 768 px and 1280 px wide. Nothing scrolls sideways and the buttons are at least 44 px.

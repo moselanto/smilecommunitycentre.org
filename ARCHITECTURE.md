@@ -36,6 +36,7 @@ Rule: **presentation in the theme, data in the plugin.** If the theme is ever sw
 | File | Purpose |
 |---|---|
 | `security.php` | Security headers, HTTPS redirect, login throttling, generic login errors, session length, password minimum, user-enumeration blocks, XML-RPC off, REST CORS |
+| `template-tags.php` (social) | `smile_social_profiles()` / `smile_social_icons()`: Instagram, Facebook, LinkedIn from Centre details, used in the top bar, footer and schema `sameAs` |
 | `brand.php` | Bundled logo (1x/2x/3x, WebP + PNG), site icons, login logo, logo URL for schema |
 | `seo.php` | Connected schema.org graph, title and description resolver (feeds SEOPress), indexing rules, fallback meta and Open Graph |
 | `content-editor.php` | Smile Centre > Site text & photos: text overrides through `gettext`, photo overrides by key |
@@ -43,7 +44,8 @@ Rule: **presentation in the theme, data in the plugin.** If the theme is ever sw
 | `template-tags.php` | Settings helper, phone links, breadcrumbs, reading time, stories per page |
 | `components.php` | Icon set, story images, category labels, shared shortcodes |
 | `home-sections.php` | Section shortcodes used across pages |
-| `slider.php` | Hero slider and its data |
+| `slider.php` | Hero slider and its data (up to four slides; bundled slide photos in `assets/images/slides/`; "split" layout for slide 1) |
+| `whatsapp-chat.php` | Floating WhatsApp button and chat card (no third-party scripts); toggle `smile_wa_chat` in the Customizer; behaviour in `initWhatsApp()` in `main.js` |
 | `images.php` | Photo key to attachment lookups (cached) |
 | `customizer.php` | Donate label, top bar, footer |
 | `plugins.php` | Allow-listed plugin installer (admin, nonce, capability checked) |
