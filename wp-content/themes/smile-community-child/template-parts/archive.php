@@ -60,8 +60,8 @@ $smile_lead   = ( 1 === $smile_paged && $smile_total > 3 );
 
 	<?php if ( $smile_cats ) : ?>
 		<?php
-		$smile_main_cats = array_slice( $smile_cats, 0, 6 );
-		$smile_more_cats = array_slice( $smile_cats, 6 );
+		$smile_main_cats = array_slice( $smile_cats, 0, 5 );
+		$smile_more_cats = array_slice( $smile_cats, 5 );
 		$smile_more_on   = false;
 		foreach ( $smile_more_cats as $smile_mc ) {
 			if ( is_category( $smile_mc->term_id ) ) {
