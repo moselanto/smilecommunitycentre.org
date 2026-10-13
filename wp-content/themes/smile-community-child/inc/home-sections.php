@@ -166,11 +166,11 @@ add_shortcode(
 	'smile_community',
 	function () {
 		$quotes  = array(
-			array( __( 'Such a beautiful place with beautiful people. From the management, to the kids here. So much love.', 'smile-community' ), 'Ruth Kamau', __( 'Volunteer', 'smile-community' ) ),
-			array( __( 'We did a CSR as AFC fans Kayole branch and it was quite an encounter. Good reception and gestures from the staff and the children as well.', 'smile-community' ), 'Hawkins Isabwa', __( 'AFC Leopards Fans, Kayole Branch', 'smile-community' ) ),
-			array( __( 'No matter how small you are willing to give, these kids need it because it will make a difference and put a smile on them.', 'smile-community' ), 'Maureen Syokau', __( 'Supporter', 'smile-community' ) ),
+			array( __( 'Such a beautiful place with beautiful people. From the management, to the kids here. So much love.', 'smile-community' ), __( 'Ruth Kamau', 'smile-community' ), __( 'Volunteer', 'smile-community' ) ),
+			array( __( 'We did a CSR as AFC fans Kayole branch and it was quite an encounter. Good reception and gestures from the staff and the children as well.', 'smile-community' ), __( 'Hawkins Isabwa', 'smile-community' ), __( 'AFC Leopards Fans, Kayole Branch', 'smile-community' ) ),
+			array( __( 'No matter how small you are willing to give, these kids need it because it will make a difference and put a smile on them.', 'smile-community' ), __( 'Maureen Syokau', 'smile-community' ), __( 'Supporter', 'smile-community' ) ),
 		);
-		$friends = array( 'Lift the Children', 'Thrive Kenya', 'Rotary Club', 'AFC Leopards Fans Kayole', 'IEBC', __( 'Volunteer doctors', 'smile-community' ), __( 'University volunteers', 'smile-community' ), __( "Children's officers", 'smile-community' ), __( 'Local chiefs and police', 'smile-community' ) );
+		$friends = array( __( 'Lift the Children', 'smile-community' ), __( 'Thrive Kenya', 'smile-community' ), __( 'Rotary Club', 'smile-community' ), __( 'AFC Leopards Fans Kayole', 'smile-community' ), __( 'IEBC', 'smile-community' ), __( 'Volunteer doctors', 'smile-community' ), __( 'University volunteers', 'smile-community' ), __( "Children's officers", 'smile-community' ), __( 'Local chiefs and police', 'smile-community' ) );
 		$out     = '<div class="smile-voices">';
 		foreach ( $quotes as $i => $q ) {
 			$initials = implode( '', array_map( function ( $p ) { return mb_substr( $p, 0, 1 ); }, explode( ' ', $q[1] ) ) );
@@ -254,7 +254,7 @@ add_shortcode(
 	function () {
 		return '<figure class="smile-founder smile-reveal"><div class="smile-founder__photo">' . smile_img( 'founder-serving', 'medium_large', 'smile-founder__img' ) . '</div>'
 			. '<div class="smile-founder__body"><blockquote>' . esc_html__( 'A simple smile, joined with practical care, can change a child’s world. That belief is why Smile exists.', 'smile-community' ) . '</blockquote>'
-			. '<figcaption><span class="smile-signature">Margret Nekesa</span><span class="smile-founder__role">' . esc_html__( 'Founder, Smile Community Centre', 'smile-community' ) . '</span></figcaption>'
+			. '<figcaption><span class="smile-signature">' . esc_html__( 'Margret Nekesa', 'smile-community' ) . '</span><span class="smile-founder__role">' . esc_html__( 'Founder, Smile Community Centre', 'smile-community' ) . '</span></figcaption>'
 			. '<a class="smile-btn smile-btn--ghost" href="' . smile_link( '/our-founder/' ) . '">' . esc_html__( 'Read Margret’s story', 'smile-community' ) . '</a></div></figure>';
 	}
 );
@@ -391,7 +391,7 @@ add_shortcode(
 		$atts    = shortcode_atts( array( 'cta' => 'yes' ), $atts, 'smile_gift_calc' );
 		$paybill = function_exists( 'smile_core_get' ) ? smile_core_get( 'mpesa_paybill' ) : '247247';
 		$account = function_exists( 'smile_core_get' ) ? smile_core_get( 'mpesa_account' ) : '147516';
-		$amounts = array( 500, 1000, 2500, 5000, 8000, 15000 );
+		$amounts = array_values( array_filter( array_map( 'absint', explode( ',', __( '500,1000,2500,5000,8000,15000', 'smile-community' ) ) ) ) );
 		$uid     = wp_unique_id( 'smile-calc-' );
 		ob_start();
 		?>
@@ -490,10 +490,10 @@ add_shortcode(
 	'smile_stats',
 	function () {
 		$items = array(
-			array( 2009, '', __( 'Smile begins as a registered self-help group', 'smile-community' ) ),
-			array( 2016, '', __( 'Registered as a Community Based Organisation', 'smile-community' ) ),
-			array( 300, '+', __( 'Children reached by community feeding', 'smile-community' ) ),
-			array( 4, '', __( 'Homes, from Margret’s house to Mzesa', 'smile-community' ) ),
+			array( __( '2009', 'smile-community' ), '', __( 'Smile begins as a registered self-help group', 'smile-community' ) ),
+			array( __( '2016', 'smile-community' ), '', __( 'Registered as a Community Based Organisation', 'smile-community' ) ),
+			array( __( '300', 'smile-community' ), '+', __( 'Children reached by community feeding', 'smile-community' ) ),
+			array( __( '4', 'smile-community' ), '', __( 'Homes, from Margret’s house to Mzesa', 'smile-community' ) ),
 		);
 		$out = '<ul class="smile-stats">';
 		foreach ( $items as $i => $it ) {
@@ -749,7 +749,7 @@ add_shortcode(
 		if ( $img ) {
 			$out .= '<div class="smile-fwords__photo">' . wp_get_attachment_image( $img, 'smile-card', false, array( 'loading' => 'lazy', 'alt' => esc_attr__( 'Margret Nekesa serving the children at Smile', 'smile-community' ) ) ) . '</div>';
 		}
-		$out .= '<div class="smile-fwords__body"><p class="smile-fwords__kicker">' . esc_html__( 'In her words', 'smile-community' ) . '</p><span class="smile-fwords__mark" aria-hidden="true">&ldquo;</span><blockquote>' . esc_html__( 'That her smile combined with other aspects of life can change the world.', 'smile-community' ) . '</blockquote><figcaption><span class="smile-signature">Margret Nekesa</span><span class="smile-fwords__role">' . esc_html__( 'Founder, Smile Community Centre', 'smile-community' ) . '</span><span class="smile-fwords__note">' . esc_html__( 'What Margret believes, and what every day at Smile is built on.', 'smile-community' ) . '</span></figcaption></div></figure>';
+		$out .= '<div class="smile-fwords__body"><p class="smile-fwords__kicker">' . esc_html__( 'In her words', 'smile-community' ) . '</p><span class="smile-fwords__mark" aria-hidden="true">&ldquo;</span><blockquote>' . esc_html__( 'That her smile combined with other aspects of life can change the world.', 'smile-community' ) . '</blockquote><figcaption><span class="smile-signature">' . esc_html__( 'Margret Nekesa', 'smile-community' ) . '</span><span class="smile-fwords__role">' . esc_html__( 'Founder, Smile Community Centre', 'smile-community' ) . '</span><span class="smile-fwords__note">' . esc_html__( 'What Margret believes, and what every day at Smile is built on.', 'smile-community' ) . '</span></figcaption></div></figure>';
 		return $out;
 	}
 );

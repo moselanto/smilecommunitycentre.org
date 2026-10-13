@@ -83,19 +83,6 @@ function smile_asset( $rel, $min ) {
  * Enqueue styles and scripts (lean: home-only assets load on the home page only).
  */
 function smile_theme_assets() {
-	if ( apply_filters( 'smile_load_google_fonts', true ) ) {
-		// Two families, five files. Loaded without blocking first paint (see smile_async_fonts).
-		wp_enqueue_style(
-			'smile-fonts',
-			'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&family=Figtree:wght@400;500;600&display=swap',
-			array(),
-			null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-		);
-		if ( is_page( array( 'about-us', 'our-founder', 'faq-page' ) ) ) {
-			wp_enqueue_style( 'smile-fonts-hand', 'https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap', array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-		}
-	}
-
 	list( $css_url, $css_ver ) = smile_asset( 'assets/css/main.css', 'assets/build/main.min.css' );
 	wp_enqueue_style( 'smile-community', $css_url, array(), $css_ver );
 
@@ -204,7 +191,7 @@ add_filter( 'emoji_svg_url', '__return_false' );
  * @return array
  */
 function smile_theme_resource_hints( $urls, $relation_type ) {
-	if ( 'preconnect' === $relation_type && apply_filters( 'smile_load_google_fonts', true ) ) {
+	if ( 'preconnect' === $relation_type && apply_filters( 'smile_load_google_fonts', false ) ) {
 		$urls[] = 'https://fonts.googleapis.com';
 		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
 	}
@@ -257,3 +244,71 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
  * theme sets Newsreader and Figtree everywhere. Skipping them saves several requests.
  */
 add_filter( 'elementor/frontend/print_google_fonts', '__return_false' );
+
+
+/* -------------------------------------------------------------------------
+ * Speed: self-hosted fonts, smarter Elementor loading, instant navigation
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Fonts are served from the theme (assets/fonts, latin subset, woff2) instead of
+ * Google Fonts: no extra DNS lookups or connections, and nothing to wait for.
+ * The @font-face rules are printed inline and the two main files are preloaded.
+ */
+function smile_local_fonts() {
+	$base  = SMILE_THEME_URI . '/assets/fonts/';
+	$range = 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD';
+	$faces = array(
+		array( 'Figtree', 'normal', '400 600', 'figtree-latin.woff2' ),
+		array( 'Newsreader', 'normal', '500', 'newsreader-latin.woff2' ),
+		array( 'Newsreader', 'italic', '500', 'newsreader-italic-latin.woff2' ),
+		array( 'Caveat', 'normal', '600', 'caveat-latin.woff2' ),
+	);
+	echo '<link rel="preload" href="' . esc_url( $base . 'figtree-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	echo '<link rel="preload" href="' . esc_url( $base . 'newsreader-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	$css = '';
+	foreach ( $faces as $f ) {
+		$css .= "@font-face{font-family:'" . $f[0] . "';font-style:" . $f[1] . ';font-weight:' . $f[2] . ';font-display:swap;src:url(' . esc_url( $base . $f[3] ) . ") format('woff2');unicode-range:" . $range . ';}';
+	}
+	echo '<style id="smile-fonts">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from fixed values and esc_url().
+}
+add_action( 'wp_head', 'smile_local_fonts', 1 );
+
+/**
+ * Elementor's icon font (eicons, about 50 KB) is only needed by a few Elementor
+ * widgets. Load it only on pages that use one of them.
+ */
+function smile_trim_elementor_assets() {
+	if ( is_admin() || ! is_singular() || ( isset( $_GET['elementor-preview'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check.
+		return;
+	}
+	if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
+		return; // Keep everything for editors (admin bar, Elementor tools).
+	}
+	$data  = (string) get_post_meta( get_queried_object_id(), '_elementor_data', true );
+	$needs = array( '"accordion"', '"toggle"', '"tabs"', '"icon-list"', '"icon-box"', '"icon"', '"social-icons"', '"image-carousel"', '"star-rating"', '"testimonial-carousel"' );
+	foreach ( $needs as $widget ) {
+		if ( false !== strpos( $data, '"widgetType":' . $widget ) ) {
+			return;
+		}
+	}
+	wp_dequeue_style( 'elementor-icons' );
+}
+add_action( 'wp_enqueue_scripts', 'smile_trim_elementor_assets', 100 );
+
+/**
+ * Instant page changes: when a visitor hovers or presses on a link, the next page
+ * is prepared in the background (WordPress 6.8+ speculative loading), so it opens
+ * almost immediately. Forms, the dashboard and log-in links are excluded by WordPress.
+ *
+ * @param array|null $config Configuration.
+ * @return array|null
+ */
+function smile_speculation_rules( $config ) {
+	if ( is_array( $config ) ) {
+		$config['mode']      = 'prerender';
+		$config['eagerness'] = 'moderate';
+	}
+	return $config;
+}
+add_filter( 'wp_speculation_rules_configuration', 'smile_speculation_rules' );

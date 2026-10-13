@@ -57,6 +57,13 @@ function smile_slider_defaults() {
  * @return int
  */
 function smile_image_by_key( $key ) {
+	// A photo chosen in Smile Centre > Site text & photos wins.
+	if ( function_exists( 'smile_image_overrides' ) ) {
+		$over = smile_image_overrides();
+		if ( ! empty( $over[ $key ] ) ) {
+			return (int) $over[ $key ];
+		}
+	}
 	static $map = null;
 	if ( null === $map ) {
 		$map = get_transient( 'smile_image_map' );

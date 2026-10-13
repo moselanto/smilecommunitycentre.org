@@ -16,6 +16,7 @@ PY
 else
   echo "rcssmin/rjsmin not installed: keeping existing assets/build files (pip install rcssmin rjsmin)"
 fi
+python3 "$(dirname "$0")/extract-strings.py"
 python3 "$(dirname "$0")/check-theme.py" || { echo "Build stopped: fix the problems above first."; exit 1; }
 mkdir -p dist
 rm -f dist/smile-community-child.zip

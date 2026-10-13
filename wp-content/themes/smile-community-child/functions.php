@@ -7,13 +7,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SMILE_THEME_VERSION', '2.16.0' );
+define( 'SMILE_THEME_VERSION', '2.17.0' );
 define( 'SMILE_THEME_DIR', get_stylesheet_directory() );
 define( 'SMILE_THEME_URI', get_stylesheet_directory_uri() );
 
 require_once SMILE_THEME_DIR . '/inc/security.php';
 require_once SMILE_THEME_DIR . '/inc/setup.php';
 require_once SMILE_THEME_DIR . '/inc/brand.php';
+require_once SMILE_THEME_DIR . '/inc/content-editor.php';
 require_once SMILE_THEME_DIR . '/inc/seo.php';
 require_once SMILE_THEME_DIR . '/inc/template-tags.php';
 require_once SMILE_THEME_DIR . '/inc/customizer.php';

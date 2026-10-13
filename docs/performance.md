@@ -20,3 +20,33 @@
 3. Enable Gzip/Brotli compression and browser caching (most cPanel hosts: "Optimize Website" -> compress all content).
 4. After updating, run Apply latest design once, so new image sizes are generated and Elementor options are set.
 5. Test with https://pagespeed.web.dev on mobile. Targets: LCP < 2.5 s, CLS < 0.1, INP < 200 ms.
+
+## 2.17.0 speed additions
+
+- **Self-hosted fonts:** Newsreader, Figtree and Caveat (latin subset, woff2, about 200 KB in total) are served from `assets/fonts/` with inline `@font-face` rules. The two main files are preloaded. This removes the Google Fonts DNS lookups and connections, often 300 to 800 ms on mobile.
+- **Elementor icon font only where needed:** `elementor-icons` is dropped for visitors on pages without icon, accordion, tabs or carousel widgets.
+- **Instant navigation:** WordPress 6.8+ speculative loading set to `prerender` / `moderate`, so the next page is prepared when a visitor hovers or presses a link.
+
+## Reaching 1 to 3 seconds: server side (cannot be done from the theme)
+
+1. **Page cache (biggest win):** activate WP Super Cache, Settings > WP Super Cache > Caching On, "Expert" or "Simple" mode, cache rebuild on.
+2. **Browser caching:** add to `.htaccess` (above the WordPress block):
+
+```apache
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+```
+3. **PHP 8.2 or newer** in cPanel > Select PHP Version, with OPcache on.
+4. **Images:** convert large uploads to WebP (for example with the free "Converter for Media" plugin) and keep photos under 2000 px wide.
+5. **Elementor > Settings > Features:** keep "Optimized DOM output", "Improved asset loading", "Improved CSS loading" and "Lazy load background images" active.
+6. Measure with PageSpeed Insights (mobile) after each step.

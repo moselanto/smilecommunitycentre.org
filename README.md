@@ -9,7 +9,7 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.3%2B-21759B?logo=wordpress&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B%20(8.1%2B%20recommended)-777BB4?logo=php&logoColor=white)
 ![Elementor](https://img.shields.io/badge/Built%20with-Elementor-92003B?logo=elementor&logoColor=white)
-![Child theme](https://img.shields.io/badge/Child%20theme-v2.15.0-164B3F)
+![Child theme](https://img.shields.io/badge/Child%20theme-v2.17.0-164B3F)
 ![Core plugin](https://img.shields.io/badge/Smile%20Community%20Core-v1.1.0-176B5B)
 ![Giving](https://img.shields.io/badge/Giving-M--Pesa%20Paybill-4CAF50)
 ![Security](https://img.shields.io/badge/Security-audited-2e7d32)
@@ -174,6 +174,7 @@ Full routine: [docs/workflow.md](docs/workflow.md).
 | Smile Centre > Centre details | Phone numbers, WhatsApp, email, address, office hours, M-Pesa, bank, notification emails, volunteer notice |
 | Smile Centre > Redirects | Old URL to new URL list |
 | Smile Centre > Enquiries | Private inbox for form messages |
+| Smile Centre > Site text & photos | Change any wording or photo the theme prints (search, edit, save; empty box = original) |
 | Appearance > Customize | Donate button label, top bar on/off |
 | `wp-config.php` | Salts, SMTP credentials and hardening constants (see [SECURITY-AUDIT.md](SECURITY-AUDIT.md#environment-and-secrets)) |
 
@@ -204,6 +205,9 @@ Full routine: [docs/workflow.md](docs/workflow.md).
 
 | Version | Highlights |
 |---|---|
+| 2.17.0 | Every text and photo editable (Smile Centre > Site text & photos), self-hosted fonts, instant navigation, lighter Elementor loading |
+| 2.16.0 | New logo, site icons |
+| 2.15.x | SEO titles for every page, story and topic |
 | 2.15.0 | SEO: connected schema graph (NGO, WebSite, pages, breadcrumbs, articles), keyword-mapped titles and descriptions, indexing rules |
 | 2.14.0 | Security hardening module, form hardening, SSRF-safe importer, documentation set |
 | 2.13.x | Stories lead card, Founder quote band, upgrades that work without re-applying layouts |
