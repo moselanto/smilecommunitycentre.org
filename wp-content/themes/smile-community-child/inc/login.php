@@ -59,6 +59,17 @@ function smile_login_body_class( $classes ) {
 add_filter( 'login_body_class', 'smile_login_body_class' );
 
 /**
+ * The site is English only: hide the language drop-down under the card.
+ *
+ * @param bool $show Whether to show it.
+ * @return bool
+ */
+function smile_login_language_dropdown( $show ) {
+	return smile_login_enabled() ? false : $show;
+}
+add_filter( 'login_display_language_dropdown', 'smile_login_language_dropdown' );
+
+/**
  * Small check-mark icon.
  *
  * @return string

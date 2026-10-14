@@ -1,7 +1,7 @@
 /* Smile Community Centre: branded staff sign-in screen (wp-login.php). Scoped to body.smile-login. */
 body.smile-login {
 	--g: #164B3F; --t: #176B5B; --t6: #125747; --sun: #F4C95D; --cream: #FFF9EF; --ink: #24312D; --muted: #5D6A64; --line: #E4DCCB;
-	margin: 0; min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+	margin: 0; min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: stretch;
 	background: var(--cream); color: var(--ink);
 	font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 15px; line-height: 1.55;
 }
@@ -9,14 +9,14 @@ body.smile-login * { box-sizing: border-box; }
 
 /* Left story panel */
 .smile-login-aside {
-	position: sticky; top: 0; height: 100vh; overflow: hidden; color: #fff;
-	background: linear-gradient(160deg, rgba(22,75,63,.94) 0%, rgba(18,87,71,.82) 45%, rgba(22,75,63,.6) 100%), var(--smile-login-photo, none) center / cover no-repeat, #164B3F;
+	position: relative; min-height: 100vh; overflow: hidden; color: #fff;
+	background: linear-gradient(115deg, rgba(14,52,43,.96) 0%, rgba(22,75,63,.86) 48%, rgba(22,75,63,.5) 100%), var(--smile-login-photo, none) center / cover no-repeat, #164B3F;
 }
 .smile-login-aside::after {
 	content: ""; position: absolute; left: -10%; right: -10%; bottom: -1px; height: 120px; pointer-events: none;
 	background: radial-gradient(120% 100% at 50% 100%, rgba(244,201,93,.22), transparent 70%);
 }
-.smile-login-aside__inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; padding: clamp(28px, 4vw, 56px); }
+.smile-login-aside__inner { position: sticky; top: 0; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; padding: clamp(28px, 4vw, 56px); }
 .smile-login-aside__brand { display: inline-flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-weight: 600; font-size: 17px; letter-spacing: .01em; }
 .smile-login-aside__mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
 .smile-login-aside__mark img { width: 34px; height: 34px; border-radius: 8px; }
@@ -32,21 +32,23 @@ body.smile-login * { box-sizing: border-box; }
 .smile-login-aside__foot a:hover { color: var(--sun); }
 
 /* Right column */
-.smile-login-main { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 24px 28px; }
-body.smile-login #login { width: 100%; max-width: 420px; padding: 0; margin: 0; }
-body.smile-login #login h1 { margin-bottom: 22px; }
-body.smile-login #login h1 a { width: 240px !important; height: 72px !important; margin: 0 auto; }
-body.smile-login .smile-login-intro { margin: 0 0 18px; text-align: left; }
+.smile-login-main { display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 48px 24px 28px; }
+/* Auto margins centre the card but never push it above the top edge on short screens. */
+body.smile-login #login {
+	width: 100%; max-width: 440px; margin: auto 0 0; padding: 34px 34px 26px;
+	border: 1px solid var(--line); border-radius: 22px; background: #fff;
+	box-shadow: 0 1px 2px rgba(22,75,63,.06), 0 24px 48px -24px rgba(22,75,63,.32);
+}
+body.smile-login #login h1 { margin: 0 0 22px; }
+body.smile-login #login h1 a { width: 190px !important; height: 56px !important; margin: 0; background-position: left center !important; }
+body.smile-login .smile-login-intro { margin: 0 0 20px; text-align: left; }
 body.smile-login .smile-login-intro h2 { margin: 0 0 6px; font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: 30px; line-height: 1.15; color: var(--g); }
 body.smile-login .smile-login-intro p { margin: 0; color: var(--muted); font-size: 15px; }
 
 body.smile-login #loginform,
 body.smile-login #lostpasswordform,
 body.smile-login #resetpassform,
-body.smile-login #registerform {
-	margin: 0; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: #fff;
-	box-shadow: 0 1px 2px rgba(22,75,63,.06), 0 18px 40px -18px rgba(22,75,63,.28);
-}
+body.smile-login #registerform { margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; overflow: visible; }
 body.smile-login form label { font-size: 14px; font-weight: 600; color: var(--ink); }
 body.smile-login form .input,
 body.smile-login input[type="text"],
@@ -97,8 +99,9 @@ body.smile-login .indicator-hint, body.smile-login .description { color: var(--m
 body.smile-login #pass-strength-result { border-radius: 8px; }
 
 /* Links under the card */
-body.smile-login #nav,
-body.smile-login #backtoblog { margin: 14px 0 0; padding: 0; text-align: center; font-size: 14px; }
+body.smile-login #nav { margin: 22px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); text-align: center; font-size: 14px; }
+body.smile-login #backtoblog { margin: 10px 0 0; padding: 0; text-align: center; font-size: 13.5px; }
+body.smile-login #backtoblog a { font-weight: 500; color: var(--muted); }
 body.smile-login #nav a,
 body.smile-login #backtoblog a,
 body.smile-login .privacy-policy-page-link a { color: var(--t); font-weight: 600; text-decoration: none; }
@@ -108,19 +111,21 @@ body.smile-login .privacy-policy-page-link a:hover { color: var(--g); text-decor
 body.smile-login #nav a:focus,
 body.smile-login #backtoblog a:focus,
 body.smile-login .smile-login-aside a:focus { outline: 2px solid var(--sun); outline-offset: 3px; box-shadow: none; border-radius: 4px; }
-body.smile-login .privacy-policy-page-link { margin: 14px 0 0; text-align: center; font-size: 13px; }
+body.smile-login .privacy-policy-page-link { margin: 18px 0 0; text-align: center; font-size: 13px; }
+body.smile-login .privacy-policy-page-link a { font-weight: 500; color: var(--muted); }
 body.smile-login .language-switcher { margin-top: 18px; }
 body.smile-login .language-switcher select { border-radius: 10px; border-color: var(--line); }
 body.smile-login .language-switcher .button { border-radius: 10px; color: var(--t); border-color: var(--t); }
 
-.smile-login-trust { display: flex; align-items: center; justify-content: center; gap: 8px; max-width: 420px; margin: 26px auto 0; color: var(--muted); font-size: 12.5px; text-align: center; }
-.smile-login-trust svg { flex: none; color: var(--t); }
-.smile-login-copy { margin: 8px 0 0; color: #8A948F; font-size: 12px; text-align: center; }
+.smile-login-trust { display: flex; align-items: flex-start; justify-content: center; gap: 8px; max-width: 380px; margin: 22px auto 0; line-height: 1.5; color: var(--muted); font-size: 12.5px; text-align: center; }
+.smile-login-trust svg { flex: none; margin-top: 3px; color: var(--t); }
+.smile-login-copy { margin: 8px 0 auto; color: #8A948F; font-size: 12px; text-align: center; }
 
 /* Tablet and phone: photo becomes a compact banner above the card */
 @media (max-width: 959px) {
 	body.smile-login { display: block; }
-	.smile-login-aside { position: relative; height: auto; }
+	.smile-login-aside { position: relative; min-height: 0; }
+	.smile-login-aside__inner { position: relative; min-height: 0; }
 	.smile-login-aside::after { display: none; }
 	.smile-login-aside__inner { padding: 22px 22px 26px; }
 	.smile-login-aside__body { margin: 22px 0 0; }
@@ -128,11 +133,12 @@ body.smile-login .language-switcher .button { border-radius: 10px; color: var(--
 	.smile-login-aside__title { font-size: 26px; margin-bottom: 8px; }
 	.smile-login-aside__lead { margin: 0; font-size: 14.5px; }
 	.smile-login-aside__list, .smile-login-aside__foot { display: none; }
-	.smile-login-main { min-height: 0; padding: 28px 18px 32px; }
+	.smile-login-main { min-height: 0; padding: 0 16px 32px; }
+	body.smile-login #login { margin-top: -18px; position: relative; z-index: 2; }
 	body.smile-login #login h1 { display: none; }
 }
 @media (max-width: 420px) {
-	body.smile-login #loginform, body.smile-login #lostpasswordform, body.smile-login #resetpassform { padding: 22px 18px; border-radius: 16px; }
+	body.smile-login #login { padding: 26px 20px 22px; border-radius: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
 	body.smile-login * { transition: none !important; }

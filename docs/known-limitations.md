@@ -15,7 +15,7 @@
 
 ## Technical
 
-- The sign-in page restyles WordPress's own markup. A future WordPress update could shift some spacing; check the sign-in page after major WordPress updates. The two-factor plugin, if added, will show its own screen inside the same card.
+- The sign-in page restyles WordPress's own markup. A future WordPress update could shift some spacing; check the sign-in page after major WordPress updates. The language drop-down is hidden because the site is English only; remove the `login_display_language_dropdown` filter in inc/login.php if another language is added. The two-factor plugin, if added, will show its own screen inside the same card.
 - **Elementor Pro is not required.** Without it:
   - The header and footer come from the theme. Menus, logo and Donate button are editable via Appearance > Menus and Customize, but not with drag-and-drop.
   - The blog archive and single-post layouts are theme templates.

@@ -108,7 +108,7 @@ The new logo is built into the theme in high resolution and shows in the header,
 
 ### The sign-in page
 
-Staff sign in at /wp-login.php (or /wp-admin). The page shows a photo panel with the centre's message on the left and the sign-in box on the right; on a phone the photo is a short banner above the box. The phone number and email under "Need access or locked out?" come from **Smile Centre > Centre details**. To change any wording on the page (for example "Welcome back" or the three points in the photo panel), go to **Smile Centre > Site text & photos > Text** and search for the words. After 5 wrong passwords, sign-in pauses for 15 minutes; this is a security feature.
+Staff sign in at /wp-login.php (or /wp-admin). The page shows a photo panel with the centre's message on the left and a single white sign-in card (logo, heading, fields and links) on the right; on a phone the photo is a short banner above the box. The phone number and email under "Need access or locked out?" come from **Smile Centre > Centre details**. To change any wording on the page (for example "Welcome back" or the three points in the photo panel), go to **Smile Centre > Site text & photos > Text** and search for the words. After 5 wrong passwords, sign-in pauses for 15 minutes; this is a security feature.
 
 ## Photo or story removal requests
 
