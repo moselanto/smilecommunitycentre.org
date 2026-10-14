@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Scope** | `smile-community-child` theme 2.14.0 (re-checked for 2.17.0) (all PHP, JS, CSS, templates, page data) and the bundled Smile Community Core plugin 1.1.0 |
+| **Scope** | `smile-community-child` theme 2.14.0, re-checked for 2.17.0 and again in full for 2.28.0 (all PHP, JS, CSS, templates, page data) and the bundled Smile Community Core plugin 1.1.0, re-checked for 1.2.2 |
 | **Date** | 13 October 2026 |
 | **Method** | Manual line-by-line review of every request entry point (public forms, admin-post, AJAX, REST, template output, remote fetches), automated syntax and pattern checks (`scripts/check-theme.py`), OWASP Top 10 and WordPress security guidelines |
 | **Result** | No critical or high findings remain. 9 issues fixed, 12 hardening controls added, residual items listed in section 6 |
@@ -38,6 +38,12 @@
 | 11 | Info | Password policy | No minimum length | 12-character minimum on new and changed passwords |
 | 12 | Info | Exposure | WordPress version in `<meta generator>`, RSD and WLW links, X-Pingback header, XML-RPC on | All removed; XML-RPC off |
 | 13 | Info | CORS | REST API echoed any `Origin` for credentialed requests | Only this site's own origin is trusted |
+
+### Re-check for 2.28.0 / Core 1.2.2 (14 October 2026)
+
+- New entry points since the first audit reviewed: Careers (Jobs meta box: nonce, capability, typed sanitising; JobPosting data escaped), talent community form (same nonce, signed timestamp, honeypot, rate limit and allow-list as the other forms), WhatsApp chat (no data sent to the site; GET to wa.me only, allowed by the CSP form rule), branded sign-in page (display only; core login, throttling and generic errors unchanged), Google reviews and office-hours settings (rating validated 0-5, hours validated 0-24).
+- Fixed: new-tab links now use rel="noopener noreferrer"; the WhatsApp send no longer relies on window.open "noopener" (which returned null and opened a second copy in the same tab) and instead clears the opener on the new tab.
+- No new critical, high or medium findings.
 
 ## 3. Controls confirmed sound (no change needed)
 

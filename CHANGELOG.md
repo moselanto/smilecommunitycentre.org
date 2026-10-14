@@ -8,7 +8,7 @@ All notable changes to the Smile Community Centre theme (`smile-community-child`
 - The "Office open now" badge now also respects weekends (it showed "open" on Saturdays and Sundays before).
 - Last fixed English words in scripts made editable in Site text & photos: "Office open now", "Office closed now", "KES", "about US$" (gift calculator), "Play slideshow" and "Pause slideshow" (slider button).
 - Full recheck: every PHP file linted, both scripts syntax-checked, quality gate passed; WhatsApp chat reviewed for keyboard use, Escape to close, focus return, the no-JavaScript fallback, the child-privacy note and the CSP form rule.
-- Smile Community Core 1.2.2. Editable texts now 792.
+- Smile Community Core 1.2.2. Editable texts now 792. PRD and SECURITY-AUDIT updated to the current theme and core versions, with a re-check section for 2.28.0 / 1.2.2.
 
 ## 2.27.0
 - **Nothing hard-coded on the site any more.** Site-wide check of every template and section for fixed wording, numbers, contacts and links.
