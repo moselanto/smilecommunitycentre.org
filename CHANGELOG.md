@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.26.0
+- **New staff sign-in page.** wp-login.php now uses a split layout: a photo panel on the left (deep green over the feeding photo, "Staff and volunteers" label, headline, three things staff can do, and a "Need access or locked out?" line with the centre's phone and email from Centre details), and a clean sign-in card on the right.
+- The card has a "Welcome back" heading (or "Reset your password" / "Choose a new password" on those screens), large rounded fields with a green focus ring, a visible show-password button, a full-width "Sign in" button, softer success and error messages, and a secure-connection note under the card.
+- On phones and tablets the photo becomes a short banner above the card.
+- The site's own fonts now load on the sign-in page too. Keyboard focus, reduced motion and the core WordPress features (password reset, language switcher, privacy link) are kept.
+- Every wording is editable in Smile Centre > Site text & photos. The whole design can be turned off with the `smile_login_design` filter.
+- New files inc/login.php and assets/css/login.css (minified to assets/build/login.min.css); docs updated.
+
 ## 2.25.0
 - **Careers.** New Careers page (/careers/, under Get Involved and in the footer) created automatically on first admin visit: hero, "Why work at Smile" values, open roles, "How we hire" four-step process, talent community form and a Careers FAQ with a recruitment-fraud warning.
 - **Jobs** admin (Jobs > Add New Job): title, description, excerpt and a Job details box (type, team, location, hours, pay, start, closing date, reference, apply email or link). Roles list on Careers while published and before their closing date (Nairobi time), then drop off automatically; admin list shows type, closing date and whether the role is live.

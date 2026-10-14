@@ -8,7 +8,7 @@
 A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.</p>
 
 <p>
-<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.25.0-164B3F?style=flat-square">
+<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.26.0-164B3F?style=flat-square">
 <img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.2.0-176B5B?style=flat-square">
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=flat-square&logo=wordpress&logoColor=white">
 <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2%20recommended-777BB4?style=flat-square&logo=php&logoColor=white">
@@ -127,6 +127,7 @@ Nothing visitors see is locked in code.
 | Photos used in sections (programme cards, gallery wall, founder, stories fallbacks) | **Smile Centre > Site text & photos > Photos** |
 | Phone numbers, WhatsApp, email, address, hours, M-Pesa, bank, notification emails, volunteer notice | **Smile Centre > Centre details** |
 | Home slider slides | **Appearance > Customize > Smile: Home slider** |
+| Sign-in page wording | **Smile Centre > Site text & photos > Text** (search "Welcome back" or "Staff and volunteers") |
 | Jobs | **Jobs > Add New Job** (closes itself on its closing date) |
 | WhatsApp chat on/off | **Appearance > Customize > Smile: Header & Footer** |
 | Donate button, top bar, footer line | **Appearance > Customize > Smile: Header & Footer** |
@@ -234,6 +235,7 @@ Target: first content in 1 to 3 seconds on mobile with page caching. Details: [d
     │   ├── slider.php              home slider and photo lookups
     │   ├── careers.php             Jobs, Careers sections, Google for Jobs data
     │   ├── whatsapp-chat.php       WhatsApp chat button and card
+    │   ├── login.php               branded staff sign-in page
     │   ├── images.php · customizer.php
     │   └── plugins.php · importer.php · wizard.php   Smile Setup (admins only)
     ├── template-parts/             header, footer, archive, single, job, search, 404, cards
@@ -325,6 +327,7 @@ Highlights below; every change is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Highlights |
 |---|---|
+| 2.26.0 | Professional staff sign-in page: split photo panel and sign-in card, clear reset screens, mobile banner |
 | 2.25.0 | Careers page, Jobs (add a role in minutes, auto-closes on its closing date), job pages with Google for Jobs data, talent community form |
 | 2.24.0 | Facebook and LinkedIn icons beside Instagram in the top bar and a "Follow us" row in the footer |
 | 2.23.x | Real Google reviews in "What people say", with a 4.7 out of 5 rating bar linking to the Google listing |

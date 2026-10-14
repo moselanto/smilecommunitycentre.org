@@ -14,6 +14,8 @@
 9. **Giving amounts:** the KES/USD examples are kept from the live site and labelled as estimates. Confirm they are still accurate.
 
 ## Technical
+
+- The sign-in page restyles WordPress's own markup. A future WordPress update could shift some spacing; check the sign-in page after major WordPress updates. The two-factor plugin, if added, will show its own screen inside the same card.
 - **Elementor Pro is not required.** Without it:
   - The header and footer come from the theme. Menus, logo and Donate button are editable via Appearance > Menus and Customize, but not with drag-and-drop.
   - The blog archive and single-post layouts are theme templates.

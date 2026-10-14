@@ -26,6 +26,7 @@ The one-page version of [ARCHITECTURE.md](ARCHITECTURE.md).
 | SEO and schema | `inc/seo.php`, titles in `demo/pages.json` |
 | Logo and icons | `assets/images/brand/`, `inc/brand.php` |
 | Home slider and bundled slide photos | `inc/slider.php`, `assets/images/slides/` |
+| Staff sign-in page | `inc/login.php`, `assets/css/login.css` |
 | Careers and jobs | `inc/careers.php`, `template-parts/job.php`, `careers` form in the core plugin |
 | WhatsApp chat | `inc/whatsapp-chat.php`, `initWhatsApp()` in `assets/js/main.js` |
 | Social icons (Instagram, Facebook, LinkedIn) | `smile_social_icons()` in `inc/template-tags.php` |

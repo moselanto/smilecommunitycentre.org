@@ -3000,6 +3000,108 @@
 "section": "smile_intl"
 },
 {
+"text": "Update pages, stories and photos",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "Answer enquiries, volunteers and partners",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "Post jobs and keep giving details current",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "About this website",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "Staff and volunteers",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "Every smile online starts with the work you do here.",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "Sign in to look after the website of Smile Community Centre Children's Home in Soweto, Kayole.",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "Need access or locked out?",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_aside"
+},
+{
+"text": "Reset your password",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
+"text": "Enter your username or email and we will send you a reset link.",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
+"text": "Choose a new password",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
+"text": "Use at least 12 characters. A short sentence is easy to remember.",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
+"text": "Welcome back",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
+"text": "Sign in to manage the Smile Community Centre website.",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
+"text": "Secure connection. Repeated failed attempts are paused for 15 minutes.",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_footer"
+},
+{
+"text": "Smile Community Centre Children's Home, Nairobi",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_footer"
+},
+{
+"text": "Sign in",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_gettext"
+},
+{
 "text": "Smile Community Centre Children's Home in Soweto, Kayole, Nairobi gives orphaned and vulnerable children shelter, daily meals, education and care. Donate, volunteer or partner with us.",
 "domain": "smile-community",
 "file": "inc/seo.php",

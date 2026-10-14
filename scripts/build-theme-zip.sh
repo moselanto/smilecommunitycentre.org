@@ -9,6 +9,7 @@ import rcssmin, rjsmin
 T="$T"
 open(T+"/assets/build/main.min.css","w").write(rcssmin.cssmin(open(T+"/assets/css/main.css").read()))
 open(T+"/assets/build/home.min.css","w").write(rcssmin.cssmin(open(T+"/assets/css/slider.css").read()+"\n"+open(T+"/assets/css/home.css").read()))
+open(T+"/assets/build/login.min.css","w").write(rcssmin.cssmin(open(T+"/assets/css/login.css").read()))
 open(T+"/assets/build/main.min.js","w").write(rjsmin.jsmin(open(T+"/assets/js/main.js").read()))
 open(T+"/assets/build/slider.min.js","w").write(rjsmin.jsmin(open(T+"/assets/js/slider.js").read()))
 print("Minified assets rebuilt")
