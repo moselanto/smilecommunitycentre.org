@@ -106,6 +106,10 @@ Titles and descriptions for the main pages, every story and every topic are set 
 
 The new logo is built into the theme in high resolution and shows in the header, footer, browser tab and sign-in page. To use a different logo, ask the web administrator.
 
+### Office hours and the WhatsApp chat
+
+In **Smile Centre > Centre details > Contact details**, set the hour the office opens and closes (24-hour clock, Nairobi time, for example 9 and 17) and tick "Office is open on Saturdays" if it is. The WhatsApp chat shows "Online now" during these hours and "We will reply when the office opens" outside them, and the Contact page badge shows "Office open now" or "Office closed now". The "Office hours" text box is the wording visitors read; keep it matching the hours. To turn the chat off, use **Appearance > Customize > Smile: Header & Footer**; to change its number, edit the WhatsApp field in Centre details.
+
 ### Google rating and form choices
 
 The rating bar ("Rated 4.7 out of 5 from 111 Google reviews") is set in **Smile Centre > Centre details > Google reviews**: type the current rating and number of reviews from Google, and the link to the reviews. Leave the rating empty to hide the bar.

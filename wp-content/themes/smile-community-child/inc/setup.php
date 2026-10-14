@@ -110,6 +110,12 @@ function smile_theme_assets() {
 			'menuOpen'  => __( 'Open menu', 'smile-community' ),
 			'menuClose' => __( 'Close menu', 'smile-community' ),
 			'overview'  => __( 'Go to', 'smile-community' ),
+			'officeOpen'   => __( 'Office open now', 'smile-community' ),
+			'officeClosed' => __( 'Office closed now', 'smile-community' ),
+			'kes'          => __( 'KES', 'smile-community' ),
+			'aboutUsd'     => __( 'about US$', 'smile-community' ),
+			'play'         => __( 'Play slideshow', 'smile-community' ),
+			'pause'        => __( 'Pause slideshow', 'smile-community' ),
 		)
 	);
 

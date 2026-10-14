@@ -29,7 +29,8 @@ function smile_whatsapp_chat() {
 	);
 	$wa_icon = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 3.2A12.8 12.8 0 0 0 5 22.5L3.2 28.8l6.5-1.7A12.8 12.8 0 1 0 16 3.2zm0 23.3c-2 0-3.9-.5-5.5-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.5 10.5 0 1 1 16 26.5zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.4 1.4.6 1.9.7.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>';
 	?>
-	<div class="smile-wa" data-smile-wa data-number="<?php echo esc_attr( $number ); ?>" data-open-text="<?php esc_attr_e( 'Online now, usually replies within minutes', 'smile-community' ); ?>" data-closed-text="<?php esc_attr_e( 'We will reply when the office opens', 'smile-community' ); ?>">
+	<?php $smile_oh = smile_office_hours(); ?>
+	<div class="smile-wa" data-smile-wa data-number="<?php echo esc_attr( $number ); ?>" data-open-hour="<?php echo esc_attr( $smile_oh['open'] ); ?>" data-close-hour="<?php echo esc_attr( $smile_oh['close'] ); ?>" data-saturday="<?php echo $smile_oh['saturday'] ? '1' : '0'; ?>" data-open-text="<?php esc_attr_e( 'Online now, usually replies within minutes', 'smile-community' ); ?>" data-closed-text="<?php esc_attr_e( 'We will reply when the office opens', 'smile-community' ); ?>">
 		<div class="smile-wa__teaser" hidden>
 			<button type="button" class="smile-wa__teaser-close" aria-label="<?php esc_attr_e( 'Dismiss', 'smile-community' ); ?>">&times;</button>
 			<p><strong><?php esc_html_e( 'Hello there', 'smile-community' ); ?></strong> <?php esc_html_e( 'Questions about giving, visiting or volunteering? Chat with us on WhatsApp.', 'smile-community' ); ?></p>

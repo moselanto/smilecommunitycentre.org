@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.28.0
+- **WhatsApp chat fix.** Sending a message could open WhatsApp twice (a new tab and the current page), because the browser returns nothing when a tab is opened in "noopener" mode. It now opens once in a new tab, still safely cut off from the site, and falls back to the same tab only if pop-ups are blocked.
+- **Office hours are now settings, not code.** New fields in Smile Centre > Centre details: office opens at (hour), closes at (hour), and "open on Saturdays". They drive both the WhatsApp chat status ("Online now" / "We will reply when the office opens") and the "Office open now" badge on Contact, in Nairobi time. Previously both were fixed at Monday to Friday, 9am to 5pm.
+- The "Office open now" badge now also respects weekends (it showed "open" on Saturdays and Sundays before).
+- Last fixed English words in scripts made editable in Site text & photos: "Office open now", "Office closed now", "KES", "about US$" (gift calculator), "Play slideshow" and "Pause slideshow" (slider button).
+- Full recheck: every PHP file linted, both scripts syntax-checked, quality gate passed; WhatsApp chat reviewed for keyboard use, Escape to close, focus return, the no-JavaScript fallback, the child-privacy note and the CSP form rule.
+- Smile Community Core 1.2.2. Editable texts now 792.
+
 ## 2.27.0
 - **Nothing hard-coded on the site any more.** Site-wide check of every template and section for fixed wording, numbers, contacts and links.
 - Google rating bar: the score (4.7), the number of reviews (111) and the "Read all reviews" link are now settings in Smile Centre > Centre details > Google reviews. Leave the rating empty to hide the bar; the sentence adapts when the count is empty.

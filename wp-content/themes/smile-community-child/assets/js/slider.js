@@ -47,7 +47,7 @@
 			userPaused = p;
 			if ( pauseBtn ) {
 				pauseBtn.setAttribute( 'aria-pressed', p ? 'true' : 'false' );
-				pauseBtn.setAttribute( 'aria-label', p ? 'Play slideshow' : 'Pause slideshow' );
+				pauseBtn.setAttribute( 'aria-label', p ? ( ( window.smileTheme || {} ).play || 'Play slideshow' ) : ( ( window.smileTheme || {} ).pause || 'Pause slideshow' ) );
 				pauseBtn.classList.toggle( 'is-paused', p );
 			}
 			root.querySelector( '.smile-slider__track' ).setAttribute( 'aria-live', p ? 'polite' : 'off' );

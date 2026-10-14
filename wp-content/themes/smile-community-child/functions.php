@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SMILE_THEME_VERSION', '2.27.0' );
+define( 'SMILE_THEME_VERSION', '2.28.0' );
 define( 'SMILE_THEME_DIR', get_stylesheet_directory() );
 define( 'SMILE_THEME_URI', get_stylesheet_directory_uri() );
 

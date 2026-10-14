@@ -620,7 +620,7 @@ add_shortcode(
 			array( 'pin', __( 'Visit', 'smile-community' ), __( 'Mzesa, Soweto, Kayole', 'smile-community' ), $map, __( 'Get directions', 'smile-community' ), __( 'By arrangement, near Donholm Phase 8', 'smile-community' ) ),
 		);
 		$out  = '<div class="smile-hub">';
-		$out .= '<p class="smile-hub__status" data-smile-office="9-17"><span class="smile-hub__dot" aria-hidden="true"></span><span class="smile-hub__state">' . esc_html__( 'Office hours', 'smile-community' ) . '</span> <span class="smile-hub__hours">' . esc_html__( '9am to 5pm, Nairobi time', 'smile-community' ) . '</span></p>';
+		$out .= '<p class="smile-hub__status" data-smile-office="' . esc_attr( smile_office_hours()['open'] . '-' . smile_office_hours()['close'] ) . '" data-saturday="' . ( smile_office_hours()['saturday'] ? '1' : '0' ) . '"><span class="smile-hub__dot" aria-hidden="true"></span><span class="smile-hub__state">' . esc_html__( 'Office hours', 'smile-community' ) . '</span> <span class="smile-hub__hours">' . esc_html__( '9am to 5pm, Nairobi time', 'smile-community' ) . '</span></p>';
 		$out .= '<ul class="smile-hub__grid">';
 		foreach ( $cards as $i => $c ) {
 			if ( ! $c[3] ) {

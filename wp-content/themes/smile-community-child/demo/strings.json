@@ -3198,6 +3198,42 @@
 "section": "smile_theme_assets"
 },
 {
+"text": "Office open now",
+"domain": "smile-community",
+"file": "inc/setup.php",
+"section": "smile_theme_assets"
+},
+{
+"text": "Office closed now",
+"domain": "smile-community",
+"file": "inc/setup.php",
+"section": "smile_theme_assets"
+},
+{
+"text": "KES",
+"domain": "smile-community",
+"file": "inc/setup.php",
+"section": "smile_theme_assets"
+},
+{
+"text": "about US$",
+"domain": "smile-community",
+"file": "inc/setup.php",
+"section": "smile_theme_assets"
+},
+{
+"text": "Play slideshow",
+"domain": "smile-community",
+"file": "inc/setup.php",
+"section": "smile_theme_assets"
+},
+{
+"text": "Pause slideshow",
+"domain": "smile-community",
+"file": "inc/setup.php",
+"section": "smile_theme_assets"
+},
+{
 "text": "Teal",
 "domain": "smile-community",
 "file": "inc/setup.php",
@@ -3385,12 +3421,6 @@
 },
 {
 "text": "Slide %1$d: %2$s",
-"domain": "smile-community",
-"file": "inc/slider.php",
-"section": "smile_hero_slider"
-},
-{
-"text": "Pause slideshow",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_hero_slider"

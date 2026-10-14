@@ -25,6 +25,27 @@ function smile_setting( $key, $fallback = '' ) {
 }
 
 /**
+ * Office hours used by the "open now" badges and the WhatsApp chat status (Nairobi time).
+ *
+ * @return array { open:int, close:int, saturday:bool }
+ */
+function smile_office_hours() {
+	$open  = (int) smile_setting( 'office_open_hour', '9' );
+	$close = (int) smile_setting( 'office_close_hour', '17' );
+	if ( $open < 0 || $open > 23 ) {
+		$open = 9;
+	}
+	if ( $close <= $open || $close > 24 ) {
+		$close = max( $open + 1, 17 );
+	}
+	return array(
+		'open'     => $open,
+		'close'    => $close,
+		'saturday' => '1' === smile_setting( 'office_saturday', '0' ),
+	);
+}
+
+/**
  * URL of the donate page (Customizer override, else page with slug "donate").
  *
  * @return string

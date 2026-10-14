@@ -225,8 +225,8 @@
 			var out = function ( k ) { return root.querySelector( '[data-out="' + k + '"]' ); };
 			function render( amount ) {
 				amount = Math.max( 0, Math.round( amount || 0 ) );
-				out( 'amount' ).textContent = 'KES ' + fmt( amount );
-				out( 'usd' ).textContent = 'about US$' + fmt( amount / usd );
+				out( 'amount' ).textContent = ( i18n.kes || 'KES' ) + ' ' + fmt( amount );
+				out( 'usd' ).textContent = ( i18n.aboutUsd || 'about US$' ) + fmt( amount / usd );
 				out( 'amount-plain' ).textContent = fmt( amount );
 				out( 'amount-copy' ).setAttribute( 'data-smile-copy', String( amount ) );
 				var days = amount / meal;
@@ -321,14 +321,18 @@
 	/* Office open / closed badge (Nairobi time) */
 	function initOffice() {
 		document.querySelectorAll( '[data-smile-office]' ).forEach( function ( el ) {
-			var r = el.getAttribute( 'data-smile-office' ).split( '-' ), open = parseInt( r[0], 10 ), close = parseInt( r[1], 10 );
-			var h;
-			try { h = parseInt( new Intl.DateTimeFormat( 'en-GB', { hour: 'numeric', hourCycle: 'h23', timeZone: 'Africa/Nairobi' } ).format( new Date() ), 10 ); } catch ( e ) { return; }
-			if ( isNaN( h ) ) { return; }
-			var isOpen = h >= open && h < close;
+			var r = el.getAttribute( 'data-smile-office' ).split( '-' ), open = parseInt( r[0], 10 ), close = parseInt( r[1], 10 ), sat = el.getAttribute( 'data-saturday' ) === '1';
+			var h, wd;
+			try {
+				var parts = new Intl.DateTimeFormat( 'en-GB', { weekday: 'short', hour: 'numeric', hourCycle: 'h23', timeZone: 'Africa/Nairobi' } ).formatToParts( new Date() ), q = {};
+				parts.forEach( function ( x ) { q[ x.type ] = x.value; } );
+				h = parseInt( q.hour, 10 ); wd = q.weekday;
+			} catch ( e ) { return; }
+			if ( isNaN( h ) || isNaN( open ) || isNaN( close ) ) { return; }
+			var isOpen = ( sat ? [ 'Sun' ] : [ 'Sat', 'Sun' ] ).indexOf( wd ) < 0 && h >= open && h < close;
 			el.classList.add( isOpen ? 'is-open' : 'is-closed' );
 			var st = el.querySelector( '.smile-hub__state' );
-			if ( st ) { st.textContent = isOpen ? 'Office open now' : 'Office closed now'; }
+			if ( st ) { st.textContent = isOpen ? ( i18n.officeOpen || 'Office open now' ) : ( i18n.officeClosed || 'Office closed now' ); }
 		} );
 	}
 
@@ -346,11 +350,13 @@
 		var text = root.querySelector( 'textarea' ), teaser = root.querySelector( '.smile-wa__teaser' ), number = root.getAttribute( 'data-number' );
 		var store = { get: function ( k ) { try { return window.sessionStorage.getItem( k ); } catch ( e ) { return null; } }, set: function ( k, v ) { try { window.sessionStorage.setItem( k, v ); } catch ( e ) {} } };
 
-		// Online status from Nairobi office hours (Mon-Fri, 9am-5pm).
+		// Online status from Nairobi office hours (set in Centre details).
+		var oh = parseInt( root.getAttribute( 'data-open-hour' ), 10 ), ch = parseInt( root.getAttribute( 'data-close-hour' ), 10 ), sat = root.getAttribute( 'data-saturday' ) === '1';
+		if ( isNaN( oh ) ) { oh = 9; } if ( isNaN( ch ) ) { ch = 17; }
 		try {
 			var parts = new Intl.DateTimeFormat( 'en-GB', { weekday: 'short', hour: 'numeric', minute: '2-digit', hourCycle: 'h23', timeZone: 'Africa/Nairobi' } ).formatToParts( new Date() );
 			var p = {}; parts.forEach( function ( x ) { p[ x.type ] = x.value; } );
-			var h = parseInt( p.hour, 10 ), online = [ 'Sat', 'Sun' ].indexOf( p.weekday ) < 0 && h >= 9 && h < 17;
+			var h = parseInt( p.hour, 10 ), closedDays = sat ? [ 'Sun' ] : [ 'Sat', 'Sun' ], online = closedDays.indexOf( p.weekday ) < 0 && h >= oh && h < ch;
 			root.classList.toggle( 'is-online', online );
 			var st = root.querySelector( '.smile-wa__status' );
 			if ( st ) { st.textContent = root.getAttribute( online ? 'data-open-text' : 'data-closed-text' ) || st.textContent; }
@@ -390,8 +396,9 @@
 			e.preventDefault();
 			var msg = text.value.trim();
 			var url = 'https://wa.me/' + number + ( msg ? '?text=' + encodeURIComponent( msg ) : '' );
-			var w = window.open( url, '_blank', 'noopener' );
-			if ( !w ) { window.location.href = url; }
+			// window.open with "noopener" always returns null, which used to open WhatsApp twice.
+			var w = window.open( url, '_blank' );
+			if ( w ) { try { w.opener = null; } catch ( err ) {} } else { window.location.href = url; }
 			text.value = ''; grow(); close( false );
 		} );
 

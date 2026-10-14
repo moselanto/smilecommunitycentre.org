@@ -8,8 +8,8 @@
 A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.</p>
 
 <p>
-<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.27.0-164B3F?style=flat-square">
-<img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.2.1-176B5B?style=flat-square">
+<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.28.0-164B3F?style=flat-square">
+<img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.2.2-176B5B?style=flat-square">
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=flat-square&logo=wordpress&logoColor=white">
 <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2%20recommended-777BB4?style=flat-square&logo=php&logoColor=white">
 <img alt="Elementor" src="https://img.shields.io/badge/layouts-Elementor-92003B?style=flat-square&logo=elementor&logoColor=white">
@@ -45,7 +45,7 @@ M-Pesa Paybill <strong>247247</strong>, Account <strong>147516</strong> with one
 </td>
 <td width="33%" valign="top">
 <h3>Edited without code</h3>
-Every page in Elementor. Every other text (787) and section photo in <em>Site text &amp; photos</em>. Contact, payment and social details in one settings screen.
+Every page in Elementor. Every other text (792) and section photo in <em>Site text &amp; photos</em>. Contact, payment and social details in one settings screen.
 </td>
 <td width="33%" valign="top">
 <h3>Safe by design</h3>
@@ -123,8 +123,9 @@ Nothing visitors see is locked in code.
 | What | Where |
 |---|---|
 | Page layouts, headings, paragraphs, buttons, page photos | **Pages > Edit with Elementor** |
-| Every other wording (787 texts: sections, cards, forms, footer, Stories page, messages) | **Smile Centre > Site text & photos > Text** (search, type, save; an empty box restores the original) |
+| Every other wording (792 texts: sections, cards, forms, footer, Stories page, messages) | **Smile Centre > Site text & photos > Text** (search, type, save; an empty box restores the original) |
 | Photos used in sections (programme cards, gallery wall, founder, stories fallbacks) | **Smile Centre > Site text & photos > Photos** |
+| Office opening and closing hours, Saturday opening (WhatsApp status and "open now" badge) | **Smile Centre > Centre details > Contact details** |
 | Google rating, review count and reviews link | **Smile Centre > Centre details > Google reviews** |
 | Phone numbers, WhatsApp, email, address, hours, M-Pesa, bank, notification emails, volunteer notice | **Smile Centre > Centre details** |
 | Home slider slides | **Appearance > Customize > Smile: Home slider** |
@@ -328,6 +329,7 @@ Highlights below; every change is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Highlights |
 |---|---|
+| 2.28.0 | WhatsApp chat no longer opens twice; office hours and Saturday opening are settings that drive the chat status and "open now" badge |
 | 2.27.0 | Nothing hard-coded: Google rating, review count and link, form choices and sign-in name all editable; security re-check |
 | 2.26.x | Professional staff sign-in page: split photo panel and sign-in card, clear reset screens, mobile banner |
 | 2.25.0 | Careers page, Jobs (add a role in minutes, auto-closes on its closing date), job pages with Google for Jobs data, talent community form |

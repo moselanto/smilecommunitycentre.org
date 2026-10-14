@@ -15,6 +15,8 @@
 
 ## Technical
 
+- Office hours are one daily window (for example 9 to 17) with an optional Saturday; lunch breaks, half days and public holidays are not modelled.
+
 - The Google rating and review count do not update by themselves; staff should copy them from the Google listing now and then (Centre details > Google reviews). The three quoted reviews are edited in Site text & photos.
 
 - The sign-in page restyles WordPress's own markup. A future WordPress update could shift some spacing; check the sign-in page after major WordPress updates. The language drop-down is hidden because the site is English only; remove the `login_display_language_dropdown` filter in inc/login.php if another language is added. The two-factor plugin, if added, will show its own screen inside the same card.
