@@ -8,7 +8,7 @@
 A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.</p>
 
 <p>
-<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.28.0-164B3F?style=flat-square">
+<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.29.0-164B3F?style=flat-square">
 <img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.2.2-176B5B?style=flat-square">
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=flat-square&logo=wordpress&logoColor=white">
 <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2%20recommended-777BB4?style=flat-square&logo=php&logoColor=white">
@@ -196,7 +196,7 @@ Target: first content in 1 to 3 seconds on mobile with page caching. Details: [d
 
 - Minified CSS and JS, deferred scripts, home-only slider script
 - Self-hosted fonts (no Google Fonts requests), two preloaded
-- First slide image preloaded; lazy images elsewhere; fixed logo size (no layout shift)
+- First slide image (home) and banner photo (every other page) preloaded at high priority; lazy images elsewhere; uploads capped at 1920 px with WebP copies; fixed logo size (no layout shift)
 - Far-down sections painted only when needed (`content-visibility`)
 - Elementor's icon font and Google Fonts skipped where unused
 - Instant page changes (speculative prerender, WordPress 6.8+)
@@ -238,6 +238,7 @@ Target: first content in 1 to 3 seconds on mobile with page caching. Details: [d
     │   ├── careers.php             Jobs, Careers sections, Google for Jobs data
     │   ├── whatsapp-chat.php       WhatsApp chat button and card
     │   ├── login.php               branded staff sign-in page
+    │   ├── performance.php         banner preload, lighter uploads, fewer requests, Elementor speed settings
     │   ├── images.php · customizer.php
     │   └── plugins.php · importer.php · wizard.php   Smile Setup (admins only)
     ├── template-parts/             header, footer, archive, single, job, search, 404, cards
@@ -329,6 +330,7 @@ Highlights below; every change is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Highlights |
 |---|---|
+| 2.29.0 | Speed: banner photo fetched first on every page, lighter uploads (1920 px, WebP, quality 80), fewer visitor files, Elementor speed settings kept on |
 | 2.28.0 | WhatsApp chat no longer opens twice; office hours and Saturday opening are settings that drive the chat status and "open now" badge |
 | 2.27.0 | Nothing hard-coded: Google rating, review count and link, form choices and sign-in name all editable; security re-check |
 | 2.26.x | Professional staff sign-in page: split photo panel and sign-in card, clear reset screens, mobile banner |

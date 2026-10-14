@@ -36,7 +36,7 @@ add_filter( 'image_editor_output_format', 'smile_images_webp_output' );
  * @return int
  */
 function smile_images_quality( $quality, $mime = '' ) {
-	return in_array( $mime, array( 'image/jpeg', 'image/webp' ), true ) ? 84 : $quality;
+	return in_array( $mime, array( 'image/jpeg', 'image/webp' ), true ) ? 80 : $quality;
 }
 add_filter( 'wp_editor_set_quality', 'smile_images_quality', 10, 2 );
 

@@ -2,6 +2,13 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.29.0
+- **Speed: banner photo first on every page.** Inner pages (About, Programmes, Donate and the rest) now tell the browser to fetch their banner photo straight away, at high priority and in the right size for the screen, as the home page already did for its first slide. Story pages do the same for their main photo.
+- **Lighter photos for new uploads.** Uploads are scaled to at most 1920 px (was 2560 px), PNG photos get WebP copies like JPEGs, and WebP/JPEG quality is 80 (was 84), about 15 to 25% smaller with no visible change.
+- **Fewer files for visitors.** The dashboard icon font, the embed helper and the heartbeat script no longer load for visitors (still there for signed-in staff); oEmbed and REST discovery links removed from the page head.
+- **Elementor speed settings kept on.** After each theme update, the first administrator visit to the dashboard switches on Elementor's cacheable CSS files, optimised image loading, element caching, lazy background images and local fonts, then clears Elementor's CSS cache once.
+- New file inc/performance.php; each part has an off switch (smile_preload_page_hero, smile_light_uploads, smile_trim_frontend, smile_elementor_speed). Docs updated.
+
 ## 2.28.0
 - **WhatsApp chat fix.** Sending a message could open WhatsApp twice (a new tab and the current page), because the browser returns nothing when a tab is opened in "noopener" mode. It now opens once in a new tab, still safely cut off from the site, and falls back to the same tab only if pop-ups are blocked.
 - **Office hours are now settings, not code.** New fields in Smile Centre > Centre details: office opens at (hour), closes at (hour), and "open on Saturdays". They drive both the WhatsApp chat status ("Online now" / "We will reply when the office opens") and the "Office open now" badge on Contact, in Nairobi time. Previously both were fixed at Monday to Friday, 9am to 5pm.

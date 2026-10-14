@@ -23,6 +23,7 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] A new post appears in "Latest from Smile" on the home page and on /stories/.
 - [ ] Home page: slide 1 reads "Because of you, / They eat. / They dream. / They smile." with the arc under "smile."; "See your impact" and "Get involved" do not appear on the home page (they remain on Donate and Get Involved).
 - [ ] Home photo banner shows Paybill 247247 and Account 147516; both Copy buttons work on a phone.
+- [ ] Speed (PageSpeed Insights, mobile, cache warm): home and one inner page show Largest Contentful Paint 2.5 s or less; the banner photo appears with the text, not after it. View source on an inner page: a `<link rel="preload" as="image" ... fetchpriority="high">` line is in the head.
 - [ ] WhatsApp chat: the button sits above the bottom bar on phones and does not cover it; the card opens and closes (button, X, Escape, click outside); a topic button fills the message; Send opens WhatsApp to the right number with the text.
 - [ ] Desktop menu: on an About or Impact page no dropdown is stuck open; only one dropdown shows at a time.
 - [ ] Top bar and footer: Instagram, Facebook and LinkedIn icons open the right pages in a new tab.

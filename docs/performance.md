@@ -27,6 +27,18 @@
 - **Elementor icon font only where needed:** `elementor-icons` is dropped for visitors on pages without icon, accordion, tabs or carousel widgets.
 - **Instant navigation:** WordPress 6.8+ speculative loading set to `prerender` / `moderate`, so the next page is prepared when a visitor hovers or presses a link.
 
+## 2.29.0 speed additions
+
+- **Banner photo first on every page** (`inc/performance.php`): inner pages preload the first section's background photo with `fetchpriority="high"` and a responsive `imagesrcset`; story pages preload their featured image. This is usually the largest thing on screen (the LCP element), so it now starts downloading with the HTML instead of after the CSS.
+- **Lighter uploads**: `big_image_size_threshold` 1920 px, PNG to WebP copies, quality 80.
+- **Fewer visitor requests**: no dashicons, wp-embed or heartbeat for logged-out visitors; no oEmbed/REST discovery links.
+- **Elementor settings re-applied per theme version**: external CSS files (cacheable), optimised image loading, optimised Gutenberg loading, element cache, lazy background images, local fonts, SVG icons, optimised markup.
+- **Existing photos**: photos uploaded before 2.29.0 keep their old sizes. To shrink them too, install "Regenerate Thumbnails", run it once, then remove it.
+
+## How to measure
+
+Run https://pagespeed.web.dev/ on the home page and one inner page (mobile tab) with the page cache on, after clearing it once and loading each page once to warm it. Targets: Largest Contentful Paint 2.5 s or less, First Contentful Paint 1.8 s or less, Time to First Byte 0.8 s or less. If TTFB is above 0.8 s, the server is the bottleneck: see the next section.
+
 ## Reaching 1 to 3 seconds: server side (cannot be done from the theme)
 
 1. **Page cache (biggest win):** activate WP Super Cache, Settings > WP Super Cache > Caching On, "Expert" or "Simple" mode, cache rebuild on.

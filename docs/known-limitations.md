@@ -15,6 +15,8 @@
 
 ## Technical
 
+- Load time also depends on the host. The theme can make pages light, but if the server takes more than about 0.8 s to send the first byte, 1 to 3 seconds needs page caching (WP Super Cache), PHP 8.2+ and ideally a free CDN such as Cloudflare (see docs/performance.md). Photos uploaded before 2.29.0 stay at their old sizes until thumbnails are regenerated once.
+
 - Office hours are one daily window (for example 9 to 17) with an optional Saturday; lunch breaks, half days and public holidays are not modelled.
 
 - The Google rating and review count do not update by themselves; staff should copy them from the Google listing now and then (Centre details > Google reviews). The three quoted reviews are edited in Site text & photos.
