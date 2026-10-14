@@ -55,6 +55,8 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] Change one sentence in Smile Centre > Site text & photos, check it on the site, then empty the box and check the original returns.
 - [ ] Replace one photo in the Photos tab, check it, then click "Use original".
 - [ ] The new logo shows in the header, footer, browser tab and sign-in page.
+- [ ] Change the Google rating and count in Centre details: the rating bar on Our Impact and Get Involved updates; empty rating hides it.
+- [ ] Reword a form drop-down choice in Site text & photos: the form shows it and still sends.
 - [ ] Sign-in page (/wp-login.php): photo panel fills the full height on the left and one white card (logo, heading, fields, links) on the right on desktop; nothing is cut off at the top on a short laptop screen; short banner above the card on a phone; "Welcome back" heading; show-password button works; wrong password shows a red message; "Lost your password?" shows "Reset your password"; the reset email link opens "Choose a new password"; Tab moves through every field with a visible focus ring.
 
 ## Safeguarding and privacy

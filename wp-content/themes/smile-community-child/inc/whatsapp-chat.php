@@ -56,7 +56,7 @@ function smile_whatsapp_chat() {
 					<?php endforeach; ?>
 				</div>
 			</div>
-			<form class="smile-wa__form" action="<?php echo esc_url( 'https://wa.me/' . $number ); ?>" method="get" target="_blank">
+			<form class="smile-wa__form" action="<?php echo esc_url( 'https://wa.me/' . $number ); ?>" method="get" target="_blank" rel="noopener noreferrer">
 				<label class="screen-reader-text" for="smile-wa-text"><?php esc_html_e( 'Your message', 'smile-community' ); ?></label>
 				<textarea id="smile-wa-text" name="text" rows="1" maxlength="800" placeholder="<?php esc_attr_e( 'Type a message', 'smile-community' ); ?>"></textarea>
 				<button type="submit" class="smile-wa__send" aria-label="<?php esc_attr_e( 'Send on WhatsApp', 'smile-community' ); ?>"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4l17.5-7.5a1 1 0 000-1.8L3.4 3.6a.9.9 0 00-1.3 1l1.8 6.1 9 1.3-9 1.3-1.8 6.1a.9.9 0 001.3 1z"/></svg></button>

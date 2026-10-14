@@ -83,7 +83,7 @@ function smile_brand_login_logo() {
 }
 add_action( 'login_enqueue_scripts', 'smile_brand_login_logo' );
 add_filter( 'login_headerurl', function () { return home_url( '/' ); } );
-add_filter( 'login_headertext', function () { return 'Smile Community Centre'; } );
+add_filter( 'login_headertext', function () { return function_exists( 'smile_setting' ) ? smile_setting( 'org_name', get_bloginfo( 'name' ) ) : get_bloginfo( 'name' ); } );
 
 /**
  * Full-resolution logo URL (for schema and sharing).

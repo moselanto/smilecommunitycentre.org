@@ -1476,7 +1476,13 @@
 "section": "smile_community"
 },
 {
-"text": "Rated 4.7 out of 5 from 111 Google reviews",
+"text": "Rated %1$s out of 5 from %2$s Google reviews",
+"domain": "smile-community",
+"file": "inc/home-sections.php",
+"section": "smile_community"
+},
+{
+"text": "Rated %s out of 5 on Google",
 "domain": "smile-community",
 "file": "inc/home-sections.php",
 "section": "smile_community"
@@ -3120,6 +3126,12 @@
 "section": "smile_seo_organization"
 },
 {
+"text": "Margret Nekesa Khaemba",
+"domain": "smile-community",
+"file": "inc/seo.php",
+"section": "smile_seo_organization"
+},
+{
 "text": "Donate to Smile Community Centre",
 "domain": "smile-community",
 "file": "inc/seo.php",
@@ -3684,6 +3696,48 @@
 "section": "smile_core_form_fields"
 },
 {
+"text": "Education and school fees",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Feeding programme and food donations",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Essential supplies",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Corporate social responsibility (CSR) day",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Employee or skills-based volunteering",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Recurring support",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Other",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
 "text": "Tell us about your idea",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",
@@ -3696,7 +3750,67 @@
 "section": "smile_core_form_fields"
 },
 {
+"text": "Where the need is greatest",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "School fees and learning materials",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Daily meals and water",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Medical care",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Food, clothing or supplies (in kind)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
 "text": "How are you giving?",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "M-Pesa (already sent)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "M-Pesa (planning to send)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Bank transfer",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "In-kind donation (goods)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "I have a question first",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",
 "section": "smile_core_form_fields"
@@ -3720,6 +3834,36 @@
 "section": "smile_core_form_fields"
 },
 {
+"text": "I am the person in the photo or story",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Parent or guardian",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Smile staff member",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Social worker or children's officer",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Other concern",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
 "text": "Link to the page or image (if known)",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",
@@ -3733,6 +3877,48 @@
 },
 {
 "text": "Area of work you are interested in",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Child care and social work",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Teaching and tutoring",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Health and nutrition",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Kitchen and household",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Administration and finance",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Fundraising and communications",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Internship or college attachment",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",
 "section": "smile_core_form_fields"
@@ -3757,6 +3943,42 @@
 },
 {
 "text": "Subject",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "General question",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Donations",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Visiting the centre",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Volunteering",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Partnerships",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/forms.php",
+"section": "smile_core_form_fields"
+},
+{
+"text": "Media",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",
 "section": "smile_core_form_fields"
@@ -3952,12 +4174,6 @@
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/shortcodes.php",
 "section": "smile_core_sc_mpesa"
-},
-{
-"text": "Bank transfer",
-"domain": "smile-core",
-"file": "plugins/smile-community-core/includes/shortcodes.php",
-"section": "smile_core_sc_bank"
 },
 {
 "text": "Suggested",

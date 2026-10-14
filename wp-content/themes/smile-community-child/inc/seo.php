@@ -123,7 +123,7 @@ function smile_seo_organization() {
 	$org = array(
 		'@type'         => array( 'NGO', 'Organization' ),
 		'@id'           => $home . '#organization',
-		'name'          => 'Smile Community Centre',
+		'name'          => __( 'Smile Community Centre', 'smile-community' ),
 		'alternateName' => array( 'Smile Community Centre Children\'s Home', 'Smile Children\'s Home Kayole' ),
 		'url'           => $home,
 		'description'   => __( 'A children\'s home and community organisation in Soweto, Kayole, Nairobi, Kenya, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.', 'smile-community' ),
@@ -132,7 +132,7 @@ function smile_seo_organization() {
 		'founder'       => array(
 			'@type' => 'Person',
 			'@id'   => $home . '#founder',
-			'name'  => 'Margret Nekesa Khaemba',
+			'name'  => __( 'Margret Nekesa Khaemba', 'smile-community' ),
 		),
 		'address'       => array(
 			'@type'               => 'PostalAddress',

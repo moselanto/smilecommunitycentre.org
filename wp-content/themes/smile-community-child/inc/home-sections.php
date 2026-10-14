@@ -173,8 +173,16 @@ add_shortcode(
 		);
 		$reviews_url = smile_setting( 'google_reviews_url', 'https://www.google.com/search?q=smile+community+centre#lrd=0x182f139d98c92c27:0x3838f8222bc68c96,1,,,,' );
 		$friends = array( __( 'Lift the Children', 'smile-community' ), __( 'Thrive Kenya', 'smile-community' ), __( 'Rotary Club', 'smile-community' ), __( 'AFC Leopards Fans Kayole', 'smile-community' ), __( 'IEBC', 'smile-community' ), __( 'Volunteer doctors', 'smile-community' ), __( 'University volunteers', 'smile-community' ), __( "Children's officers", 'smile-community' ), __( 'Local chiefs and police', 'smile-community' ) );
-		$out     = '<div class="smile-rating smile-reveal"><span class="smile-rating__score">4.7</span><span class="smile-rating__stars" aria-hidden="true">' . str_repeat( smile_icon( 'star' ), 5 ) . '</span><span class="smile-rating__text">' . esc_html__( 'Rated 4.7 out of 5 from 111 Google reviews', 'smile-community' ) . '</span>'
-			. ( $reviews_url ? '<a class="smile-rating__link" href="' . esc_url( $reviews_url ) . '" target="_blank" rel="noopener">' . esc_html__( 'Read all reviews on Google', 'smile-community' ) . ' &rarr;</a>' : '' ) . '</div>';
+		$rating  = (float) smile_setting( 'google_rating', '4.7' );
+		$count   = absint( smile_setting( 'google_review_count', '111' ) );
+		$out     = '';
+		if ( $rating > 0 && $rating <= 5 ) {
+			$score = number_format_i18n( $rating, 1 );
+			/* translators: 1: rating such as 4.7, 2: number of reviews. */
+			$label = $count ? sprintf( __( 'Rated %1$s out of 5 from %2$s Google reviews', 'smile-community' ), $score, number_format_i18n( $count ) ) : sprintf( __( 'Rated %s out of 5 on Google', 'smile-community' ), $score );
+			$out   = '<div class="smile-rating smile-reveal"><span class="smile-rating__score">' . esc_html( $score ) . '</span><span class="smile-rating__stars" aria-hidden="true">' . str_repeat( smile_icon( 'star' ), 5 ) . '</span><span class="smile-rating__text">' . esc_html( $label ) . '</span>'
+				. ( $reviews_url ? '<a class="smile-rating__link" href="' . esc_url( $reviews_url ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Read all reviews on Google', 'smile-community' ) . ' &rarr;</a>' : '' ) . '</div>';
+		}
 		$out    .= '<div class="smile-voices">';
 		foreach ( $quotes as $i => $q ) {
 			$initials = implode( '', array_map( function ( $p ) { return mb_substr( $p, 0, 1 ); }, explode( ' ', $q[1] ) ) );
@@ -630,7 +638,7 @@ add_shortcode(
 	'smile_next_steps',
 	function () {
 		$phone  = smile_setting( 'phone_primary', '0721 318 869' );
-		$others = array_filter( array_map( 'trim', explode( "\n", smile_setting( 'phone_others', "0722 412 676\n0720 805 865" ) ) ) );
+		$others = array_filter( array_map( 'trim', explode( "\n", smile_setting( 'phone_others', "0722 412 676\n0720 809 885" ) ) ) );
 		$steps  = array(
 			array( 'mail', __( 'You send your message', 'smile-community' ), __( 'Use the form, or call or WhatsApp if it is quicker for you.', 'smile-community' ) ),
 			array( 'users', __( 'Our team reads it', 'smile-community' ), __( 'Every message is read by authorised Smile staff.', 'smile-community' ) ),

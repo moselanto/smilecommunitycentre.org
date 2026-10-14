@@ -49,7 +49,7 @@ function smile_core_form_fields( $type ) {
 				'organisation' => array( __( 'Organisation', 'smile-core' ), 'text', true ),
 				'email'        => $email,
 				'phone'        => $phone,
-				'interest'     => array( __( 'Area of interest', 'smile-core' ), 'select', true, array( 'Education and school fees', 'Feeding programme and food donations', 'Essential supplies', 'Corporate social responsibility (CSR) day', 'Employee or skills-based volunteering', 'Recurring support', 'Other' ) ),
+				'interest'     => array( __( 'Area of interest', 'smile-core' ), 'select', true, array( __( 'Education and school fees', 'smile-core' ), __( 'Feeding programme and food donations', 'smile-core' ), __( 'Essential supplies', 'smile-core' ), __( 'Corporate social responsibility (CSR) day', 'smile-core' ), __( 'Employee or skills-based volunteering', 'smile-core' ), __( 'Recurring support', 'smile-core' ), __( 'Other', 'smile-core' ) ) ),
 				'message'      => array( __( 'Tell us about your idea', 'smile-core' ), 'textarea', true ),
 			);
 		case 'donation':
@@ -57,8 +57,8 @@ function smile_core_form_fields( $type ) {
 				'name'     => $name,
 				'email'    => $email,
 				'phone'    => $phone,
-				'area'     => array( __( 'What would you like to support?', 'smile-core' ), 'select', true, array( 'Where the need is greatest', 'School fees and learning materials', 'Daily meals and water', 'Medical care', 'Food, clothing or supplies (in kind)' ) ),
-				'method'   => array( __( 'How are you giving?', 'smile-core' ), 'select', true, array( 'M-Pesa (already sent)', 'M-Pesa (planning to send)', 'Bank transfer', 'In-kind donation (goods)', 'I have a question first' ) ),
+				'area'     => array( __( 'What would you like to support?', 'smile-core' ), 'select', true, array( __( 'Where the need is greatest', 'smile-core' ), __( 'School fees and learning materials', 'smile-core' ), __( 'Daily meals and water', 'smile-core' ), __( 'Medical care', 'smile-core' ), __( 'Food, clothing or supplies (in kind)', 'smile-core' ) ) ),
+				'method'   => array( __( 'How are you giving?', 'smile-core' ), 'select', true, array( __( 'M-Pesa (already sent)', 'smile-core' ), __( 'M-Pesa (planning to send)', 'smile-core' ), __( 'Bank transfer', 'smile-core' ), __( 'In-kind donation (goods)', 'smile-core' ), __( 'I have a question first', 'smile-core' ) ) ),
 				'reference'=> array( __( 'M-Pesa or bank reference (optional, helps us confirm your gift)', 'smile-core' ), 'text', false ),
 				'message'  => array( __( 'Message', 'smile-core' ), 'textarea', false ),
 			);
@@ -67,7 +67,7 @@ function smile_core_form_fields( $type ) {
 				'name'         => $name,
 				'email'        => $email,
 				'phone'        => $phone,
-				'relationship' => array( __( 'Your relationship to the person concerned', 'smile-core' ), 'select', true, array( 'I am the person in the photo or story', 'Parent or guardian', 'Smile staff member', 'Social worker or children\'s officer', 'Other concern' ) ),
+				'relationship' => array( __( 'Your relationship to the person concerned', 'smile-core' ), 'select', true, array( __( 'I am the person in the photo or story', 'smile-core' ), __( 'Parent or guardian', 'smile-core' ), __( 'Smile staff member', 'smile-core' ), __( 'Social worker or children\'s officer', 'smile-core' ), __( 'Other concern', 'smile-core' ) ) ),
 				'page_url'     => array( __( 'Link to the page or image (if known)', 'smile-core' ), 'url', false ),
 				'message'      => array( __( 'What should we review or remove, and why?', 'smile-core' ), 'textarea', true ),
 			);
@@ -76,7 +76,7 @@ function smile_core_form_fields( $type ) {
 				'name'    => $name,
 				'email'   => $email,
 				'phone'   => $phone,
-				'area'    => array( __( 'Area of work you are interested in', 'smile-core' ), 'select', true, array( 'Child care and social work', 'Teaching and tutoring', 'Health and nutrition', 'Kitchen and household', 'Administration and finance', 'Fundraising and communications', 'Internship or college attachment', 'Other' ) ),
+				'area'    => array( __( 'Area of work you are interested in', 'smile-core' ), 'select', true, array( __( 'Child care and social work', 'smile-core' ), __( 'Teaching and tutoring', 'smile-core' ), __( 'Health and nutrition', 'smile-core' ), __( 'Kitchen and household', 'smile-core' ), __( 'Administration and finance', 'smile-core' ), __( 'Fundraising and communications', 'smile-core' ), __( 'Internship or college attachment', 'smile-core' ), __( 'Other', 'smile-core' ) ) ),
 				'cv_link' => array( __( 'Link to your CV or LinkedIn profile (optional)', 'smile-core' ), 'url', false ),
 				'message' => array( __( 'Tell us briefly about your experience and qualifications', 'smile-core' ), 'textarea', true ),
 				'consent' => array( __( 'I agree that Smile Community Centre may keep my details for up to 12 months to contact me about suitable roles', 'smile-core' ), 'checkbox', true ),
@@ -87,7 +87,7 @@ function smile_core_form_fields( $type ) {
 				'name'    => $name,
 				'email'   => $email,
 				'phone'   => $phone,
-				'subject' => array( __( 'Subject', 'smile-core' ), 'select', true, array( 'General question', 'Donations', 'Visiting the centre', 'Volunteering', 'Partnerships', 'Media', 'Other' ) ),
+				'subject' => array( __( 'Subject', 'smile-core' ), 'select', true, array( __( 'General question', 'smile-core' ), __( 'Donations', 'smile-core' ), __( 'Visiting the centre', 'smile-core' ), __( 'Volunteering', 'smile-core' ), __( 'Partnerships', 'smile-core' ), __( 'Media', 'smile-core' ), __( 'Other', 'smile-core' ) ) ),
 				'message' => array( __( 'Message', 'smile-core' ), 'textarea', true ),
 			);
 	}

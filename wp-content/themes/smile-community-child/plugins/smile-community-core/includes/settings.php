@@ -33,6 +33,10 @@ function smile_core_defaults() {
 		'instagram_url'      => 'https://www.instagram.com/smile_kenya_/',
 		'facebook_url'       => 'https://www.facebook.com/smilecommunitycentre',
 		'linkedin_url'       => 'https://www.linkedin.com/company/smile-community-centre/',
+		// Google reviews.
+		'google_reviews_url' => 'https://www.google.com/search?q=smile+community+centre#lrd=0x182f139d98c92c27:0x3838f8222bc68c96,1,,,,',
+		'google_rating'      => '4.7',
+		'google_review_count'=> '111',
 		// Donations.
 		'mpesa_paybill'      => '247247',
 		'mpesa_account'      => '147516',
@@ -94,6 +98,14 @@ function smile_core_fields() {
 				'instagram_url'  => array( 'Instagram URL', 'url' ),
 				'facebook_url'   => array( 'Facebook URL (leave empty to hide)', 'url' ),
 				'linkedin_url'   => array( 'LinkedIn URL (leave empty to hide)', 'url' ),
+			),
+		),
+		'reviews'   => array(
+			'title'  => __( 'Google reviews', 'smile-core' ),
+			'fields' => array(
+				'google_rating'       => array( 'Google rating shown on the site (e.g. 4.7). Leave empty to hide the rating bar.', 'text' ),
+				'google_review_count' => array( 'Number of Google reviews (e.g. 111)', 'number' ),
+				'google_reviews_url'  => array( 'Link to the Google reviews (leave empty to hide the "Read all reviews" link)', 'url' ),
 			),
 		),
 		'donations' => array(
@@ -185,6 +197,10 @@ function smile_core_save_settings() {
 					$current[ $key ] = sanitize_text_field( $raw );
 			}
 		}
+	}
+	if ( isset( $current['google_rating'] ) && '' !== $current['google_rating'] ) {
+		$rating                   = (float) str_replace( ',', '.', $current['google_rating'] );
+		$current['google_rating'] = ( $rating > 0 && $rating <= 5 ) ? (string) round( $rating, 1 ) : '';
 	}
 	if ( isset( $current['whatsapp'] ) ) {
 		$current['whatsapp'] = preg_replace( '/\D/', '', $current['whatsapp'] );

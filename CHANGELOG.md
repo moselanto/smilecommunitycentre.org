@@ -2,6 +2,15 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.27.0
+- **Nothing hard-coded on the site any more.** Site-wide check of every template and section for fixed wording, numbers, contacts and links.
+- Google rating bar: the score (4.7), the number of reviews (111) and the "Read all reviews" link are now settings in Smile Centre > Centre details > Google reviews. Leave the rating empty to hide the bar; the sentence adapts when the count is empty.
+- Form drop-down choices (contact subject, partner interest, donation area and method, photo-removal relationship, careers area) are now editable in Site text & photos. Submissions are still checked against the same list.
+- Sign-in page logo text uses the organisation name from Centre details; organisation and founder names in the search-engine data are editable.
+- Fixed a wrong fallback for the other phone numbers (0720 805 865 corrected to 0720 809 885 to match Centre details).
+- Security: links and the WhatsApp chat form that open a new tab now use rel="noopener noreferrer". Full re-check of form handling, nonces, permission checks, AJAX and admin actions, output escaping, redirects, headers and JavaScript found no other issues.
+- Smile Community Core 1.2.1 (new Google reviews settings, translatable drop-down choices). Editable texts now 787.
+
 ## 2.26.1
 - **Sign-in page polish after the first live check.** The heading and logo were being cut off at the top on shorter screens; the card now centres safely and never goes above the top edge.
 - Logo, heading, messages, fields, button and the "Lost your password?" / "Back to" links now sit together in one white card, with a divider above the links.
