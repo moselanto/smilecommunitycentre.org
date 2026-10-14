@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SMILE_THEME_VERSION', '2.29.0' );
+define( 'SMILE_THEME_VERSION', '2.30.0' );
 define( 'SMILE_THEME_DIR', get_stylesheet_directory() );
 define( 'SMILE_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -26,6 +26,7 @@ require_once SMILE_THEME_DIR . '/inc/whatsapp-chat.php';
 require_once SMILE_THEME_DIR . '/inc/careers.php';
 require_once SMILE_THEME_DIR . '/inc/login.php';
 require_once SMILE_THEME_DIR . '/inc/performance.php';
+require_once SMILE_THEME_DIR . '/inc/two-factor.php';
 
 if ( is_admin() || wp_doing_ajax() ) {
 	require_once SMILE_THEME_DIR . '/inc/plugins.php';

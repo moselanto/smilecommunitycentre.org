@@ -26,6 +26,7 @@ The one-page version of [ARCHITECTURE.md](ARCHITECTURE.md).
 | SEO and schema | `inc/seo.php`, titles in `demo/pages.json` |
 | Logo and icons | `assets/images/brand/`, `inc/brand.php` |
 | Home slider and bundled slide photos | `inc/slider.php`, `assets/images/slides/` |
+| Two-step login | Two Factor plugin (Smile Setup), `inc/two-factor.php`, code screen styles in `assets/css/login.css` |
 | Speed | `inc/setup.php` (fonts, assets, home preload, speculative loading), `inc/performance.php` (banner preload, lighter uploads, fewer requests, Elementor settings) |
 | Staff sign-in page | `inc/login.php`, `assets/css/login.css` |
 | Careers and jobs | `inc/careers.php`, `template-parts/job.php`, `careers` form in the core plugin |

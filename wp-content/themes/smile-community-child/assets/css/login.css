@@ -121,6 +121,20 @@ body.smile-login .language-switcher .button { border-radius: 10px; color: var(--
 .smile-login-trust svg { flex: none; margin-top: 3px; color: var(--t); }
 .smile-login-copy { margin: 8px 0 auto; color: #8A948F; font-size: 12px; text-align: center; }
 
+/* Two-step verification screen (Two Factor plugin) */
+body.smile-login #authcode,
+body.smile-login input[name="two-factor-backup-code"] {
+	font-size: 26px; font-weight: 600; letter-spacing: .35em; text-align: center; font-variant-numeric: tabular-nums;
+}
+body.smile-login .two-factor-prompt,
+body.smile-login .two-factor-email-resend { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+body.smile-login .backup-methods-wrap { margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid var(--line); font-size: 14px; }
+body.smile-login .backup-methods-wrap a { color: var(--t); font-weight: 600; text-decoration: none; }
+body.smile-login .backup-methods-wrap a:hover { text-decoration: underline; text-underline-offset: 3px; }
+body.smile-login .backup-methods-wrap ul { margin: 8px 0 0 18px; }
+body.smile-login #trust-browser + label,
+body.smile-login .two-factor-remember label { font-weight: 500; color: var(--muted); }
+
 /* Tablet and phone: photo becomes a compact banner above the card */
 @media (max-width: 959px) {
 	body.smile-login { display: block; }

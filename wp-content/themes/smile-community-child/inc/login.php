@@ -141,6 +141,9 @@ function smile_login_intro( $message ) {
 	} elseif ( 'rp' === $action || 'resetpass' === $action ) {
 		$title = __( 'Choose a new password', 'smile-community' );
 		$sub   = __( 'Use at least 12 characters. A short sentence is easy to remember.', 'smile-community' );
+	} elseif ( in_array( $action, array( 'validate_2fa', 'backup_2fa', 'revalidate_2fa' ), true ) ) {
+		$title = __( 'Two-step verification', 'smile-community' );
+		$sub   = __( 'Open your authenticator app and type the 6-digit code for Smile Community Centre. Lost your phone? Use one of your recovery codes.', 'smile-community' );
 	} elseif ( 'login' === $action ) {
 		$title = __( 'Welcome back', 'smile-community' );
 		$sub   = __( 'Sign in to manage the Smile Community Centre website.', 'smile-community' );

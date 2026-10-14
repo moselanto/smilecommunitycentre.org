@@ -3078,6 +3078,18 @@
 "section": "smile_login_intro"
 },
 {
+"text": "Two-step verification",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
+"text": "Open your authenticator app and type the 6-digit code for Smile Community Centre. Lost your phone? Use one of your recovery codes.",
+"domain": "smile-community",
+"file": "inc/login.php",
+"section": "smile_login_intro"
+},
+{
 "text": "Welcome back",
 "domain": "smile-community",
 "file": "inc/login.php",
@@ -3526,6 +3538,108 @@
 "domain": "smile-community",
 "file": "inc/template-tags.php",
 "section": "smile_social_icons"
+},
+{
+"text": "Protect the website with two-step login.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Install the free, official Two Factor plugin so staff confirm each sign-in with a code from their phone.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Install Two Factor",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Turn on two-step login for your account (about 5 minutes).",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Nothing changes until you set it up, and you will need your phone.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "On your phone, install Google Authenticator or Microsoft Authenticator.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Open Users > Profile and scroll down to Two-Factor Options.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Tick Authenticator App. Scan the QR code with the app, type in the 6-digit code it shows, and click Submit.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Tick Recovery Codes and click Generate. Write the codes down or print them, and keep them somewhere safe away from your phone. If you ever lose your phone, these codes get you back in.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Make Authenticator App your main method, then click Update Profile at the bottom.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Log out and back in. After your password, WordPress will ask for the 6-digit code from the app.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Set up two-step login",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Remind me in a week",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Please sign in.",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Two-step login",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "On",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
+},
+{
+"text": "Not set up",
+"domain": "smile-community",
+"file": "inc/two-factor.php",
+"section": "two-factor"
 },
 {
 "text": "I would like to donate",

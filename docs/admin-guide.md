@@ -120,6 +120,19 @@ The rating bar ("Rated 4.7 out of 5 from 111 Google reviews") is set in **Smile 
 
 The choices in form drop-downs (for example the contact form's "Subject" list or the donation form's "What would you like to support?") can be reworded in **Smile Centre > Site text & photos > Text**: search for the choice and type the new wording.
 
+### Two-step login (do this once, about 5 minutes)
+
+Two-step login means that after your password, WordPress asks for a 6-digit code from an app on your phone, so a stolen password alone cannot get into the site. An administrator first installs the free **Two Factor** plugin from **Appearance > Smile Setup > Plugins**. Nothing changes for anyone until they set it up, and it needs your phone:
+
+1. On your phone, install **Google Authenticator** or **Microsoft Authenticator**.
+2. In WordPress, go to **Users > Profile** and scroll down to **Two-Factor Options**.
+3. Tick **Authenticator App**. Scan the QR code with the app, type in the 6-digit code it shows, and click **Submit**.
+4. Tick **Recovery Codes** and click **Generate**. Write the codes down or print them, and keep them somewhere safe away from your phone. If you ever lose your phone, these codes get you back in.
+5. Make **Authenticator App** your main method, then click **Update Profile** at the bottom.
+6. Log out and back in. After your password, WordPress will ask for the 6-digit code from the app.
+
+Until you do this, a reminder with these steps shows at the top of the dashboard ("Remind me in a week" hides it for 7 days). Administrators can see who has it on in **Users > All Users**. If someone loses their phone and their recovery codes, an administrator can turn two-step login off for them on their profile page.
+
 ### The sign-in page
 
 Staff sign in at /wp-login.php (or /wp-admin). The page shows a photo panel with the centre's message on the left and a single white sign-in card (logo, heading, fields and links) on the right; on a phone the photo is a short banner above the box. The phone number and email under "Need access or locked out?" come from **Smile Centre > Centre details**. To change any wording on the page (for example "Welcome back" or the three points in the photo panel), go to **Smile Centre > Site text & photos > Text** and search for the words. After 5 wrong passwords, sign-in pauses for 15 minutes; this is a security feature.

@@ -8,7 +8,7 @@
 A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.</p>
 
 <p>
-<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.29.0-164B3F?style=flat-square">
+<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.30.0-164B3F?style=flat-square">
 <img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.2.2-176B5B?style=flat-square">
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=flat-square&logo=wordpress&logoColor=white">
 <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2%20recommended-777BB4?style=flat-square&logo=php&logoColor=white">
@@ -45,7 +45,7 @@ M-Pesa Paybill <strong>247247</strong>, Account <strong>147516</strong> with one
 </td>
 <td width="33%" valign="top">
 <h3>Edited without code</h3>
-Every page in Elementor. Every other text (792) and section photo in <em>Site text &amp; photos</em>. Contact, payment and social details in one settings screen.
+Every page in Elementor. Every other text (811) and section photo in <em>Site text &amp; photos</em>. Contact, payment and social details in one settings screen.
 </td>
 <td width="33%" valign="top">
 <h3>Safe by design</h3>
@@ -123,7 +123,7 @@ Nothing visitors see is locked in code.
 | What | Where |
 |---|---|
 | Page layouts, headings, paragraphs, buttons, page photos | **Pages > Edit with Elementor** |
-| Every other wording (792 texts: sections, cards, forms, footer, Stories page, messages) | **Smile Centre > Site text & photos > Text** (search, type, save; an empty box restores the original) |
+| Every other wording (811 texts: sections, cards, forms, footer, Stories page, messages) | **Smile Centre > Site text & photos > Text** (search, type, save; an empty box restores the original) |
 | Photos used in sections (programme cards, gallery wall, founder, stories fallbacks) | **Smile Centre > Site text & photos > Photos** |
 | Office opening and closing hours, Saturday opening (WhatsApp status and "open now" badge) | **Smile Centre > Centre details > Contact details** |
 | Google rating, review count and reviews link | **Smile Centre > Centre details > Google reviews** |
@@ -173,6 +173,7 @@ Reviewed line by line for production: [SECURITY-AUDIT.md](SECURITY-AUDIT.md).
 | Output escaping | `esc_html`, `esc_attr`, `esc_url`, `wp_kses_post` everywhere; no `innerHTML` with data |
 | CSRF | Nonces on every form and admin action; signed timestamps on public forms |
 | SQL injection | WordPress APIs only; the one direct query uses `$wpdb->prepare` |
+| Two-step login | Official Two Factor plugin (authenticator app and recovery codes), installed from Smile Setup; dashboard reminder until each user sets it up |
 | Passwords | WordPress salted hashing (bcrypt from 6.8); 12-character minimum |
 | Sessions | 12 hours, or 7 days with "Remember me" |
 | HTTPS | Redirect from http, HSTS, `upgrade-insecure-requests` |
@@ -238,6 +239,7 @@ Target: first content in 1 to 3 seconds on mobile with page caching. Details: [d
     │   ├── careers.php             Jobs, Careers sections, Google for Jobs data
     │   ├── whatsapp-chat.php       WhatsApp chat button and card
     │   ├── login.php               branded staff sign-in page
+    │   ├── two-factor.php          two-step login reminders and status column
     │   ├── performance.php         banner preload, lighter uploads, fewer requests, Elementor speed settings
     │   ├── images.php · customizer.php
     │   └── plugins.php · importer.php · wizard.php   Smile Setup (admins only)
@@ -330,6 +332,7 @@ Highlights below; every change is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Highlights |
 |---|---|
+| 2.30.0 | Two-step login with the official Two Factor plugin: one-click install, setup reminder with steps, branded code screen |
 | 2.29.0 | Speed: banner photo fetched first on every page, lighter uploads (1920 px, WebP, quality 80), fewer visitor files, Elementor speed settings kept on |
 | 2.28.0 | WhatsApp chat no longer opens twice; office hours and Saturday opening are settings that drive the chat status and "open now" badge |
 | 2.27.0 | Nothing hard-coded: Google rating, review count and link, form choices and sign-in name all editable; security re-check |

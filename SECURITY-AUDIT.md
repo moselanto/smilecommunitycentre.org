@@ -44,6 +44,7 @@
 - New entry points since the first audit reviewed: Careers (Jobs meta box: nonce, capability, typed sanitising; JobPosting data escaped), talent community form (same nonce, signed timestamp, honeypot, rate limit and allow-list as the other forms), WhatsApp chat (no data sent to the site; GET to wa.me only, allowed by the CSP form rule), branded sign-in page (display only; core login, throttling and generic errors unchanged), Google reviews and office-hours settings (rating validated 0-5, hours validated 0-24).
 - Fixed: new-tab links now use rel="noopener noreferrer"; the WhatsApp send no longer relies on window.open "noopener" (which returned null and opened a second copy in the same tab) and instead clears the opener on the new tab.
 - No new critical, high or medium findings.
+- 2.30.0: two-step login added through the official Two Factor plugin (authenticator app and recovery codes), installed from Smile Setup, with a per-user setup reminder. This closes the earlier recommendation that administrators use two-factor sign-in.
 
 ## 3. Controls confirmed sound (no change needed)
 

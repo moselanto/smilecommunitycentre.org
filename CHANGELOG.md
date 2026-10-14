@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.30.0
+- **Two-step login (two-factor authentication).** The official WordPress.org "Two Factor" plugin is now listed in Smile Setup > Plugins (recommended), so it installs in one click.
+- Until it is installed, administrators see a dashboard reminder with an "Install Two Factor" button.
+- Once it is active, every staff member who has not set it up sees a dashboard reminder with the six setup steps (authenticator app, QR code, recovery codes, main method, update profile, sign out and in) and a "Set up two-step login" button that opens the right part of their profile. "Remind me in a week" hides it for 7 days (nonce protected).
+- Users > All Users shows a "Two-step login: On / Not set up" column when the plugin does not add its own.
+- The code screen after the password uses the branded sign-in page: "Two-step verification" heading, large spaced 6-digit code box, tidy links to recovery codes.
+- New file inc/two-factor.php; reminders can be switched off with the smile_2fa_reminder filter. Editable texts now 811. Docs updated.
+
 ## 2.29.0
 - **Speed: banner photo first on every page.** Inner pages (About, Programmes, Donate and the rest) now tell the browser to fetch their banner photo straight away, at high priority and in the right size for the screen, as the home page already did for its first slide. Story pages do the same for their main photo.
 - **Lighter photos for new uploads.** Uploads are scaled to at most 1920 px (was 2560 px), PNG photos get WebP copies like JPEGs, and WebP/JPEG quality is 80 (was 84), about 15 to 25% smaller with no visible change.

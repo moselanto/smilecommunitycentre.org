@@ -47,6 +47,13 @@ function smile_theme_plugins() {
 			'required' => false,
 			'why'      => __( 'Page caching: serves ready-made pages so the site opens in about a second. Skip if your host or WP Rocket already caches pages.', 'smile-community' ),
 		),
+		'two-factor'           => array(
+			'name'     => 'Two Factor',
+			'file'     => 'two-factor/two-factor.php',
+			'source'   => 'repo',
+			'required' => false,
+			'why'      => __( 'Two-step login: after the password, staff type a 6-digit code from an authenticator app on their phone. Official WordPress.org plugin. Strongly recommended for everyone who can edit the site.', 'smile-community' ),
+		),
 		'wp-mail-smtp'         => array(
 			'name'     => 'WP Mail SMTP',
 			'file'     => 'wp-mail-smtp/wp_mail_smtp.php',
