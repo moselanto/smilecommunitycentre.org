@@ -3,7 +3,7 @@
  * Plugin Name:       Smile Community Core
  * Plugin URI:        https://smilecommunitycentre.org/
  * Description:       Site functionality for Smile Community Centre Children's Home: editable contact and donation details, M-Pesa donation blocks, secure enquiry forms with a private inbox, redirects from old URLs, photo metadata stripping, and a one-click staging site builder for the Elementor pages.
- * Version:           1.3.0
+ * Version:           1.3.1
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Smile Community Centre
@@ -15,7 +15,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SMILE_CORE_VERSION', '1.3.0' );
+define( 'SMILE_CORE_VERSION', '1.3.1' );
 define( 'SMILE_CORE_FILE', __FILE__ );
 define( 'SMILE_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SMILE_CORE_URL', plugin_dir_url( __FILE__ ) );

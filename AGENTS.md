@@ -31,4 +31,6 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **19 Oct 2026, 23:40 EAT:** Crawled all 56 old pages for links not in the sitemaps (123 found). All 51 feed addresses already work. Committed 2.31.1 / Core 1.3.1 (not yet uploaded): 18 old tag pages and /blog/page/N/ go to Stories; old category pages past the new last page go to page 1. Still open: 41 old `?p=<id>` links (IDs differ on the new site, so they may 404 or open the wrong post; needs the old ID-to-slug map from the live site, then a `?p=` redirect map), and 7 old `/dev/wp-content/uploads/...` image links on live pages (probably already broken on the live site; unverified).
+
 - **19 Oct 2026:** URL audit of the old site vs staging. Before: 21 old URLs returned 404 and 18 posts only resolved via date-permalink redirects. Shipped 2.31.0 / Core 1.3.0: built-in redirect map, category-base fallback, old sitemap redirects, one-time switch to `/%postname%/`. Uploaded and verified the same evening. Docs: `docs/redirects.md` rewritten, this file added.

@@ -2,6 +2,13 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.31.1
+- **Links found inside old pages, not just the sitemaps.** Crawled all 56 old pages: 123 more linked addresses (feeds, tag pages, archive pages, ?p= links, old /dev/ image paths). All 51 feeds already work. Fixed:
+  - 18 old tag pages (/tag/impact/ and others, with /page/N/ or /feed/) were 404 because staging has no tags. They now go to Stories (only when the tag does not exist).
+  - /blog/page/2/ and /blog/page/3/ were 404. They now go to Stories.
+  - Old category pages past the new last page (/charity/page/3/, /education/page/2/) were 404. They now go to page 1 of that category.
+- docs/old-urls.txt now includes these addresses. Smile Community Core 1.3.1.
+
 ## 2.31.0
 - **No broken links after the switch.** Audited every address in the old site's sitemaps (smilecommunitycentre.org: 28 posts, 16 pages, 12 categories, 19 Oct 2026) against the staging site. All 56 now open a page or 301-redirect to the best match.
 - Redirects are now built in (always on), not only saved at activation, so clearing the Redirects screen can no longer break old links. Rules typed at Smile Centre > Redirects still take priority; the screen lists the built-in ones.

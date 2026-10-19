@@ -143,6 +143,24 @@ function smile_core_category_redirect( $path ) {
 }
 
 /**
+ * Old archive addresses that have no direct equivalent: old tag pages
+ * (/tag/impact/, with /page/N/ or /feed/) and the old blog's later pages
+ * (/blog/page/2/). Both go to Stories. Only runs on a 404, so a tag that
+ * exists on the new site still opens normally.
+ *
+ * @param string $path Request path relative to the site root.
+ * @return string Target URL or ''.
+ */
+function smile_core_archive_redirect( $path ) {
+	$path = strtolower( $path );
+	if ( preg_match( '#^/tag/[a-z0-9\-_%]+(/(page/\d+|feed))?/?$#', $path ) || preg_match( '#^/blog/page/\d+/?$#', $path ) ) {
+		$stories = get_page_by_path( 'stories' );
+		return $stories ? get_permalink( $stories ) : home_url( '/stories/' );
+	}
+	return '';
+}
+
+/**
  * Perform redirect on 404.
  */
 function smile_core_maybe_redirect() {
