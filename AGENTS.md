@@ -31,6 +31,8 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **20 Oct 2026, 00:55 EAT:** 2.31.5 / Core 1.3.5 uploaded and verified: all 96 addresses in `docs/old-urls.txt` (including the numbered ?p= links) end on a 200 page with at most one redirect; ?page_id=263 and /dev/about-us/ also work. /dev/ photo links redirect to /wp-content/uploads/... correctly; those files return 404 on staging only because the photos are not on the staging server (they exist on live). Go-live not yet.
+
 - **20 Oct 2026, 00:45 EAT:** Decisions from Agnes: keep the 9 retired posts as redirects (do not import); go-live is NOT yet, more changes to the new site are coming first. Checked the 7 old /dev/ photo links: on the live site they already 301 to the home page (photos broken there too); the real files are at /wp-content/uploads/2021/... on live and missing on staging. Committed 2.31.5 / Core 1.3.5: any /dev/... address drops the /dev prefix. 2.31.4 and 2.31.5 both need upload + plugin update, then `scripts/check-old-urls.sh`. At go-live the old uploads folder must be kept so those photos load.
 
 - **20 Oct 2026, 00:35 EAT:** Mapped the old site's 42 numbered links (?p=ID) to their addresses via the live REST API; on staging all 42 were 404 and none of those IDs is used by other staging content. Committed 2.31.4 / Core 1.3.4: `smile_core_old_id_redirect()` (template_redirect priority 0) sends each old ?p= / ?page_id= to the right page in one hop. Needs upload + plugin update, then `scripts/check-old-urls.sh`. Still open: /dev/ image links on old pages, decision on the 9 retired posts, go-live steps.
