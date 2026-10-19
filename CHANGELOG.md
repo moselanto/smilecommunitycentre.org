@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.31.2
+- **Fix: the 2.31.1 tag, blog-page and category-page redirects never ran.** The new tag/blog redirect function was added but not called, and the category "past the last page" check was missing from the shipped file. Both are now in place. Smile Community Core 1.3.2.
+
 ## 2.31.1
 - **Links found inside old pages, not just the sitemaps.** Crawled all 56 old pages: 123 more linked addresses (feeds, tag pages, archive pages, ?p= links, old /dev/ image paths). All 51 feeds already work. Fixed:
   - 18 old tag pages (/tag/impact/ and others, with /page/N/ or /feed/) were 404 because staging has no tags. They now go to Stories (only when the tag does not exist).

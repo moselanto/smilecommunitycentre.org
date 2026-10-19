@@ -122,7 +122,10 @@ function smile_core_category_redirect( $path ) {
 	$rest = array_slice( $segments, 1 );
 	$tail = '';
 	if ( 2 === count( $rest ) && 'page' === $rest[0] && ctype_digit( $rest[1] ) ) {
-		$tail = 'page/' . (int) $rest[1] . '/';
+		// The old site had more posts per category; past the last page, go to page 1.
+		$per_page = max( 1, (int) get_option( 'posts_per_page', 10 ) );
+		$max_page = max( 1, (int) ceil( (int) $cat->count / $per_page ) );
+		$tail     = ( (int) $rest[1] > 1 && (int) $rest[1] <= $max_page ) ? 'page/' . (int) $rest[1] . '/' : '';
 	} elseif ( 1 === count( $rest ) && 'feed' === $rest[0] ) {
 		$tail = 'feed/';
 	} elseif ( ! empty( $rest ) ) {
@@ -184,6 +187,9 @@ function smile_core_maybe_redirect() {
 		$target = 0 === strpos( $target, 'http' ) ? $target : home_url( $target );
 	} else {
 		$target = smile_core_category_redirect( $path );
+		if ( '' === $target ) {
+			$target = smile_core_archive_redirect( $path );
+		}
 	}
 	if ( '' === $target ) {
 		return;
