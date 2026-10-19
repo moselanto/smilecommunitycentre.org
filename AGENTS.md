@@ -31,6 +31,8 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **20 Oct 2026, 00:20 EAT:** 2.31.3 / Core 1.3.3 uploaded and verified: all 86 addresses in `docs/old-urls.txt` end on a 200 page with at most one redirect (/education/page/2/ now goes to /category/education/). Note: the staging host times out when hit with more than about 3 requests at once; check gently.
+
 - **20 Oct 2026, 00:10 EAT:** 2.31.2 / Core 1.3.2 uploaded and verified: tag pages and /blog/page/N/ go to Stories, /charity/page/3/ goes to the category. One gap left: /education/page/2/ landed on a 404 (new archives use more posts per page than `posts_per_page`). Committed 2.31.3 / Core 1.3.3: old category page numbers always go to page 1 of the category. Needs upload + plugin update, then `scripts/check-old-urls.sh`. Still open: ?p=<id> links (needs the old ID-to-slug map; awaiting Agnes's approval to look it up on the live site), /dev/ image links, decision on the 9 retired posts.
 
 - **19 Oct 2026, 23:55 EAT:** 2.31.1 / Core 1.3.1 were uploaded but the tag, /blog/page/N/ and category-overflow redirects did not work: the shipped redirects.php defined `smile_core_archive_redirect()` but never called it, and lacked the category max-page check (lost when several edits were made to the same file at once). Fixed in 2.31.2 / Core 1.3.2. Lesson: after editing `includes/redirects.php`, confirm every new function is called, and after upload run `scripts/check-old-urls.sh`. Remember the bundled Core plugin only updates when an admin clicks install/update in Appearance > Smile Setup > Plugins.
