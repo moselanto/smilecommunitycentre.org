@@ -20,6 +20,10 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 - Theme **2.31.0** with Core **1.3.0** (commit d74c3d8) is uploaded on staging and verified: all 56 old sitemap URLs plus old sitemap files and category pagination/feeds end on a 200 page with at most one redirect. Permalinks on staging are now `/%postname%/`.
 
+## How to re-check old links
+
+`bash scripts/check-old-urls.sh` (staging) or `bash scripts/check-old-urls.sh https://smilecommunitycentre.org` (after go-live). It reads `docs/old-urls.txt` (every old sitemap address, saved here because the old sitemaps disappear at go-live) and fails if any address does not end on a 200 page within one redirect. Run it after every release that touches pages, permalinks, categories or redirects. The host rate-limits bursts, so the script checks one address at a time.
+
 ## Open items
 
 1. Decide whether to import the 9 old posts that were not carried over (list in `docs/redirects.md`); they currently redirect to general pages.

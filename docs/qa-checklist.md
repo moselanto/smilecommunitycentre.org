@@ -44,6 +44,7 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] Each page has a unique title and description (SEOPress).
 - [ ] `/sitemaps.xml` is reachable. Staging is noindex, and production is indexable at launch.
 - [ ] Every row in redirects.md returns a 301 to the right page.
+- [ ] `bash scripts/check-old-urls.sh` (and, after go-live, with `https://smilecommunitycentre.org`) reports every old address working.
 - [ ] Only one Organization appears (the theme's; SEOPress Knowledge Graph off). Check the home page with the Rich Results Test and the Schema Markup Validator.
 - [ ] View source on Home, Donate and a story: the title and meta description match docs/SEO.md.
 

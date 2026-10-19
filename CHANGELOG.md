@@ -10,6 +10,7 @@ All notable changes to the Smile Community Centre theme (`smile-community-child`
 - Old SEOPress sitemap files (sitemaps.xml, post-sitemap1.xml and the rest) redirect to the WordPress sitemaps.
 - Post addresses: the first administrator visit after the update sets permalinks to /post-name/ (staging used /year/month/day/post-name/), so every old post keeps its exact address. Off switch: smile_core_postname_permalinks filter.
 - Smile Community Core 1.3.0.
+- Uploaded to staging and verified on 19 Oct 2026: all 59 old addresses (docs/old-urls.txt) end on a 200 page within one redirect. New `scripts/check-old-urls.sh` re-runs the check; AGENTS.md added as the handover file for developers and AI agents.
 
 ## 2.30.0
 - **Two-step login (two-factor authentication).** The official WordPress.org "Two Factor" plugin is now listed in Smile Setup > Plugins (recommended), so it installs in one click.
