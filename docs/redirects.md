@@ -39,7 +39,9 @@ New URLs: `/our-programmes/`, `/child-care-and-shelter/`, `/health-and-wellbeing
 
 ## Open items
 
-- The 9 old posts not carried over redirect to general pages. Google may treat those as soft 404s. If the owner wants the content kept, import the posts with their original slugs; the redirects then stop automatically (they only fire on 404).
+- **Decided (Agnes, 20 Oct 2026):** the 9 old posts not carried over stay as redirects to the closest page; do not import them unless she asks.
+- **Old /dev/ links (2.31.5):** old pages link to 7 photos under /dev/wp-content/uploads/2021/... (kidskusoma2-1, kusoma1_size, kusoma2, kusoma3, Infographic-724x1024, background-about, sampleheader). Any /dev/... address now redirects to the same path without /dev. The files exist on the live site at /wp-content/uploads/2021/..., not on staging.
+- **Old numbered links (2.31.4):** 42 old ?p= / ?page_id= numbers map to their pages (`smile_core_old_id_map()`).
 - When the new site goes live on smilecommunitycentre.org, keep the old `wp-content/uploads/` files on the server: old pages and other websites link straight to image files there.
 - If SEOPress sitemaps are switched on in production, `/sitemaps.xml` will be served by SEOPress and the sitemap redirects simply stop firing (fine).
 - After launch, re-run the check: every old sitemap URL must end on a 200 page.

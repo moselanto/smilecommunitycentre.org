@@ -154,6 +154,11 @@ function smile_core_category_redirect( $path ) {
  * @return string Target URL or ''.
  */
 function smile_core_archive_redirect( $path ) {
+	// Old pages still link to the old development copy (/dev/...), e.g. photos at
+	// /dev/wp-content/uploads/2021/01/kusoma2.jpg. Drop the /dev prefix.
+	if ( preg_match( '#^/dev(/.*)$#i', $path, $m ) && '/' !== $m[1] ) {
+		return home_url( $m[1] );
+	}
 	$path = strtolower( $path );
 	if ( preg_match( '#^/tag/[a-z0-9\-_%]+(/(page/\d+|feed))?/?$#', $path ) || preg_match( '#^/blog/page/\d+/?$#', $path ) ) {
 		$stories = get_page_by_path( 'stories' );

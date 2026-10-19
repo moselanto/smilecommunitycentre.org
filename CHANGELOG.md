@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.31.5
+- **Old /dev/ links.** Four old pages (Blog, Our goals, Our impact infographic, From a children's home in slums to university) link to 7 photos under /dev/wp-content/uploads/. On the live site those already redirect to the home page, so the photos do not show; the real files are at /wp-content/uploads/... Any old /dev/... address now drops the /dev prefix in one hop (photos go to the real file, /dev/about-us/ goes to /about-us/). The photos themselves will only load after go-live if the old uploads folder is kept.
+- Decision recorded (Agnes, 20 Oct 2026): the 9 retired posts stay as redirects; they are not being imported.
+- Smile Community Core 1.3.5.
+
 ## 2.31.4
 - **Old numbered links (?p=2299, ?page_id=263).** The old site's pages link to posts and pages by number. Those numbers are different on the new site, so all 42 of them were 404 on staging. Each old number now redirects in one hop to the right page (27 posts, 15 pages, mapped from the live site on 20 Oct 2026; none of these numbers is used by other content on staging). Previews are not affected. Filter: smile_core_old_id_map. Smile Community Core 1.3.4.
 - docs/old-urls.txt now includes the numbered links.
