@@ -2,6 +2,15 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.31.0
+- **No broken links after the switch.** Audited every address in the old site's sitemaps (smilecommunitycentre.org: 28 posts, 16 pages, 12 categories, 19 Oct 2026) against the staging site. All 56 now open a page or 301-redirect to the best match.
+- Redirects are now built in (always on), not only saved at activation, so clearing the Redirects screen can no longer break old links. Rules typed at Smile Centre > Redirects still take priority; the screen lists the built-in ones.
+- Old category addresses without "/category/" (/charity/, /children/, /orphanages-in-nairobi/, including /page/2/ and /feed/) redirect to the matching category archive.
+- Old posts not carried over redirect to the closest page (founder post to Our founder, "half of the world's extreme poor" to Our impact, the COVID announcement to Announcements, the rest to Stories). /education/ goes to the Education category, as on the old site.
+- Old SEOPress sitemap files (sitemaps.xml, post-sitemap1.xml and the rest) redirect to the WordPress sitemaps.
+- Post addresses: the first administrator visit after the update sets permalinks to /post-name/ (staging used /year/month/day/post-name/), so every old post keeps its exact address. Off switch: smile_core_postname_permalinks filter.
+- Smile Community Core 1.3.0.
+
 ## 2.30.0
 - **Two-step login (two-factor authentication).** The official WordPress.org "Two Factor" plugin is now listed in Smile Setup > Plugins (recommended), so it installs in one click.
 - Until it is installed, administrators see a dashboard reminder with an "Install Two Factor" button.
