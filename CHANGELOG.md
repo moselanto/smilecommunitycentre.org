@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.31.3
+- Old category page numbers (/charity/page/2/, /education/page/2/) now always go to page 1 of the matching category. The new archives show a different number of posts per page, so old page numbers could land past the end (/education/page/2/ was still a 404 in 2.31.2). Smile Community Core 1.3.3.
+- Verified on staging after 2.31.2: all 18 old tag pages and /blog/page/2/ and /blog/page/3/ now go to Stories; /charity/page/3/ goes to the Charity category.
+
 ## 2.31.2
 - **Fix: the 2.31.1 tag, blog-page and category-page redirects never ran.** The new tag/blog redirect function was added but not called, and the category "past the last page" check was missing from the shipped file. Both are now in place. Smile Community Core 1.3.2.
 
