@@ -163,6 +163,95 @@ function smile_core_archive_redirect( $path ) {
 }
 
 /**
+ * Old numeric links (?p=2299, ?page_id=263) from smilecommunitycentre.org.
+ * Post IDs differ on the new site, so map each old ID to its old address
+ * (audited 20 Oct 2026 from the live site's REST API: 27 posts, 15 pages).
+ *
+ * @return array old ID => old path
+ */
+function smile_core_old_id_map() {
+	$map = array(
+		2755 => 'how-to-sponsor-a-child-in-kenya-a-donors-guide-to-real-lasting-impact',
+		2745 => 'best-charities-to-donate-to-in-kenya-and-how-to-vet-them-yourself',
+		2718 => 'how-to-volunteer-your-time-at-a-childrens-home',
+		2715 => 'how-can-children-homes-foster-education-and-personal-growth',
+		2712 => 'how-community-involvement-strengthens-childrens-homes',
+		2708 => 'what-to-consider-when-choosing-to-support-a-childrens-home',
+		2688 => 'meeting-the-needs-of-orphans-and-vulnerable-children-in-nairobi-childrens-homes',
+		2684 => 'what-you-need-to-know-about-childrens-homes-in-nairobi',
+		2679 => 'the-importance-of-providing-a-safe-and-loving-environment-for-children',
+		2675 => 'debunking-myths-about-childrens-homes',
+		2656 => 'how-can-donors-make-a-lasting-difference-in-nairobis-childrens-homes',
+		2649 => 'the-mental-health-of-orphans-and-vulnerable-children-ovcs-in-nairobi-childrens-homes',
+		2607 => 'what-vulnerability-feels-like',
+		2596 => 'a-journey-cut-short-reflections-on-the-titanic-submarine-experience',
+		2590 => 'empowering-kenyan-youth-the-significance-of-the-hustler-fund-in-informal-settlements',
+		2585 => 'building-bridges-the-shared-commitment-of-comoros-and-kenya-in-supporting-orphaned-and-vulnerable-children',
+		2526 => 'orphaned-and-vulnerable-children-need-support-for-a-promising-future',
+		2454 => 'life-as-it-is',
+		2374 => 'a-day-in-the-life-of-our-founder-margrets-work-routine-in-slums',
+		2299 => 'a-place-to-call-home',
+		2206 => 'is-there-one-way-in-which-you-can-change-someones-life',
+		2199 => '5-things-to-do-while-visiting-a-childrens-home',
+		2178 => 'real-life-stories-from-smile-community-centre-childrens-home',
+		2167 => 'smile-community-centre-childrens-home-announcement-in-regards-to-the-fifteenth-15th-presidential-address-on-the-coronavirus-pandemic',
+		2020 => 'did-you-know-children-account-for-half-of-the-worlds-extreme-poor',
+		2017 => 'our-impact-in-infographic',
+		1730 => 'from-a-children-home-in-slums-to-university',
+		2349 => 'faq-page',
+		2279 => 'sitemap',
+		2266 => 'photos',
+		2203 => 'privacy-policy',
+		2055 => 'volunteer',
+		2040 => 'our-founder',
+		1993 => 'donate',
+		1953 => 'feeding-program',
+		1944 => 'sports',
+		1931 => 'hiv-and-the-community',
+		1911 => 'education-program',
+		1895 => 'our-goals',
+		355  => 'contact-us',
+		263  => 'about-us',
+		246  => 'blog',
+	);
+	return (array) apply_filters( 'smile_core_old_id_map', $map );
+}
+
+/**
+ * Redirect old ?p= / ?page_id= links to the right page in one hop.
+ * Skipped for previews. Runs before WordPress resolves the ID, because the
+ * same number may belong to different content on the new site.
+ */
+function smile_core_old_id_redirect() {
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended
+	if ( isset( $_GET['preview'] ) || is_admin() ) {
+		return;
+	}
+	$id = 0;
+	if ( isset( $_GET['p'] ) ) {
+		$id = absint( wp_unslash( $_GET['p'] ) );
+	} elseif ( isset( $_GET['page_id'] ) ) {
+		$id = absint( wp_unslash( $_GET['page_id'] ) );
+	}
+	// phpcs:enable
+	$map = smile_core_old_id_map();
+	if ( ! $id || ! isset( $map[ $id ] ) ) {
+		return;
+	}
+	$path  = '/' . $map[ $id ] . '/';
+	$rules = smile_core_redirect_rules();
+	$key   = smile_core_redirect_key( $path );
+	if ( isset( $rules[ $key ] ) ) {
+		$target = 0 === strpos( $rules[ $key ], 'http' ) ? $rules[ $key ] : home_url( $rules[ $key ] );
+	} else {
+		$target = home_url( $path );
+	}
+	wp_safe_redirect( $target, 301, 'Smile Community Core' );
+	exit;
+}
+add_action( 'template_redirect', 'smile_core_old_id_redirect', 0 );
+
+/**
  * Perform redirect on 404.
  */
 function smile_core_maybe_redirect() {

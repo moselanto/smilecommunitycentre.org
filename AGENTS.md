@@ -31,6 +31,8 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **20 Oct 2026, 00:35 EAT:** Mapped the old site's 42 numbered links (?p=ID) to their addresses via the live REST API; on staging all 42 were 404 and none of those IDs is used by other staging content. Committed 2.31.4 / Core 1.3.4: `smile_core_old_id_redirect()` (template_redirect priority 0) sends each old ?p= / ?page_id= to the right page in one hop. Needs upload + plugin update, then `scripts/check-old-urls.sh`. Still open: /dev/ image links on old pages, decision on the 9 retired posts, go-live steps.
+
 - **20 Oct 2026, 00:20 EAT:** 2.31.3 / Core 1.3.3 uploaded and verified: all 86 addresses in `docs/old-urls.txt` end on a 200 page with at most one redirect (/education/page/2/ now goes to /category/education/). Note: the staging host times out when hit with more than about 3 requests at once; check gently.
 
 - **20 Oct 2026, 00:10 EAT:** 2.31.2 / Core 1.3.2 uploaded and verified: tag pages and /blog/page/N/ go to Stories, /charity/page/3/ goes to the category. One gap left: /education/page/2/ landed on a 404 (new archives use more posts per page than `posts_per_page`). Committed 2.31.3 / Core 1.3.3: old category page numbers always go to page 1 of the category. Needs upload + plugin update, then `scripts/check-old-urls.sh`. Still open: ?p=<id> links (needs the old ID-to-slug map; awaiting Agnes's approval to look it up on the live site), /dev/ image links, decision on the 9 retired posts.

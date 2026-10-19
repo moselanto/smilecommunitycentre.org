@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.31.4
+- **Old numbered links (?p=2299, ?page_id=263).** The old site's pages link to posts and pages by number. Those numbers are different on the new site, so all 42 of them were 404 on staging. Each old number now redirects in one hop to the right page (27 posts, 15 pages, mapped from the live site on 20 Oct 2026; none of these numbers is used by other content on staging). Previews are not affected. Filter: smile_core_old_id_map. Smile Community Core 1.3.4.
+- docs/old-urls.txt now includes the numbered links.
+
 ## 2.31.3
 - Old category page numbers (/charity/page/2/, /education/page/2/) now always go to page 1 of the matching category. The new archives show a different number of posts per page, so old page numbers could land past the end (/education/page/2/ was still a 404 in 2.31.2). Smile Community Core 1.3.3.
 - Verified on staging after 2.31.2: all 18 old tag pages and /blog/page/2/ and /blog/page/3/ now go to Stories; /charity/page/3/ goes to the Charity category.

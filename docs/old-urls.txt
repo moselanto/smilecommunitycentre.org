@@ -88,3 +88,14 @@
 /tag/university-education/
 /tag/women/
 /tag/world/
+# Old numbered links (2.31.4): each must reach the right page in one hop.
+/?p=2299
+/?p=2755
+/?p=2374
+/?p=2167
+/?p=1730
+/?p=246
+/?p=263
+/?p=355
+/?p=2266
+/?p=1931
