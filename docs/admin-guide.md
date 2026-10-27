@@ -144,3 +144,25 @@ They arrive in Enquiries as "Safeguarding / photo removal". Unpublish first (set
 ## Administrators only
 
 Plugins, themes, Appearance > Smile Setup, Smile Centre > Redirects, form and privacy settings, users and roles, Settings > Reading (search engine visibility). Administrators should use two-factor sign-in.
+
+
+## Editing with Elementor (from 2.32.0)
+
+### Change any section
+1. Open the page and click **Edit with Elementor**.
+2. Click the section. If it is a Smile widget, the left panel shows **Settings**, **Texts**, **Photos** and **Style**.
+3. Type new wording in **Texts** (an empty box keeps the normal wording). Choose new photos in **Photos** (only photos the centre has consent to publish).
+4. Click **Update**.
+
+To add a section, search "Smile" in the widget panel and drag it onto the page. Older pages that show a Shortcode widget still work; you can replace it with the matching Smile widget to edit it visually.
+
+### Header and footer
+1. Appearance > **Smile Theme Options** > Header & Footer > **Create starter header and footer templates**.
+2. Templates > Saved Templates: open "Smile header (starter)" with Elementor, change it, click **Update**. Same for the footer.
+3. Back in Smile Theme Options, choose them as **Site header** and **Site footer**, and save.
+4. To use a different header on one page: edit the page with Elementor, click the cog (Page settings) > **Smile header & footer**.
+
+If anything looks wrong, set Site header/footer back to **Theme header / footer (built in)**: the original design returns at once.
+
+### Theme options
+Appearance > **Smile Theme Options**: top bar, Donate button, WhatsApp chat, footer line, brand colours, content width and custom CSS. Install **Redux Framework** from Appearance > Smile Setup > Plugins for the full panel.

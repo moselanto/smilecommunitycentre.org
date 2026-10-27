@@ -286,6 +286,9 @@ add_action( 'wp_head', 'smile_local_fonts', 1 );
  * widgets. Load it only on pages that use one of them.
  */
 function smile_trim_elementor_assets() {
+	if ( function_exists( 'smile_builder_active' ) && smile_builder_active() ) {
+		return; // Header/footer templates may use Elementor icons.
+	}
 	if ( is_admin() || ! is_singular() || ( isset( $_GET['elementor-preview'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check.
 		return;
 	}

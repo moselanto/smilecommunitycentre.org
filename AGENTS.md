@@ -31,6 +31,8 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **27 Oct 2026:** 2.32.0 on branch `feature/elementor-builder` (PR, not on main or staging yet): Smile Theme Options (Redux + built-in fallback), Elementor header/footer templates with per-page choice and fallback, 59 Smile Elementor widgets + 4 blocks generated from the shortcodes (`scripts/build-elementor-widgets.py`), starter templates. Quality gate passes (PHP 8.3 lint). Staging has Elementor 4.3.5, no Pro, no Redux. After merge: upload zip, install Redux from Smile Setup, create starter templates, test in Elementor.
+
 - **20 Oct 2026, 00:55 EAT:** 2.31.5 / Core 1.3.5 uploaded and verified: all 96 addresses in `docs/old-urls.txt` (including the numbered ?p= links) end on a 200 page with at most one redirect; ?page_id=263 and /dev/about-us/ also work. /dev/ photo links redirect to /wp-content/uploads/... correctly; those files return 404 on staging only because the photos are not on the staging server (they exist on live). Go-live not yet.
 
 - **20 Oct 2026, 00:45 EAT:** Decisions from Agnes: keep the 9 retired posts as redirects (do not import); go-live is NOT yet, more changes to the new site are coming first. Checked the 7 old /dev/ photo links: on the live site they already 301 to the home page (photos broken there too); the real files are at /wp-content/uploads/2021/... on live and missing on staging. Committed 2.31.5 / Core 1.3.5: any /dev/... address drops the /dev prefix. 2.31.4 and 2.31.5 both need upload + plugin update, then `scripts/check-old-urls.sh`. At go-live the old uploads folder must be kept so those photos load.

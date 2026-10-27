@@ -8,7 +8,7 @@
 A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.</p>
 
 <p>
-<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.31.5-164B3F?style=flat-square">
+<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.32.0-164B3F?style=flat-square">
 <img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.3.1-176B5B?style=flat-square">
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=flat-square&logo=wordpress&logoColor=white">
 <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2%20recommended-777BB4?style=flat-square&logo=php&logoColor=white">
@@ -119,6 +119,12 @@ Stories &amp; News journal, Careers with jobs that close themselves, volunteer a
 ## Editing the site
 
 Nothing visitors see is locked in code.
+
+### Elementor-first editing (2.32.0)
+
+- **Every section is an Elementor widget.** Open any page with Elementor and search "Smile" in the widget panel: 57 sections, Site header, Site footer, Logo, Menu links, Social icons and Donate button. Each section's wording, photos, options and style are edited in the widget's sidebar with a live preview.
+- **Header and footer in Elementor.** Appearance > Smile Theme Options > Header & Footer > *Create starter header and footer templates*, edit them with Elementor, then choose them as the site header and footer. Pages can pick their own in Elementor > Page settings > Smile header & footer.
+- **Theme options.** Appearance > Smile Theme Options (Redux Framework, installed from Smile Setup): header/footer, top bar, Donate button, WhatsApp, brand colours, width, custom CSS.
 
 | What | Where |
 |---|---|
@@ -332,6 +338,7 @@ Highlights below; every change is in [CHANGELOG.md](CHANGELOG.md).
 
 | Version | Highlights |
 |---|---|
+| 2.32.0 | Whole site editable in Elementor: Smile Theme Options (Redux), Elementor header/footer templates with per-page choice and safe fallback, 59 Smile widgets with editable texts, photos and styles, starter templates |
 | 2.30.0 | Two-step login with the official Two Factor plugin: one-click install, setup reminder with steps, branded code screen |
 | 2.29.0 | Speed: banner photo fetched first on every page, lighter uploads (1920 px, WebP, quality 80), fewer visitor files, Elementor speed settings kept on |
 | 2.28.0 | WhatsApp chat no longer opens twice; office hours and Saturday opening are settings that drive the chat status and "open now" badge |

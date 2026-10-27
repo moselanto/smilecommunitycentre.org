@@ -33,6 +33,13 @@ function smile_theme_plugins() {
 			'required' => true,
 			'why'      => __( 'Centre details, M-Pesa block, forms and enquiries inbox, redirects, photo privacy. Included with the theme.', 'smile-community' ),
 		),
+		'redux-framework'      => array(
+			'name'     => 'Redux Framework',
+			'file'     => 'redux-framework/redux-framework.php',
+			'source'   => 'repo',
+			'required' => false,
+			'why'      => __( 'Full Smile Theme Options panel (header and footer templates, colours, top bar, custom CSS). The basic options work without it.', 'smile-community' ),
+		),
 		'wp-seopress'          => array(
 			'name'     => 'SEOPress',
 			'file'     => 'wp-seopress/seopress.php',

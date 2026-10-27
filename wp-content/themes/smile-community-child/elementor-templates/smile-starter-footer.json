@@ -1,0 +1,53 @@
+{
+ "version": "0.4",
+ "title": "Smile footer (starter)",
+ "type": "section",
+ "content": [
+  {
+   "id": "e78bd3d",
+   "elType": "section",
+   "isInner": false,
+   "settings": {
+    "layout": "full_width",
+    "gap": "no",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
+    }
+   },
+   "elements": [
+    {
+     "id": "d6aaf84",
+     "elType": "column",
+     "isInner": false,
+     "settings": {
+      "_column_size": 100,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": true
+      }
+     },
+     "elements": [
+      {
+       "id": "df80374",
+       "elType": "widget",
+       "widgetType": "smile-site-footer",
+       "isInner": false,
+       "settings": {},
+       "elements": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "page_settings": []
+}

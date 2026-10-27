@@ -3540,6 +3540,186 @@
 "section": "smile_social_icons"
 },
 {
+"text": "Main colour (teal)",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_colours"
+},
+{
+"text": "Dark colour (forest)",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_colours"
+},
+{
+"text": "Accent colour (sunshine)",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_colours"
+},
+{
+"text": "Soft background (cream)",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_colours"
+},
+{
+"text": "Text colour",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_colours"
+},
+{
+"text": "Smile Theme Options",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Theme header / footer (built in)",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Header & Footer",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Design the header and footer in Elementor",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Build a header or footer in <a href=\"%1$s\">Templates > Saved Templates</a> (type \"Section\"), then choose it below. Every page can override this choice under Elementor > Page settings > Smile header & footer. <a href=\"%2$s\">Create starter header and footer templates</a> (copies of the current design, ready to edit).",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Site header",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Shown on every page unless a page chooses its own.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Site footer",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Top bar & buttons",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "The same settings as Appearance > Customize > Smile: Header & Footer. Changes in either place show in both.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Slim contact bar above the header",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Donate button link",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Leave empty to use the Donate page.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "WhatsApp chat button on every page",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Content width (px)",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Colours & layout",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Brand colours used across the site, the header, footer and every Smile widget.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Custom CSS",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Extra CSS",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Added after the theme styles on every page.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_redux_config"
+},
+{
+"text": "Options saved.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_fallback_page"
+},
+{
+"text": "Install the free Redux Framework plugin (Appearance > Smile Setup > Plugins) for the full options panel. These basic settings work without it.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_fallback_page"
+},
+{
+"text": "Choose an Elementor template (type \"Section\") for the site header and footer. Each page can override this in Elementor > Page settings.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_fallback_page"
+},
+{
+"text": "Create starter header and footer templates",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_fallback_page"
+},
+{
+"text": "Sorry, you are not allowed to do that.",
+"domain": "smile-community",
+"file": "inc/theme-options.php",
+"section": "smile_opt_fallback_save"
+},
+{
 "text": "Protect the website with two-step login.",
 "domain": "smile-community",
 "file": "inc/two-factor.php",
@@ -4656,48 +4836,6 @@
 "section": "cta-band"
 },
 {
-"text": "Mzesa, Soweto, Kayole (near Donholm Phase 8), Nairobi, Kenya",
-"domain": "smile-community",
-"file": "template-parts/footer.php",
-"section": "footer"
-},
-{
-"text": "Footer",
-"domain": "smile-community",
-"file": "template-parts/footer.php",
-"section": "footer"
-},
-{
-"text": "Explore",
-"domain": "smile-community",
-"file": "template-parts/footer.php",
-"section": "footer"
-},
-{
-"text": "Follow us",
-"domain": "smile-community",
-"file": "template-parts/footer.php",
-"section": "footer"
-},
-{
-"text": "Office: 9am - 5pm",
-"domain": "smile-community",
-"file": "template-parts/header.php",
-"section": "header"
-},
-{
-"text": "Skip to content",
-"domain": "smile-community",
-"file": "template-parts/header.php",
-"section": "header"
-},
-{
-"text": "Main",
-"domain": "smile-community",
-"file": "template-parts/header.php",
-"section": "header"
-},
-{
 "text": "Application: %1$s%2$s",
 "domain": "smile-community",
 "file": "template-parts/job.php",
@@ -4864,5 +5002,47 @@
 "domain": "smile-community",
 "file": "template-parts/single.php",
 "section": "single"
+},
+{
+"text": "Mzesa, Soweto, Kayole (near Donholm Phase 8), Nairobi, Kenya",
+"domain": "smile-community",
+"file": "template-parts/site-footer.php",
+"section": "site-footer"
+},
+{
+"text": "Footer",
+"domain": "smile-community",
+"file": "template-parts/site-footer.php",
+"section": "site-footer"
+},
+{
+"text": "Explore",
+"domain": "smile-community",
+"file": "template-parts/site-footer.php",
+"section": "site-footer"
+},
+{
+"text": "Follow us",
+"domain": "smile-community",
+"file": "template-parts/site-footer.php",
+"section": "site-footer"
+},
+{
+"text": "Office: 9am - 5pm",
+"domain": "smile-community",
+"file": "template-parts/site-header.php",
+"section": "site-header"
+},
+{
+"text": "Skip to content",
+"domain": "smile-community",
+"file": "template-parts/site-header.php",
+"section": "site-header"
+},
+{
+"text": "Main",
+"domain": "smile-community",
+"file": "template-parts/site-header.php",
+"section": "site-header"
 }
 ]
