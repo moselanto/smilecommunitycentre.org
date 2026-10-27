@@ -1,0 +1,53 @@
+{
+ "version": "0.4",
+ "title": "Smile header (starter)",
+ "type": "section",
+ "content": [
+  {
+   "id": "128b553",
+   "elType": "section",
+   "isInner": false,
+   "settings": {
+    "layout": "full_width",
+    "gap": "no",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
+    }
+   },
+   "elements": [
+    {
+     "id": "bf2499a",
+     "elType": "column",
+     "isInner": false,
+     "settings": {
+      "_column_size": 100,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": true
+      }
+     },
+     "elements": [
+      {
+       "id": "35f4737",
+       "elType": "widget",
+       "widgetType": "smile-site-header",
+       "isInner": false,
+       "settings": {},
+       "elements": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "page_settings": []
+}

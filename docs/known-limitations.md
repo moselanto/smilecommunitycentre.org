@@ -15,6 +15,10 @@
 
 ## Technical
 
+- **Elementor widgets render on the server.** Smile widgets show a live preview, but each change reloads that widget's preview (a second or so). A widget's own wording or photo applies to that widget only; the wording in Smile Centre > Site text & photos still sets the default everywhere.
+- **Header/footer templates and stickiness.** The built-in header sticks to the top on scroll. An Elementor header template sits inside Elementor's own wrappers; if you want it sticky, set the section's Motion/Position settings or keep the "Smile: Site header" widget in a template with no extra wrappers.
+- **Free Elementor has no menu widget with a phone drawer.** Use the "Smile: Site header" widget for the main menu; "Smile: Menu links" is for simple link lists (footer, top bar).
+
 - Two-step login is encouraged, not forced: WordPress and the Two Factor plugin do not lock out users who skip it. An administrator should check Users > All Users and follow up with anyone still "Not set up". Keep at least two administrators with recovery codes so nobody is locked out.
 
 - Load time also depends on the host. The theme can make pages light, but if the server takes more than about 0.8 s to send the first byte, 1 to 3 seconds needs page caching (WP Super Cache), PHP 8.2+ and ideally a free CDN such as Cloudflare (see docs/performance.md). Photos uploaded before 2.29.0 stay at their old sizes until thumbnails are regenerated once.

@@ -1392,3 +1392,10 @@ p, li { text-wrap: pretty; }
 .smile-footer__logo .smile-brand__img { height: 56px; }
 @media (max-width: 900px) { .smile-brand__img { height: 48px; } .smile-header.is-scrolled .smile-brand__img { height: 44px; } }
 @media (max-width: 380px) { .smile-brand__img { height: 40px; } }
+
+/* ---------- Elementor header and footer templates (2.32.0) ---------- */
+.smile-el-header, .smile-el-footer { position: relative; }
+.smile-el-header { z-index: 50; }
+.smile-el-header .elementor-section-wrap, .smile-el-footer .elementor-section-wrap { margin: 0; }
+.smile-el-menu a { text-decoration: none; }
+.smile-el-menu ul { align-items: center; }

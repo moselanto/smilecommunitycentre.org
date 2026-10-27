@@ -73,6 +73,11 @@ function smile_slider_defaults() {
  * @return int
  */
 function smile_image_by_key( $key ) {
+	// A photo chosen in a Smile Elementor widget wins for that widget only.
+	$forced = (int) apply_filters( 'smile_image_key_override', 0, $key );
+	if ( $forced > 0 ) {
+		return $forced;
+	}
 	// A photo chosen in Smile Centre > Site text & photos wins.
 	if ( function_exists( 'smile_image_overrides' ) ) {
 		$over = smile_image_overrides();

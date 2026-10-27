@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SMILE_THEME_VERSION', '2.31.5' );
+define( 'SMILE_THEME_VERSION', '2.32.0' );
 define( 'SMILE_THEME_DIR', get_stylesheet_directory() );
 define( 'SMILE_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -27,6 +27,9 @@ require_once SMILE_THEME_DIR . '/inc/careers.php';
 require_once SMILE_THEME_DIR . '/inc/login.php';
 require_once SMILE_THEME_DIR . '/inc/performance.php';
 require_once SMILE_THEME_DIR . '/inc/two-factor.php';
+require_once SMILE_THEME_DIR . '/inc/theme-options.php';
+require_once SMILE_THEME_DIR . '/inc/elementor/builder.php';
+require_once SMILE_THEME_DIR . '/inc/elementor/widgets.php';
 
 if ( is_admin() || wp_doing_ajax() ) {
 	require_once SMILE_THEME_DIR . '/inc/plugins.php';
