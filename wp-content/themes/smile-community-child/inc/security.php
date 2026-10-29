@@ -17,6 +17,7 @@
  *   4. Login protection (throttling, generic errors)
  *   5. Sessions and passwords
  *   6. REST API CORS
+ *   7. Extra hardening (code editor off, no pings, no page comments, no app passwords, reset-request limit)
  *
  * @package SmileCommunity
  */
@@ -357,3 +358,86 @@ function smile_security_rest_cors() {
 	);
 }
 add_action( 'rest_api_init', 'smile_security_rest_cors', 15 );
+
+
+/* -------------------------------------------------------------------------
+ * 7. Extra hardening (2.37.0)
+ *
+ * Each rule can be switched off with its filter, for example:
+ *   add_filter( 'smile_security_block_file_editor', '__return_false' );
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Turn off the built-in theme and plugin code editors in wp-admin.
+ * If an admin password is ever stolen, nobody can paste malicious PHP into the site from the dashboard.
+ *
+ * @param string[] $caps Capabilities WordPress is about to check.
+ * @param string   $cap  Capability being requested.
+ * @return string[]
+ */
+function smile_security_block_file_editor( $caps, $cap ) {
+	if ( in_array( $cap, array( 'edit_themes', 'edit_plugins', 'edit_files' ), true ) && apply_filters( 'smile_security_block_file_editor', true ) ) {
+		return array( 'do_not_allow' );
+	}
+	return $caps;
+}
+add_filter( 'map_meta_cap', 'smile_security_block_file_editor', 10, 2 );
+
+/**
+ * No pingbacks or trackbacks: they are a common source of spam and attacks.
+ *
+ * @param bool $open Whether pings are open.
+ * @return bool
+ */
+function smile_security_close_pings( $open ) {
+	return apply_filters( 'smile_security_close_pings', true ) ? false : $open;
+}
+add_filter( 'pings_open', 'smile_security_close_pings', 20 );
+
+/**
+ * No comments on pages or media pages (they have no comment area, so open comments only attract spam bots).
+ *
+ * @param bool $open    Whether comments are open.
+ * @param int  $post_id Post ID.
+ * @return bool
+ */
+function smile_security_close_page_comments( $open, $post_id ) {
+	if ( ! apply_filters( 'smile_security_close_page_comments', true ) ) {
+		return $open;
+	}
+	$type = get_post_type( $post_id );
+	return ( 'page' === $type || 'attachment' === $type ) ? false : $open;
+}
+add_filter( 'comments_open', 'smile_security_close_page_comments', 20, 2 );
+
+/**
+ * Application passwords let outside apps sign in without the normal login screen.
+ * The site does not use them, so they are off unless a filter turns them back on.
+ *
+ * @param bool $available Whether application passwords are available.
+ * @return bool
+ */
+function smile_security_app_passwords( $available ) {
+	return apply_filters( 'smile_security_disable_app_passwords', true ) ? false : $available;
+}
+add_filter( 'wp_is_application_passwords_available', 'smile_security_app_passwords' );
+
+/**
+ * Limit "Lost your password?" requests to 5 per hour per connection,
+ * so the form cannot be used to flood a mailbox or guess usernames.
+ *
+ * @param WP_Error $errors Errors so far.
+ */
+function smile_security_lostpassword_limit( $errors ) {
+	if ( ! apply_filters( 'smile_security_login_limit', true ) ) {
+		return;
+	}
+	$key   = 'smile_lostpw_' . smile_security_ip_hash();
+	$count = (int) get_transient( $key );
+	if ( $count >= 5 ) {
+		$errors->add( 'smile_lostpw_limit', __( 'Too many password reset requests. Please try again in an hour.', 'smile-community' ) );
+		return;
+	}
+	set_transient( $key, $count + 1, HOUR_IN_SECONDS );
+}
+add_action( 'lostpassword_post', 'smile_security_lostpassword_limit' );

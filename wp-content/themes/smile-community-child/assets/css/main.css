@@ -1643,3 +1643,39 @@ body.admin-bar { scroll-padding-top: calc(var(--smile-header-h, 80px) + 48px); }
 @media (prefers-reduced-motion: reduce) {
 	.smile-card, .smile-ccard, .smile-tier, .smile-role, .smile-involve__way, .smile-card__media img { transition: none !important; }
 }
+
+
+/* =========================================================
+   2.38.0 Balanced header + lead-paragraph fix
+   ========================================================= */
+
+/* "smile-lead" is used twice: the big intro paragraph (p.smile-lead / text widget)
+   and the Stories lead-story grid (div.smile-lead). The grid rules were turning intro
+   paragraphs into a narrow two-column grid. Paragraph leads are plain blocks again. */
+p.smile-lead, .elementor-widget.smile-lead, .elementor-widget-text-editor .smile-lead:not(div) {
+	display: block !important; grid-template-columns: none !important; margin-bottom: 1rem !important; min-height: 0 !important;
+}
+.elementor-widget.smile-lead { margin-bottom: 0 !important; }
+
+/* Header: logo left, menu centred in the remaining space, Donate right */
+@media (min-width: 1101px) {
+	.smile-header__inner { display: flex; align-items: center; gap: clamp(1.25rem, .5rem + 2vw, 3rem); min-height: 88px; max-width: 1240px; }
+	.smile-header__brand { flex: 0 0 auto; }
+	.smile-nav { flex: 1 1 auto; display: flex; justify-content: center; margin: 0 !important; }
+	.smile-nav__list { display: flex; align-items: center; justify-content: center; gap: clamp(.15rem, -.6rem + 1.3vw, 1rem); margin: 0; padding: 0; }
+	.smile-nav__list > li > a { display: inline-flex; align-items: center; gap: .3rem; padding: .7rem .8rem !important; font-size: 1rem; font-weight: 600; letter-spacing: .005em; color: var(--smile-forest); border-radius: 10px; position: relative; transition: color .2s ease, background .2s ease; }
+	.smile-nav__list > li > a:hover, .smile-nav__list > li:focus-within > a { background: #F3F8F4; }
+	.smile-nav__list > li > a::after { content: ""; position: absolute; left: .8rem; right: .8rem; bottom: .35rem; height: 2px; border-radius: 2px; background: var(--smile-sun); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+	.smile-nav__list > li.current-menu-item > a::after, .smile-nav__list > li.current-menu-ancestor > a::after, .smile-nav__list > li.current_page_item > a::after, .smile-nav__list > li > a:hover::after { transform: scaleX(1); }
+	.smile-nav__list > li.current-menu-item > a, .smile-nav__list > li.current-menu-ancestor > a, .smile-nav__list > li.current_page_item > a { color: var(--smile-forest); font-weight: 700; }
+	.smile-header__donate { flex: 0 0 auto; margin-left: 0 !important; min-height: 48px; padding: 0 1.5rem !important; font-size: 1rem; }
+	.smile-header.is-scrolled .smile-header__inner { min-height: 72px; }
+}
+@media (min-width: 1101px) and (max-width: 1240px) {
+	.smile-nav__list > li > a { padding: .65rem .55rem !important; font-size: .95rem; }
+	.smile-header__donate { padding: 0 1.15rem !important; }
+}
+/* Dropdowns: tidy card under the item */
+.smile-nav__list .sub-menu { border-radius: 16px !important; padding: .5rem !important; box-shadow: 0 2px 6px rgba(11,64,33,.06), 0 24px 48px -20px rgba(11,64,33,.35) !important; border: 1px solid rgba(11,64,33,.08) !important; }
+.smile-nav__list .sub-menu a { border-radius: 10px; padding: .6rem .85rem !important; }
+.smile-nav__list .sub-menu a:hover { background: #F3F8F4; }
