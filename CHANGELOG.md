@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.42.0
+- **Menu chevrons stay still.** The sub-menu arrows no longer flip; they sit beside the label as a fixed 18 px item (turning yellow on hover or when open), so they can never cover letters. The current-page underline stops before the arrow. Phones: the round arrow button no longer flips either.
+- **Headings never run under photos.** Emphasised words in headings (for example "A chance to move forward.") used to stay on one unbreakable line and slid under the photo beside them. They now wrap with the rest of the heading on every screen; columns can no longer be pushed wider than their space, and the intro heading is sized to its column, with the text layer above the photo.
+
 ## 2.41.0 (mobile)
 - **Menu opens clearly on phones.** The sticky header formed its own layer, so the dimmed backdrop sat on top of the open menu and blurred it. The menu panel now always sits above the page; the backdrop is a plain dim layer behind it.
 - **One menu button.** The bottom bar's "Menu" button is gone (the header button is the menu); Home, Programmes, Donate and Contact share the bar evenly.

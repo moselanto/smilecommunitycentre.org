@@ -1732,3 +1732,34 @@ p.smile-lead, .elementor-widget.smile-lead, .elementor-widget-text-editor .smile
 
 /* One skip link only (the parent theme adds a second one) */
 a.skip-link.screen-reader-text:not(.smile-skip-link) { display: none !important; }
+
+
+/* =========================================================
+   2.42.0 Menu chevrons stay still; headings always wrap
+   ========================================================= */
+@media (min-width: 1101px) {
+	/* The chevron is a fixed-size item beside the label, never on top of it, and it no longer flips. */
+	.smile-nav__list > li > a { display: inline-flex !important; align-items: center !important; gap: .4rem !important; white-space: nowrap !important; }
+	.smile-nav__list > li.menu-item-has-children > a { padding-right: .7rem !important; }
+	.smile-nav__list > li.menu-item-has-children > a::after {
+		flex: 0 0 18px !important; width: 18px !important; height: 18px !important; margin: 0 !important;
+		transform: none !important; transition: background-color .2s ease !important;
+	}
+	.smile-nav__list > li.menu-item-has-children:hover > a::after,
+	.smile-nav__list > li.menu-item-has-children:focus-within > a::after,
+	.smile-nav__list > li.menu-item-has-children.is-open > a::after { transform: none !important; background-color: var(--smile-sun) !important; }
+	.smile-nav__list > li > a:hover, .smile-nav__list > li.current-menu-item > a, .smile-nav__list > li.current-menu-ancestor > a,
+	.smile-nav__list > li.current_page_item > a, .smile-nav__list > li.current-menu-parent > a { background-size: calc(100% - 1.6rem) 2px !important; }
+	.smile-nav__list > li.menu-item-has-children > a:hover, .smile-nav__list > li.menu-item-has-children.current-menu-ancestor > a,
+	.smile-nav__list > li.menu-item-has-children.current-menu-parent > a { background-size: calc(100% - 1.6rem - 22px) 2px !important; }
+}
+@media (max-width: 1100px) {
+	.smile-sub-toggle__chev { transform: none !important; }
+	.smile-sub-toggle[aria-expanded="true"] .smile-sub-toggle__chev { transform: none !important; }
+}
+
+/* Headings: emphasised words wrap with the rest of the line, never overflow into the next column. */
+.elementor-heading-title em, h1 em, h2 em, h3 em { white-space: normal !important; max-width: 100%; }
+.elementor-heading-title { overflow-wrap: break-word; }
+.elementor-section > .elementor-container > .elementor-column { min-width: 0; }
+.elementor-column > .elementor-widget-wrap { min-width: 0; }
