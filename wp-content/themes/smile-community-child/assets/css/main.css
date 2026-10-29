@@ -1388,7 +1388,7 @@ p, li { text-wrap: pretty; }
 .smile-brand__img { display: block; width: auto; height: 60px; max-width: none; image-rendering: auto; transition: height .25s ease; }
 .smile-header.is-scrolled .smile-brand__img { height: 50px; }
 .smile-brand:focus-visible { outline: 3px solid var(--smile-sun); outline-offset: 4px; }
-.smile-footer__logo { display: inline-block; background: #fff; padding: 10px 14px; border-radius: 14px; margin-bottom: 1rem; }
+.smile-footer__logo { display: inline-block; background: none; padding: 0; border-radius: 0; margin-bottom: 1.25rem; }
 .smile-footer__logo .smile-brand__img { height: 72px; }
 @media (max-width: 900px) { .smile-brand__img { height: 48px; } .smile-header.is-scrolled .smile-brand__img { height: 44px; } }
 @media (max-width: 380px) { .smile-brand__img { height: 40px; } }
@@ -1421,3 +1421,60 @@ p, li { text-wrap: pretty; }
 .smile-btn, .elementor-widget-button[class*="smile-btn-el--"] .elementor-button { border-radius: 999px !important; font-weight: 800 !important; letter-spacing: .01em; }
 .elementor-widget-button.smile-btn-el--sun .elementor-button { box-shadow: 0 10px 22px -12px rgba(11,64,33,.55); }
 .smile-photo--frame img { box-shadow: var(--smile-shadow-lg); }
+
+
+/* =========================================================
+   2.34.0 Site-wide polish (page-by-page review, 29 Oct 2026)
+   ========================================================= */
+/* Readable buttons everywhere */
+a.smile-btn--teal, a.smile-btn--teal:visited, .smile-btn--teal { color: #fff !important; }
+a.smile-btn--teal:hover { background: var(--smile-forest) !important; color: #fff !important; }
+a.smile-btn--sun, a.smile-btn--sun:visited, .smile-btn--sun, .smile-footer a.smile-btn--sun { color: var(--smile-forest) !important; }
+.smile-btn--ghost-light, a.smile-btn--ghost-light, .smile-slide a.smile-btn--ghost-light { color: #fff !important; border-color: rgba(255,255,255,.85) !important; background: transparent !important; }
+.smile-btn--ghost-light:hover, a.smile-btn--ghost-light:hover { background: #fff !important; color: var(--smile-forest) !important; }
+
+/* Dark green bands: white text, yellow accents, readable buttons */
+.smile-sec--teal, .smile-sec--forest { color: #E8F2EC; }
+.smile-sec--teal .elementor-heading-title, .smile-sec--forest .elementor-heading-title,
+.smile-sec--teal h2, .smile-sec--teal h3, .smile-sec--forest h2, .smile-sec--forest h3 { color: #fff !important; }
+.smile-sec--teal .elementor-heading-title em, .smile-sec--forest .elementor-heading-title em { color: var(--smile-sun) !important; }
+.smile-sec--teal .smile-eyebrow .elementor-heading-title, .smile-sec--forest .smile-eyebrow .elementor-heading-title { color: var(--smile-sun) !important; }
+.smile-sec--teal .elementor-widget-text-editor, .smile-sec--teal .elementor-widget-text-editor p,
+.smile-sec--forest .elementor-widget-text-editor, .smile-sec--forest .elementor-widget-text-editor p { color: #E8F2EC !important; }
+.smile-sec--teal .smile-btn-el--teal .elementor-button, .smile-sec--forest .smile-btn-el--teal .elementor-button { background-color: var(--smile-sun) !important; color: var(--smile-forest) !important; }
+.smile-sec--teal .smile-btn-el--ghost .elementor-button, .smile-sec--forest .smile-btn-el--ghost .elementor-button,
+.smile-sec--teal .smile-btn-el--link .elementor-button, .smile-sec--forest .smile-btn-el--link .elementor-button { background-color: transparent !important; color: #fff !important; border: 2px solid rgba(255,255,255,.85) !important; }
+.smile-sec--teal .smile-btn-el--ghost .elementor-button:hover, .smile-sec--forest .smile-btn-el--ghost .elementor-button:hover { background-color: #fff !important; color: var(--smile-forest) !important; }
+.smile-sec--teal.smile-center { background: radial-gradient(120% 140% at 50% 0%, #146C3C 0%, var(--smile-forest) 70%); }
+
+/* Ghost buttons on light sections stay readable */
+.smile-sec:not(.smile-sec--teal):not(.smile-sec--forest):not(.smile-pagehero):not(.smile-closing) .smile-btn-el--ghost-light .elementor-button { color: var(--smile-forest) !important; border-color: var(--smile-forest) !important; }
+
+/* Emphasised words in headings: no collision with the next word */
+.elementor-heading-title em, h1 em, h2 em, h3 em { margin-right: .12em; padding-right: .04em; }
+
+/* Mission and vision: icon above the label, never on top of it */
+.smile-mvx__card { justify-content: flex-start !important; }
+.smile-mvx__card .smile-icon { position: static !important; margin-bottom: .75rem; flex: 0 0 auto; }
+
+/* Related programmes: photo fills the whole card */
+.smile-related__item { aspect-ratio: 4 / 5; }
+.smile-related__item img.smile-related__img, .smile-related__item .smile-related__img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; aspect-ratio: auto !important; object-fit: cover !important; border-radius: 0 !important; max-width: none !important; }
+.smile-related__shade { background: linear-gradient(180deg, rgba(7,38,20,0) 45%, rgba(7,38,20,.88)) !important; }
+
+/* Stories: balanced side column, full titles */
+.smile-mag { grid-template-rows: repeat(3, 1fr); align-items: stretch; }
+.smile-mag__item:not(.smile-mag__item--lead) { grid-template-columns: 120px 1fr; padding: .7rem; }
+.smile-mag__item:not(.smile-mag__item--lead) .smile-mag__media img { aspect-ratio: 1; height: 100%; }
+.smile-mag__title, .smile-mag__title a { display: block; -webkit-line-clamp: unset !important; overflow: visible !important; text-overflow: clip !important; white-space: normal !important; }
+.smile-mag__item--lead { display: flex; flex-direction: column; }
+.smile-mag__item--lead .smile-mag__media { flex: 1 1 auto; }
+.smile-mag__item--lead .smile-mag__media img { height: 100%; min-height: 280px; }
+
+/* WhatsApp: compact, stays out of the way */
+.smile-wa { right: 18px; bottom: 18px; }
+.smile-wa__fab { height: 52px; box-shadow: 0 8px 20px rgba(18,140,126,.28) !important; }
+@media (min-width: 901px) { .smile-wa:not(.is-open) .smile-wa__fab-label { display: none; } .smile-wa:not(.is-open) .smile-wa__fab { width: 52px; padding: 0 !important; justify-content: center; } }
+
+/* Headings in centred sections sit in the middle */
+.smile-center .elementor-heading-title { margin-inline: auto; text-align: center; }

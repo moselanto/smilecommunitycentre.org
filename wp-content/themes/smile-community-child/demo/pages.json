@@ -890,7 +890,7 @@
     "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--forest smile-ways",
+     "css_classes": "smile-sec smile-sec--forest smile-help4",
      "structure": "40",
      "content_position": ""
     },
@@ -902,7 +902,7 @@
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
-       "css_classes": "smile-way"
+       "css_classes": "smile-help4__card"
       },
       "elements": [
        {
@@ -912,7 +912,7 @@
         "settings": {
          "title": "Give financially",
          "header_size": "h3",
-         "_css_classes": "smile-way__title"
+         "_css_classes": "smile-help4__title"
         },
         "elements": []
        },
@@ -922,7 +922,7 @@
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Help with meals, education, shelter and healthcare.</p>",
-         "_css_classes": "smile-way__text"
+         "_css_classes": "smile-help4__text"
         },
         "elements": []
        },
@@ -950,7 +950,7 @@
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
-       "css_classes": "smile-way"
+       "css_classes": "smile-help4__card"
       },
       "elements": [
        {
@@ -960,7 +960,7 @@
         "settings": {
          "title": "Donate food or supplies",
          "header_size": "h3",
-         "_css_classes": "smile-way__title"
+         "_css_classes": "smile-help4__title"
         },
         "elements": []
        },
@@ -970,7 +970,7 @@
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Ask us what is needed and arrange delivery.</p>",
-         "_css_classes": "smile-way__text"
+         "_css_classes": "smile-help4__text"
         },
         "elements": []
        },
@@ -998,7 +998,7 @@
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
-       "css_classes": "smile-way"
+       "css_classes": "smile-help4__card"
       },
       "elements": [
        {
@@ -1008,7 +1008,7 @@
         "settings": {
          "title": "Visit or partner with us",
          "header_size": "h3",
-         "_css_classes": "smile-way__title"
+         "_css_classes": "smile-help4__title"
         },
         "elements": []
        },
@@ -1018,7 +1018,7 @@
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Contact our team to discuss a planned visit or group contribution.</p>",
-         "_css_classes": "smile-way__text"
+         "_css_classes": "smile-help4__text"
         },
         "elements": []
        },
@@ -1046,7 +1046,7 @@
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
-       "css_classes": "smile-way"
+       "css_classes": "smile-help4__card"
       },
       "elements": [
        {
@@ -1056,7 +1056,7 @@
         "settings": {
          "title": "Share your skills",
          "header_size": "h3",
-         "_css_classes": "smile-way__title"
+         "_css_classes": "smile-help4__title"
         },
         "elements": []
        },
@@ -1066,7 +1066,7 @@
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Find out whether volunteer opportunities are available and what is required.</p>",
-         "_css_classes": "smile-way__text"
+         "_css_classes": "smile-help4__text"
         },
         "elements": []
        },
@@ -1095,7 +1095,7 @@
     "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--forest smile-ways-note",
+     "css_classes": "smile-sec smile-sec--forest smile-help4-note",
      "structure": "10",
      "content_position": "middle"
     },
@@ -1115,7 +1115,7 @@
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p><strong>Volunteering:</strong> our volunteer page currently lists placements as closed. Please contact us about future availability.</p>",
-         "_css_classes": "smile-notice"
+         "_css_classes": "smile-help4__notice"
         },
         "elements": []
        }
@@ -7625,7 +7625,7 @@
         "widgetType": "text-editor",
         "settings": {
          "editor": "<p>More photos are on our <a href=\"https://www.instagram.com/smile_kenya_/\">Instagram page</a>. If you would like a photo of you or a child in your care reviewed or removed, please use our <a href=\"/safeguarding/#request\">removal request form</a>.</p>",
-         "_css_classes": "smile-notice"
+         "_css_classes": "smile-help4__notice"
         },
         "elements": []
        }

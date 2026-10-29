@@ -2,6 +2,17 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.34.0
+- **Page-by-page polish after a full review of all 19 pages on staging.**
+- **Logo:** header now uses the kit's no-tagline lockup (full colour) so "SMiLE Community Centre" reads clearly; the footer uses the official Reversed lockup (yellow and coral on Forest Green) with no white panel. New favicon and phone icons from the supplied symbol artwork.
+- **Readable buttons everywhere:** white text on green buttons (Where help is needed now, See our gallery), Forest Green text on yellow buttons (footer Donate Now), white outline buttons on dark bands and the slider.
+- **Dark green banners** ("Help a child stay safe, fed and in school" and others): white headings and text, yellow accents, yellow primary button, white outline secondary buttons.
+- **Home:** Ways to help rebuilt as four even cards with readable titles (its class names clashed with an older component); centred headings in Ways to help, Supporter voices and the closing appeal; closing text readable on the photo; side-by-side buttons; one clean accent behind each photo instead of stacked boxes; comfortable reading width for the intro.
+- **Programme pages:** "Our other programmes" cards now show the photo across the whole card (new authentic photos for Education, Feeding and Sports); spacing fixed after emphasised words ("further here").
+- **About Us:** mission and vision icons sit above their labels.
+- **Stories:** balanced side column and full story titles.
+- **WhatsApp chat:** no longer pops a welcome bubble over the page; compact round button on desktop.
+
 ## 2.33.0
 - **New logo applied (Smile Logo Kit v1.2).** Primary full-colour lockup in the header, the approved reversed colourway on the Forest Green footer, the sign-in screen, and new browser and phone icons (symbol on Sunshine Yellow). 1x/2x/3x PNG and WebP, the master SVG and a 512 px symbol are in `assets/images/brand/`. Sizes respect the kit minimum (full lockup at least 150 px wide).
 - **Brand colours and type.** Theme tokens, Elementor global colours and hard-coded colours moved to the kit palette: Forest Green #0B4021, Sunshine Yellow #FDDC05, Warm Coral #ED5534 (eyebrows/accents, darkened to #B8391C for text contrast). Headings use Nunito ExtraBold when installed, otherwise Figtree heavy (rounded, closest match); Newsreader is no longer preloaded. Pill buttons, yellow header rule and footer band.
