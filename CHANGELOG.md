@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.39.0
+- **Hero slider text is never cut off.** On the first slide ("Because of you, / They eat. They dream. They smile.") the top line was hidden under the header because the slide had more text than the fixed-height slider could hold. On tablets and desktops the slider now grows to fit its tallest slide (all slides stay the same height and still cross-fade), the text has proper room above and below, and the split slide uses a slightly calmer type size. On short laptop screens the small handwritten "Change a life today." line is hidden to keep everything visible. Phones are unchanged.
+- **Go-live link check (29 Oct 2026).** All 55 addresses in the live smilecommunitycentre.org sitemaps (28 posts, 16 pages, 12 categories) are in `docs/old-urls.txt`; `scripts/check-old-urls.sh` on staging: 96 of 96 old addresses (sitemaps, categories, pagination, feeds, tags, old ?p= links) open a working page with at most one 301 redirect.
+
 ## 2.38.0
 - **Top menu balanced.** Logo on the left, menu centred in the space between, Donate on the right; even spacing between items, larger tap targets, a soft hover highlight and a yellow underline for the current page; dropdowns as tidy cards. Spacing tightens slightly on smaller laptops so nothing crowds.
 - **"A home, care and opportunity" redesigned.** Balanced 52/48 split with more breathing room; larger heading; the lead paragraph now uses the full column (a clash with the Stories layout was squeezing it into a narrow strip; this also fixes the same squeeze on the feeding appeal, page banners and closing text across the site); three even tick rows; tall photo with a sunshine block behind it, a dot pattern and a floating "Since 2009" badge.
