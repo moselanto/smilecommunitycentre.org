@@ -2,6 +2,12 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.37.0
+- **Lighter photos.** All bundled photos and slider images recompressed (same sizes and sharpness): 3.6 MB down to 2.9 MB in total; the largest slider image went from 299 KB to 182 KB, and the first slide that every visitor downloads is smaller.
+- **Smaller CSS.** New `scripts/build-css.py` rebuilds all minified CSS in one step and strips more whitespace safely: main 115 KB (20 KB gzipped), home 141 KB (23 KB gzipped).
+- **Security, section 7 of `inc/security.php`:** theme/plugin code editor disabled in wp-admin, pingbacks and trackbacks off, comments closed on pages and media, application passwords off, and "Lost your password?" limited to 5 requests per hour per connection. Each can be switched off with a filter.
+- **Code guide.** New `docs/CODE-GUIDE.md`: where everything lives, how the CSS is organised, how to rebuild and check, and a security summary including the server settings a theme cannot control.
+
 ## 2.36.0
 - **Home page redesign (senior UI/UX pass).**
   - New signature "pillars" strip that overlaps the bottom of the hero: A safe home, Daily meals, Schooling, Healthcare, each with an icon (2 x 2 on tablets and phones).
