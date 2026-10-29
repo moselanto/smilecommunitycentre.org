@@ -66,6 +66,26 @@ function smile_is_home_layout() {
 }
 
 /**
+ * Does this request need the full CSS bundles (with the home-page section styles)?
+ * Other pages get the lighter *-inner.min.css files built by scripts/build-css.py.
+ * Full bundles are kept for the home page, the Elementor editor and Customizer previews, and any
+ * page where an editor has placed one of the home sections or the hero slider.
+ *
+ * @return bool
+ */
+function smile_needs_full_css() {
+	if ( is_front_page() || is_customize_preview() || ( function_exists( 'smile_is_elementor_preview' ) && smile_is_elementor_preview() ) ) {
+		return true;
+	}
+	if ( ! is_singular() ) {
+		return false;
+	}
+	$id   = get_queried_object_id();
+	$data = (string) get_post_meta( $id, '_elementor_data', true ) . (string) get_post_field( 'post_content', $id );
+	return (bool) preg_match( '/smile-(?:slide|slider|pillars|intro2|community2|head-row|pcard|appeal|founder2|help-head|voices2|closing)|hero[_-]slider/', $data );
+}
+
+/**
  * Asset URL: minified build when available (and SCRIPT_DEBUG is off), else source.
  *
  * @param string $rel  Path relative to the theme, e.g. assets/css/main.css.
@@ -83,7 +103,8 @@ function smile_asset( $rel, $min ) {
  * Enqueue styles and scripts (lean: home-only assets load on the home page only).
  */
 function smile_theme_assets() {
-	list( $css_url, $css_ver ) = smile_asset( 'assets/css/main.css', 'assets/build/main.min.css' );
+	$inner = ! smile_needs_full_css();
+	list( $css_url, $css_ver ) = smile_asset( 'assets/css/main.css', $inner && file_exists( SMILE_THEME_DIR . '/assets/build/main-inner.min.css' ) ? 'assets/build/main-inner.min.css' : 'assets/build/main.min.css' );
 	wp_enqueue_style( 'smile-community', $css_url, array(), $css_ver );
 
 	list( $js_url, $js_ver ) = smile_asset( 'assets/js/main.js', 'assets/build/main.min.js' );
@@ -91,7 +112,7 @@ function smile_theme_assets() {
 
 	// Section components (programme cards, timeline, community, related rows) are used on many pages,
 	// so their styles load everywhere; only the slider script is home-only.
-	list( $h_url, $h_ver ) = smile_asset( 'assets/css/home.css', 'assets/build/home.min.css' );
+	list( $h_url, $h_ver ) = smile_asset( 'assets/css/home.css', $inner && file_exists( SMILE_THEME_DIR . '/assets/build/home-inner.min.css' ) ? 'assets/build/home-inner.min.css' : 'assets/build/home.min.css' );
 	wp_enqueue_style( 'smile-home', $h_url, array( 'smile-community' ), $h_ver );
 	if ( ! file_exists( SMILE_THEME_DIR . '/assets/build/home.min.css' ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
 		wp_enqueue_style( 'smile-slider', SMILE_THEME_URI . '/assets/css/slider.css', array( 'smile-community' ), SMILE_THEME_VERSION );

@@ -32,7 +32,7 @@ on purpose, so add new styles at the end in a new dated block rather than editin
 ## After editing
 
 ```bash
-python3 scripts/build-css.py                 # rebuild minified CSS
+python3 scripts/build-css.py                 # rebuild minified CSS (full + lighter *-inner bundles for inner pages)
 python3 scripts/build-elementor-widgets.py   # only if section shortcodes changed
 python3 scripts/extract-strings.py           # only if site text changed
 cd wp-content/themes/smile-community-child && python3 ../../../scripts/check-theme.py

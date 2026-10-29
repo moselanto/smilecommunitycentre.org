@@ -1763,3 +1763,7 @@ a.skip-link.screen-reader-text:not(.smile-skip-link) { display: none !important;
 .elementor-heading-title { overflow-wrap: break-word; }
 .elementor-section > .elementor-container > .elementor-column { min-width: 0; }
 .elementor-column > .elementor-widget-wrap { min-width: 0; }
+
+
+/* 2.45.0 Contact map placeholder until the map loads (see main.js) */
+.smile-map iframe[data-src] { background: #EEF5F0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B4021' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/%3E%3Ccircle cx='12' cy='9.5' r='2.5'/%3E%3C/svg%3E") center / 48px no-repeat; }

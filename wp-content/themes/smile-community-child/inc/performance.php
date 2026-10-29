@@ -22,18 +22,19 @@ defined( 'ABSPATH' ) || exit;
  * @return array { id:int, url:string }
  */
 function smile_page_hero_image( $post_id ) {
-	$cache = wp_cache_get( 'hero_' . $post_id, 'smile' );
+	$cache = wp_cache_get( 'hero2_' . $post_id, 'smile' );
 	if ( is_array( $cache ) ) {
 		return $cache;
 	}
-	$out  = array( 'id' => 0, 'url' => '' );
+	$out  = array( 'id' => 0, 'url' => '', 'el' => '' );
 	$data = json_decode( (string) get_post_meta( $post_id, '_elementor_data', true ), true );
 	if ( is_array( $data ) && isset( $data[0]['settings']['background_image'] ) && is_array( $data[0]['settings']['background_image'] ) ) {
 		$bg         = $data[0]['settings']['background_image'];
 		$out['id']  = isset( $bg['id'] ) ? absint( $bg['id'] ) : 0;
 		$out['url'] = isset( $bg['url'] ) && 0 === strpos( (string) $bg['url'], 'http' ) ? (string) $bg['url'] : '';
+		$out['el']  = isset( $data[0]['id'] ) ? preg_replace( '/[^a-z0-9]/', '', (string) $data[0]['id'] ) : '';
 	}
-	wp_cache_set( 'hero_' . $post_id, $out, 'smile', HOUR_IN_SECONDS );
+	wp_cache_set( 'hero2_' . $post_id, $out, 'smile', HOUR_IN_SECONDS );
 	return $out;
 }
 
@@ -41,29 +42,30 @@ function smile_page_hero_image( $post_id ) {
  * Preload the banner photo of the current page (home uses the slider preload instead).
  */
 function smile_preload_page_hero() {
-	if ( !apply_filters( 'smile_preload_page_hero', true ) || is_front_page() || !is_singular() ) {
+	if ( !apply_filters( 'smile_preload_page_hero', true ) || is_front_page() || !is_singular() || smile_is_elementor_preview() ) {
 		return;
 	}
-	$id = 0;
-	$url = '';
 	if ( is_singular( 'post' ) ) {
-		$id = (int) get_post_thumbnail_id();
-	} else {
-		$img = smile_page_hero_image( get_queried_object_id() );
-		$id  = $img['id'];
-		$url = $img['url'];
-	}
-	if ( $id ) {
-		$size   = is_singular( 'post' ) ? 'large' : 'smile-hero';
-		$src    = wp_get_attachment_image_url( $id, $size );
-		$srcset = wp_get_attachment_image_srcset( $id, $size );
+		$id  = (int) get_post_thumbnail_id();
+		$src = $id ? wp_get_attachment_image_url( $id, 'large' ) : '';
 		if ( $src ) {
+			$srcset = wp_get_attachment_image_srcset( $id, 'large' );
 			echo '<link rel="preload" as="image" href="' . esc_url( $src ) . '"' . ( $srcset ? ' imagesrcset="' . esc_attr( $srcset ) . '" imagesizes="100vw"' : '' ) . ' fetchpriority="high">' . "\n";
-			return;
 		}
+		return;
 	}
-	if ( $url ) {
-		echo '<link rel="preload" as="image" href="' . esc_url( $url ) . '" fetchpriority="high">' . "\n";
+	$post_id = get_queried_object_id();
+	$hero    = smile_page_hero_sources( $post_id );
+	if ( ! $hero ) {
+		return;
+	}
+	// Preload the exact files the banner will use: a phone-sized one and a desktop-sized one.
+	echo '<link rel="preload" as="image" href="' . esc_url( $hero['mobile'] ) . '" media="(max-width: 767px)" fetchpriority="high">' . "\n";
+	echo '<link rel="preload" as="image" href="' . esc_url( $hero['desktop'] ) . '" media="(min-width: 768px)" fetchpriority="high">' . "\n";
+	// Elementor paints the banner with the full-size original; point it at the right-sized files instead.
+	if ( $hero['el'] ) {
+		$sel = '.elementor-' . (int) $post_id . ' .elementor-element.elementor-element-' . $hero['el'];
+		echo '<style id="smile-hero-bg">' . $sel . '{background-image:url("' . esc_url( $hero['desktop'] ) . '")!important}@media (max-width:767px){' . $sel . '{background-image:url("' . esc_url( $hero['mobile'] ) . '")!important}}</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from esc_url() and sanitised IDs.
 	}
 }
 add_action( 'wp_head', 'smile_preload_page_hero', 2 );
@@ -74,7 +76,7 @@ add_action( 'wp_head', 'smile_preload_page_hero', 2 );
  * @param int $post_id Post ID.
  */
 function smile_forget_page_hero( $post_id ) {
-	wp_cache_delete( 'hero_' . $post_id, 'smile' );
+	wp_cache_delete( 'hero2_' . $post_id, 'smile' );
 }
 add_action( 'save_post', 'smile_forget_page_hero' );
 
@@ -161,3 +163,79 @@ function smile_elementor_speed_settings() {
 	}
 }
 add_action( 'admin_init', 'smile_elementor_speed_settings' );
+
+
+/* -------------------------------------------------------------------------
+ * 2.45.0 Right-sized page banners
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Are we inside the Elementor editor preview? (Never change what editors see there.)
+ *
+ * @return bool
+ */
+function smile_is_elementor_preview() {
+	return isset( $_GET['elementor-preview'] ) || ( isset( $_GET['action'] ) && 'elementor' === $_GET['action'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check.
+}
+
+/**
+ * Lightweight theme copies for heavy banner photos, keyed by the Media Library file name
+ * (without size suffix or extension). Paths are relative to the theme folder.
+ *
+ * @return array
+ */
+function smile_hero_theme_copies() {
+	return apply_filters(
+		'smile_hero_theme_copies',
+		array(
+			'children-eating-at-the-centre' => array(
+				'desktop' => 'assets/images/heroes/children-eating-at-the-centre-1600.webp',
+				'mobile'  => 'assets/images/heroes/children-eating-at-the-centre-800.webp',
+			),
+		)
+	);
+}
+
+/**
+ * Desktop and phone image URLs for the first-section banner of an Elementor page.
+ * Follows whatever photo is chosen in Elementor, so editing keeps working.
+ *
+ * @param int $post_id Page ID.
+ * @return array|null { desktop, mobile, el }
+ */
+function smile_page_hero_sources( $post_id ) {
+	$img = smile_page_hero_image( $post_id );
+	$id  = (int) $img['id'];
+	if ( ! $id && $img['url'] ) {
+		$id = (int) attachment_url_to_postid( $img['url'] );
+	}
+	$name = '';
+	if ( $id ) {
+		$name = (string) get_post_meta( $id, '_wp_attached_file', true );
+	} elseif ( $img['url'] ) {
+		$name = (string) wp_parse_url( $img['url'], PHP_URL_PATH );
+	}
+	$base = preg_replace( '/(-\d+x\d+)?(-scaled)?\.[a-z0-9]+$/i', '', basename( $name ) );
+	$copies = smile_hero_theme_copies();
+	if ( $base && isset( $copies[ $base ] ) ) {
+		return array(
+			'desktop' => SMILE_THEME_URI . '/' . $copies[ $base ]['desktop'],
+			'mobile'  => SMILE_THEME_URI . '/' . $copies[ $base ]['mobile'],
+			'el'      => $img['el'],
+		);
+	}
+	if ( $id ) {
+		$desktop = wp_get_attachment_image_url( $id, '1536x1536' );
+		if ( ! $desktop ) {
+			$desktop = wp_get_attachment_image_url( $id, 'large' );
+		}
+		$mobile = wp_get_attachment_image_url( $id, 'medium_large' );
+		if ( $desktop ) {
+			return array( 'desktop' => $desktop, 'mobile' => $mobile ? $mobile : $desktop, 'el' => $img['el'] );
+		}
+	}
+	if ( $img['url'] ) {
+		return array( 'desktop' => $img['url'], 'mobile' => $img['url'], 'el' => '' );
+	}
+	return null;
+}

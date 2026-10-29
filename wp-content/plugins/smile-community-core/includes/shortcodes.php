@@ -209,8 +209,12 @@ function smile_core_sc_map() {
 	if ( ! $q ) {
 		return '';
 	}
-	$src = 'https://maps.google.com/maps?q=' . rawurlencode( $q ) . '&z=15&output=embed';
-	return '<div class="smile-map"><iframe src="' . esc_url( $src ) . '" title="' . esc_attr__( 'Map showing the location of Smile Community Centre in Soweto, Kayole, Nairobi', 'smile-core' ) . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>';
+	$src   = 'https://maps.google.com/maps?q=' . rawurlencode( $q ) . '&z=15&output=embed';
+	$title = esc_attr__( 'Map showing the location of Smile Community Centre in Soweto, Kayole, Nairobi', 'smile-core' );
+	// The map (about 500 KB of Google code) only loads when a visitor scrolls near it: the theme script copies
+	// data-src into src. Without JavaScript the <noscript> copy loads as before.
+	return '<div class="smile-map" data-smile-map><iframe data-src="' . esc_url( $src ) . '" title="' . $title . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+		. '<noscript><iframe src="' . esc_url( $src ) . '" title="' . $title . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></noscript></div>';
 }
 add_shortcode( 'smile_map', 'smile_core_sc_map' );
 

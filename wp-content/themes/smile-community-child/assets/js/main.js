@@ -470,3 +470,15 @@
 	window.addEventListener( 'resize', check, { passive: true } );
 	document.addEventListener( 'click', function ( e ) { if ( e.target.closest && e.target.closest( '.smile-nav-toggle' ) ) { window.setTimeout( check, 120 ); } } );
 })();
+
+/* Contact map: load Google Maps only when the visitor scrolls near it */
+(function () {
+	var maps = document.querySelectorAll( '[data-smile-map] iframe[data-src]' );
+	if ( ! maps.length ) { return; }
+	function load( f ) { if ( f.getAttribute( 'data-src' ) ) { f.src = f.getAttribute( 'data-src' ); f.removeAttribute( 'data-src' ); } }
+	if ( ! ( 'IntersectionObserver' in window ) ) { maps.forEach( load ); return; }
+	var io = new IntersectionObserver( function ( entries ) {
+		entries.forEach( function ( e ) { if ( e.isIntersecting ) { load( e.target ); io.unobserve( e.target ); } } );
+	}, { rootMargin: '300px 0px' } );
+	maps.forEach( function ( f ) { io.observe( f ); } );
+})();

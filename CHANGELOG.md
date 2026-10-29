@@ -2,6 +2,12 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.45.0 (speed)
+- **Lighter CSS on inner pages.** `scripts/build-css.py` now also writes `main-inner.min.css` and `home-inner.min.css` without the home-page-only rules (slider, pillars, intro, programme cards, appeal, founder, ways-to-help head, voices, closing). Inner pages load home styles of 118 KB instead of 159 KB (about 20 KB gzipped instead of 26). The home page, the Elementor editor, Customizer previews and any page that uses one of those sections still get the full files (`smile_needs_full_css()`), so editing is unchanged.
+- **Banner photos load first and right-sized (About, Donate and every page with a photo banner).** The banner photo was preloaded at the wrong size while Elementor painted the full original, so browsers found it late. The page now preloads the exact phone (768 px) and desktop (1536 px) files with high priority and points the banner at them. It follows whatever photo is chosen in Elementor; nothing changes inside the editor.
+- **Donate banner compressed.** A theme copy of "children eating at the centre" replaces the 867 KB original on the page: 203 KB on desktop, 74 KB on phones (`assets/images/heroes/`). Choose a different banner in Elementor and that photo is used instead.
+- **Contact map loads on scroll.** Google Maps (about 500 KB) now loads only when a visitor scrolls near it, with a light map-pin placeholder; without JavaScript it loads as before. Smile Community Core 1.0.1 / bundled 1.3.6.
+
 ## 2.44.1
 - **Home copy matches the founders' approved content document (29 Oct 2026).** Cross-checked every heading, paragraph, caption and button in sections 2.2-2.11: all match except the HIV/AIDS card button, which 2.36 had changed to "Support Health" plus "Learn more". Restored the approved single button "Explore This Program" (to Health and Wellbeing). Apply latest design to update.
 
