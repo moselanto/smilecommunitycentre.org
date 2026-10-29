@@ -252,11 +252,11 @@ add_shortcode(
 	function ( $atts ) {
 		$atts  = shortcode_atts( array( 'current' => '' ), $atts, 'smile_related' );
 		$items = array(
-			'education-program'      => array( 'pupils', 'book', __( 'Education', 'smile-community' ) ),
-			'feeding-program'        => array( 'feeding1', 'bowl', __( 'Feeding programme', 'smile-community' ) ),
+			'education-program'      => array( 'edu-uniforms', 'book', __( 'Education', 'smile-community' ) ),
+			'feeding-program'        => array( 'feeding-tables', 'bowl', __( 'Feeding programme', 'smile-community' ) ),
 			'child-care-and-shelter' => array( 'staff-serving', 'home', __( 'Shelter and care', 'smile-community' ) ),
 			'health-and-wellbeing'   => array( 'doctors', 'health', __( 'Health and wellbeing', 'smile-community' ) ),
-			'sports'                 => array( 'football', 'ball', __( 'Sports and talent', 'smile-community' ) ),
+			'sports'                 => array( 'sports-court', 'ball', __( 'Sports and talent', 'smile-community' ) ),
 		);
 		$out = '<div class="smile-related">';
 		foreach ( $items as $slug => $it ) {

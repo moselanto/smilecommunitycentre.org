@@ -36,7 +36,7 @@ function smile_brand_logo( $context = 'header' ) {
 	}
 	// Logo Kit minimum for the full lockup with tagline is 150 px wide: 60 px tall = 161 px.
 	$height = 'footer' === $context ? 72 : 60;
-	$width  = (int) round( $height * 3822 / 1426 );
+	$width  = (int) round( $height * 3820 / 1433 );
 	$alt    = __( 'Smile Community Centre: a smile today, a brighter tomorrow', 'smile-community' );
 	$file   = 'footer' === $context ? 'smile-logo-reversed' : 'smile-logo';
 	$webp   = smile_brand_url( $file . '-120.webp' ) . ' 2x, ' . smile_brand_url( $file . '-180.webp' ) . ' 3x';

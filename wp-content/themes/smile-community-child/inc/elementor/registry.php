@@ -4426,11 +4426,11 @@ return array(
 			),
 		),
 		'images' => array(
-			'pupils',
-			'feeding1',
+			'edu-uniforms',
+			'feeding-tables',
 			'staff-serving',
 			'doctors',
-			'football',
+			'sports-court',
 		),
 	),
 	array(

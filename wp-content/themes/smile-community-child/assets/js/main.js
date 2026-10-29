@@ -404,7 +404,10 @@
 
 		// Friendly nudge once per visit, after 12 seconds, not on the contact or donate pages.
 		if ( teaser && !store.get( 'smileWaTeaser' ) && !document.body.classList.contains( 'smile-nav-open' ) && !/\/(contact-us|donate)\/?$/.test( window.location.pathname ) ) {
-			window.setTimeout( function () { if ( panel.hidden && !store.get( 'smileWaTeaser' ) ) { teaser.hidden = false; } }, 12000 );
+			// 2.34.0: the teaser no longer opens by itself (it covered page content). Opt back in with data-smile-wa-teaser on <body>.
+			if ( document.body.hasAttribute( 'data-smile-wa-teaser' ) ) {
+				window.setTimeout( function () { if ( panel.hidden && !store.get( 'smileWaTeaser' ) ) { teaser.hidden = false; } }, 12000 );
+			}
 			teaser.addEventListener( 'click', function ( e ) { if ( e.target.closest( '.smile-wa__teaser-close' ) ) { hideTeaser(); } else { open(); } } );
 		}
 	}

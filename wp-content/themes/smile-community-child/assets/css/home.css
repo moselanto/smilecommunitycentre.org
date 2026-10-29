@@ -1349,21 +1349,6 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 @media (max-width: 600px) { .smile-pcards .smile-pcard { width: 100% !important; } }
 .smile-pcards .smile-pcard { padding: .6rem; }
 
-/* Ways to help */
-.smile-help-head { padding-bottom: 0 !important; text-align: center; }
-.smile-help-head .elementor-heading-title { text-align: center; }
-.smile-ways > .elementor-container { align-items: stretch; }
-.smile-way { padding: .6rem; }
-.smile-way > .elementor-widget-wrap { height: 100%; display: flex !important; flex-direction: column; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); border-top: 4px solid var(--smile-sun); border-radius: var(--smile-radius-lg); padding: 1.6rem 1.4rem !important; }
-.smile-way .smile-way__title .elementor-heading-title { color: var(--smile-white) !important; font-size: 1.25rem !important; }
-.smile-way .smile-way__text { flex: 1 1 auto; color: #DDEBE2; }
-.smile-way .elementor-widget-button .elementor-button { width: 100%; justify-content: center; }
-@media (max-width: 1024px) { .smile-ways .smile-way { width: 50% !important; } }
-@media (max-width: 600px) { .smile-ways .smile-way { width: 100% !important; } }
-.smile-ways-note { padding-top: 0 !important; }
-.smile-notice { max-width: 760px; margin-inline: auto; text-align: center; }
-.smile-notice p { display: inline-block; margin: 0; padding: .75rem 1.2rem; border-radius: 999px; background: rgba(253,220,5,.14); color: #F3F7F4; font-size: .95rem; }
-
 /* Supporter voice */
 .smile-voices2 { text-align: center; }
 .smile-voices2 .elementor-heading-title { text-align: center; }
@@ -1381,3 +1366,68 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 .smile-closing .elementor-widget-button { display: inline-block; width: auto !important; margin: .4rem; }
 .smile-closing .elementor-widget-wrap { justify-content: center; }
 .smile-appeal .elementor-widget-button, .smile-closing .elementor-widget-button { display: inline-block; width: auto; margin-right: .6rem; }
+
+
+/* =========================================================
+   2.34.0 Home page polish
+   ========================================================= */
+/* Photos: one clean accent, no stacked decorative boxes */
+.smile-intro2 .smile-photo::before, .smile-intro2 .smile-photo::after,
+.smile-community2 .smile-photo::before, .smile-community2 .smile-photo::after,
+.smile-appeal .smile-photo::before, .smile-appeal .smile-photo::after,
+.smile-founder2 .smile-photo::before, .smile-founder2 .smile-photo::after,
+.smile-intro2 .elementor-widget-image::before, .smile-intro2 .elementor-widget-image::after,
+.smile-community2 .elementor-widget-image::before, .smile-community2 .elementor-widget-image::after,
+.smile-appeal .elementor-widget-image::before, .smile-appeal .elementor-widget-image::after,
+.smile-founder2 .elementor-widget-image::before, .smile-founder2 .elementor-widget-image::after { content: none !important; display: none !important; }
+.smile-intro2 .smile-photo img, .smile-founder2 .smile-photo img { border-radius: 24px !important; box-shadow: 16px 16px 0 var(--smile-sun), 0 24px 48px -24px rgba(11,64,33,.45) !important; }
+.smile-appeal .smile-photo img { border-radius: 24px !important; box-shadow: -16px 16px 0 var(--smile-coral), 0 24px 48px -24px rgba(11,64,33,.45) !important; }
+.smile-community2 .smile-photo img { border-radius: 24px !important; box-shadow: 0 24px 48px -24px rgba(11,64,33,.45) !important; aspect-ratio: 2.06 / 1; object-fit: cover; }
+.smile-intro2 .elementor-column, .smile-founder2 .elementor-column, .smile-appeal .elementor-column, .smile-community2 .elementor-column { align-self: center; }
+
+/* Intro copy at a comfortable reading width */
+.smile-intro2 .smile-lead, .smile-appeal .smile-lead { max-width: 58ch !important; width: auto !important; font-size: 1.15rem; line-height: 1.65; }
+.smile-intro2 .elementor-widget-text-editor, .smile-appeal .elementor-widget-text-editor, .smile-founder2 .elementor-widget-text-editor { max-width: 60ch; }
+
+/* Buttons side by side where a section has two */
+.smile-appeal .elementor-widget-wrap, .smile-closing .elementor-widget-wrap { display: flex !important; flex-wrap: wrap; align-content: center; column-gap: .75rem; row-gap: .75rem; }
+.smile-appeal .elementor-widget:not(.elementor-widget-button), .smile-closing .elementor-widget:not(.elementor-widget-button) { width: 100% !important; flex: 0 0 100%; }
+.smile-appeal .elementor-widget-button, .smile-closing .elementor-widget-button { width: auto !important; flex: 0 0 auto; margin: 0 !important; }
+
+/* Ways to help (four cards on Forest Green) */
+.smile-help-head { text-align: center; padding-bottom: 1rem !important; }
+.smile-help-head .elementor-widget-wrap { justify-content: center; text-align: center; }
+.smile-help-head .elementor-widget-heading { width: 100%; }
+.smile-help-head .elementor-heading-title { color: #fff !important; text-align: center; margin-inline: auto !important; max-width: 24ch !important; }
+.smile-help-head .smile-eyebrow .elementor-heading-title { color: var(--smile-sun) !important; }
+.smile-help4 { padding-top: 1rem !important; }
+.smile-help4 > .elementor-container { align-items: stretch; }
+.smile-help4 .smile-help4__card { padding: .6rem; }
+.smile-help4 .smile-help4__card > .elementor-widget-wrap { height: 100%; display: flex !important; flex-direction: column; align-content: flex-start; background: rgba(255,255,255,.06) !important; border: 1px solid rgba(255,255,255,.16); border-top: 4px solid var(--smile-sun); border-radius: 22px; padding: 1.75rem 1.5rem !important; }
+.smile-help4 .elementor-widget { width: 100%; }
+.smile-help4 .smile-help4__title .elementor-heading-title { color: #fff !important; font-size: 1.25rem !important; max-width: none !important; }
+.smile-help4 .smile-help4__text { flex: 1 1 auto; }
+.smile-help4 .smile-help4__text p { color: #D9E9DF !important; margin: 0; }
+.smile-help4 .elementor-widget-button { margin-top: auto; }
+.smile-help4 .elementor-widget-button .elementor-button { width: 100%; justify-content: center; }
+@media (max-width: 1024px) { .smile-help4 .smile-help4__card { width: 50% !important; } }
+@media (max-width: 600px) { .smile-help4 .smile-help4__card { width: 100% !important; } }
+.smile-help4-note { padding-top: 0 !important; }
+.smile-help4__notice { text-align: center; }
+.smile-help4__notice p { display: inline-block; margin: 0; padding: .8rem 1.4rem; border-radius: 999px; background: rgba(255,255,255,.08) !important; border: 1px solid rgba(253,220,5,.35); color: #F2F7F4 !important; font-size: .95rem; }
+.smile-help4__notice strong { color: var(--smile-sun); }
+
+/* Supporter voice: centred */
+.smile-voices2 .elementor-widget-wrap { justify-content: center; text-align: center; }
+.smile-voices2 .elementor-widget { width: 100%; }
+.smile-voices2 .elementor-heading-title { margin-inline: auto !important; text-align: center; }
+
+/* Closing appeal: centred, readable on the photo */
+.smile-closing .elementor-widget-wrap { justify-content: center !important; text-align: center; }
+.smile-closing .elementor-heading-title { margin-inline: auto !important; max-width: 20ch !important; color: #fff !important; }
+.smile-closing .elementor-widget-text-editor p, .smile-closing .smile-lead { color: #EEF6F1 !important; max-width: 56ch; margin-inline: auto; font-size: 1.15rem; }
+.smile-closing .elementor-background-overlay { background-color: #0B4021 !important; opacity: .82 !important; }
+
+/* Programme cards: even rhythm */
+.smile-pcard .elementor-widget-button:not(.smile-btn-el--link) { margin-top: auto; }
+.smile-pcard .smile-btn-el--link { margin-top: 0 !important; text-align: center; }
