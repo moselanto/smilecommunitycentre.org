@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.35.0
+- **Brand heading font bundled.** Nunito (the Smile Logo Kit heading font, SIL Open Font License, licence in `assets/fonts/OFL-Nunito.txt`) is now served from the theme as a single latin variable WOFF2 (`assets/fonts/nunito-latin.woff2`, about 40 KB, weights 200-1000) and preloaded. Headings now match the logo kit exactly on every device; Figtree stays as the fallback. The block editor uses it too.
+- **One logo size on every page.** The header logo is locked to 60 px tall (50 px when scrolled, 48/44 px on tablets and phones, 40 px on very small screens) and the footer logo to 72 px, with rules no page or Elementor setting can override. Fixes the oversized logo on Get Involved.
+
 ## 2.34.0
 - **Page-by-page polish after a full review of all 19 pages on staging.**
 - **Logo:** header now uses the kit's no-tagline lockup (full colour) so "SMiLE Community Centre" reads clearly; the footer uses the official Reversed lockup (yellow and coral on Forest Green) with no white panel. New favicon and phone icons from the supplied symbol artwork.

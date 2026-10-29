@@ -266,11 +266,13 @@ function smile_local_fonts() {
 	$base  = SMILE_THEME_URI . '/assets/fonts/';
 	$range = 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD';
 	$faces = array(
+		array( 'Nunito', 'normal', '200 1000', 'nunito-latin.woff2' ), // Brand heading font (Smile Logo Kit), SIL OFL 1.1.
 		array( 'Figtree', 'normal', '300 900', 'figtree-latin.woff2' ),
 		array( 'Newsreader', 'normal', '500', 'newsreader-latin.woff2' ),
 		array( 'Newsreader', 'italic', '500', 'newsreader-italic-latin.woff2' ),
 		array( 'Caveat', 'normal', '600', 'caveat-latin.woff2' ),
 	);
+	echo '<link rel="preload" href="' . esc_url( $base . 'nunito-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
 	echo '<link rel="preload" href="' . esc_url( $base . 'figtree-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
 	$css = '';
 	foreach ( $faces as $f ) {
