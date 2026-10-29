@@ -589,28 +589,13 @@
         "elType": "widget",
         "widgetType": "button",
         "settings": {
-         "text": "Support Health",
-         "link": {
-          "url": "/donate/",
-          "is_external": "",
-          "nofollow": ""
-         },
-         "_css_classes": "smile-btn-el smile-btn-el--teal"
-        },
-        "elements": []
-       },
-       {
-        "id": "8d22224",
-        "elType": "widget",
-        "widgetType": "button",
-        "settings": {
-         "text": "Learn more",
+         "text": "Explore This Program",
          "link": {
           "url": "/health-and-wellbeing/",
           "is_external": "",
           "nofollow": ""
          },
-         "_css_classes": "smile-btn-el smile-btn-el--link"
+         "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
         "elements": []
        }

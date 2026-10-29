@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.44.1
+- **Home copy matches the founders' approved content document (29 Oct 2026).** Cross-checked every heading, paragraph, caption and button in sections 2.2-2.11: all match except the HIV/AIDS card button, which 2.36 had changed to "Support Health" plus "Learn more". Restored the approved single button "Explore This Program" (to Health and Wellbeing). Apply latest design to update.
+
 ## 2.44.0
 - **Bottom bar docked to the screen edge.** The 2.43 floating rounded dock left a gap under it with page content showing through. It is now a full-width bar fixed flush to the bottom of the screen (white, thin top border, soft shadow), with the phone's gesture area included inside it. Active-page highlight and the raised yellow Donate button stay; page content and the WhatsApp button are kept clear of it.
 

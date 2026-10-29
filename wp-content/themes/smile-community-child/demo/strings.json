@@ -816,12 +816,6 @@
 "section": "smile_mobile_bar"
 },
 {
-"text": "Menu",
-"domain": "smile-community",
-"file": "inc/components.php",
-"section": "smile_mobile_bar"
-},
-{
 "text": "Authorised care only",
 "domain": "smile-community",
 "file": "inc/components.php",
