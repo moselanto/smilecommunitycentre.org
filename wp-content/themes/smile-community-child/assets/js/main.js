@@ -166,7 +166,23 @@
 		var header = document.getElementById( 'site-header' );
 		if ( ! header ) { return; }
 		var ticking = false;
-		var update = function () { header.classList.toggle( 'is-scrolled', window.scrollY > 40 ); ticking = false; };
+		var root = document.documentElement;
+		var topbar = document.querySelector( '.smile-topbar' );
+		var measure = function () {
+			var tb = ( topbar && topbar.offsetParent !== null ) ? topbar.offsetHeight : 0;
+			root.style.setProperty( '--smile-topbar-h', tb + 'px' );
+			root.style.setProperty( '--smile-header-h', header.offsetHeight + 'px' );
+		};
+		var update = function () {
+			var was = header.classList.contains( 'is-scrolled' );
+			var now = window.scrollY > 40;
+			header.classList.toggle( 'is-scrolled', now );
+			if ( was !== now ) { window.setTimeout( measure, 300 ); }
+			ticking = false;
+		};
+		measure();
+		window.addEventListener( 'resize', measure, { passive: true } );
+		window.addEventListener( 'load', measure );
 		window.addEventListener( 'scroll', function () { if ( ! ticking ) { ticking = true; window.requestAnimationFrame( update ); } }, { passive: true } );
 		update();
 	}

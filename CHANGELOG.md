@@ -5,6 +5,7 @@ All notable changes to the Smile Community Centre theme (`smile-community-child`
 ## 2.35.0
 - **Brand heading font bundled.** Nunito (the Smile Logo Kit heading font, SIL Open Font License, licence in `assets/fonts/OFL-Nunito.txt`) is now served from the theme as a single latin variable WOFF2 (`assets/fonts/nunito-latin.woff2`, about 40 KB, weights 200-1000) and preloaded. Headings now match the logo kit exactly on every device; Figtree stays as the fallback. The block editor uses it too.
 - **One logo size on every page.** The header logo is locked to 60 px tall (50 px when scrolled, 48/44 px on tablets and phones, 40 px on very small screens) and the footer logo to 72 px, with rules no page or Elementor setting can override. Fixes the oversized logo on Get Involved.
+- **Navigation stays visible while scrolling.** The menu used to scroll away because it was only sticky inside the Elementor header wrapper. The wrapper is now pinned: the green top bar scrolls off, and the logo, menu and Donate bar stay at the top and compact slightly with a soft shadow. Works on large screens, tablets and phones, with or without the WordPress admin bar (also when Elementor is off). Anchor links land below the header; motion is reduced for visitors who prefer less animation.
 
 ## 2.34.0
 - **Page-by-page polish after a full review of all 19 pages on staging.**
