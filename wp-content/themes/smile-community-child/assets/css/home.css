@@ -1683,3 +1683,77 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 @media (min-width: 768px) and (max-height: 760px) {
 	.smile-slide__note { display: none; }
 }
+
+
+/* =========================================================
+   2.41.0 Mobile: menu, bottom bar, slider, buttons, layout
+   ========================================================= */
+
+/* Menu drawer always sits above the page and its dimmed backdrop.
+   The sticky header wrapper (z-index 1000) made its own layer, so the backdrop
+   (appended to <body>, z-index 1001) covered and blurred the open menu. */
+body.smile-nav-open .smile-el-header,
+body.smile-nav-open .elementor-location-header,
+body.smile-nav-open .smile-header { z-index: 10000 !important; }
+.smile-nav-backdrop { z-index: 9990 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: rgba(6,34,18,.5) !important; }
+@media (max-width: 1100px) {
+	.smile-nav { z-index: 10001 !important; height: 100vh; height: 100dvh; top: 0 !important; overscroll-behavior: contain; filter: none !important; opacity: 1 !important; }
+	.smile-nav.is-open { visibility: visible !important; transform: none !important; }
+	.smile-nav-toggle { z-index: 10002 !important; }
+}
+
+/* Bottom bar: four even items (Home, Programmes, Donate, Contact) */
+@media (max-width: 1100px) {
+	.smile-tabbar { grid-template-columns: repeat(4, 1fr) !important; padding-inline: .5rem !important; }
+	.smile-tabbar__item--menu { display: none !important; }
+	.smile-tabbar__item { font-size: .74rem !important; }
+}
+
+/* Every section stacks into one clean column on phones */
+@media (max-width: 767px) {
+	.elementor-section > .elementor-container { flex-wrap: wrap !important; row-gap: 1.75rem; }
+	.elementor-section:not(.smile-pcards):not(.smile-help4) > .elementor-container > .elementor-column { width: 100% !important; max-width: 100% !important; flex: 0 0 100% !important; }
+	.elementor-section.smile-pcards > .elementor-container > .elementor-column,
+	.elementor-section.smile-help4 > .elementor-container > .elementor-column { width: 100% !important; flex: 0 0 100% !important; }
+	.smile-founder2 > .elementor-container, .smile-appeal > .elementor-container, .smile-community2 > .elementor-container, .smile-intro2 > .elementor-container { flex-direction: column !important; }
+	.smile-founder2 > .elementor-container { flex-direction: column-reverse !important; }
+	.elementor-section .elementor-widget-text-editor, .elementor-section .elementor-widget-heading { max-width: 100% !important; }
+	.smile-sec .elementor-widget-heading:not(.smile-eyebrow) h2.elementor-heading-title { font-size: clamp(1.75rem, 1.2rem + 3vw, 2.2rem) !important; line-height: 1.15 !important; max-width: none !important; }
+	.smile-eyebrow .elementor-heading-title { font-size: .72rem !important; letter-spacing: .12em !important; }
+	.smile-head-row .elementor-column:last-child > .elementor-widget-wrap { justify-content: flex-start !important; }
+	.smile-sec .elementor-widget-text-editor p { font-size: 1rem; line-height: 1.65; }
+	.smile-intro2 p.smile-lead, .smile-appeal p.smile-lead { font-size: 1.08rem !important; }
+	.smile-intro2__media > .elementor-widget-wrap { padding: 0 .75rem .75rem 0 !important; }
+	.smile-intro2 .smile-ticks li { min-height: 0; padding: .7rem .9rem .7rem 2.9rem !important; font-size: .95rem; }
+	.smile-intro2 .smile-ticks li::before { left: .8rem !important; }
+	.smile-sec .smile-photo img, .smile-intro2__media .smile-photo img, .smile-appeal .smile-photo img, .smile-founder2 .smile-photo img { aspect-ratio: 4 / 3 !important; max-height: none !important; width: 100% !important; }
+}
+
+/* Buttons on phones: same width, same height, one tidy stack */
+@media (max-width: 600px) {
+	.smile-sec .elementor-widget-button:not(.smile-btn-el--link) { width: 100% !important; flex: 1 1 100% !important; margin-inline: 0 !important; }
+	.smile-sec .elementor-widget-button:not(.smile-btn-el--link) .elementor-button { width: 100% !important; min-height: 52px; justify-content: center; text-align: center; white-space: normal; }
+	.smile-sec .elementor-widget-button + .elementor-widget-button { margin-top: .6rem !important; }
+	.smile-closing .elementor-widget-wrap, .smile-sec--teal.smile-center .elementor-widget-wrap { display: flex !important; flex-direction: column !important; align-items: stretch !important; }
+}
+
+/* Hero slider on phones: photo, then the message on solid green, everything in flow */
+@media (max-width: 767px) {
+	.smile-slider { height: auto !important; min-height: 0 !important; display: grid !important; background: var(--smile-forest) !important; }
+	.smile-slider__track { position: relative !important; inset: auto !important; display: grid !important; grid-template-areas: "slide"; }
+	.smile-slide { position: relative !important; inset: auto !important; grid-area: slide; display: flex !important; flex-direction: column !important; background: var(--smile-forest) !important; }
+	.smile-slide__media { position: relative !important; inset: auto !important; height: min(62vw, 300px) !important; flex: 0 0 auto; }
+	.smile-slide--split .smile-slide__media { left: 0 !important; }
+	.smile-slide__shade { top: auto !important; bottom: 0 !important; height: 40% !important; inset: auto 0 0 0 !important; position: absolute !important; background: linear-gradient(180deg, rgba(11,64,33,0) 0%, var(--smile-forest) 100%) !important; }
+	.smile-slide__media .smile-slide__shade { display: block; }
+	.smile-slide__content { position: relative !important; top: auto !important; inset: auto !important; display: block !important; width: 100% !important; padding: 1.25rem 1.25rem 4.25rem !important; min-height: 0 !important; }
+	.smile-slide__eyebrow { font-size: .72rem !important; margin: 0 0 .55rem !important; letter-spacing: .14em !important; }
+	.smile-slide--split .smile-slide__eyebrow { font-size: 1.3rem !important; letter-spacing: 0 !important; }
+	.smile-slide__title, .smile-slide--split .smile-slide__title { font-size: clamp(1.8rem, 1.2rem + 3.6vw, 2.3rem) !important; line-height: 1.08 !important; min-height: 0 !important; margin: 0 0 .7rem !important; max-width: none !important; display: block !important; }
+	.smile-slide__text { -webkit-line-clamp: unset !important; display: block !important; min-height: 0 !important; font-size: 1rem !important; margin: 0 0 1.1rem !important; overflow: visible !important; }
+	.smile-slider .smile-btn-row { display: grid !important; grid-template-columns: 1fr !important; gap: .6rem !important; }
+	.smile-slider .smile-btn { width: 100% !important; min-height: 50px !important; justify-content: center; font-size: .98rem !important; white-space: nowrap; }
+	.smile-slide__note { display: none !important; }
+	.smile-slider__controls { top: calc(min(62vw, 300px) - 2.6rem) !important; bottom: auto !important; }
+	.smile-pillars { margin-top: -1.5rem !important; }
+}

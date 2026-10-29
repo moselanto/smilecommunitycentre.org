@@ -2,6 +2,13 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.41.0 (mobile)
+- **Menu opens clearly on phones.** The sticky header formed its own layer, so the dimmed backdrop sat on top of the open menu and blurred it. The menu panel now always sits above the page; the backdrop is a plain dim layer behind it.
+- **One menu button.** The bottom bar's "Menu" button is gone (the header button is the menu); Home, Programmes, Donate and Contact share the bar evenly.
+- **Content stacks into one clean column on phones.** Text and photo, and headings with their "All programmes"/"All stories" buttons, were squeezed side by side; every section now stacks full width with readable heading sizes, consistent spacing and 4:3 photos.
+- **Buttons the same size.** On phones every call-to-action button is full width and 52 px tall, stacked with even gaps (slider, appeal, closing, page bands).
+- **Hero slider on phones.** Photo on top, then the message on solid green straight after it (no empty band or mismatched green strip); full text visible, buttons stacked and equal; dots sit on the photo.
+
 ## 2.40.0
 - **Sub-menus are obvious again.** About, Programmes, Impact and Get Involved show a clear round chevron next to the label that turns yellow and flips when the sub-menu opens (2.38's underline had taken over the arrow's slot and shrunk it to a tiny yellow mark). The current-page underline no longer clashes with it, dropdowns have a small pointer and a hover bridge so they don't close while moving the mouse down. Phones and tablets get a 44 px round chevron button beside each parent item and a yellow guide line beside the opened sub-menu.
 - **Accessibility:** one "Skip to content" link instead of two; the WhatsApp button has a spoken label.

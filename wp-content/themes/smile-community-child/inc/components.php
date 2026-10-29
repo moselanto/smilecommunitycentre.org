@@ -155,7 +155,8 @@ add_shortcode(
 );
 
 /**
- * Mobile bottom navigation (static tab bar): Home, Programmes, Donate, Contact, Menu.
+ * Mobile bottom navigation (static tab bar): Home, Programmes, Donate, Contact.
+ * The main menu opens from the header button only, so there is one menu button on the page.
  */
 function smile_mobile_bar() {
 	$pages = array(
@@ -169,7 +170,6 @@ function smile_mobile_bar() {
 		$cls = 'smile-tabbar__item smile-tabbar__item--' . $key . ( $p[3] ? ' is-current' : '' );
 		echo '<a class="' . esc_attr( $cls ) . '" href="' . esc_url( $p[0] ) . '"' . ( $p[3] ? ' aria-current="page"' : '' ) . '>' . smile_icon( $p[1] ) . '<span>' . esc_html( $p[2] ) . '</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static icon.
 	}
-	echo '<button type="button" class="smile-tabbar__item smile-tabbar__item--menu" data-smile-open-menu aria-controls="smile-primary-nav" aria-expanded="false"><span class="smile-tabbar__burger" aria-hidden="true"><i></i><i></i><i></i></span><span>' . esc_html__( 'Menu', 'smile-community' ) . '</span></button>';
 	echo '</nav>';
 }
 add_action( 'wp_footer', 'smile_mobile_bar', 5 );
