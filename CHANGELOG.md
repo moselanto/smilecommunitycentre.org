@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.44.0
+- **Bottom bar docked to the screen edge.** The 2.43 floating rounded dock left a gap under it with page content showing through. It is now a full-width bar fixed flush to the bottom of the screen (white, thin top border, soft shadow), with the phone's gesture area included inside it. Active-page highlight and the raised yellow Donate button stay; page content and the WhatsApp button are kept clear of it.
+
 ## 2.43.0 (mobile menu)
 - **Sub-menus are never hidden.** The menu drawer's contact block (Donate, two contact cards and the hours line) was fixed at the bottom and took about a third of the screen, so opened sub-menus slid behind it with no sign the list could scroll. Now only the menu list scrolls; the footer is one compact row (Donate, round Call and WhatsApp buttons); a soft fade and a small "More" tag appear while there is more below; and an opened sub-menu scrolls itself into full view.
 - **Calmer menu rows:** bolder labels, softer dividers, and the opened section gets a light background.
