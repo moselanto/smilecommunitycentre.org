@@ -28,9 +28,9 @@ define( 'SMILE_OPT', 'smile_options' );
  */
 function smile_opt_colours() {
 	return array(
-		'color_teal'   => array( '--smile-teal', '#176B5B', __( 'Main colour (teal)', 'smile-community' ) ),
-		'color_forest' => array( '--smile-forest', '#164B3F', __( 'Dark colour (forest)', 'smile-community' ) ),
-		'color_sun'    => array( '--smile-sun', '#F4C95D', __( 'Accent colour (sunshine)', 'smile-community' ) ),
+		'color_teal'   => array( '--smile-teal', '#146C3C', __( 'Main colour (teal)', 'smile-community' ) ),
+		'color_forest' => array( '--smile-forest', '#0B4021', __( 'Dark colour (forest)', 'smile-community' ) ),
+		'color_sun'    => array( '--smile-sun', '#FDDC05', __( 'Accent colour (sunshine)', 'smile-community' ) ),
 		'color_cream'  => array( '--smile-cream', '#FFF9EF', __( 'Soft background (cream)', 'smile-community' ) ),
 		'color_ink'    => array( '--smile-ink', '#24312D', __( 'Text colour', 'smile-community' ) ),
 	);

@@ -1,5 +1,5 @@
 /* Block editor styles for long-form stories. */
 body { font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 1.125rem; line-height: 1.65; color: #24312D; }
-h1, h2, h3 { font-family: "Newsreader", Georgia, serif; color: #164B3F; line-height: 1.15; }
-a { color: #176B5B; }
-blockquote { border-left: 4px solid #F4C95D; padding-left: 1.25rem; font-family: "Newsreader", Georgia, serif; color: #164B3F; }
+h1, h2, h3 { font-family: "Newsreader", Georgia, serif; color: #0B4021; line-height: 1.15; }
+a { color: #146C3C; }
+blockquote { border-left: 4px solid #FDDC05; padding-left: 1.25rem; font-family: "Newsreader", Georgia, serif; color: #0B4021; }

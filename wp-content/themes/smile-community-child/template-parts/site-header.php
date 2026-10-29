@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 
 $smile_phone     = smile_setting( 'phone_primary', '0721 318 869' );
 $smile_whatsapp  = smile_setting( 'whatsapp', '254721318869' );
-$smile_hours     = smile_setting( 'office_hours', __( 'Office: 9am - 5pm', 'smile-community' ) );
+$smile_hours     = smile_setting( 'office_hours', __( 'Office: Mon–Sat 9am–5pm · Sun from 2pm', 'smile-community' ) );
 $smile_email     = smile_setting( 'email', 'info@smilecommunitycentre.org' );
 $smile_donate    = get_theme_mod( 'smile_donate_label', __( 'Donate', 'smile-community' ) );
 $smile_heart     = '<svg class="smile-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2 0 3.5 1.1 4.3 2.6.8-1.5 2.3-2.6 4.3-2.6 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>';

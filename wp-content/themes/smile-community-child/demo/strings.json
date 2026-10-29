@@ -1,6 +1,6 @@
 [
 {
-"text": "Smile Community Centre: protecting, empowering and giving a smile",
+"text": "Smile Community Centre: a smile today, a brighter tomorrow",
 "domain": "smile-community",
 "file": "inc/brand.php",
 "section": "smile_brand_logo"
@@ -1584,7 +1584,7 @@
 "section": "smile_help_card"
 },
 {
-"text": "Our team is happy to help. Reach us during office hours, Monday to Friday.",
+"text": "Our team is happy to help. Reach us during office hours: Monday to Saturday 9am to 5pm, Sunday from 2pm.",
 "domain": "smile-community",
 "file": "inc/home-sections.php",
 "section": "smile_help_card"
@@ -2472,7 +2472,7 @@
 "section": "smile_contact_hub"
 },
 {
-"text": "9am to 5pm, Nairobi time",
+"text": "Mon to Sat 9am to 5pm, Sun from 2pm (Nairobi time)",
 "domain": "smile-community",
 "file": "inc/home-sections.php",
 "section": "smile_contact_hub"
@@ -3288,7 +3288,7 @@
 "section": "smile_theme_palette"
 },
 {
-"text": "Children at Smile Community Centre sitting together and enjoying a meal",
+"text": "Young children at Smile Community Centre sitting together at tables enjoying a meal",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_slider_defaults"
@@ -3324,6 +3324,12 @@
 "section": "smile_slider_defaults"
 },
 {
+"text": "Founder Margaret smiling as she walks outdoors holding hands with children",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
 "text": "Children's home in Soweto, Kayole",
 "domain": "smile-community",
 "file": "inc/slider.php",
@@ -3336,7 +3342,7 @@
 "section": "smile_slider_defaults"
 },
 {
-"text": "We give orphaned and vulnerable children shelter, daily meals, schooling and access to healthcare.",
+"text": "Help us give orphaned and vulnerable children shelter, daily meals, schooling and access to healthcare.",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_slider_defaults"
@@ -3354,7 +3360,7 @@
 "section": "smile_slider_defaults"
 },
 {
-"text": "Young pupils in their school tracksuits outside the centre",
+"text": "Children in red school uniforms holding colourful learning rolls outside Smile Community Centre Children's Home",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_slider_defaults"
@@ -3384,19 +3390,31 @@
 "section": "smile_slider_defaults"
 },
 {
-"text": "A warm meal, every day",
+"text": "Children and youth in sports attire gathered together on an outdoor playing court",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_slider_defaults"
 },
 {
-"text": "Daily meals at home, and a community feeding programme reaching more than 300 children.",
+"text": "Room to play, grow and shine",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_slider_defaults"
 },
 {
-"text": "Give a Meal",
+"text": "Football, basketball and activities help children build teamwork, confidence and their talents.",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
+"text": "Support Sports",
+"domain": "smile-community",
+"file": "inc/slider.php",
+"section": "smile_slider_defaults"
+},
+{
+"text": "Sports and Talent",
 "domain": "smile-community",
 "file": "inc/slider.php",
 "section": "smile_slider_defaults"
@@ -5028,7 +5046,7 @@
 "section": "site-footer"
 },
 {
-"text": "Office: 9am - 5pm",
+"text": "Office: Mon–Sat 9am–5pm · Sun from 2pm",
 "domain": "smile-community",
 "file": "template-parts/site-header.php",
 "section": "site-header"

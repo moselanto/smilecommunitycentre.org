@@ -26,7 +26,7 @@ function smile_core_defaults() {
 		'email'              => 'info@smilecommunitycentre.org',
 		'address'            => 'Mzesa, Soweto, Kayole (near Donholm Phase 8), Nairobi, Kenya',
 		'postal_address'     => 'P.O. Box 196-00518, Nairobi, Kenya',
-		'office_hours'       => 'Office: 9am - 5pm',
+		'office_hours'       => 'Office: Mon–Sat 9am–5pm · Sun from 2pm',
 		'map_link'           => 'https://maps.app.goo.gl/6BvCCFYRq1DtkXNF9',
 		'map_query'          => "Smile Community Centre Children's Home, Soweto, Kayole, Nairobi",
 		'directions'         => "From Nairobi town, go to the Ambassadeur bus stage and board a 19C Double M bus (Donholm - Savannah - Jacaranda route).\nGet off at the Jacaranda roundabout stage.\nWalk along the road next to Jacaranda grounds towards Soweto.\nAt the junction, turn right towards Embakasi Garrison Road.\nContinue until you reach Soweto Mzesa, just before the riverbank bridge. The centre is on the left side of the road, opposite the Edelvale Primary School fence.",

@@ -31,6 +31,8 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **29 Oct 2026:** 2.33.0 on branch `feature/brand-refresh-2-33` (PR): new logo (Logo Kit v1.2) and brand palette, home page rebuilt from the revised content document with native Elementor widgets, 8 bundled photos with automatic import, new slider and banner photos, new office hours. Quality gate passes (PHP lint not run in this environment: php was unavailable, so lint on staging/CI). After merge: build zip, upload, click **Apply latest design**, check home, About Us (#community), programme pages and footer logo on a phone. Copy, captions and photo use still need the Centre's approval before go-live. Optional: add Nunito woff2 to `assets/fonts/` for exact brand headings.
+
 - **27 Oct 2026:** 2.32.0 on branch `feature/elementor-builder` (PR, not on main or staging yet): Smile Theme Options (Redux + built-in fallback), Elementor header/footer templates with per-page choice and fallback, 59 Smile Elementor widgets + 4 blocks generated from the shortcodes (`scripts/build-elementor-widgets.py`), starter templates. Quality gate passes (PHP 8.3 lint). Staging has Elementor 4.3.5, no Pro, no Redux. After merge: upload zip, install Redux from Smile Setup, create starter templates, test in Elementor.
 
 - **20 Oct 2026, 00:55 EAT:** 2.31.5 / Core 1.3.5 uploaded and verified: all 96 addresses in `docs/old-urls.txt` (including the numbered ?p= links) end on a 200 page with at most one redirect; ?page_id=263 and /dev/about-us/ also work. /dev/ photo links redirect to /wp-content/uploads/... correctly; those files return 404 on staging only because the photos are not on the staging server (they exist on live). Go-live not yet.

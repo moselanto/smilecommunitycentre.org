@@ -1,24 +1,24 @@
 .smile-wizard { max-width: 920px; }
-.smile-wizard__head { background: #164B3F; color: #fff; padding: 28px 32px; border-radius: 14px; margin: 20px 0; }
+.smile-wizard__head { background: #0B4021; color: #fff; padding: 28px 32px; border-radius: 14px; margin: 20px 0; }
 .smile-wizard__head h1 { color: #fff; font-size: 26px; margin: 0 0 6px; }
 .smile-wizard__head p { color: #DCE7E2; margin: 0 0 18px; font-size: 15px; }
 .smile-wizard__steps { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
 .smile-wizard__steps a { display: inline-flex; align-items: center; gap: 8px; color: #DCE7E2; text-decoration: none; padding: 6px 14px 6px 6px; border-radius: 999px; background: rgba(255,255,255,.08); }
 .smile-wizard__steps span { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,.18); font-weight: 700; }
-.smile-wizard__steps .is-current a { background: #F4C95D; color: #24312D; }
-.smile-wizard__steps .is-current span { background: #24312D; color: #F4C95D; }
+.smile-wizard__steps .is-current a { background: #FDDC05; color: #24312D; }
+.smile-wizard__steps .is-current span { background: #24312D; color: #FDDC05; }
 .smile-wizard__card { background: #fff; border: 1px solid #E4DCCB; border-radius: 14px; padding: 28px 32px; }
 .smile-wizard__plugins td, .smile-wizard__plugins th { vertical-align: middle; padding: 12px 10px; }
 .smile-tag { display: inline-block; font-size: 12px; padding: 2px 10px; border-radius: 999px; background: #F6EEDC; }
-.smile-tag--req { background: #176B5B; color: #fff; }
-.smile-wizard__status.is-ok { color: #176B5B; font-weight: 600; }
+.smile-tag--req { background: #146C3C; color: #fff; }
+.smile-wizard__status.is-ok { color: #146C3C; font-weight: 600; }
 .smile-wizard__status.is-err { color: #b32d2e; }
 .smile-wizard__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
-.smile-wizard .button-primary { background: #176B5B; border-color: #176B5B; }
-.smile-wizard .button-primary:hover, .smile-wizard .button-primary:focus { background: #164B3F; border-color: #164B3F; }
+.smile-wizard .button-primary { background: #146C3C; border-color: #146C3C; }
+.smile-wizard .button-primary:hover, .smile-wizard .button-primary:focus { background: #0B4021; border-color: #0B4021; }
 .smile-wizard__opts { display: grid; gap: 10px; margin: 18px 0; }
 .smile-wizard__bar { height: 12px; background: #F6EEDC; border-radius: 999px; overflow: hidden; margin-top: 16px; }
-.smile-wizard__bar span { display: block; height: 100%; background: #176B5B; transition: width .3s ease; }
+.smile-wizard__bar span { display: block; height: 100%; background: #146C3C; transition: width .3s ease; }
 .smile-wizard__now { font-weight: 600; }
 .smile-wizard__log { max-height: 260px; overflow: auto; font-size: 12px; }
 .smile-wizard__log .is-err { color: #b32d2e; }

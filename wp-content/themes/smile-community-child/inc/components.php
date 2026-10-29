@@ -85,7 +85,7 @@ function smile_contact_cards() {
 	$email = smile_setting( 'email', 'info@smilecommunitycentre.org' );
 	$map   = smile_setting( 'map_link', 'https://maps.app.goo.gl/6BvCCFYRq1DtkXNF9' );
 	$cards = array(
-		array( 'phone', __( 'Call us', 'smile-community' ), $phone, smile_tel_href( $phone ), smile_setting( 'office_hours', 'Office: 9am - 5pm' ) ),
+		array( 'phone', __( 'Call us', 'smile-community' ), $phone, smile_tel_href( $phone ), smile_setting( 'office_hours', 'Office: Mon–Sat 9am–5pm · Sun from 2pm' ) ),
 		array( 'chat', __( 'WhatsApp', 'smile-community' ), __( 'Message us', 'smile-community' ), $wa ? 'https://wa.me/' . $wa : '', __( 'Quick replies during office hours', 'smile-community' ) ),
 		array( 'mail', __( 'Email', 'smile-community' ), antispambot( $email ), 'mailto:' . antispambot( $email ), __( 'We reply within a few working days', 'smile-community' ) ),
 		array( 'pin', __( 'Visit', 'smile-community' ), __( 'Mzesa, Soweto, Kayole', 'smile-community' ), $map, __( 'By arrangement, near Donholm Phase 8', 'smile-community' ) ),

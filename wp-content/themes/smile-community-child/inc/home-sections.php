@@ -25,6 +25,9 @@ defined( 'ABSPATH' ) || exit;
  */
 function smile_img( $key, $size = 'large', $class = '', $eager = false ) {
 	$id = smile_image_by_key( $key );
+	if ( ! $id && function_exists( 'smile_bundled_photo_html' ) && smile_bundled_photo( $key ) ) {
+		return smile_bundled_photo_html( $key, $class, $eager );
+	}
 	if ( ! $id ) {
 		return '<span class="smile-card__placeholder ' . esc_attr( $class ) . '">' . smile_icon( 'heart' ) . '</span>';
 	}
@@ -284,7 +287,7 @@ add_shortcode(
 		$phone = smile_setting( 'phone_primary', '0721 318 869' );
 		$wa    = preg_replace( '/\D/', '', smile_setting( 'whatsapp', '254721318869' ) );
 		$email = smile_setting( 'email', 'info@smilecommunitycentre.org' );
-		$out   = '<aside class="smile-help"><p class="smile-hand">' . esc_html__( 'Still have a question?', 'smile-community' ) . '</p><p>' . esc_html__( 'Our team is happy to help. Reach us during office hours, Monday to Friday.', 'smile-community' ) . '</p><ul>';
+		$out   = '<aside class="smile-help"><p class="smile-hand">' . esc_html__( 'Still have a question?', 'smile-community' ) . '</p><p>' . esc_html__( 'Our team is happy to help. Reach us during office hours: Monday to Saturday 9am to 5pm, Sunday from 2pm.', 'smile-community' ) . '</p><ul>';
 		$out  .= '<li><a href="' . esc_url( smile_tel_href( $phone ) ) . '">' . smile_icon( 'phone' ) . esc_html( $phone ) . '</a></li>';
 		if ( $wa ) {
 			$out .= '<li><a href="' . esc_url( 'https://wa.me/' . $wa ) . '" rel="noopener">' . smile_icon( 'chat' ) . esc_html__( 'WhatsApp us', 'smile-community' ) . '</a></li>';
@@ -620,7 +623,7 @@ add_shortcode(
 			array( 'pin', __( 'Visit', 'smile-community' ), __( 'Mzesa, Soweto, Kayole', 'smile-community' ), $map, __( 'Get directions', 'smile-community' ), __( 'By arrangement, near Donholm Phase 8', 'smile-community' ) ),
 		);
 		$out  = '<div class="smile-hub">';
-		$out .= '<p class="smile-hub__status" data-smile-office="' . esc_attr( smile_office_hours()['open'] . '-' . smile_office_hours()['close'] ) . '" data-saturday="' . ( smile_office_hours()['saturday'] ? '1' : '0' ) . '"><span class="smile-hub__dot" aria-hidden="true"></span><span class="smile-hub__state">' . esc_html__( 'Office hours', 'smile-community' ) . '</span> <span class="smile-hub__hours">' . esc_html__( '9am to 5pm, Nairobi time', 'smile-community' ) . '</span></p>';
+		$out .= '<p class="smile-hub__status" data-smile-office="' . esc_attr( smile_office_hours()['open'] . '-' . smile_office_hours()['close'] ) . '" data-saturday="' . ( smile_office_hours()['saturday'] ? '1' : '0' ) . '"><span class="smile-hub__dot" aria-hidden="true"></span><span class="smile-hub__state">' . esc_html__( 'Office hours', 'smile-community' ) . '</span> <span class="smile-hub__hours">' . esc_html__( 'Mon to Sat 9am to 5pm, Sun from 2pm (Nairobi time)', 'smile-community' ) . '</span></p>';
 		$out .= '<ul class="smile-hub__grid">';
 		foreach ( $cards as $i => $c ) {
 			if ( ! $c[3] ) {

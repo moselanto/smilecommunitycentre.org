@@ -1,6 +1,6 @@
 /* Smile Community Centre: branded staff sign-in screen (wp-login.php). Scoped to body.smile-login. */
 body.smile-login {
-	--g: #164B3F; --t: #176B5B; --t6: #125747; --sun: #F4C95D; --cream: #FFF9EF; --ink: #24312D; --muted: #5D6A64; --line: #E4DCCB;
+	--g: #0B4021; --t: #146C3C; --t6: #0E5530; --sun: #FDDC05; --cream: #FFF9EF; --ink: #24312D; --muted: #5D6A64; --line: #E4DCCB;
 	margin: 0; min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: stretch;
 	background: var(--cream); color: var(--ink);
 	font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 15px; line-height: 1.55;
@@ -10,25 +10,25 @@ body.smile-login * { box-sizing: border-box; }
 /* Left story panel */
 .smile-login-aside {
 	position: relative; min-height: 100vh; overflow: hidden; color: #fff;
-	background: linear-gradient(115deg, rgba(14,52,43,.96) 0%, rgba(22,75,63,.86) 48%, rgba(22,75,63,.5) 100%), var(--smile-login-photo, none) center / cover no-repeat, #164B3F;
+	background: linear-gradient(115deg, rgba(14,52,43,.96) 0%, rgba(11,64,33,.86) 48%, rgba(11,64,33,.5) 100%), var(--smile-login-photo, none) center / cover no-repeat, #0B4021;
 }
 .smile-login-aside::after {
 	content: ""; position: absolute; left: -10%; right: -10%; bottom: -1px; height: 120px; pointer-events: none;
-	background: radial-gradient(120% 100% at 50% 100%, rgba(244,201,93,.22), transparent 70%);
+	background: radial-gradient(120% 100% at 50% 100%, rgba(253,220,5,.22), transparent 70%);
 }
 .smile-login-aside__inner { position: sticky; top: 0; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; padding: clamp(28px, 4vw, 56px); }
 .smile-login-aside__brand { display: inline-flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-weight: 600; font-size: 17px; letter-spacing: .01em; }
 .smile-login-aside__mark { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
 .smile-login-aside__mark img { width: 34px; height: 34px; border-radius: 8px; }
 .smile-login-aside__body { margin: auto 0; max-width: 34rem; }
-.smile-login-aside__eyebrow { display: inline-block; margin: 0 0 18px; padding: 6px 12px; border: 1px solid rgba(244,201,93,.55); border-radius: 999px; color: var(--sun); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.smile-login-aside__eyebrow { display: inline-block; margin: 0 0 18px; padding: 6px 12px; border: 1px solid rgba(253,220,5,.55); border-radius: 999px; color: var(--sun); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
 .smile-login-aside__title { margin: 0 0 16px; font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: clamp(30px, 2.6vw + 10px, 48px); line-height: 1.1; letter-spacing: -.01em; color: #fff; }
 .smile-login-aside__lead { margin: 0 0 26px; max-width: 30rem; color: rgba(255,255,255,.86); font-size: 16px; }
 .smile-login-aside__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .smile-login-aside__list li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: rgba(255,255,255,.94); }
 .smile-login-aside__list svg { flex: none; color: var(--sun); }
 .smile-login-aside__foot { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 13px; color: rgba(255,255,255,.75); }
-.smile-login-aside__foot a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(244,201,93,.6); }
+.smile-login-aside__foot a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(253,220,5,.6); }
 .smile-login-aside__foot a:hover { color: var(--sun); }
 
 /* Right column */
@@ -37,7 +37,7 @@ body.smile-login * { box-sizing: border-box; }
 body.smile-login #login {
 	width: 100%; max-width: 440px; margin: auto 0 0; padding: 34px 34px 26px;
 	border: 1px solid var(--line); border-radius: 22px; background: #fff;
-	box-shadow: 0 1px 2px rgba(22,75,63,.06), 0 24px 48px -24px rgba(22,75,63,.32);
+	box-shadow: 0 1px 2px rgba(11,64,33,.06), 0 24px 48px -24px rgba(11,64,33,.32);
 }
 body.smile-login #login h1 { margin: 0 0 22px; }
 body.smile-login #login h1 a { width: 190px !important; height: 56px !important; margin: 0; background-position: left center !important; }
@@ -60,24 +60,24 @@ body.smile-login input[type="password"] {
 body.smile-login form .input:hover { border-color: #CFC4AE; }
 body.smile-login form .input:focus,
 body.smile-login input[type="text"]:focus,
-body.smile-login input[type="password"]:focus { border-color: var(--t); background: #fff; outline: 0; box-shadow: 0 0 0 4px rgba(23,107,91,.16); }
+body.smile-login input[type="password"]:focus { border-color: var(--t); background: #fff; outline: 0; box-shadow: 0 0 0 4px rgba(20,108,60,.16); }
 body.smile-login .wp-pwd { position: relative; }
 body.smile-login .wp-pwd .input { padding-right: 52px; }
 body.smile-login .wp-hide-pw { top: 6px; right: 4px; height: 48px; width: 44px; color: var(--t); border-radius: 10px; }
-body.smile-login .wp-hide-pw:focus { box-shadow: 0 0 0 3px rgba(23,107,91,.25); outline: 0; }
+body.smile-login .wp-hide-pw:focus { box-shadow: 0 0 0 3px rgba(20,108,60,.25); outline: 0; }
 body.smile-login .wp-hide-pw .dashicons { color: var(--t); }
 body.smile-login .forgetmenot { float: none; margin: 0 0 18px; }
 body.smile-login .forgetmenot label { font-weight: 500; color: var(--muted); }
 body.smile-login input[type="checkbox"] { width: 18px; height: 18px; border: 1.5px solid #BDB29C; border-radius: 5px; }
 body.smile-login input[type="checkbox"]:checked::before { filter: hue-rotate(110deg) saturate(.8); }
-body.smile-login input[type="checkbox"]:focus { border-color: var(--t); box-shadow: 0 0 0 3px rgba(23,107,91,.2); }
+body.smile-login input[type="checkbox"]:focus { border-color: var(--t); box-shadow: 0 0 0 3px rgba(20,108,60,.2); }
 
 body.smile-login .submit { float: none; }
 body.smile-login .button-primary,
 body.smile-login #wp-submit {
 	float: none; display: block; width: 100%; min-height: 50px; padding: 0 20px; border: 0; border-radius: 12px;
 	background: var(--t); color: #fff; font-size: 16px; font-weight: 600; letter-spacing: .01em; text-shadow: none;
-	box-shadow: 0 8px 18px -8px rgba(23,107,91,.7); transition: background-color .15s, transform .15s, box-shadow .15s;
+	box-shadow: 0 8px 18px -8px rgba(20,108,60,.7); transition: background-color .15s, transform .15s, box-shadow .15s;
 }
 body.smile-login .button-primary:hover,
 body.smile-login #wp-submit:hover { background: var(--g); }
@@ -94,7 +94,7 @@ body.smile-login #login_error {
 }
 body.smile-login #login_error,
 body.smile-login .notice-error { border-left-color: #B42318; background: #FDECEA; }
-body.smile-login .notice-warning { border-left-color: #E9B53B; background: #FFF6DE; }
+body.smile-login .notice-warning { border-left-color: #E5C400; background: #FFF6DE; }
 body.smile-login .indicator-hint, body.smile-login .description { color: var(--muted); }
 body.smile-login #pass-strength-result { border-radius: 8px; }
 

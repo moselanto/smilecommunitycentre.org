@@ -170,3 +170,59 @@ function smile_enhance_queue() {
 	);
 	return array_map( 'intval', $ids );
 }
+
+/**
+ * A photo bundled with the theme (assets/images/photos/), described in
+ * demo/images.json with a "theme:" source. Used as a safety net so sections
+ * never show an empty frame before the photo is imported to the Media Library.
+ *
+ * @param string $key Image key.
+ * @return array|null { url, url_1200, url_640, alt }
+ */
+function smile_bundled_photo( $key ) {
+	static $list = null;
+	if ( null === $list ) {
+		$list = array();
+		$file = SMILE_THEME_DIR . '/demo/images.json';
+		$data = file_exists( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions
+		foreach ( (array) $data as $img ) {
+			if ( isset( $img['key'], $img['source'] ) && 0 === strpos( (string) $img['source'], 'theme:' ) ) {
+				$list[ $img['key'] ] = $img;
+			}
+		}
+	}
+	if ( empty( $list[ $key ] ) ) {
+		return null;
+	}
+	$rel  = ltrim( substr( $list[ $key ]['source'], 6 ), '/' );
+	$base = SMILE_THEME_URI . '/' . preg_replace( '/\.[a-z0-9]+$/i', '', $rel );
+	return array(
+		'url'      => SMILE_THEME_URI . '/' . $rel,
+		'url_1200' => $base . '-1200.webp',
+		'url_640'  => $base . '-640.webp',
+		'alt'      => isset( $list[ $key ]['alt'] ) ? $list[ $key ]['alt'] : '',
+	);
+}
+
+/**
+ * Markup for a bundled photo (WebP, responsive, lazy).
+ *
+ * @param string $key   Image key.
+ * @param string $class Class.
+ * @param bool   $eager Eager load.
+ * @return string
+ */
+function smile_bundled_photo_html( $key, $class = '', $eager = false ) {
+	$p = smile_bundled_photo( $key );
+	if ( ! $p ) {
+		return '';
+	}
+	return sprintf(
+		'<img class="%1$s" src="%2$s" srcset="%2$s 1200w, %3$s 640w" sizes="(min-width: 900px) 50vw, 100vw" alt="%4$s" loading="%5$s" decoding="async">',
+		esc_attr( $class ),
+		esc_url( $p['url_1200'] ),
+		esc_url( $p['url_640'] ),
+		esc_attr( $p['alt'] ),
+		$eager ? 'eager' : 'lazy'
+	);
+}
