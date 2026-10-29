@@ -1478,3 +1478,67 @@ a.smile-btn--sun, a.smile-btn--sun:visited, .smile-btn--sun, .smile-footer a.smi
 
 /* Headings in centred sections sit in the middle */
 .smile-center .elementor-heading-title { margin-inline: auto; text-align: center; }
+
+
+/* =========================================================
+   2.35.0 Brand font + one logo size everywhere
+   Nunito (Smile Logo Kit heading font) is now bundled in assets/fonts.
+   The header/footer logo is locked to one size on every page, so page
+   or Elementor rules can no longer enlarge it.
+   ========================================================= */
+:root { --smile-font-display: "Nunito", "Figtree", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif; }
+h1, h2, h3, .elementor-widget-heading h1.elementor-heading-title, .elementor-widget-heading h2.elementor-heading-title, .elementor-widget-heading h3.elementor-heading-title { font-family: var(--smile-font-display); }
+.smile-header .smile-brand, .smile-header .smile-header__brand { flex: 0 0 auto; width: auto !important; max-width: none !important; }
+.smile-header .smile-brand picture { width: auto !important; }
+.smile-header img.smile-brand__img, .smile-header .smile-brand img, .smile-header .custom-logo {
+	height: 60px !important; max-height: 60px !important; width: auto !important; min-width: 0 !important; max-width: none !important;
+	aspect-ratio: 3820 / 1433; object-fit: contain;
+}
+.smile-header.is-scrolled img.smile-brand__img, .smile-header.is-scrolled .smile-brand img, .smile-header.is-scrolled .custom-logo { height: 50px !important; max-height: 50px !important; }
+.smile-footer img.smile-brand__img, .smile-footer .smile-brand img { height: 72px !important; max-height: 72px !important; width: auto !important; max-width: none !important; }
+@media (max-width: 900px) {
+	.smile-header img.smile-brand__img, .smile-header .smile-brand img, .smile-header .custom-logo { height: 48px !important; max-height: 48px !important; }
+	.smile-header.is-scrolled img.smile-brand__img, .smile-header.is-scrolled .smile-brand img, .smile-header.is-scrolled .custom-logo { height: 44px !important; max-height: 44px !important; }
+}
+@media (max-width: 380px) {
+	.smile-header img.smile-brand__img, .smile-header .smile-brand img, .smile-header .custom-logo { height: 40px !important; max-height: 40px !important; }
+}
+
+
+/* =========================================================
+   2.35.0 Sticky navigation that never gets lost
+   The header sits inside the Elementor header template wrapper, so the
+   old sticky rule on .smile-header could only stick inside that wrapper
+   and scrolled away with it. The wrapper itself is now sticky: the green
+   top bar scrolls off, the logo + menu + Donate bar stays pinned and
+   compacts, on every screen size, with or without the WordPress admin bar.
+   ========================================================= */
+.smile-el-header, .elementor-location-header {
+	position: sticky !important; top: calc(-1 * var(--smile-topbar-h, 0px)); z-index: 1000;
+}
+body.admin-bar .smile-el-header, body.admin-bar .elementor-location-header { top: calc(32px - var(--smile-topbar-h, 0px)); }
+.smile-el-header .smile-header, .elementor-location-header .smile-header { position: relative !important; top: auto !important; }
+body:not(.smile-el-header-on) .smile-header { position: sticky; top: 0; z-index: 1000; }
+body.admin-bar:not(.smile-el-header-on) .smile-header { top: 32px; }
+@media (max-width: 782px) {
+	body.admin-bar .smile-el-header, body.admin-bar .elementor-location-header { top: calc(46px - var(--smile-topbar-h, 0px)); }
+	body.admin-bar:not(.smile-el-header-on) .smile-header { position: sticky; top: 46px; }
+}
+@media (max-width: 600px) {
+	/* The admin bar scrolls away on phones, so the header pins to the very top. */
+	body.admin-bar .smile-el-header, body.admin-bar .elementor-location-header { top: calc(-1 * var(--smile-topbar-h, 0px)); }
+	body.admin-bar:not(.smile-el-header-on) .smile-header { top: 0; }
+}
+.smile-header { background: #fff; transition: box-shadow .25s ease, padding .25s ease; }
+.smile-header.is-scrolled { box-shadow: 0 8px 28px -10px rgba(11,64,33,.22); }
+.smile-header__inner { transition: min-height .25s ease; }
+.smile-header.is-scrolled .smile-header__inner { min-height: 68px; }
+@media (max-width: 900px) {
+	.smile-header__inner { min-height: 68px; }
+	.smile-header.is-scrolled .smile-header__inner { min-height: 60px; }
+}
+html { scroll-padding-top: calc(var(--smile-header-h, 80px) + 16px); }
+body.admin-bar { scroll-padding-top: calc(var(--smile-header-h, 80px) + 48px); }
+@media (prefers-reduced-motion: reduce) {
+	.smile-header, .smile-header__inner, .smile-brand__img { transition: none !important; }
+}
