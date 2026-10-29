@@ -97,7 +97,8 @@
       "isInner": false,
       "settings": {
        "_column_size": 50,
-       "_inline_size": null
+       "_inline_size": null,
+       "css_classes": "smile-intro2__text"
       },
       "elements": [
        {
@@ -163,7 +164,8 @@
       "isInner": false,
       "settings": {
        "_column_size": 50,
-       "_inline_size": null
+       "_inline_size": null,
+       "css_classes": "smile-intro2__media"
       },
       "elements": [
        {
@@ -177,6 +179,16 @@
          },
          "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall smile-photo--frame"
+        },
+        "elements": []
+       },
+       {
+        "id": "d88050b",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<p><strong>Since 2009</strong><span>Caring for children in Soweto, Kayole</span></p>",
+         "_css_classes": "smile-intro2__badge"
         },
         "elements": []
        }

@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.38.0
+- **Top menu balanced.** Logo on the left, menu centred in the space between, Donate on the right; even spacing between items, larger tap targets, a soft hover highlight and a yellow underline for the current page; dropdowns as tidy cards. Spacing tightens slightly on smaller laptops so nothing crowds.
+- **"A home, care and opportunity" redesigned.** Balanced 52/48 split with more breathing room; larger heading; the lead paragraph now uses the full column (a clash with the Stories layout was squeezing it into a narrow strip; this also fixes the same squeeze on the feeding appeal, page banners and closing text across the site); three even tick rows; tall photo with a sunshine block behind it, a dot pattern and a floating "Since 2009" badge.
+- **Hero:** text, buttons and slider dots now sit clear of the pillars strip.
+- **Ways to help and Supporter voices:** headings centred; tighter, even gaps (the big gap above the cards and the line before the volunteering note are gone).
+- **Closing appeal:** "Every day matters" back to a small label; heading, text and buttons stacked and centred.
+- Re-run **Apply latest design** for the "Since 2009" badge.
+
 ## 2.37.0
 - **Lighter photos.** All bundled photos and slider images recompressed (same sizes and sharpness): 3.6 MB down to 2.9 MB in total; the largest slider image went from 299 KB to 182 KB, and the first slide that every visitor downloads is smaller.
 - **Smaller CSS.** New `scripts/build-css.py` rebuilds all minified CSS in one step and strips more whitespace safely: main 115 KB (20 KB gzipped), home 141 KB (23 KB gzipped).

@@ -1584,3 +1584,77 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
 	.smile-pcard .smile-pcard__img img, .smile-pillars__icon, .smile-help4 .smile-help4__card > .elementor-widget-wrap { transition: none !important; }
 }
+
+
+/* =========================================================
+   2.38.0 Home refinements
+   ========================================================= */
+
+/* Hero content and slider controls clear the pillars strip */
+@media (min-width: 768px) {
+	.smile-slider-sec .smile-slide__content { padding-bottom: clamp(5.5rem, 4rem + 3vw, 7.5rem) !important; }
+	.smile-slider-sec .smile-slider__controls { bottom: clamp(5rem, 4rem + 2.5vw, 6.5rem) !important; }
+}
+
+/* "A home, care and opportunity": balanced editorial split */
+.home .smile-sec.smile-intro2 { padding-top: clamp(5rem, 3.5rem + 5vw, 8rem) !important; padding-bottom: clamp(4.5rem, 3rem + 5vw, 7.5rem) !important; }
+@media (min-width: 1025px) {
+	.smile-intro2 > .elementor-container { column-gap: clamp(3rem, 1rem + 4vw, 6rem) !important; }
+	.smile-intro2 > .elementor-container > .elementor-column:first-child { width: 52% !important; }
+	.smile-intro2 > .elementor-container > .elementor-column:last-child { width: 48% !important; }
+}
+.smile-intro2__text > .elementor-widget-wrap { align-content: center; }
+.smile-intro2 .elementor-widget-heading:not(.smile-eyebrow) .elementor-heading-title { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem) !important; line-height: 1.08 !important; margin-bottom: .5rem; }
+.smile-intro2 .elementor-widget-text-editor:not(.smile-ticks):not(.smile-intro2__badge) p { max-width: 58ch; }
+.smile-intro2 p.smile-lead { font-size: clamp(1.1rem, 1rem + .4vw, 1.28rem) !important; line-height: 1.6 !important; color: #24312D !important; margin-bottom: 1rem !important; }
+.smile-intro2 p.smile-lead + p { color: var(--smile-muted, #5B6B64); font-size: 1rem; line-height: 1.7; }
+/* Ticks: three even rows, compact and aligned */
+.smile-intro2 .smile-ticks ul { display: grid !important; grid-template-columns: 1fr !important; gap: .6rem !important; margin: 1.5rem 0 .5rem !important; max-width: 560px; }
+.smile-intro2 .smile-ticks li { display: flex; align-items: center; min-height: 54px; padding: .75rem 1.1rem .75rem 3.2rem !important; background: #F6FAF7 !important; border: 1px solid rgba(11,64,33,.08) !important; border-radius: 14px !important; font-weight: 600; font-size: .98rem; color: var(--smile-forest) !important; line-height: 1.4; }
+.smile-intro2 .smile-ticks li::before { left: 1rem !important; top: 50% !important; width: 24px !important; height: 24px !important; margin-top: -12px; border-radius: 50%; background: var(--smile-forest) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FDDC05' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat !important; }
+.smile-intro2 .smile-ticks li:hover { box-shadow: 0 10px 24px -14px rgba(11,64,33,.35); transform: translateX(3px); transition: transform .25s ease, box-shadow .25s ease; }
+.smile-intro2 .elementor-widget-button { margin-top: 1.5rem !important; }
+/* Photo column: tall photo, sun block behind, floating "Since 2009" badge */
+.smile-intro2__media > .elementor-widget-wrap { position: relative; padding: 0 1.5rem 1.5rem 0 !important; }
+.smile-intro2__media .smile-photo img { width: 100%; aspect-ratio: 4 / 4.6 !important; object-fit: cover; border-radius: 28px !important; box-shadow: 0 30px 60px -30px rgba(11,64,33,.5) !important; }
+.smile-intro2__media .smile-photo { position: relative; z-index: 1; margin: 0 !important; }
+.smile-intro2__media > .elementor-widget-wrap::before { content: ""; position: absolute; z-index: 0; right: 0; bottom: 0; width: 70%; height: 70%; border-radius: 28px; background: var(--smile-sun); }
+.smile-intro2__media > .elementor-widget-wrap::after { content: ""; position: absolute; z-index: 0; left: -22px; top: 12%; width: 90px; height: 90px; background-image: radial-gradient(rgba(11,64,33,.28) 2px, transparent 2.5px); background-size: 16px 16px; }
+.smile-intro2__badge { position: absolute !important; z-index: 2; left: -1.5rem; bottom: 3rem; width: auto !important; max-width: 260px; margin: 0 !important; }
+.smile-intro2__badge p { display: flex; flex-direction: column; gap: .2rem; margin: 0 !important; padding: 1.1rem 1.35rem 1.1rem 1.35rem; background: #fff; border-radius: 18px; box-shadow: 0 2px 6px rgba(11,64,33,.06), 0 24px 44px -20px rgba(11,64,33,.45); border-left: 5px solid var(--smile-coral); }
+.smile-intro2__badge strong { font-family: var(--smile-font-display); font-weight: 800; font-size: 1.6rem; line-height: 1; color: var(--smile-forest); }
+.smile-intro2__badge span { font-size: .9rem; color: var(--smile-muted, #5B6B64); line-height: 1.35; }
+@media (max-width: 1024px) {
+	.smile-intro2__media > .elementor-widget-wrap { padding: 0 1rem 1rem 0 !important; max-width: 560px; margin-inline: auto; }
+	.smile-intro2__media .smile-photo img { aspect-ratio: 4 / 3.4 !important; }
+	.smile-intro2__badge { left: 1rem; bottom: 2rem; }
+	.smile-intro2 .smile-ticks ul { max-width: none; }
+}
+@media (max-width: 600px) {
+	.smile-intro2__badge { position: relative !important; left: auto; bottom: auto; margin: -2.25rem 0 0 1rem !important; }
+	.smile-intro2__media > .elementor-widget-wrap::after { display: none; }
+}
+
+/* Section heads above card rows: tight, intentional gap */
+.home .smile-sec.smile-head-row { padding-bottom: 2.25rem !important; }
+.home .smile-sec.smile-head-row + .smile-sec { padding-top: 0 !important; }
+
+/* Ways to help: centred head, no seams, even spacing */
+.home .smile-sec.smile-help-head { padding-bottom: 2.5rem !important; }
+.home .smile-sec.smile-help4 { padding-top: 0 !important; padding-bottom: 1.5rem !important; }
+.home .smile-sec.smile-help4-note { padding-top: 1rem !important; }
+.smile-help-head, .smile-help4, .smile-help4-note { border: 0 !important; box-shadow: none !important; }
+.smile-help-head .elementor-widget, .smile-voices2 .elementor-widget-heading { width: 100% !important; max-width: 100% !important; }
+.smile-help-head .elementor-heading-title, .smile-voices2 .elementor-widget-heading .elementor-heading-title { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+.smile-help-head .smile-eyebrow .elementor-heading-title, .smile-voices2 .smile-eyebrow .elementor-heading-title { display: flex; justify-content: center; }
+
+/* Closing appeal: stacked and centred, buttons side by side */
+.smile-closing .elementor-widget-wrap { display: grid !important; grid-template-columns: repeat(2, auto); justify-content: center; justify-items: center; column-gap: .75rem; row-gap: .5rem; }
+.smile-closing .elementor-widget:not(.elementor-widget-button) { grid-column: 1 / -1; width: 100% !important; max-width: 100% !important; }
+.smile-closing .elementor-widget-button { margin-top: 1rem !important; }
+.smile-closing .smile-eyebrow .elementor-heading-title { font-size: .8rem !important; letter-spacing: .16em !important; max-width: none !important; display: flex; justify-content: center; }
+.smile-closing .elementor-widget-heading:not(.smile-eyebrow) .elementor-heading-title { font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.6rem) !important; }
+@media (max-width: 600px) {
+	.smile-closing .elementor-widget-wrap { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .smile-intro2 .smile-ticks li:hover { transform: none; } }
