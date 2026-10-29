@@ -24,7 +24,8 @@ function smile_brand_url( $file ) {
 
 /**
  * Logo markup: WebP with PNG fallback, 1x / 2x / 3x sources, fixed dimensions
- * (no layout shift). The logo is 3.43 : 1.
+ * (no layout shift). The logo (Logo Kit v1.2, primary full-colour lockup) is 2.68 : 1.
+ * The footer sits on Forest Green, so it uses the approved reversed colourway.
  *
  * @param string $context header|footer.
  * @return string
@@ -33,16 +34,18 @@ function smile_brand_logo( $context = 'header' ) {
 	if ( ! apply_filters( 'smile_use_brand_logo', true ) ) {
 		return has_custom_logo() ? get_custom_logo() : '<a class="smile-header__name" href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a>';
 	}
-	$height = 'footer' === $context ? 64 : 60;
-	$width  = (int) round( $height * 1940 / 566 );
-	$alt    = __( 'Smile Community Centre: protecting, empowering and giving a smile', 'smile-community' );
-	$webp   = smile_brand_url( 'smile-logo-120.webp' ) . ' 2x, ' . smile_brand_url( 'smile-logo-180.webp' ) . ' 3x';
-	$png    = smile_brand_url( 'smile-logo-60.png' ) . ' 1x, ' . smile_brand_url( 'smile-logo-120.png' ) . ' 2x, ' . smile_brand_url( 'smile-logo-180.png' ) . ' 3x';
+	// Logo Kit minimum for the full lockup with tagline is 150 px wide: 60 px tall = 161 px.
+	$height = 'footer' === $context ? 72 : 60;
+	$width  = (int) round( $height * 3822 / 1426 );
+	$alt    = __( 'Smile Community Centre: a smile today, a brighter tomorrow', 'smile-community' );
+	$file   = 'footer' === $context ? 'smile-logo-reversed' : 'smile-logo';
+	$webp   = smile_brand_url( $file . '-120.webp' ) . ' 2x, ' . smile_brand_url( $file . '-180.webp' ) . ' 3x';
+	$png    = smile_brand_url( $file . '-60.png' ) . ' 1x, ' . smile_brand_url( $file . '-120.png' ) . ' 2x, ' . smile_brand_url( $file . '-180.png' ) . ' 3x';
 
 	$out  = '<a class="smile-brand smile-brand--' . esc_attr( $context ) . '" href="' . esc_url( home_url( '/' ) ) . '" rel="home" aria-label="' . esc_attr__( 'Smile Community Centre home', 'smile-community' ) . '">';
 	$out .= '<picture>';
-	$out .= '<source type="image/webp" srcset="' . esc_attr( smile_brand_url( 'smile-logo-120.webp' ) . ' 1x, ' . $webp ) . '">';
-	$out .= '<img class="smile-brand__img" src="' . esc_url( smile_brand_url( 'smile-logo-120.png' ) ) . '" srcset="' . esc_attr( $png ) . '" width="' . (int) $width . '" height="' . (int) $height . '" alt="' . esc_attr( $alt ) . '"' . ( 'header' === $context ? ' fetchpriority="high"' : ' loading="lazy"' ) . ' decoding="async">';
+	$out .= '<source type="image/webp" srcset="' . esc_attr( smile_brand_url( $file . '-120.webp' ) . ' 1x, ' . $webp ) . '">';
+	$out .= '<img class="smile-brand__img" src="' . esc_url( smile_brand_url( $file . '-120.png' ) ) . '" srcset="' . esc_attr( $png ) . '" width="' . (int) $width . '" height="' . (int) $height . '" alt="' . esc_attr( $alt ) . '"' . ( 'header' === $context ? ' fetchpriority="high"' : ' loading="lazy"' ) . ' decoding="async">';
 	$out .= '</picture></a>';
 	return $out;
 }
@@ -58,7 +61,7 @@ function smile_brand_icons() {
 	echo '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url( smile_brand_url( 'icon-32.png' ) ) . '">' . "\n";
 	echo '<link rel="icon" type="image/png" sizes="192x192" href="' . esc_url( smile_brand_url( 'icon-192.png' ) ) . '">' . "\n";
 	echo '<link rel="apple-touch-icon" sizes="180x180" href="' . esc_url( smile_brand_url( 'icon-180.png' ) ) . '">' . "\n";
-	echo '<meta name="theme-color" content="#164B3F">' . "\n";
+	echo '<meta name="theme-color" content="#0B4021">' . "\n";
 }
 add_action(
 	'init',
@@ -79,7 +82,7 @@ function smile_brand_login_logo() {
 	if ( ! apply_filters( 'smile_use_brand_logo', true ) ) {
 		return;
 	}
-	echo '<style>#login h1 a{background-image:url(' . esc_url( smile_brand_url( 'smile-logo-180.png' ) ) . ');background-size:contain;background-position:center;width:300px;height:89px;}</style>' . "\n";
+	echo '<style>#login h1 a{background-image:url(' . esc_url( smile_brand_url( 'smile-logo-180.png' ) ) . ');background-size:contain;background-position:center;width:300px;height:112px;}</style>' . "\n";
 }
 add_action( 'login_enqueue_scripts', 'smile_brand_login_logo' );
 add_filter( 'login_headerurl', function () { return home_url( '/' ); } );

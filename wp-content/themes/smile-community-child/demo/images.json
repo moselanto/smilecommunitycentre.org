@@ -159,5 +159,61 @@
   "filename": "child-with-visitor-gifts.jpg",
   "alt": "A child holding gifts brought by a visitor",
   "title": "Child with visitor gifts"
+ },
+ {
+  "key": "edu-uniforms",
+  "source": "theme:assets/images/photos/children-in-school-uniform-at-smile.jpg",
+  "filename": "children-in-school-uniform-at-smile.jpg",
+  "alt": "Children in red school uniforms holding colourful learning rolls outside Smile Community Centre Children's Home",
+  "title": "Children in school uniform at Smile"
+ },
+ {
+  "key": "feeding-tables",
+  "source": "theme:assets/images/photos/children-sharing-a-meal-at-smile.jpg",
+  "filename": "children-sharing-a-meal-at-smile.jpg",
+  "alt": "Young children at Smile Community Centre sitting together at tables enjoying a meal of rice and beans",
+  "title": "Children sharing a meal at Smile"
+ },
+ {
+  "key": "hiv-support",
+  "source": "theme:assets/images/photos/red-ribbon-hiv-awareness.jpg",
+  "filename": "red-ribbon-hiv-awareness.jpg",
+  "alt": "A hand holding a red ribbon, the symbol of HIV awareness and support",
+  "title": "Red ribbon HIV awareness"
+ },
+ {
+  "key": "hygiene-kits",
+  "source": "theme:assets/images/photos/children-with-hygiene-kits.jpg",
+  "filename": "children-with-hygiene-kits.jpg",
+  "alt": "Children holding up new toothbrush and toothpaste hygiene packets indoors",
+  "title": "Children with hygiene kits"
+ },
+ {
+  "key": "children-skyline",
+  "source": "theme:assets/images/photos/children-holding-hands-at-sunset.jpg",
+  "filename": "children-holding-hands-at-sunset.jpg",
+  "alt": "Silhouettes of children holding hands beneath an open sky",
+  "title": "Children holding hands at sunset"
+ },
+ {
+  "key": "soweto-view",
+  "source": "theme:assets/images/photos/soweto-kayole-nairobi-community.jpg",
+  "filename": "soweto-kayole-nairobi-community.jpg",
+  "alt": "Elevated view of homes, corrugated-metal rooftops and a lane in Soweto-Kayole, Nairobi",
+  "title": "Soweto-Kayole community, Nairobi"
+ },
+ {
+  "key": "founder-children",
+  "source": "theme:assets/images/photos/founder-margaret-with-children.jpg",
+  "filename": "founder-margaret-with-children.jpg",
+  "alt": "Founder Margaret smiling warmly as she walks outdoors holding hands with children",
+  "title": "Founder Margaret with children"
+ },
+ {
+  "key": "sports-court",
+  "source": "theme:assets/images/photos/children-on-the-sports-court.jpg",
+  "filename": "children-on-the-sports-court.jpg",
+  "alt": "Children and youth in sports attire gathered together on an outdoor playing court",
+  "title": "Children on the sports court"
  }
 ]

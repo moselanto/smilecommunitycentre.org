@@ -260,7 +260,7 @@ function smile_demo_import_image( $key ) {
 	require_once ABSPATH . 'wp-admin/includes/media.php';
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 
-	$tmp = download_url( $img['source'], 60 );
+	$tmp = smile_demo_fetch_source( $img['source'] );
 	if ( is_wp_error( $tmp ) ) {
 		return 'FAILED ' . $img['filename'] . ': ' . $tmp->get_error_message();
 	}
@@ -271,10 +271,65 @@ function smile_demo_import_image( $key ) {
 	}
 	update_post_meta( $id, '_wp_attachment_image_alt', sanitize_text_field( $img['alt'] ) );
 	update_post_meta( $id, '_smile_img_key', $img['key'] );
-	update_post_meta( $id, '_smile_source', esc_url_raw( $img['source'] ) );
+	update_post_meta( $id, '_smile_source', esc_url_raw( smile_demo_source_url( $img['source'] ) ) );
 	update_post_meta( $id, '_smile_consent', 'pending-review' );
 	wp_update_post( array( 'ID' => $id, 'post_content' => '', 'post_excerpt' => '' ) );
 	return sprintf( /* translators: %s file */ __( 'Photo imported: %s', 'smile-community' ), $img['filename'] );
+}
+
+/**
+ * Public URL of a manifest source. "theme:path" points at a photo bundled
+ * with the theme (assets/images/photos/), everything else is a web address.
+ *
+ * @param string $source Source from images.json.
+ * @return string
+ */
+function smile_demo_source_url( $source ) {
+	$source = (string) $source;
+	if ( 0 === strpos( $source, 'theme:' ) ) {
+		return SMILE_THEME_URI . '/' . ltrim( substr( $source, 6 ), '/' );
+	}
+	return $source;
+}
+
+/**
+ * Temporary local copy of a manifest photo. Bundled photos are copied from the
+ * theme folder (no download, works on servers that block loopback requests).
+ *
+ * @param string $source Source from images.json.
+ * @return string|WP_Error Temporary file path.
+ */
+function smile_demo_fetch_source( $source ) {
+	$source = (string) $source;
+	if ( 0 === strpos( $source, 'theme:' ) ) {
+		$rel  = ltrim( substr( $source, 6 ), '/' );
+		$file = realpath( SMILE_THEME_DIR . '/' . $rel );
+		$root = realpath( SMILE_THEME_DIR . '/assets/images' );
+		if ( ! $file || ! $root || 0 !== strpos( $file, $root ) || ! is_readable( $file ) ) {
+			return new WP_Error( 'smile_missing_photo', __( 'Bundled photo not found in the theme', 'smile-community' ) );
+		}
+		$tmp = wp_tempnam( basename( $file ) );
+		if ( ! $tmp || ! copy( $file, $tmp ) ) { // phpcs:ignore WordPress.WP.AlternativeFunctions
+			return new WP_Error( 'smile_copy_failed', __( 'Could not copy the bundled photo', 'smile-community' ) );
+		}
+		return $tmp;
+	}
+	return download_url( $source, 60 );
+}
+
+/**
+ * Import any bundled photos the pages need that are not in the Media Library
+ * yet. Runs before pages are rebuilt, so "Apply latest design" never leaves an
+ * empty photo even when "Import photographs" was not ticked.
+ */
+function smile_demo_import_bundled_images() {
+	$map = smile_demo_image_map();
+	foreach ( smile_demo_json( 'images.json' ) as $img ) {
+		if ( isset( $map[ $img['key'] ] ) || 0 !== strpos( (string) $img['source'], 'theme:' ) ) {
+			continue;
+		}
+		smile_demo_import_image( $img['key'] );
+	}
 }
 
 /**
@@ -292,6 +347,11 @@ function smile_demo_swap_images( $node, $images ) {
 				$node['id']  = $images[ $key ];
 				$node['url'] = wp_get_attachment_url( $images[ $key ] );
 				$node['alt'] = get_post_meta( $images[ $key ], '_wp_attachment_image_alt', true );
+			} elseif ( function_exists( 'smile_bundled_photo' ) && smile_bundled_photo( $key ) ) {
+				$bundled     = smile_bundled_photo( $key );
+				$node['id']  = '';
+				$node['url'] = $bundled['url_1200'];
+				$node['alt'] = $bundled['alt'];
 			} else {
 				$node['id']  = '';
 				$node['url'] = '';
@@ -312,6 +372,7 @@ function smile_demo_swap_images( $node, $images ) {
  * @return string
  */
 function smile_demo_import_pages( $overwrite ) {
+	smile_demo_import_bundled_images();
 	$images  = smile_demo_image_map();
 	$created = 0;
 	$updated = 0;
@@ -451,10 +512,10 @@ function smile_demo_import_kit() {
 	$s = is_array( $s ) ? $s : array();
 
 	$s['system_colors']     = array(
-		array( '_id' => 'primary', 'title' => 'Teal', 'color' => '#176B5B' ),
-		array( '_id' => 'secondary', 'title' => 'Forest', 'color' => '#164B3F' ),
+		array( '_id' => 'primary', 'title' => 'Teal', 'color' => '#146C3C' ),
+		array( '_id' => 'secondary', 'title' => 'Forest', 'color' => '#0B4021' ),
 		array( '_id' => 'text', 'title' => 'Charcoal text', 'color' => '#24312D' ),
-		array( '_id' => 'accent', 'title' => 'Sunshine', 'color' => '#F4C95D' ),
+		array( '_id' => 'accent', 'title' => 'Sunshine', 'color' => '#FDDC05' ),
 	);
 	$s['custom_colors']     = array(
 		array( '_id' => 'smcream', 'title' => 'Cream', 'color' => '#FFF9EF' ),
@@ -463,14 +524,14 @@ function smile_demo_import_kit() {
 		array( '_id' => 'smwhite', 'title' => 'White', 'color' => '#FFFFFF' ),
 	);
 	$s['system_typography'] = array(
-		array( '_id' => 'primary', 'title' => 'Headings', 'typography_typography' => 'custom', 'typography_font_family' => 'Newsreader', 'typography_font_weight' => '500' ),
+		array( '_id' => 'primary', 'title' => 'Headings', 'typography_typography' => 'custom', 'typography_font_family' => 'Figtree', 'typography_font_weight' => '800' ),
 		array( '_id' => 'secondary', 'title' => 'Sub-headings', 'typography_typography' => 'custom', 'typography_font_family' => 'Figtree', 'typography_font_weight' => '700' ),
 		array( '_id' => 'text', 'title' => 'Body', 'typography_typography' => 'custom', 'typography_font_family' => 'Figtree', 'typography_font_weight' => '400' ),
 		array( '_id' => 'accent', 'title' => 'Buttons', 'typography_typography' => 'custom', 'typography_font_family' => 'Figtree', 'typography_font_weight' => '700' ),
 	);
 	$s['container_width']   = array( 'unit' => 'px', 'size' => 1200 );
 	$s['body_color']        = '#24312D';
-	$s['link_normal_color'] = '#176B5B';
+	$s['link_normal_color'] = '#146C3C';
 	update_post_meta( $kit_id, '_elementor_page_settings', $s );
 	update_option( 'elementor_font_display', 'swap' );
 	update_option( 'elementor_google_font', '0' );

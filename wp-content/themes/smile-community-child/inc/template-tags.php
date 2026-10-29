@@ -41,7 +41,7 @@ function smile_office_hours() {
 	return array(
 		'open'     => $open,
 		'close'    => $close,
-		'saturday' => '1' === smile_setting( 'office_saturday', '0' ),
+		'saturday' => '1' === smile_setting( 'office_saturday', '1' ),
 	);
 }
 

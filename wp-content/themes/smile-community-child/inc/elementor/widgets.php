@@ -187,7 +187,7 @@ function smile_el_editor_styles() {
 	wp_enqueue_style( 'smile-el-editor' );
 	wp_add_inline_style(
 		'smile-el-editor',
-		'.elementor-panel .elementor-element .icon .eicon-heart,.elementor-panel [class*="smile-"] .icon i{color:#176B5B}.smile-el-note{font-size:12px;line-height:1.5;color:#5D6A64}'
+		'.elementor-panel .elementor-element .icon .eicon-heart,.elementor-panel [class*="smile-"] .icon i{color:#146C3C}.smile-el-note{font-size:12px;line-height:1.5;color:#5D6A64}'
 	);
 }
 add_action( 'elementor/editor/after_enqueue_styles', 'smile_el_editor_styles' );

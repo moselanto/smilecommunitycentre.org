@@ -222,9 +222,9 @@ function smile_theme_palette() {
 	add_theme_support(
 		'editor-color-palette',
 		array(
-			array( 'name' => __( 'Teal', 'smile-community' ), 'slug' => 'smile-teal', 'color' => '#176B5B' ),
-			array( 'name' => __( 'Forest', 'smile-community' ), 'slug' => 'smile-forest', 'color' => '#164B3F' ),
-			array( 'name' => __( 'Sunshine', 'smile-community' ), 'slug' => 'smile-sun', 'color' => '#F4C95D' ),
+			array( 'name' => __( 'Teal', 'smile-community' ), 'slug' => 'smile-teal', 'color' => '#146C3C' ),
+			array( 'name' => __( 'Forest', 'smile-community' ), 'slug' => 'smile-forest', 'color' => '#0B4021' ),
+			array( 'name' => __( 'Sunshine', 'smile-community' ), 'slug' => 'smile-sun', 'color' => '#FDDC05' ),
 			array( 'name' => __( 'Cream', 'smile-community' ), 'slug' => 'smile-cream', 'color' => '#FFF9EF' ),
 			array( 'name' => __( 'White', 'smile-community' ), 'slug' => 'smile-white', 'color' => '#FFFFFF' ),
 			array( 'name' => __( 'Charcoal', 'smile-community' ), 'slug' => 'smile-ink', 'color' => '#24312D' ),
@@ -266,13 +266,12 @@ function smile_local_fonts() {
 	$base  = SMILE_THEME_URI . '/assets/fonts/';
 	$range = 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD';
 	$faces = array(
-		array( 'Figtree', 'normal', '400 600', 'figtree-latin.woff2' ),
+		array( 'Figtree', 'normal', '300 900', 'figtree-latin.woff2' ),
 		array( 'Newsreader', 'normal', '500', 'newsreader-latin.woff2' ),
 		array( 'Newsreader', 'italic', '500', 'newsreader-italic-latin.woff2' ),
 		array( 'Caveat', 'normal', '600', 'caveat-latin.woff2' ),
 	);
 	echo '<link rel="preload" href="' . esc_url( $base . 'figtree-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
-	echo '<link rel="preload" href="' . esc_url( $base . 'newsreader-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
 	$css = '';
 	foreach ( $faces as $f ) {
 		$css .= "@font-face{font-family:'" . $f[0] . "';font-style:" . $f[1] . ';font-weight:' . $f[2] . ';font-display:swap;src:url(' . esc_url( $base . $f[3] ) . ") format('woff2');unicode-range:" . $range . ';}';

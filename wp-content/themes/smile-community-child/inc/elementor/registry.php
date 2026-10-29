@@ -1050,9 +1050,9 @@ return array(
 				't' => 'Office hours',
 			),
 			array(
-				'k' => '86b763687fbd19ca',
+				'k' => 'd0fcfd6ae1247a26',
 				'd' => 'smile-community',
-				't' => '9am to 5pm, Nairobi time',
+				't' => 'Mon to Sat 9am to 5pm, Sun from 2pm (Nairobi time)',
 			),
 		),
 		'images' => array(),
@@ -2001,9 +2001,9 @@ return array(
 		'atts' => array(),
 		'texts' => array(
 			array(
-				'k' => 'e1d34e57d75eb0bb',
+				'k' => 'dd6b0113d8969fe0',
 				'd' => 'smile-community',
-				't' => 'Office: 9am - 5pm',
+				't' => 'Office: Mon–Sat 9am–5pm · Sun from 2pm',
 			),
 			array(
 				'k' => '1353e5d36bdfd2ac',
@@ -3318,9 +3318,9 @@ return array(
 				't' => 'Still have a question?',
 			),
 			array(
-				'k' => '68966ee4ff03b74e',
+				'k' => '21da6b9bf464440e',
 				'd' => 'smile-community',
-				't' => 'Our team is happy to help. Reach us during office hours, Monday to Friday.',
+				't' => 'Our team is happy to help. Reach us during office hours: Monday to Saturday 9am to 5pm, Sunday from 2pm.',
 			),
 			array(
 				'k' => '53de4c0786440b38',
@@ -3704,9 +3704,9 @@ return array(
 				't' => 'Pause slideshow',
 			),
 			array(
-				'k' => '5b6bebc838a21615',
+				'k' => 'efea9bd6228832cc',
 				'd' => 'smile-community',
-				't' => 'Children at Smile Community Centre sitting together and enjoying a meal',
+				't' => 'Young children at Smile Community Centre sitting together at tables enjoying a meal',
 			),
 			array(
 				'k' => '09c154ca57188fd1',
@@ -3739,14 +3739,19 @@ return array(
 				't' => 'Feeding Programme',
 			),
 			array(
+				'k' => 'ca3625d24711812e',
+				'd' => 'smile-community',
+				't' => 'Founder Margaret smiling as she walks outdoors holding hands with children',
+			),
+			array(
 				'k' => '68394772581cd983',
 				'd' => 'smile-community',
 				't' => 'A safe home for every child',
 			),
 			array(
-				'k' => 'c633e85b4bf1ab66',
+				'k' => '5bad991025ec6286',
 				'd' => 'smile-community',
-				't' => 'We give orphaned and vulnerable children shelter, daily meals, schooling and access to healthcare.',
+				't' => 'Help us give orphaned and vulnerable children shelter, daily meals, schooling and access to healthcare.',
 			),
 			array(
 				'k' => '0971d68837afe47d',
@@ -3757,11 +3762,6 @@ return array(
 				'k' => '8d6ab47bf4d6a554',
 				'd' => 'smile-community',
 				't' => 'Our Story',
-			),
-			array(
-				'k' => '482789056b312839',
-				'd' => 'smile-community',
-				't' => 'Young pupils in their school tracksuits outside the centre',
 			),
 			array(
 				'k' => '6e07188ef9f1ea95',
@@ -3789,24 +3789,34 @@ return array(
 				't' => 'Education Programme',
 			),
 			array(
-				'k' => '83bba3860149a662',
+				'k' => '8a2b73cb9d7b9172',
 				'd' => 'smile-community',
-				't' => 'Feeding programme',
+				't' => 'Children and youth in sports attire gathered together on an outdoor playing court',
 			),
 			array(
-				'k' => '58e0fb0cb7a2d1e6',
+				'k' => 'ab4face8c0912128',
 				'd' => 'smile-community',
-				't' => 'A warm meal, every day',
+				't' => 'Sports and talent',
 			),
 			array(
-				'k' => '36080447884e356d',
+				'k' => 'fdba355db495c481',
 				'd' => 'smile-community',
-				't' => 'Daily meals at home, and a community feeding programme reaching more than 300 children.',
+				't' => 'Room to play, grow and shine',
 			),
 			array(
-				'k' => '93a60bacfbfa2226',
+				'k' => '8879237b41d03055',
 				'd' => 'smile-community',
-				't' => 'Give a Meal',
+				't' => 'Football, basketball and activities help children build teamwork, confidence and their talents.',
+			),
+			array(
+				'k' => 'd805492d11e3b48e',
+				'd' => 'smile-community',
+				't' => 'Support Sports',
+			),
+			array(
+				'k' => '5236207339df2385',
+				'd' => 'smile-community',
+				't' => 'Sports and Talent',
 			),
 		),
 		'images' => array(),
