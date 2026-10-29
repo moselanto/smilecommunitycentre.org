@@ -1542,3 +1542,104 @@ body.admin-bar { scroll-padding-top: calc(var(--smile-header-h, 80px) + 48px); }
 @media (prefers-reduced-motion: reduce) {
 	.smile-header, .smile-header__inner, .smile-brand__img { transition: none !important; }
 }
+
+
+/* =========================================================
+   2.36.0 Inner pages: one consistent, balanced system
+   Page banners, section rhythm, two-column text + photo balance,
+   card grids, the closing "Help a child" band, forms and FAQs now
+   share the home page's spacing, radius, shadow and type scale.
+   ========================================================= */
+:root { --smile-r-card: 20px; --smile-shadow-card: 0 1px 2px rgba(11,64,33,.04), 0 18px 40px -26px rgba(11,64,33,.30); --smile-sec-y: clamp(3.75rem, 2.5rem + 4.5vw, 6.5rem); }
+
+/* Section rhythm */
+.smile-sec { padding-block: var(--smile-sec-y) !important; }
+.smile-sec.smile-sec--tight { padding-block: clamp(2.5rem, 2rem + 2vw, 3.75rem) !important; }
+.smile-sec--cream + .smile-sec--cream, .smile-sec--sand + .smile-sec--sand { padding-top: 0 !important; }
+.smile-sec .elementor-widget-heading:not(.smile-eyebrow) h2.elementor-heading-title { font-size: clamp(1.85rem, 1.35rem + 1.9vw, 2.85rem); line-height: 1.12; letter-spacing: -.01em; }
+.smile-sec .elementor-widget-heading:not(.smile-eyebrow) h3.elementor-heading-title { line-height: 1.2; }
+.smile-sec .elementor-widget-heading + .elementor-widget-text-editor { margin-top: .25rem; }
+.smile-sec .elementor-widget-text-editor p { line-height: 1.7; }
+
+/* Page banner (all inner pages) */
+.smile-pagehero { position: relative; isolation: isolate; min-height: clamp(340px, 26vw + 200px, 520px); display: flex; align-items: flex-end; padding-block: clamp(4.5rem, 3rem + 5vw, 7.5rem) clamp(3rem, 2rem + 3vw, 4.75rem) !important; }
+.smile-pagehero > .elementor-container { width: 100%; }
+.smile-pagehero .elementor-background-overlay { background: linear-gradient(90deg, rgba(11,64,33,.90) 0%, rgba(11,64,33,.72) 45%, rgba(11,64,33,.25) 100%) !important; opacity: 1 !important; }
+.smile-pagehero h1.elementor-heading-title, .smile-pagehero .elementor-widget-heading:not(.smile-eyebrow) .elementor-heading-title { color: #fff !important; font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem) !important; line-height: 1.06 !important; max-width: 16ch; letter-spacing: -.015em; }
+.smile-pagehero .smile-lead, .smile-pagehero .elementor-widget-text-editor p { color: rgba(255,255,255,.92) !important; font-size: clamp(1.05rem, .98rem + .35vw, 1.25rem) !important; max-width: 52ch; }
+.smile-pagehero .smile-eyebrow .elementor-heading-title { color: var(--smile-sun) !important; }
+.smile-pagehero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: linear-gradient(90deg, var(--smile-sun) 0 33%, var(--smile-coral) 33% 66%, var(--smile-forest) 66%); z-index: 2; }
+.smile-pagehero--plain { min-height: 0; background: var(--smile-cream) !important; }
+.smile-pagehero--plain .elementor-heading-title, .smile-pagehero--plain h1.elementor-heading-title { color: var(--smile-forest) !important; }
+.smile-pagehero--plain .smile-lead, .smile-pagehero--plain .elementor-widget-text-editor p { color: var(--smile-ink, #24312D) !important; }
+.smile-pagehero--plain .elementor-background-overlay { display: none !important; }
+@media (max-width: 767px) {
+	.smile-pagehero { min-height: 300px; }
+	.smile-pagehero .elementor-background-overlay { background: linear-gradient(180deg, rgba(11,64,33,.55) 0%, rgba(11,64,33,.92) 100%) !important; }
+}
+
+/* Two-column text + photo sections: balanced split, centred, consistent photo */
+.smile-sec:not(.smile-pagehero):not(.smile-pcards):not(.smile-help4) > .elementor-container:has(> .elementor-column + .elementor-column:last-child) { align-items: center; column-gap: clamp(1.5rem, 1rem + 3vw, 4.5rem); flex-wrap: nowrap; }
+@media (max-width: 1024px) {
+	.smile-sec:not(.smile-pagehero) > .elementor-container:has(> .elementor-column + .elementor-column:last-child) { flex-wrap: wrap; row-gap: 2.25rem; }
+	.smile-sec:not(.smile-pagehero):not(.smile-pcards):not(.smile-help4) > .elementor-container > .elementor-column:has(.smile-photo) { width: 100% !important; }
+	.smile-sec:not(.smile-pagehero):not(.smile-pcards):not(.smile-help4) > .elementor-container:has(.smile-photo) > .elementor-column { width: 100% !important; }
+}
+.smile-sec .elementor-widget-image.smile-photo img { border-radius: 24px !important; box-shadow: 0 24px 48px -26px rgba(11,64,33,.45) !important; }
+.smile-sec .smile-photo--tall img { aspect-ratio: 4 / 4.6 !important; object-fit: cover; }
+@media (max-width: 1024px) { .smile-sec .smile-photo--tall img { aspect-ratio: 4 / 3 !important; max-height: 480px; } }
+
+/* Shared card look for shortcode grids */
+.smile-card, .smile-ccard, .smile-tier, .smile-steps li, .smile-step, .smile-role, .smile-partner, .smile-pay, .smile-faq__item, .smile-involve__way, .smile-help__card {
+	border-radius: var(--smile-r-card) !important;
+}
+.smile-card, .smile-ccard, .smile-tier, .smile-role, .smile-involve__way { background: #fff; border: 1px solid rgba(11,64,33,.09); box-shadow: var(--smile-shadow-card); transition: transform .3s ease, box-shadow .3s ease; }
+.smile-card:hover, .smile-ccard:hover, .smile-tier:hover, .smile-role:hover, .smile-involve__way:hover { transform: translateY(-4px); box-shadow: 0 2px 6px rgba(11,64,33,.06), 0 30px 60px -30px rgba(11,64,33,.40); }
+.smile-card__media img { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.smile-card:hover .smile-card__media img { transform: scale(1.04); }
+
+/* "Help a child stay safe, fed and in school" closing band */
+.smile-sec--teal.smile-center { position: relative; overflow: hidden; background: var(--smile-forest) !important; text-align: center; }
+.smile-sec--teal.smile-center::before { content: ""; position: absolute; width: 560px; height: 560px; left: -200px; bottom: -320px; border-radius: 50%; background: radial-gradient(circle, rgba(253,220,5,.18), rgba(253,220,5,0) 70%); pointer-events: none; }
+.smile-sec--teal.smile-center::after { content: ""; position: absolute; width: 420px; height: 420px; right: -140px; top: -220px; border-radius: 50%; background: radial-gradient(circle, rgba(237,85,52,.20), rgba(237,85,52,0) 70%); pointer-events: none; }
+.smile-sec--teal.smile-center > .elementor-container { position: relative; z-index: 1; }
+.smile-sec--teal.smile-center .elementor-widget-wrap { display: flex !important; flex-wrap: wrap; justify-content: center !important; gap: .75rem; }
+.smile-sec--teal.smile-center .elementor-widget:not(.elementor-widget-button) { width: 100% !important; flex: 0 0 100%; text-align: center; }
+.smile-sec--teal.smile-center .elementor-widget-button { width: auto !important; flex: 0 0 auto; margin: .5rem 0 0 !important; }
+.smile-sec--teal.smile-center .elementor-heading-title { color: #fff !important; max-width: 22ch; margin-inline: auto !important; font-size: clamp(1.9rem, 1.4rem + 2vw, 3rem) !important; }
+.smile-sec--teal.smile-center .elementor-widget-text-editor p { color: #E4F0E8 !important; max-width: 58ch; margin-inline: auto; font-size: 1.1rem; }
+@media (max-width: 600px) {
+	.smile-sec--teal.smile-center .elementor-widget-button { width: 100% !important; flex: 1 1 100%; }
+	.smile-sec--teal.smile-center .elementor-button { width: 100%; justify-content: center; }
+}
+
+/* Centred section heads: eyebrow + title centred together */
+.smile-center .smile-eyebrow .elementor-heading-title, .smile-sec--head.smile-center .smile-eyebrow .elementor-heading-title { justify-content: center; }
+.smile-sec--head .elementor-widget-heading:not(.smile-eyebrow) .elementor-heading-title { max-width: 22ch; }
+.smile-sec--head.smile-center .elementor-heading-title { margin-inline: auto !important; }
+
+/* Forms: calm, roomy, accessible */
+.smile-form input[type="text"], .smile-form input[type="email"], .smile-form input[type="tel"], .smile-form input[type="number"], .smile-form input[type="date"], .smile-form select, .smile-form textarea {
+	border-radius: 12px !important; border: 1.5px solid rgba(11,64,33,.16) !important; padding: .85rem 1rem !important; font-size: 1rem !important; background: #fff !important; transition: border-color .2s ease, box-shadow .2s ease; min-height: 50px;
+}
+.smile-form textarea { min-height: 140px; }
+.smile-form input:focus, .smile-form select:focus, .smile-form textarea:focus { outline: none !important; border-color: var(--smile-forest) !important; box-shadow: 0 0 0 4px rgba(253,220,5,.45) !important; }
+.smile-form label { font-weight: 600; color: var(--smile-forest); font-size: .95rem; }
+.smile-form-wrap { border-radius: 24px !important; box-shadow: var(--smile-shadow-card); }
+
+/* FAQs */
+.smile-faq__item, .smile-faq details { border-radius: 16px !important; border: 1px solid rgba(11,64,33,.10) !important; background: #fff; margin-bottom: .75rem; overflow: hidden; }
+.smile-faq summary, .smile-faq__q { padding: 1.1rem 1.25rem !important; font-weight: 700; color: var(--smile-forest); cursor: pointer; }
+.smile-faq details[open] { box-shadow: var(--smile-shadow-card); border-color: rgba(11,64,33,.18) !important; }
+
+/* Breadcrumbs */
+.smile-pagehero .smile-breadcrumbs, .smile-pagehero .smile-breadcrumbs a { color: rgba(255,255,255,.85) !important; font-size: .88rem; }
+.smile-pagehero .smile-breadcrumbs a:hover { color: var(--smile-sun) !important; }
+.smile-pagehero--plain .smile-breadcrumbs, .smile-pagehero--plain .smile-breadcrumbs a { color: var(--smile-muted, #5B6B64) !important; }
+
+/* Long-form pages (policies) keep a comfortable measure */
+.smile-prose, .smile-measure { max-width: 70ch; }
+
+@media (prefers-reduced-motion: reduce) {
+	.smile-card, .smile-ccard, .smile-tier, .smile-role, .smile-involve__way, .smile-card__media img { transition: none !important; }
+}
