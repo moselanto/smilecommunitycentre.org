@@ -5900,7 +5900,7 @@
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>Whether you can give a morning or a few months, there is a place for your skills at Smile.</p>",
+         "editor": "<p>Placements are full at the moment, but we keep a list of people who would like to help. Register your interest and we will contact you when a place opens.</p>",
          "_css_classes": "smile-lead smile-measure"
         },
         "elements": []

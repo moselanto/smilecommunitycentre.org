@@ -496,7 +496,7 @@ add_shortcode(
 			$full = wp_get_attachment_image_url( $id, 'large' );
 			$alt  = get_post_meta( $id, '_wp_attachment_image_alt', true );
 			$out .= '<li class="smile-wall__item" data-cat="' . esc_attr( $it[1] ) . '" style="--r:' . esc_attr( ( ( $i * 37 ) % 5 ) - 2 ) . 'deg">'
-				. '<a href="' . esc_url( $full ) . '" class="smile-wall__link" data-caption="' . esc_attr( $it[2] ) . '" data-alt="' . esc_attr( $alt ) . '">'
+				. '<a href="' . esc_url( $full ) . '" class="smile-wall__link" data-elementor-open-lightbox="no" data-caption="' . esc_attr( $it[2] ) . '" data-alt="' . esc_attr( $alt ) . '">'
 				. wp_get_attachment_image( $id, 'smile-card', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'class' => 'smile-wall__img' ) )
 				. '<span class="smile-wall__cap">' . esc_html( $it[2] ) . '</span></a></li>';
 		}

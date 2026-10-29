@@ -292,6 +292,7 @@
 					items.forEach( function ( it ) { it.classList.toggle( 'is-hidden', f !== 'all' && it.getAttribute( 'data-cat' ) !== f ); } );
 				} );
 			} );
+			wall.querySelectorAll( '.smile-wall__link' ).forEach( function ( l ) { l.setAttribute( 'data-elementor-open-lightbox', 'no' ); } );
 			var box = wall.querySelector( '.smile-lightbox' );
 			if ( !box || typeof box.showModal !== 'function' ) { return; }
 			var img = box.querySelector( 'img' ), cap = box.querySelector( 'figcaption' ), idx = 0, lastFocus = null;

@@ -3954,6 +3954,12 @@
 "section": "smile_whatsapp_chat"
 },
 {
+"text": "Chat with us on WhatsApp",
+"domain": "smile-community",
+"file": "inc/whatsapp-chat.php",
+"section": "smile_whatsapp_chat"
+},
+{
 "text": "Full name",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",

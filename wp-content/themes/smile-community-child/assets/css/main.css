@@ -1679,3 +1679,56 @@ p.smile-lead, .elementor-widget.smile-lead, .elementor-widget-text-editor .smile
 .smile-nav__list .sub-menu { border-radius: 16px !important; padding: .5rem !important; box-shadow: 0 2px 6px rgba(11,64,33,.06), 0 24px 48px -20px rgba(11,64,33,.35) !important; border: 1px solid rgba(11,64,33,.08) !important; }
 .smile-nav__list .sub-menu a { border-radius: 10px; padding: .6rem .85rem !important; }
 .smile-nav__list .sub-menu a:hover { background: #F3F8F4; }
+
+
+/* =========================================================
+   2.40.0 Clear sub-menu indicators
+   In 2.38 the yellow current-page underline also used a::after, which is
+   where the sub-menu arrow lived, so the arrow turned into a tiny yellow
+   mark under the word. The arrow is back as a clear chevron next to the
+   label that flips when the sub-menu opens; the underline is now drawn
+   with a background, so the two never clash.
+   ========================================================= */
+@media (min-width: 1101px) {
+	.smile-nav__list > li > a::after { content: none !important; }
+	.smile-nav__list > li > a {
+		background-image: linear-gradient(var(--smile-sun), var(--smile-sun)) !important;
+		background-repeat: no-repeat !important;
+		background-size: 0 2px !important;
+		background-position: .8rem calc(100% - .3rem) !important;
+		transition: background-size .25s ease, background-color .2s ease, color .2s ease !important;
+	}
+	.smile-nav__list > li > a:hover,
+	.smile-nav__list > li.current-menu-item > a, .smile-nav__list > li.current-menu-ancestor > a,
+	.smile-nav__list > li.current_page_item > a, .smile-nav__list > li.current-menu-parent > a {
+		background-size: calc(100% - 1.6rem) 2px !important;
+	}
+	.smile-nav__list > li.menu-item-has-children > a { padding-right: .6rem !important; }
+	.smile-nav__list > li.menu-item-has-children > a::after {
+		content: "" !important; position: static !important; display: inline-block !important;
+		width: 18px !important; height: 18px !important; margin: 0 0 0 .2rem !important; border: 0 !important; border-radius: 50%;
+		background: #EEF5F0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B4021' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center / 11px no-repeat !important;
+		transform: none !important; opacity: 1 !important; transition: transform .25s ease, background-color .2s ease !important;
+	}
+	.smile-nav__list > li.menu-item-has-children:hover > a::after,
+	.smile-nav__list > li.menu-item-has-children:focus-within > a::after,
+	.smile-nav__list > li.menu-item-has-children.is-open > a::after { transform: rotate(180deg) !important; background-color: var(--smile-sun) !important; }
+	/* Dropdown: small pointer so it reads as belonging to its item */
+	.smile-nav__list > li > .sub-menu { margin-top: .35rem !important; }
+	.smile-nav__list > li > .sub-menu::before { content: ""; position: absolute; top: -6px; left: 1.6rem; width: 12px; height: 12px; background: #fff; border-left: 1px solid rgba(11,64,33,.08); border-top: 1px solid rgba(11,64,33,.08); transform: rotate(45deg); }
+	.smile-nav__list > li > .sub-menu::after { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; } /* hover bridge */
+	.smile-sub-overview { display: none !important; }
+}
+/* Phones and tablets: a clear round chevron button beside each parent item */
+@media (max-width: 1100px) {
+	.smile-sub-toggle { display: grid !important; place-items: center; width: 44px !important; min-height: 44px !important; margin: 4px 0; border: 0 !important; border-radius: 12px !important; background: #EEF5F0 !important; }
+	.smile-sub-toggle__chev { display: block; width: 14px; height: 14px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B4021' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat; transition: transform .25s ease; font-size: 0; }
+	.smile-sub-toggle__chev::before, .smile-sub-toggle__chev::after { content: none !important; }
+	.smile-sub-toggle[aria-expanded="true"] { background: var(--smile-sun) !important; }
+	.smile-sub-toggle[aria-expanded="true"] .smile-sub-toggle__chev { transform: rotate(180deg); }
+	.smile-nav__list .menu-item-has-children { align-items: center; }
+	.smile-nav__list .menu-item-has-children > .sub-menu { margin: .25rem 0 .5rem; padding: .35rem 0 .35rem .85rem !important; border-left: 2px solid var(--smile-sun) !important; }
+}
+
+/* One skip link only (the parent theme adds a second one) */
+a.skip-link.screen-reader-text:not(.smile-skip-link) { display: none !important; }

@@ -2,6 +2,12 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.40.0
+- **Sub-menus are obvious again.** About, Programmes, Impact and Get Involved show a clear round chevron next to the label that turns yellow and flips when the sub-menu opens (2.38's underline had taken over the arrow's slot and shrunk it to a tiny yellow mark). The current-page underline no longer clashes with it, dropdowns have a small pointer and a hover bridge so they don't close while moving the mouse down. Phones and tablets get a 44 px round chevron button beside each parent item and a yellow guide line beside the opened sub-menu.
+- **Accessibility:** one "Skip to content" link instead of two; the WhatsApp button has a spoken label.
+- **Gallery:** opening a photo shows only the Smile photo viewer (Elementor's own lightbox no longer opens on top of it).
+- **Volunteer page wording:** "there is a place for your skills" replaced with register-your-interest wording that matches the "placements full" notice (Apply latest design).
+
 ## 2.39.0
 - **Hero slider text is never cut off.** On the first slide ("Because of you, / They eat. They dream. They smile.") the top line was hidden under the header because the slide had more text than the fixed-height slider could hold. On tablets and desktops the slider now grows to fit its tallest slide (all slides stay the same height and still cross-fade), the text has proper room above and below, and the split slide uses a slightly calmer type size. On short laptop screens the small handwritten "Change a life today." line is hidden to keep everything visible. Phones are unchanged.
 - **Go-live link check (29 Oct 2026).** All 55 addresses in the live smilecommunitycentre.org sitemaps (28 posts, 16 pages, 12 categories) are in `docs/old-urls.txt`; `scripts/check-old-urls.sh` on staging: 96 of 96 old addresses (sitemaps, categories, pagination, feeds, tags, old ?p= links) open a working page with at most one 301 redirect.

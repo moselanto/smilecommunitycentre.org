@@ -64,7 +64,7 @@ function smile_whatsapp_chat() {
 			</form>
 			<p class="smile-wa__note"><?php esc_html_e( 'Opens WhatsApp. Please do not share private details about a child here.', 'smile-community' ); ?></p>
 		</section>
-		<button type="button" class="smile-wa__fab" aria-controls="smile-wa-panel" aria-expanded="false">
+		<button type="button" class="smile-wa__fab" aria-label="<?php esc_attr_e( 'Chat with us on WhatsApp', 'smile-community' ); ?>" aria-controls="smile-wa-panel" aria-expanded="false">
 			<span class="smile-wa__fab-icon"><?php echo $wa_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span>
 			<span class="smile-wa__fab-label"><?php esc_html_e( 'Chat with us', 'smile-community' ); ?></span>
 		</button>
