@@ -4,6 +4,8 @@ Goal: when this site replaces smilecommunitycentre.org, **no old link breaks**. 
 
 Verified on staging (topnotchmall.co.ke/smilescommunity) on 19 Oct 2026 after theme 2.31.0 / Core 1.3.0 was uploaded: all 56 sitemap addresses plus /sitemaps.xml, /post-sitemap1.xml, /charity/page/2/ and /charity/feed/ end on a 200 page (at most one redirect).
 
+Re-verified on 29 Oct 2026 (theme 2.37/2.38): the live sitemaps still list exactly the 55 addresses already in `docs/old-urls.txt`, and `bash scripts/check-old-urls.sh` reports **96 of 96** old addresses working on staging.
+
 ## How it works (plugin: `includes/redirects.php`)
 
 1. **Kept unchanged:** home, `/about-us/`, `/our-goals/`, `/our-founder/`, `/education-program/`, `/feeding-program/`, `/sports/`, `/donate/`, `/volunteer/`, `/contact-us/`, `/faq-page/`, `/privacy-policy/` and the 18 old posts that were carried over.
