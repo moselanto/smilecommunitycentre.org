@@ -1767,3 +1767,50 @@ body.smile-nav-open .smile-header { z-index: 10000 !important; }
 @media (min-width: 1025px) and (max-width: 1280px) {
 	.smile-intro2 .elementor-widget-heading:not(.smile-eyebrow) .elementor-heading-title { font-size: clamp(1.9rem, 1rem + 1.9vw, 2.5rem) !important; }
 }
+
+
+/* =========================================================
+   2.43.0 Mobile menu drawer + bottom bar
+   The drawer's contact block was fixed at the bottom and tall (Donate,
+   two contact cards, hours), so opened sub-menus disappeared behind it
+   with no sign the list could scroll. Now: the menu list is the only
+   scrolling area, the footer is one compact row, a fade + "More" cue shows
+   when there is more below, and opened sub-menus scroll into view.
+   ========================================================= */
+@media (max-width: 1200px) {
+	.smile-nav { display: flex !important; flex-direction: column !important; overflow: hidden !important; }
+	.smile-nav__head { flex: 0 0 auto; }
+	.smile-nav__list { flex: 1 1 auto !important; min-height: 0 !important; overflow-y: auto !important; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: .5rem 0 1.5rem !important; scroll-padding-bottom: 1rem; }
+	.smile-nav { position: fixed; }
+	.smile-nav::after { content: ""; position: absolute; left: 0; right: 0; bottom: var(--smile-nav-foot, 92px); height: 56px; pointer-events: none; background: linear-gradient(180deg, rgba(255,255,255,0), #fff 85%); opacity: 0; transition: opacity .2s ease; z-index: 2; }
+	.smile-nav::before { content: "More \2193"; position: absolute; left: 50%; bottom: calc(var(--smile-nav-foot, 92px) + 10px); transform: translateX(-50%); z-index: 3; padding: .3rem .8rem; border-radius: 999px; background: var(--smile-forest); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .04em; opacity: 0; pointer-events: none; transition: opacity .2s ease; box-shadow: 0 6px 16px -6px rgba(11,64,33,.5); }
+	.smile-nav.has-more::after, .smile-nav.has-more::before { opacity: 1; }
+
+	/* Compact footer: Donate + Call + WhatsApp in one row */
+	.smile-nav__extra { flex: 0 0 auto; display: grid !important; grid-template-columns: 1fr auto auto; align-items: center; gap: .6rem !important; margin: 0 !important; padding: .85rem 1.1rem calc(.85rem + env(safe-area-inset-bottom)) !important; background: #fff !important; border-top: 1px solid rgba(11,64,33,.08) !important; box-shadow: 0 -10px 24px -18px rgba(11,64,33,.35); position: relative; z-index: 4; }
+	.smile-nav__extra .smile-nav__donate-mobile { margin: 0 !important; min-height: 50px !important; font-size: 1rem !important; }
+	.smile-nav__contact { display: contents !important; }
+	.smile-nav__contact a { width: 50px; height: 50px; min-height: 0 !important; padding: 0 !important; border-radius: 50% !important; justify-content: center !important; align-items: center !important; background: var(--smile-cream) !important; border: 1px solid rgba(11,64,33,.08) !important; overflow: hidden; }
+	.smile-nav__contact a::before { margin: 0 !important; flex: 0 0 34px; }
+	.smile-nav__contact a span, .smile-nav__contact a strong { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+	.smile-nav__hours { display: none !important; }
+
+	/* Menu rows: calmer, clearer */
+	.smile-nav__list > li { border-bottom: 1px solid rgba(11,64,33,.07) !important; margin: 0 .75rem !important; }
+	.smile-nav__list > li > a { padding: .95rem .75rem !important; font-size: 1.08rem !important; font-weight: 600 !important; }
+	.smile-nav__list > li.is-open { background: #FAFCF8; border-radius: 16px; border-bottom-color: transparent !important; }
+	.smile-nav__list .sub-menu a { padding: .75rem .9rem !important; font-size: 1rem !important; }
+}
+
+/* Bottom bar: floating rounded dock with a clear active state */
+@media (max-width: 1100px) {
+	.smile-tabbar { left: 10px !important; right: 10px !important; bottom: calc(10px + env(safe-area-inset-bottom)) !important; border-radius: 22px !important; border: 1px solid rgba(11,64,33,.08) !important; background: rgba(255,255,255,.96) !important; box-shadow: 0 2px 6px rgba(11,64,33,.06), 0 18px 40px -16px rgba(11,64,33,.40) !important; padding: .35rem .4rem !important; align-items: center !important; }
+	.smile-tabbar__item { position: relative; min-height: 56px !important; border-radius: 16px; color: #5B6B64 !important; font-size: .72rem !important; font-weight: 600 !important; gap: .2rem !important; }
+	.smile-tabbar__item .smile-icon { width: 22px !important; height: 22px !important; }
+	.smile-tabbar__item.is-current:not(.smile-tabbar__item--donate) { color: var(--smile-forest) !important; background: #EEF5F0; }
+	.smile-tabbar__item.is-current:not(.smile-tabbar__item--donate)::after { content: ""; position: absolute; top: 5px; left: 50%; width: 18px; height: 3px; margin-left: -9px; border-radius: 3px; background: var(--smile-sun); }
+	.smile-tabbar__item--donate .smile-icon { width: 54px !important; height: 54px !important; margin-top: -30px !important; border: 4px solid #fff !important; box-shadow: 0 10px 22px -6px rgba(253,220,5,.75) !important; }
+	.smile-tabbar__item--donate { color: var(--smile-forest) !important; font-weight: 700 !important; }
+	body { padding-bottom: calc(92px + env(safe-area-inset-bottom)) !important; }
+	.smile-wa { bottom: calc(96px + env(safe-area-inset-bottom)) !important; }
+}

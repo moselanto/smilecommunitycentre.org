@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.43.0 (mobile menu)
+- **Sub-menus are never hidden.** The menu drawer's contact block (Donate, two contact cards and the hours line) was fixed at the bottom and took about a third of the screen, so opened sub-menus slid behind it with no sign the list could scroll. Now only the menu list scrolls; the footer is one compact row (Donate, round Call and WhatsApp buttons); a soft fade and a small "More" tag appear while there is more below; and an opened sub-menu scrolls itself into full view.
+- **Calmer menu rows:** bolder labels, softer dividers, and the opened section gets a light background.
+- **Bottom bar redesigned** as a floating rounded dock: even spacing, a green pill with a yellow tick on the current page, the raised yellow Donate button, and page content and the WhatsApp button kept clear of it.
+
 ## 2.42.0
 - **Menu chevrons stay still.** The sub-menu arrows no longer flip; they sit beside the label as a fixed 18 px item (turning yellow on hover or when open), so they can never cover letters. The current-page underline stops before the arrow. Phones: the round arrow button no longer flips either.
 - **Headings never run under photos.** Emphasised words in headings (for example "A chance to move forward.") used to stay on one unbreakable line and slid under the photo beside them. They now wrap with the rest of the heading on every screen; columns can no longer be pushed wider than their space, and the intro heading is sized to its column, with the text layer above the photo.

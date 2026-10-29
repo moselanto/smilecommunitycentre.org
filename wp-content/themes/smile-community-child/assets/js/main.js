@@ -93,6 +93,11 @@
 			function setSub( open ) {
 				btn.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
 				item.classList.toggle( 'is-open', open );
+				if ( open ) {
+					// Bring the opened sub-menu fully into view inside the drawer.
+					window.setTimeout( function () { sub.scrollIntoView( { block: 'nearest', behavior: 'smooth' } ); }, 60 );
+				}
+				if ( window.smileNavMore ) { window.setTimeout( window.smileNavMore, 80 ); }
 			}
 			function toggleSub() {
 				var open = btn.getAttribute( 'aria-expanded' ) !== 'true';
@@ -451,3 +456,17 @@
 		initNav(); initCopy(); initForms(); initScroll(); initReveal(); initSmiles(); initCalc(); initTabbarMenu(); initWall(); initCounters(); initOffice(); initWhatsApp(); initJobs();
 	}
 }() );
+
+/* Drawer menu: show a 'more below' cue while the list can still scroll */
+(function () {
+	var list = document.querySelector( '.smile-nav__list' );
+	if ( ! list ) { return; }
+	function check() {
+		var more = list.scrollHeight - list.clientHeight - list.scrollTop > 8;
+		list.parentNode.classList.toggle( 'has-more', more );
+	}
+	window.smileNavMore = check;
+	list.addEventListener( 'scroll', check, { passive: true } );
+	window.addEventListener( 'resize', check, { passive: true } );
+	document.addEventListener( 'click', function ( e ) { if ( e.target.closest && e.target.closest( '.smile-nav-toggle' ) ) { window.setTimeout( check, 120 ); } } );
+})();
