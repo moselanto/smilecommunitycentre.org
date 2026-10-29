@@ -2,6 +2,19 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.36.0
+- **Home page redesign (senior UI/UX pass).**
+  - New signature "pillars" strip that overlaps the bottom of the hero: A safe home, Daily meals, Schooling, Healthcare, each with an icon (2 x 2 on tablets and phones).
+  - Intro: balanced 54/46 split, a readable lead (it was squeezed into a narrow column), checklist as tidy tick rows, and a different photo (children with hygiene kits) so the founder photo is no longer used twice.
+  - Founder section mirrors the intro (photo on the left) for a better zig-zag rhythm.
+  - Programme cards: equal heights, images the same shape, titles aligned, buttons lined up at the bottom, and every card now has "Support" plus "Learn more" (Health card included).
+  - Ways to help: the three stacked sections now read as one seamless forest band (the visible seams and lighter strip are gone), centred heading, even cards, pill-style volunteering note.
+  - Supporter voice: featured quote card with a yellow quote badge.
+  - Closing appeal: centred, larger heading, yellow emphasis (the green-on-green words were unreadable), eyebrow on one line, buttons centred.
+  - Phones: full-width buttons, smaller photo accents, no forced title heights.
+- **Inner pages, one consistent system.** Page banners are taller with a left-to-right forest overlay, larger headings, readable lead and a three-colour brand stripe; even section spacing; text + photo sections split and centred evenly (stacked on tablets); consistent photo shape and shadow; shared card radius, shadow and hover lift across all card grids; the "Help a child stay safe, fed and in school" band is centred with soft yellow and coral light, readable text and full-width buttons on phones; roomier, accessible forms with a clear focus ring; tidier FAQs and breadcrumbs.
+- Re-run **Apply latest design** to get the new home pillars strip, the new intro photo and the Health card buttons.
+
 ## 2.35.0
 - **Brand heading font bundled.** Nunito (the Smile Logo Kit heading font, SIL Open Font License, licence in `assets/fonts/OFL-Nunito.txt`) is now served from the theme as a single latin variable WOFF2 (`assets/fonts/nunito-latin.woff2`, about 40 KB, weights 200-1000) and preloaded. Headings now match the logo kit exactly on every device; Figtree stays as the fallback. The block editor uses it too.
 - **One logo size on every page.** The header logo is locked to 60 px tall (50 px when scrolled, 48/44 px on tablets and phones, 40 px on very small screens) and the footer logo to 72 px, with rules no page or Elementor setting can override. Fixes the oversized logo on Get Involved.

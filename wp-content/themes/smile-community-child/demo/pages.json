@@ -49,6 +49,38 @@
     ]
    },
    {
+    "id": "0635476",
+    "elType": "section",
+    "isInner": false,
+    "settings": {
+     "css_classes": "smile-pillars",
+     "structure": "10",
+     "gap": "no"
+    },
+    "elements": [
+     {
+      "id": "f538d1c",
+      "elType": "column",
+      "isInner": false,
+      "settings": {
+       "_column_size": 100,
+       "_inline_size": null
+      },
+      "elements": [
+       {
+        "id": "7a9bc3d",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+         "editor": "<ul class=\"smile-pillars__list\"><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11.5 12 4l9 7.5\"/><path d=\"M5.5 10v9.5h13V10\"/><path d=\"M10 19.5v-5h4v5\"/></svg></span><span class=\"smile-pillars__text\"><strong>A safe home</strong><span>Children referred by officers, chiefs and police</span></span></li><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 12h16a8 8 0 0 1-16 0Z\"/><path d=\"M9 4c0 1.5 1 1.5 1 3M13 4c0 1.5 1 1.5 1 3\"/></svg></span><span class=\"smile-pillars__text\"><strong>Daily meals</strong><span>Nutritious food, every single day</span></span></li><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5Z\"/><path d=\"M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5\"/></svg></span><span class=\"smile-pillars__text\"><strong>Schooling</strong><span>Fees, uniforms and learning materials</span></span></li><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z\"/><path d=\"M9.5 11h5M12 8.5v5\"/></svg></span><span class=\"smile-pillars__text\"><strong>Healthcare</strong><span>Access to care, counselling and support</span></span></li></ul>"
+        },
+        "elements": []
+       }
+      ]
+     }
+    ]
+   },
+   {
     "id": "790dc57",
     "elType": "section",
     "isInner": false,
@@ -140,7 +172,7 @@
         "widgetType": "image",
         "settings": {
          "image": {
-          "url": "smile-img:founder-children",
+          "url": "smile-img:hygiene-kits",
           "id": ""
          },
          "image_size": "large",
@@ -545,13 +577,28 @@
         "elType": "widget",
         "widgetType": "button",
         "settings": {
-         "text": "Explore This Program",
+         "text": "Support Health",
+         "link": {
+          "url": "/donate/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "smile-btn-el smile-btn-el--teal"
+        },
+        "elements": []
+       },
+       {
+        "id": "8d22224",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+         "text": "Learn more",
          "link": {
           "url": "/health-and-wellbeing/",
           "is_external": "",
           "nofollow": ""
          },
-         "_css_classes": "smile-btn-el smile-btn-el--teal"
+         "_css_classes": "smile-btn-el smile-btn-el--link"
         },
         "elements": []
        }

@@ -1431,3 +1431,156 @@ p, li, blockquote, figcaption { text-wrap: pretty; }
 /* Programme cards: even rhythm */
 .smile-pcard .elementor-widget-button:not(.smile-btn-el--link) { margin-top: auto; }
 .smile-pcard .smile-btn-el--link { margin-top: 0 !important; text-align: center; }
+
+
+/* =========================================================
+   2.36.0 Home page redesign (senior UI/UX pass)
+   Balanced two-column rhythm, a signature "pillars" strip that
+   overlaps the hero, equal-height programme cards, one seamless
+   Ways to help band, a featured supporter quote and a centred,
+   high-contrast closing appeal. Mobile-first, reduced-motion safe.
+   ========================================================= */
+
+/* Shared rhythm for home sections */
+.home .smile-sec, .smile-intro2, .smile-community2, .smile-appeal, .smile-founder2 { padding-block: clamp(4rem, 2.5rem + 5vw, 7rem) !important; }
+.smile-sec--head + .smile-pcards, .smile-head-row + .smile-sec { padding-top: 0 !important; }
+.smile-head-row { padding-bottom: 2rem !important; }
+.smile-head-row > .elementor-container { align-items: flex-end; }
+.smile-head-row .elementor-column:last-child > .elementor-widget-wrap { justify-content: flex-end; }
+@media (max-width: 767px) { .smile-head-row .elementor-column:last-child > .elementor-widget-wrap { justify-content: flex-start; } }
+
+/* Signature pillars strip: floats over the bottom edge of the hero */
+.smile-pillars { position: relative; z-index: 5; margin-top: clamp(-3.75rem, -2rem - 2vw, -2.5rem) !important; padding: 0 1.25rem !important; background: transparent !important; }
+.smile-pillars > .elementor-container { max-width: 1180px; }
+.smile-pillars .elementor-widget-wrap { padding: 0 !important; }
+.smile-pillars .elementor-widget-text-editor { width: 100%; margin: 0 !important; }
+.smile-pillars__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: #fff; border-radius: 22px; box-shadow: 0 2px 6px rgba(11,64,33,.06), 0 30px 60px -28px rgba(11,64,33,.38); overflow: hidden; border-bottom: 4px solid var(--smile-sun); }
+.smile-pillars__item { display: flex; align-items: center; gap: .95rem; padding: 1.5rem 1.4rem; margin: 0 !important; position: relative; }
+.smile-pillars__item + .smile-pillars__item::before { content: ""; position: absolute; left: 0; top: 22%; bottom: 22%; width: 1px; background: rgba(11,64,33,.10); }
+.smile-pillars__icon { flex: 0 0 52px; width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: var(--smile-sun-soft, #FFF6C2); color: var(--smile-forest); transition: transform .3s ease, background .3s ease; }
+.smile-pillars__item:nth-child(2) .smile-pillars__icon { background: #FDE6DF; color: #B8391C; }
+.smile-pillars__item:nth-child(3) .smile-pillars__icon { background: #E3F0E7; }
+.smile-pillars__item:nth-child(4) .smile-pillars__icon { background: #FDE6DF; color: #B8391C; }
+.smile-pillars__item:hover .smile-pillars__icon { transform: translateY(-3px) rotate(-4deg); }
+.smile-pillars__icon svg { width: 26px; height: 26px; }
+.smile-pillars__text { display: flex; flex-direction: column; gap: .15rem; line-height: 1.3; }
+.smile-pillars__text strong { font-family: var(--smile-font-display); font-weight: 800; font-size: 1.08rem; color: var(--smile-forest); }
+.smile-pillars__text span { font-size: .9rem; color: var(--smile-muted, #5B6B64); }
+@media (max-width: 1024px) {
+	.smile-pillars__list { grid-template-columns: repeat(2, 1fr); }
+	.smile-pillars__item:nth-child(3)::before { display: none; }
+	.smile-pillars__item:nth-child(n+3) { border-top: 1px solid rgba(11,64,33,.08); }
+}
+@media (max-width: 560px) {
+	.smile-pillars { margin-top: -1.75rem !important; padding: 0 1rem !important; }
+	.smile-pillars__list { grid-template-columns: 1fr 1fr; border-radius: 18px; }
+	.smile-pillars__item { flex-direction: column; align-items: flex-start; gap: .6rem; padding: 1.1rem 1rem; }
+	.smile-pillars__icon { flex-basis: 44px; width: 44px; height: 44px; border-radius: 13px; }
+	.smile-pillars__text span { font-size: .82rem; }
+}
+
+/* Intro: balanced 55/45 split, readable lead, checklist as tidy rows */
+.smile-intro2 > .elementor-container, .smile-founder2 > .elementor-container, .smile-appeal > .elementor-container, .smile-community2 > .elementor-container { align-items: center; column-gap: clamp(1.5rem, 1rem + 3vw, 4.5rem); flex-wrap: nowrap; }
+@media (min-width: 1025px) {
+	.smile-intro2 > .elementor-container > .elementor-column:first-child, .smile-founder2 > .elementor-container > .elementor-column:first-child { width: 54% !important; }
+	.smile-intro2 > .elementor-container > .elementor-column:last-child, .smile-founder2 > .elementor-container > .elementor-column:last-child { width: 46% !important; }
+	.smile-appeal > .elementor-container > .elementor-column:first-child, .smile-community2 > .elementor-container > .elementor-column:first-child { width: 48% !important; }
+	.smile-appeal > .elementor-container > .elementor-column:last-child, .smile-community2 > .elementor-container > .elementor-column:last-child { width: 52% !important; }
+}
+@media (max-width: 1024px) {
+	.smile-intro2 > .elementor-container, .smile-founder2 > .elementor-container, .smile-appeal > .elementor-container, .smile-community2 > .elementor-container { flex-wrap: wrap; row-gap: 2.5rem; }
+	.smile-intro2 .elementor-column, .smile-founder2 .elementor-column, .smile-appeal .elementor-column, .smile-community2 .elementor-column { width: 100% !important; }
+	.smile-intro2 .smile-photo img, .smile-founder2 .smile-photo img, .smile-appeal .smile-photo img { max-height: 460px; }
+}
+.smile-intro2 .smile-lead, .smile-appeal .smile-lead, .smile-founder2 .smile-lead { max-width: 60ch !important; width: auto !important; font-size: clamp(1.08rem, 1rem + .3vw, 1.22rem) !important; line-height: 1.65 !important; color: var(--smile-ink, #24312D); }
+.smile-intro2 .elementor-widget-text-editor, .smile-appeal .elementor-widget-text-editor, .smile-founder2 .elementor-widget-text-editor, .smile-community2 .elementor-widget-text-editor { max-width: 62ch; width: 100%; }
+.smile-intro2 .elementor-widget-text-editor ul { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: .65rem; }
+.smile-intro2 .elementor-widget-text-editor li { position: relative; padding: .8rem 1rem .8rem 3rem; background: #F6FAF7; border: 1px solid rgba(11,64,33,.08); border-radius: 14px; font-weight: 600; color: var(--smile-forest); line-height: 1.4; margin: 0; }
+.smile-intro2 .elementor-widget-text-editor li::before { content: ""; position: absolute; left: 1rem; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 50%; background: var(--smile-forest) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FDDC05' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat; }
+.smile-intro2 .elementor-widget-button, .smile-founder2 .elementor-widget-button, .smile-community2 .elementor-widget-button { margin-top: 1.25rem; }
+
+/* Photos: one confident accent block, consistent radius and shape */
+.smile-intro2 .smile-photo img, .smile-founder2 .smile-photo img { aspect-ratio: 4 / 4.4; object-fit: cover; width: 100%; }
+.smile-appeal .smile-photo img { aspect-ratio: 4 / 3.4; object-fit: cover; width: 100%; }
+.smile-founder2 > .elementor-container { flex-direction: row-reverse; }
+@media (max-width: 1024px) { .smile-founder2 > .elementor-container { flex-direction: column-reverse; } }
+
+/* Community band: photo + caption aligned to text column */
+.smile-community2 .smile-community-photo .widget-image-caption { text-align: left; padding-left: .25rem; }
+
+/* Programme cards: equal heights, aligned buttons, consistent links */
+.smile-pcards > .elementor-container { gap: clamp(1rem, .6rem + 1vw, 1.5rem); flex-wrap: wrap; }
+@media (min-width: 1025px) { .smile-pcards .smile-pcard { width: calc(25% - 1.15rem) !important; } }
+@media (min-width: 601px) and (max-width: 1024px) { .smile-pcards .smile-pcard { width: calc(50% - .75rem) !important; } }
+.smile-pcard { padding: 0 !important; }
+.smile-pcard > .elementor-widget-wrap { border-radius: 20px !important; overflow: hidden; background: #fff !important; border: 1px solid rgba(11,64,33,.09) !important; box-shadow: 0 1px 2px rgba(11,64,33,.04); padding: 0 0 1.4rem !important; }
+.smile-pcard .smile-pcard__img { margin-bottom: 1.2rem !important; position: relative; overflow: hidden; }
+.smile-pcard .smile-pcard__img img { aspect-ratio: 16 / 11 !important; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.smile-pcard > .elementor-widget-wrap:hover .smile-pcard__img img { transform: scale(1.05); }
+.smile-pcard .elementor-widget-heading .elementor-heading-title { font-size: 1.22rem !important; min-height: 2.5em; display: flex; align-items: flex-start; }
+.smile-pcard .elementor-widget-text-editor { flex: 1 1 auto; color: var(--smile-muted, #5B6B64); font-size: .97rem; line-height: 1.6; }
+.smile-pcard .elementor-widget-button { margin-top: 0 !important; margin-bottom: .35rem !important; }
+.smile-pcard .elementor-widget-text-editor + .elementor-widget-button { margin-top: auto !important; padding-top: .6rem; }
+.smile-pcard .smile-btn-el--link { text-align: center; }
+.smile-pcard .smile-btn-el--link .elementor-button { color: var(--smile-forest) !important; background: transparent !important; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--smile-sun); text-decoration-thickness: 2px; }
+
+/* Feeding appeal: buttons side by side, aligned */
+.smile-appeal .elementor-widget-wrap { align-content: center; }
+.smile-appeal .elementor-widget-button { margin-top: .5rem !important; }
+
+/* Ways to help: one seamless forest band (no seams between the 3 sections) */
+.smile-help-head, .smile-help4, .smile-help4-note { background: var(--smile-forest) !important; background-image: none !important; margin: 0 !important; }
+.smile-help-head .elementor-background-overlay, .smile-help4 .elementor-background-overlay, .smile-help4-note .elementor-background-overlay { display: none !important; }
+.smile-help-head { padding-top: clamp(4rem, 2.5rem + 5vw, 6.5rem) !important; padding-bottom: 2rem !important; position: relative; overflow: hidden; }
+.smile-help-head::before { content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(253,220,5,.16), rgba(253,220,5,0) 70%); pointer-events: none; }
+.smile-help4-note { padding-bottom: clamp(4rem, 2.5rem + 5vw, 6.5rem) !important; padding-top: 1.5rem !important; }
+.smile-help-head .elementor-widget-wrap, .smile-help-head .elementor-widget-heading { text-align: center !important; justify-content: center !important; }
+.smile-help-head .elementor-heading-title { margin-inline: auto !important; }
+.smile-help4 > .elementor-container { gap: 1.25rem; flex-wrap: wrap; }
+.smile-help4 .smile-help4__card { padding: 0 !important; }
+@media (min-width: 1025px) { .smile-help4 .smile-help4__card { width: calc(25% - .95rem) !important; } }
+@media (min-width: 601px) and (max-width: 1024px) { .smile-help4 .smile-help4__card { width: calc(50% - .65rem) !important; } }
+.smile-help4 .smile-help4__card > .elementor-widget-wrap { border-radius: 20px !important; padding: 1.75rem 1.5rem 1.5rem !important; background: rgba(255,255,255,.06) !important; border: 1px solid rgba(255,255,255,.12) !important; border-top: 3px solid var(--smile-sun) !important; transition: transform .3s ease, background .3s ease; }
+.smile-help4 .smile-help4__card > .elementor-widget-wrap:hover { transform: translateY(-4px); background: rgba(255,255,255,.10) !important; }
+.smile-help4 .elementor-widget-heading .elementor-heading-title { color: #fff !important; font-size: 1.25rem !important; min-height: 2.5em; }
+.smile-help4 .elementor-widget-text-editor { flex: 1 1 auto; }
+.smile-help4 .elementor-widget-text-editor p { color: #D9E9DF !important; }
+.smile-help4 .elementor-widget-button { margin-top: auto !important; padding-top: 1rem; }
+.smile-help4-note .elementor-widget-text-editor { max-width: 720px; margin-inline: auto; text-align: center; }
+.smile-help4-note .elementor-widget-text-editor p { display: inline-block; margin: 0; padding: .85rem 1.4rem; border-radius: 999px; background: rgba(253,220,5,.10); border: 1px solid rgba(253,220,5,.35); color: #F2F7F4 !important; font-size: .95rem; }
+.smile-help4-note strong { color: var(--smile-sun); }
+@media (max-width: 600px) { .smile-help4-note .elementor-widget-text-editor p { border-radius: 16px; } }
+
+/* Supporter voice: featured quote card */
+.smile-voices2 blockquote { position: relative; max-width: 820px; margin: 2rem auto 0 !important; padding: clamp(2.25rem, 1.5rem + 2.5vw, 3.5rem) clamp(1.5rem, 1rem + 3vw, 4rem) !important; background: #fff; border-radius: 28px; border: 0 !important; box-shadow: 0 2px 6px rgba(11,64,33,.05), 0 30px 60px -32px rgba(11,64,33,.35); text-align: center; }
+.smile-voices2 blockquote::before { content: "\201C"; position: absolute; top: -.42em; left: 50%; transform: translateX(-50%); width: 1.25em; height: 1.25em; line-height: 1.5; font-family: Georgia, serif; font-size: 3.4rem; color: var(--smile-forest); background: var(--smile-sun); border-radius: 50%; text-align: center; box-shadow: 0 10px 24px -10px rgba(11,64,33,.45); }
+.smile-voices2 blockquote p { font-family: var(--smile-font-display); font-weight: 700; font-size: clamp(1.2rem, 1rem + .9vw, 1.6rem) !important; line-height: 1.45; color: var(--smile-forest) !important; margin: 0 0 1.25rem !important; }
+.smile-voices2 blockquote cite, .smile-voices2 blockquote footer, .smile-voices2 blockquote p + p { font-family: var(--smile-font-body); font-weight: 400; font-size: .95rem !important; color: var(--smile-muted, #5B6B64) !important; font-style: normal; }
+.smile-voices2 blockquote strong { color: var(--smile-forest); }
+
+/* Closing appeal: centred, high contrast, yellow emphasis */
+.smile-closing { text-align: center !important; }
+.smile-closing .elementor-widget-wrap { flex-direction: row; justify-content: center !important; }
+.smile-closing .smile-eyebrow .elementor-heading-title { white-space: nowrap; justify-content: center; display: inline-flex; }
+.smile-closing .elementor-widget-heading, .smile-closing .elementor-widget-text-editor { text-align: center !important; width: 100% !important; }
+.smile-closing .elementor-heading-title { margin-inline: auto !important; max-width: 18ch !important; font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.6rem) !important; line-height: 1.08 !important; }
+.smile-closing .elementor-heading-title em { color: var(--smile-sun) !important; -webkit-text-fill-color: var(--smile-sun) !important; background: none !important; }
+.smile-closing .elementor-heading-title em::after { background: var(--smile-sun) !important; opacity: .6; }
+.smile-closing .elementor-widget-text-editor p { margin-inline: auto !important; }
+.smile-closing .elementor-widget-button { margin-top: .75rem !important; }
+.smile-closing .elementor-background-overlay { background: linear-gradient(180deg, rgba(11,64,33,.78), rgba(11,64,33,.92)) !important; opacity: 1 !important; }
+
+/* Section headings: consistent centred variant when a band is centred */
+.smile-voices2 .smile-eyebrow .elementor-heading-title, .smile-help-head .smile-eyebrow .elementor-heading-title, .smile-closing .smile-eyebrow .elementor-heading-title { justify-content: center; }
+
+/* Mobile polish */
+@media (max-width: 767px) {
+	.smile-appeal .elementor-widget-button, .smile-closing .elementor-widget-button, .smile-intro2 .elementor-widget-button, .smile-founder2 .elementor-widget-button { width: 100% !important; flex: 1 1 100% !important; }
+	.smile-appeal .elementor-button, .smile-closing .elementor-button, .smile-intro2 .elementor-button, .smile-founder2 .elementor-button { width: 100%; justify-content: center; }
+	.smile-pcard .elementor-widget-heading .elementor-heading-title, .smile-help4 .elementor-widget-heading .elementor-heading-title { min-height: 0; }
+	.smile-intro2 .smile-photo img, .smile-founder2 .smile-photo img { aspect-ratio: 4 / 3.6; box-shadow: 10px 10px 0 var(--smile-sun), 0 18px 36px -20px rgba(11,64,33,.45) !important; }
+	.smile-appeal .smile-photo img { box-shadow: -10px 10px 0 var(--smile-coral), 0 18px 36px -20px rgba(11,64,33,.45) !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.smile-pcard .smile-pcard__img img, .smile-pillars__icon, .smile-help4 .smile-help4__card > .elementor-widget-wrap { transition: none !important; }
+}
