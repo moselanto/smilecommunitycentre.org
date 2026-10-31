@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.45.1 (sync with edits made on the site)
+- `demo/pages.json` now matches the page content edited directly in WordPress on the staging site (export of 31 Oct 2026), so "Apply latest design" no longer overwrites those edits:
+  - **Home:** new "who we are" intro aligned with Kenya's Care Reform Strategy; badge now "Since 2016"; HIV/AIDS card renamed "Health & Wellbeing" with a "Learn more" button; new featured Google review quote.
+  - **About Us:** "Since 2016" intro; banner photo is now the founder with children.
+  - **Our Founder:** founder photo is now the founder with children.
+  - **Health and Wellbeing:** updated HIV/AIDS introduction text.
+- Stray browser-extension markup (`jw-selection-toolbar-host`) that the editor had saved into text blocks is removed. Theme and plugin files on the site were already identical to 2.45.0.
+
 ## 2.45.0 (speed)
 - **Lighter CSS on inner pages.** `scripts/build-css.py` now also writes `main-inner.min.css` and `home-inner.min.css` without the home-page-only rules (slider, pillars, intro, programme cards, appeal, founder, ways-to-help head, voices, closing). Inner pages load home styles of 118 KB instead of 159 KB (about 20 KB gzipped instead of 26). The home page, the Elementor editor, Customizer previews and any page that uses one of those sections still get the full files (`smile_needs_full_css()`), so editing is unchanged.
 - **Banner photos load first and right-sized (About, Donate and every page with a photo banner).** The banner photo was preloaded at the wrong size while Elementor painted the full original, so browsers found it late. The page now preloads the exact phone (768 px) and desktop (1536 px) files with high priority and points the banner at them. It follows whatever photo is chosen in Elementor; nothing changes inside the editor.

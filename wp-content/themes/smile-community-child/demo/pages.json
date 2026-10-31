@@ -10,7 +10,6 @@
    {
     "id": "73cf256",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "layout": "full_width",
      "stretch_section": "section-stretched",
@@ -29,7 +28,6 @@
      {
       "id": "dda1494",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -38,30 +36,29 @@
        {
         "id": "8f4d3e2",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_hero_slider]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "0635476",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "css_classes": "smile-pillars",
-     "structure": "10",
      "gap": "no"
     },
     "elements": [
      {
       "id": "f538d1c",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -70,20 +67,21 @@
        {
         "id": "7a9bc3d",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<ul class=\"smile-pillars__list\"><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 11.5 12 4l9 7.5\"/><path d=\"M5.5 10v9.5h13V10\"/><path d=\"M10 19.5v-5h4v5\"/></svg></span><span class=\"smile-pillars__text\"><strong>A safe home</strong><span>Children referred by officers, chiefs and police</span></span></li><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 12h16a8 8 0 0 1-16 0Z\"/><path d=\"M9 4c0 1.5 1 1.5 1 3M13 4c0 1.5 1 1.5 1 3\"/></svg></span><span class=\"smile-pillars__text\"><strong>Daily meals</strong><span>Nutritious food, every single day</span></span></li><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5Z\"/><path d=\"M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5\"/></svg></span><span class=\"smile-pillars__text\"><strong>Schooling</strong><span>Fees, uniforms and learning materials</span></span></li><li class=\"smile-pillars__item\"><span class=\"smile-pillars__icon\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z\"/><path d=\"M9.5 11h5M12 8.5v5\"/></svg></span><span class=\"smile-pillars__text\"><strong>Healthcare</strong><span>Access to care, counselling and support</span></span></li></ul>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "790dc57",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-gap-lg smile-intro2",
@@ -94,7 +92,6 @@
      {
       "id": "d387f67",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 50,
        "_inline_size": null,
@@ -104,47 +101,45 @@
        {
         "id": "d2346a3",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "A home, care and opportunity",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "43e0ae3",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "More than shelter. <em>A chance to move forward.</em>",
-         "header_size": "h2"
+         "title": "More than shelter. <em>A chance to move forward.</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "347e2be",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
-         "editor": "<p class=\"smile-lead\">We work with children’s officers, local chiefs and the police to support children who have nowhere safe to go. At our home, children receive a place to stay, nutritious meals, support with schooling and access to essential healthcare.</p><p>Some of the first children supported by Smile have gone on to university and employment. With help from people like you, we can continue providing care and opportunities for children who need them.</p>"
+         "editor": "<p>At Smile Community Centre, we align with Kenya’s Care Reform Strategy by prioritising family and community-based care for orphaned, abandoned and vulnerable children. We work with child protection partners to identify and rescue children at risk, providing a safe shelter, education, nutritious meals and essential healthcare while supporting their long-term wellbeing.</p><p>Some of the first children supported by Smile have gone on to university and employment. With help from people like you, we can continue providing care and opportunities for children who need them.</p><div hidden=\"\" data-jw-selection-toolbar=\"\"> </div>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "c8d09b8",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<ul><li>Children referred by children’s officers, local chiefs and the police</li><li>A safe place to stay, nutritious meals and schooling</li><li>Access to essential healthcare</li></ul>",
          "_css_classes": "smile-ticks"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "6034619",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Learn About Smile",
          "link": {
@@ -154,14 +149,15 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "c79564f",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 50,
        "_inline_size": null,
@@ -171,35 +167,35 @@
        {
         "id": "badfe4c",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:hygiene-kits",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall smile-photo--frame"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        },
        {
         "id": "d88050b",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
-         "editor": "<p><strong>Since 2009</strong><span>Caring for children in Soweto, Kayole</span></p>",
+         "editor": "<p><strong>Since 2016 </strong>Caring for children in Soweto, Kayole</p>",
          "_css_classes": "smile-intro2__badge"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "3788026",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--sand smile-gap-lg smile-community2",
@@ -210,7 +206,6 @@
      {
       "id": "3f61ff3",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 55,
        "_inline_size": 55,
@@ -220,25 +215,24 @@
        {
         "id": "c54842c",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:soweto-view",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--wide smile-community-photo",
          "caption_source": "custom",
          "caption": "Soweto–Kayole, Nairobi: the community where children supported by Smile come from."
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "a0f1721",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 45,
        "_inline_size": 45
@@ -247,37 +241,35 @@
        {
         "id": "400efc5",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "The community where children come from",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "f5b81af",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Rooted in the <em>Soweto community.</em>",
-         "header_size": "h2"
+         "title": "Rooted in the <em>Soweto community.</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "7e9318a",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Smile Community Centre serves children from the Soweto–Kayole community in Nairobi. This view of Soweto shows the neighbourhood where children come from and the community at the heart of our work.</p><p>Your support helps us provide care, meals and opportunities to learn, while respecting each child’s dignity and connection to their community.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "e48f59b",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Learn About Our Community",
          "link": {
@@ -287,16 +279,18 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "013ace8",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-head-row smile-sec--head",
@@ -307,7 +301,6 @@
      {
       "id": "c0d95c1",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 66,
        "_inline_size": 66
@@ -316,40 +309,39 @@
        {
         "id": "1ec2dd3",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Our programmes",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "71425d4",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "How your support <em>reaches children</em>",
-         "header_size": "h2"
+         "title": "How your support <em>reaches children</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "fc18204",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Four programmes, one purpose: care, learning and opportunity for every child in our home and community.</p>",
          "_css_classes": "smile-measure"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "b9cbe4f",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 34,
        "_inline_size": 34
@@ -358,7 +350,6 @@
        {
         "id": "ca0ff82",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "All programmes",
          "link": {
@@ -368,27 +359,27 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "5b2cff8",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-pcards",
-     "structure": "40",
-     "content_position": ""
+     "structure": "40"
     },
     "elements": [
      {
       "id": "5caeb61",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -398,42 +389,40 @@
        {
         "id": "4edd820",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:edu-uniforms",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-pcard__img"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        },
        {
         "id": "3f8a4f0",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Education",
          "header_size": "h3",
          "_css_classes": "smile-pcard__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "a282005",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Help children stay in school with support for fees, books, uniforms and learning materials.</p>",
          "_css_classes": "smile-pcard__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "384fa7c",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Support Education",
          "link": {
@@ -443,12 +432,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "318db52",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Learn more",
          "link": {
@@ -458,14 +447,15 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--link"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "704f8b7",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -475,42 +465,40 @@
        {
         "id": "bf9686f",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:feeding-tables",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-pcard__img"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        },
        {
         "id": "1358469",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Feeding Program",
          "header_size": "h3",
          "_css_classes": "smile-pcard__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "823b33c",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Support nutritious daily meals for children in our home and community feeding when resources allow.</p>",
          "_css_classes": "smile-pcard__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "c9d3c7e",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Support Feeding",
          "link": {
@@ -520,12 +508,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "b9de1c1",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Learn more",
          "link": {
@@ -535,14 +523,15 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--link"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "f485265",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -552,42 +541,40 @@
        {
         "id": "c5902aa",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:hiv-support",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-pcard__img"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        },
        {
         "id": "97a4349",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "HIV/AIDS Counselling &amp; Support",
+         "title": "Health &amp; Wellbeing",
          "header_size": "h3",
          "_css_classes": "smile-pcard__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "53f6b6d",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Support counselling, referrals and practical assistance for affected children and families, with dignity and care.</p>",
          "_css_classes": "smile-pcard__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "33a3552",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Explore This Program",
          "link": {
@@ -597,14 +584,30 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
+       },
+       {
+        "id": "548f165",
+        "elType": "widget",
+        "settings": {
+         "text": "Learn more",
+         "link": {
+          "url": "/health-and-wellbeing/",
+          "is_external": "",
+          "nofollow": ""
+         },
+         "_css_classes": "smile-btn-el smile-btn-el--link"
+        },
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "5103a61",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -614,42 +617,40 @@
        {
         "id": "a6224e1",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:sports-court",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-pcard__img"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        },
        {
         "id": "97a1886",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Sports &amp; Talent",
          "header_size": "h3",
          "_css_classes": "smile-pcard__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "cb1da66",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Give children opportunities to play, build teamwork and develop their talents through football, basketball and activities.</p>",
          "_css_classes": "smile-pcard__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "ab4809f",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Support Sports",
          "link": {
@@ -659,12 +660,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "f903bce",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Learn more",
          "link": {
@@ -674,16 +675,18 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--link"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "19fa867",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--cream smile-gap-lg smile-appeal",
@@ -694,7 +697,6 @@
      {
       "id": "9cb4b74",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 50,
        "_inline_size": null
@@ -703,23 +705,22 @@
        {
         "id": "95dc41d",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:feeding-tables",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall smile-photo--frame"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "e91fc56",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 50,
        "_inline_size": null
@@ -728,37 +729,35 @@
        {
         "id": "044ce2f",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Feeding appeal",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "f10b705",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Help keep <em>meals on the table.</em>",
-         "header_size": "h2"
+         "title": "Help keep <em>meals on the table.</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "1f359cb",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p class=\"smile-lead\">Our children need nutritious meals every day.</p><p>We also organise feeding support for vulnerable children and community members in Soweto, Kayole and nearby areas when donations make it possible.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "15f9c70",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Donate Towards Meals",
          "link": {
@@ -768,12 +767,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--sun"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "1188aae",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Enquire About Donating Food",
          "link": {
@@ -783,16 +782,18 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "09b7529",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-gap-lg smile-founder2",
@@ -803,7 +804,6 @@
      {
       "id": "6d118c0",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 50,
        "_inline_size": null
@@ -812,37 +812,35 @@
        {
         "id": "3ad01e3",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Our founder",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "710de93",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "A mission that began with <em>opening her own home.</em>",
-         "header_size": "h2"
+         "title": "A mission that began with <em>opening her own home.</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "92798a5",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Smile’s founder began helping children and families in her community, sharing her home and resources with children who needed care. That commitment grew into Smile Community Centre Children’s Home.</p><p>Today, her story continues through the children, families and supporters who are part of Smile.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "ec945c0",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Meet Our Founder",
          "link": {
@@ -852,14 +850,15 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "bf70fdd",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 50,
        "_inline_size": null
@@ -868,36 +867,34 @@
        {
         "id": "7edd7b2",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:founder-children",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall smile-photo--frame smile-photo--founder"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "c25d767",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--head smile-sec--forest smile-help-head",
-     "structure": "10",
      "content_position": "middle"
     },
     "elements": [
      {
       "id": "defdd03",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -906,43 +903,41 @@
        {
         "id": "5f49709",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Ways to help",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "ccdf056",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Choose how you would like to <em>give a smile.</em>",
-         "header_size": "h2"
+         "title": "Choose how you would like to <em>give a smile.</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "88dc12b",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--forest smile-help4",
-     "structure": "40",
-     "content_position": ""
+     "structure": "40"
     },
     "elements": [
      {
       "id": "ce0c2c8",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -952,28 +947,27 @@
        {
         "id": "a4728f5",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Give financially",
          "header_size": "h3",
          "_css_classes": "smile-help4__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "df5031f",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Help with meals, education, shelter and healthcare.</p>",
          "_css_classes": "smile-help4__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "cbb8904",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Donate Now",
          "link": {
@@ -983,14 +977,15 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--sun"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "d4cc43f",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -1000,28 +995,27 @@
        {
         "id": "86cb019",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Donate food or supplies",
          "header_size": "h3",
          "_css_classes": "smile-help4__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "c79cf5c",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Ask us what is needed and arrange delivery.</p>",
          "_css_classes": "smile-help4__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "66cf6e6",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Ask About Current Needs",
          "link": {
@@ -1031,14 +1025,15 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "9d4c99c",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -1048,28 +1043,27 @@
        {
         "id": "eb597e5",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Visit or partner with us",
          "header_size": "h3",
          "_css_classes": "smile-help4__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "407c596",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Contact our team to discuss a planned visit or group contribution.</p>",
          "_css_classes": "smile-help4__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "9f8e047",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Arrange a Visit",
          "link": {
@@ -1079,14 +1073,15 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "3641e1b",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 25,
        "_inline_size": null,
@@ -1096,28 +1091,27 @@
        {
         "id": "a74b55f",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Share your skills",
          "header_size": "h3",
          "_css_classes": "smile-help4__title"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "7e8b643",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Find out whether volunteer opportunities are available and what is required.</p>",
          "_css_classes": "smile-help4__text"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "74656a8",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Check Volunteer Availability",
          "link": {
@@ -1127,27 +1121,27 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "04b0d76",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--forest smile-help4-note",
-     "structure": "10",
      "content_position": "middle"
     },
     "elements": [
      {
       "id": "6caf203",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1156,32 +1150,31 @@
        {
         "id": "69c81d1",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p><strong>Volunteering:</strong> our volunteer page currently lists placements as closed. Please contact us about future availability.</p>",
          "_css_classes": "smile-help4__notice"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "4f56137",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--cream smile-voices2",
-     "structure": "10",
      "content_position": "middle"
     },
     "elements": [
      {
       "id": "14c552c",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1190,42 +1183,42 @@
        {
         "id": "ce5f826",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Supporter voices",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "348e58f",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Experiences shared <em>by our supporters</em>",
-         "header_size": "h2"
+         "title": "Experiences shared <em>by our supporters</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "dc68d82",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
-         "editor": "<blockquote><p>“Thank you soo much Sheila, Peter and Mum for the amazing welcome I have received as a volunteer.”</p><footer><strong>Ruth Kamau</strong><span>Volunteer · Google review</span></footer></blockquote>",
+         "editor": "<blockquote><p>“Awesome place with awesome people for awesome kids. Definitely donate if you can, it’s been a pleasure meeting the team/family behind this place and seeing the good use they put the donations to.”</p><footer><strong>Melissa Nz</strong>Guest · Google review</footer></blockquote><div hidden=\"\" data-jw-selection-toolbar=\"\"> </div>",
          "_css_classes": "smile-quote-card"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "210f4d0",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-head-row smile-sec--head",
@@ -1236,7 +1229,6 @@
      {
       "id": "fa09ca4",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 66,
        "_inline_size": 66
@@ -1245,40 +1237,39 @@
        {
         "id": "9b02a56",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Updates and stories",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "7673896",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Stories and updates <em>from Smile</em>",
-         "header_size": "h2"
+         "title": "Stories and updates <em>from Smile</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "6097482",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>See the latest news from our home, learn about our work and discover ways to support children in our community.</p>",
          "_css_classes": "smile-measure"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      },
      {
       "id": "5b86c0e",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 34,
        "_inline_size": 34
@@ -1287,7 +1278,6 @@
        {
         "id": "0d2329d",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "All stories",
          "link": {
@@ -1297,27 +1287,27 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "ebb7344",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec",
-     "structure": "10",
      "content_position": "middle"
     },
     "elements": [
      {
       "id": "f3d2273",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1326,24 +1316,24 @@
        {
         "id": "3740322",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_stories]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "2a99908",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-closing",
-     "structure": "10",
      "content_position": "middle",
      "background_background": "classic",
      "background_image": {
@@ -1363,7 +1353,6 @@
      {
       "id": "8c3690d",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1372,37 +1361,35 @@
        {
         "id": "79f926e",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Every day matters",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "44ab5f8",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Help make <em>everyday care possible.</em>",
-         "header_size": "h2"
+         "title": "Help make <em>everyday care possible.</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "ce16d6a",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p class=\"smile-lead\">A meal. A school day. A safe place to sleep. Your support helps Smile Community Centre care for children in Soweto–Kayole and create opportunities for their future.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "ef6f366",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Donate Now",
          "link": {
@@ -1412,12 +1399,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--sun"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "6682228",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Talk to Our Team",
          "link": {
@@ -1427,11 +1414,14 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    }
   ],
   "html": "[smile_hero_slider]<h2>More than shelter. A chance to move forward.</h2><p>We work with children’s officers, local chiefs and the police to support children who have nowhere safe to go.</p><h2>Rooted in the Soweto community.</h2><h2>Help keep meals on the table.</h2><h2>A mission that began with opening her own home.</h2><h2>Choose how you would like to give a smile.</h2>[smile_stories]<h2>Help make everyday care possible.</h2>"
@@ -1447,11 +1437,9 @@
    {
     "id": "611244c",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-pagehero",
-     "structure": "10",
      "background_background": "classic",
      "background_image": {
       "url": "smile-img:founder-children",
@@ -1464,7 +1452,6 @@
      {
       "id": "6c7ab5c",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1473,46 +1460,48 @@
        {
         "id": "4e86c4f",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_breadcrumbs]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        },
        {
         "id": "7631a99",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "About us",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "5affb22",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "About Smile Community Centre",
          "header_size": "h1"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "2b0537e",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>Since 2009, Smile has grown from one woman’s commitment to her neighbours into a children’s home serving orphaned and vulnerable children in Soweto, Kayole.</p>",
+         "editor": "<p>Since 2016, Smile has grown from one woman’s commitment to her neighbours into a children’s home serving orphaned and vulnerable children in Soweto, Kayole.</p>",
          "_css_classes": "smile-lead smile-measure"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "6415479",
@@ -1535,37 +1524,35 @@
        {
         "id": "37dc76f",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Our story",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "c4aaeac",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "How Smile began",
-         "header_size": "h2"
+         "title": "How Smile began"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "4995239",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>After recovering from a serious spinal injury, our founder, Margret Nekesa Khaemba, a mother of three, committed herself to serving God through community work. She began by counselling women, teaching home-based care, helping children with food and linking families to schools and health facilities in Kayole and Soweto.</p><p>In 2009 she registered the Smile self-help group, which trained women and youth to make beadwork, detergents and food products. Part of the proceeds helped families and bought food for street children.</p><p>Her work with street children and orphaned and vulnerable children showed the need for something more formal. In 2016 the group was registered with the Ministry of Labour, Social Security and Services as a Community Based Organisation.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "211c70c",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Meet our founder",
          "link": {
@@ -1575,7 +1562,8 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
       ],
       "isInner": false
@@ -1591,16 +1579,16 @@
        {
         "id": "3f63af8",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
-          "url": "smile-img:founder-soweto",
+          "url": "smile-img:founder-children",
           "id": ""
          },
-         "image_size": "large",
-         "_css_classes": "smile-photo smile-photo--tall"
+         "_css_classes": "smile-photo smile-photo--tall",
+         "caption_source": "attachment"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
       ],
       "isInner": false
@@ -1611,17 +1599,14 @@
    {
     "id": "e52c6d6",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--sand",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--sand"
     },
     "elements": [
      {
       "id": "538cbbb",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1630,15 +1615,17 @@
        {
         "id": "d2e5081",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_founder_quote]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "2a96fb1",
@@ -1646,8 +1633,7 @@
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--cream smile-sec--head",
-     "content_position": "middle",
-     "structure": "10"
+     "content_position": "middle"
     },
     "elements": [
      {
@@ -1661,33 +1647,32 @@
        {
         "id": "eab477d",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Milestones",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "df1582b",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "From an iron-sheet room to a safer home",
-         "header_size": "h2"
+         "title": "From an iron-sheet room to a safer home"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "7f1b103",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<ol><li><strong>Margret’s own home</strong>Children referred by local police, with nowhere else to go, first lived with Margret’s family, who shared everything they had.</li><li><strong>An iron-sheet structure near Sabasaba</strong>A rented room next to PCEA Kayole church, with no water or electricity. Children studied by kerosene lamp, and when heavy rain came through the roof they returned to Margret’s house.</li><li><strong>A reclaimed plot near Steppa Stage, Soweto</strong>With well-wishers’ help, a former dump site was rehabilitated. Lift the Children supported improvements. The site later flooded and was no longer safe.</li><li><strong>Our current home at Mzesa, Soweto</strong>With support from individual well-wishers and Thrive Kenya, the centre moved to a rented building at Mzesa.</li></ol>",
          "_css_classes": "smile-timeline"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
       ],
       "isInner": false
@@ -1698,17 +1683,14 @@
    {
     "id": "8b01aa",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--mvx",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--mvx"
     },
     "elements": [
      {
       "id": "8b01ac",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1717,15 +1699,17 @@
        {
         "id": "8b01ab",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_mv]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "e25a760",
@@ -1749,16 +1733,15 @@
        {
         "id": "5bd86d4",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:soweto-view",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
       ],
       "isInner": false
@@ -1774,37 +1757,35 @@
        {
         "id": "8cdb305",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Our community",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "47469a4",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Why we work in Soweto and Kayole",
-         "header_size": "h2"
+         "title": "Why we work in Soweto and Kayole"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "b4d66a3",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Nairobi is a growing city, but many families in its informal settlements live with poverty, poor housing, limited schooling and unreliable income. HIV/AIDS has left many children without parents. Children who lose family support can end up on the streets.</p><p>We work with children’s officers, chiefs, police and social workers so that children in danger can be received safely, cared for and, where possible, reunited with capable family members, in line with Kenya’s care reform.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "6a50df4",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Our goals",
          "link": {
@@ -1814,7 +1795,8 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
       ],
       "isInner": false
@@ -1825,17 +1807,14 @@
    {
     "id": "8b02aa",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--dream",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--dream"
     },
     "elements": [
      {
       "id": "8b02ac",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1844,15 +1823,17 @@
        {
         "id": "8b02ab",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_dream]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "7c26847",
@@ -1861,7 +1842,6 @@
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--teal smile-center",
      "content_position": "middle",
-     "structure": "10",
      "_title": "CTA"
     },
     "elements": [
@@ -1876,26 +1856,24 @@
        {
         "id": "2d1c9af",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Help a child stay safe, fed and in school",
-         "header_size": "h2"
+         "title": "Help a child stay safe, fed and in school"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "26bb7db",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Your gift, your time or your organisation’s support makes daily care possible at Smile Community Centre.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "3b61867",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Donate Now",
          "link": {
@@ -1905,12 +1883,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--sun"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "a8948c8",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Volunteer With Us",
          "link": {
@@ -1920,12 +1898,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "3bbbe9e",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Partner With Smile",
          "link": {
@@ -1935,7 +1913,8 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
       ],
       "isInner": false
@@ -1957,11 +1936,9 @@
    {
     "id": "3126b9c",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-pagehero",
-     "structure": "10",
      "background_background": "classic",
      "background_image": {
       "url": "smile-img:founder-children",
@@ -1974,7 +1951,6 @@
      {
       "id": "b9d8249",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -1983,46 +1959,48 @@
        {
         "id": "215b889",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_breadcrumbs]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        },
        {
         "id": "d4c28c2",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Our founder",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "96d0cc5",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Margret Nekesa: leading with faith and a smile",
          "header_size": "h1"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "2eae05c",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Margret’s own life shaped her determination to give children a safe and hopeful start.</p>",
          "_css_classes": "smile-lead smile-measure"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "519088f",
@@ -2045,32 +2023,31 @@
        {
         "id": "8c01aa",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Chapter one",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "6b4013e",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "A childhood of responsibility",
-         "header_size": "h2"
+         "title": "A childhood of responsibility"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "88daf40",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Margret grew up the eldest daughter in her family. When her parents separated, she and her sisters were sent to their grandfather’s farm, where they herded cattle and she struggled to stay in school. She bought her first pair of shoes after primary school.</p><p>As an adult she worked as a tea picker. A severe spinal condition left her bedridden from 1996 to 2003, caring for three children from a single room. Her own children often went out looking for food and came home with other street children. Margret prayed that she would walk again so that she could help them.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
       ],
       "isInner": false
@@ -2086,16 +2063,15 @@
        {
         "id": "9c1caaf",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
-          "url": "smile-img:founder-soweto",
+          "url": "smile-img:founder-children",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
       ],
       "isInner": false
@@ -2124,16 +2100,15 @@
        {
         "id": "83f73f1",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:founder-school",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
       ],
       "isInner": false
@@ -2149,37 +2124,35 @@
        {
         "id": "8c02aa",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Chapter two",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "f3fe39c",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Recovery and a calling",
-         "header_size": "h2"
+         "title": "Recovery and a calling"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "2020362",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Margret recovered and began serving her community. Through her relationships with local head teachers she enrolled children in school, sometimes before fees could be paid. The home began in her own house, where her family shared clothes and bedding with children who had nowhere else to go.</p><p>From there the centre moved to an iron-sheet structure, then to a reclaimed dump site that later flooded, and finally to its current rented building at Mzesa, Soweto, through fundraising with family and friends of Smile.</p><p>Today Margret’s three children support her through their own networks to keep improving the centre. She believes that a simple smile, joined with practical care, can change a child’s world.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "b0c4312",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "See our programmes",
          "link": {
@@ -2189,7 +2162,8 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
       ],
       "isInner": false
@@ -2200,17 +2174,14 @@
    {
     "id": "8d01aa",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--fpath",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--fpath"
     },
     "elements": [
      {
       "id": "8d01c0",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -2219,51 +2190,49 @@
        {
         "id": "8d01ab",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Her journey",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "8d01ad",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "From a single room to <em>a home for many</em>",
-         "header_size": "h2"
+         "title": "From a single room to <em>a home for many</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "8d01ae",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_founder_path]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "8c03aa",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--fwords smile-sec--cream",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--fwords smile-sec--cream"
     },
     "elements": [
      {
       "id": "8c03ac",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -2272,15 +2241,17 @@
        {
         "id": "8c03ab",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_founder_words]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "def8833",
@@ -2289,7 +2260,6 @@
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--teal smile-center",
      "content_position": "middle",
-     "structure": "10",
      "_title": "CTA"
     },
     "elements": [
@@ -2304,26 +2274,24 @@
        {
         "id": "a7abe1c",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Help a child stay safe, fed and in school",
-         "header_size": "h2"
+         "title": "Help a child stay safe, fed and in school"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "ad1b72d",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Your gift, your time or your organisation’s support makes daily care possible at Smile Community Centre.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "bd62888",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Donate Now",
          "link": {
@@ -2333,12 +2301,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--sun"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "0dd27a6",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Volunteer With Us",
          "link": {
@@ -2348,12 +2316,12 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        },
        {
         "id": "74e69a5",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Partner With Smile",
          "link": {
@@ -2363,7 +2331,8 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--ghost-light"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
       ],
       "isInner": false
@@ -4236,11 +4205,9 @@
    {
     "id": "bbf5204",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-pagehero",
-     "structure": "10",
      "background_background": "classic",
      "background_image": {
       "url": "smile-img:doctors",
@@ -4253,7 +4220,6 @@
      {
       "id": "a0aeb4e",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -4262,61 +4228,60 @@
        {
         "id": "833bfa0",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_breadcrumbs]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        },
        {
         "id": "149e259",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Health and wellbeing",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "3870380",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Caring for body and mind",
          "header_size": "h1"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "1a26f88",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Medical care, counselling and referrals for children in our home and families in our community.</p>",
          "_css_classes": "smile-lead smile-measure"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "d063746",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--glance",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--glance"
     },
     "elements": [
      {
       "id": "0ca1ad0",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -4325,15 +4290,17 @@
        {
         "id": "7159118",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_glance p=\"health\"]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "9c3a23c",
@@ -4356,21 +4323,20 @@
        {
         "id": "3451d01",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Health care for every child",
-         "header_size": "h2"
+         "title": "Health care for every child"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "7b8f2ab",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
          "editor": "<p>Some children arrive needing urgent treatment. We make sure each child receives medical care and is linked to health facilities. Volunteer doctors have also supported our children.</p><p>Clean water is a constant challenge in Soweto. Water arrives about once a week and barely fills our 1,500-litre and 3,000-litre tanks, which we rely on for drinking, cooking and hygiene.</p>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        }
       ],
       "isInner": false
@@ -4386,16 +4352,15 @@
        {
         "id": "fc39472",
         "elType": "widget",
-        "widgetType": "image",
         "settings": {
          "image": {
           "url": "smile-img:doctors",
           "id": ""
          },
-         "image_size": "large",
          "_css_classes": "smile-photo smile-photo--tall"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "image"
        }
       ],
       "isInner": false
@@ -4409,8 +4374,7 @@
     "settings": {
      "gap": "extended",
      "css_classes": "smile-sec smile-sec--cream",
-     "content_position": "middle",
-     "structure": "10"
+     "content_position": "middle"
     },
     "elements": [
      {
@@ -4424,27 +4388,25 @@
        {
         "id": "d726c86",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "HIV/AIDS counselling and support",
-         "header_size": "h2"
+         "title": "HIV/AIDS counselling and support"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "007d103",
         "elType": "widget",
-        "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>HIV/AIDS continues to affect many families in sub-Saharan Africa, and women and children often carry the greatest burden. In Nairobi’s informal settlements, many affected women and children are displaced and fear stigma and discrimination. The red ribbon in our logo represents our solidarity with them.</p><ul><li><strong>Children orphaned by HIV/AIDS:</strong> counselling, shelter, education, food, and referrals for group therapy and medical care.</li><li><strong>Women affected by abuse:</strong> referrals for counselling and any help within our reach. We do not provide shelter for adults.</li></ul>",
+         "editor": "<p>HIV/AIDS continues to affect many families in sub-Saharan Africa, and women and children often carry the greatest burden. In Nairobi’s informal settlements, many affected women and children are displaced and fear stigma and discrimination. The red  in our logo represents our solidarity with them.</p><ul><li><strong>Children orphaned by HIV/AIDS:</strong> counselling, shelter, education, food, and referrals for group therapy and medical care for rescued children.</li><li><strong>Young girls affected by abuse:</strong> referrals for counselling and any help within our reach. We do not provide shelter for adults.</li></ul>",
          "_css_classes": "smile-ticks smile-measure"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "text-editor"
        },
        {
         "id": "7abec53",
         "elType": "widget",
-        "widgetType": "button",
         "settings": {
          "text": "Support medical care",
          "link": {
@@ -4454,7 +4416,8 @@
          },
          "_css_classes": "smile-btn-el smile-btn-el--teal"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "button"
        }
       ],
       "isInner": false
@@ -4465,11 +4428,9 @@
    {
     "id": "8829abe",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "no",
      "css_classes": "smile-sec smile-flush",
-     "structure": "10",
      "layout": "full_width",
      "stretch_section": "section-stretched",
      "padding": {
@@ -4485,7 +4446,6 @@
      {
       "id": "d7b6d74",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -4494,30 +4454,29 @@
        {
         "id": "1f212ee",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_pull p=\"health\"]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "378e34b",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec",
-     "structure": "10"
+     "css_classes": "smile-sec"
     },
     "elements": [
      {
       "id": "dafaf3b",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -4526,51 +4485,49 @@
        {
         "id": "e912182",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "How you can help",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "584e323",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Every gift goes <em>further</em> here",
-         "header_size": "h2"
+         "title": "Every gift goes <em>further</em> here"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "ecb193e",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_help_ways p=\"health\"]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    },
    {
     "id": "d036653",
     "elType": "section",
-    "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-sec--cream",
-     "structure": "10"
+     "css_classes": "smile-sec smile-sec--cream"
     },
     "elements": [
      {
       "id": "23a8f1f",
       "elType": "column",
-      "isInner": false,
       "settings": {
        "_column_size": 100,
        "_inline_size": null
@@ -4579,36 +4536,37 @@
        {
         "id": "eb06557",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
          "title": "Explore more",
          "header_size": "p",
          "_css_classes": "smile-eyebrow"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "d352234",
         "elType": "widget",
-        "widgetType": "heading",
         "settings": {
-         "title": "Our other <em>programmes</em>",
-         "header_size": "h2"
+         "title": "Our other <em>programmes</em>"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "heading"
        },
        {
         "id": "cda800b",
         "elType": "widget",
-        "widgetType": "shortcode",
         "settings": {
          "shortcode": "[smile_related current=\"health-and-wellbeing\"]"
         },
-        "elements": []
+        "elements": [],
+        "widgetType": "shortcode"
        }
-      ]
+      ],
+      "isInner": false
      }
-    ]
+    ],
+    "isInner": false
    }
   ],
   "html": "<section><p>Health and wellbeing</p><h1>Caring for body and mind</h1><p>Medical care, counselling and referrals for children in our home and families in our community.</p><p><img src=\"smile-img:doctors\" alt=\"Volunteer doctors with children from the centre\"></p></section><section><h2>Health care for every child</h2><p>Some children arrive needing urgent treatment. We make sure each child receives medical care and is linked to health facilities. Volunteer doctors have also supported our children.</p><p>Clean water is a constant challenge in Soweto. Water arrives about once a week and barely fills our 1,500-litre and 3,000-litre tanks, which we rely on for drinking, cooking and hygiene.</p><p><img src=\"smile-img:doctors\" alt=\"Volunteer doctors with children from the centre\"></p></section><section><h2>HIV/AIDS counselling and support</h2><p>HIV/AIDS continues to affect many families in sub-Saharan Africa, and women and children often carry the greatest burden. In Nairobi’s informal settlements, many affected women and children are displaced and fear stigma and discrimination. The red ribbon in our logo represents our solidarity with them.</p><ul><li><strong>Children orphaned by HIV/AIDS:</strong> counselling, shelter, education, food, and referrals for group therapy and medical care.</li><li><strong>Women affected by abuse:</strong> referrals for counselling and any help within our reach. We do not provide shelter for adults.</li></ul><p><a href=\"/donate/\">Support medical care</a></p></section>"
