@@ -2,6 +2,16 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.47.3 (mobile hero heading shift)
+- **A metric-matched fallback font for Nunito.** Fresh mobile PageSpeed on 5 Nov showed CLS 0.108 on `h1.smile-slide__title` while Nunito swapped in. A new `Nunito Fallback` font-face (local Arial, Liberation Sans or Arimo) is sized to Nunito's measured widths and line metrics:
+  - weights 200-500: `size-adjust` 100.19%
+  - weights 600 and up (headings): matched against Arial Bold, `size-adjust` 95.35%
+  - ascent, descent and line-gap overrides from Nunito's own file
+
+  Text no longer re-wraps or moves when Nunito arrives. `--smile-font-display` is now `"Nunito", "Nunito Fallback", "Figtree", ...`.
+- **Hero slide image** has `aspect-ratio: 1600 / 871` as well as its width and height attributes. Lighthouse had flagged it as "unsized".
+- The minified CSS and critical CSS have been rebuilt.
+
 ## 2.47.2 (desktop layout shift from fonts)
 - **Caveat no longer swaps in late.** One desktop PageSpeed run on 4 Nov showed CLS 0.747 on the hero slide content, with the Caveat web font listed as a contributor. Caveat is decorative (captions and signatures), so it now uses `font-display: optional`: if it isn't ready for the first paint, the fallback stays and nothing moves. On the home page it is also preloaded, so it is usually ready in time. Nunito and Figtree are unchanged (preloaded, `swap`).
 

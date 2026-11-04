@@ -303,6 +303,10 @@ function smile_local_fonts() {
 	foreach ( $faces as $f ) {
 		$css .= "@font-face{font-family:'" . $f[0] . "';font-style:" . $f[1] . ';font-weight:' . $f[2] . ';font-display:' . ( isset( $f[4] ) ? $f[4] : 'swap' ) . ';src:url(' . esc_url( $base . $f[3] ) . ") format('woff2');unicode-range:" . $range . ';}';
 	}
+	// Metric-matched fallback for Nunito (headings): Arial resized to Nunito's widths and line
+	// metrics (measured from the font files), so text does not re-wrap or move when Nunito
+	// loads. Regular weights match Arial; 600+ match Arial Bold. Fixes the mobile CLS on the hero h1.
+	$css .= "@font-face{font-family:'Nunito Fallback';font-style:normal;font-weight:200 500;src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('Arimo');size-adjust:100.19%;ascent-override:100.91%;descent-override:35.23%;line-gap-override:0%;}@font-face{font-family:'Nunito Fallback';font-style:normal;font-weight:600 1000;src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold'),local('Arimo Bold');size-adjust:95.35%;ascent-override:106.03%;descent-override:37.02%;line-gap-override:0%;}";
 	echo '<style id="smile-fonts">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from fixed values and esc_url().
 }
 add_action( 'wp_head', 'smile_local_fonts', 1 );

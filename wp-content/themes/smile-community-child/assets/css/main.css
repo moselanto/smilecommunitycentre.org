@@ -782,7 +782,7 @@ img { max-width: 100%; height: auto; }
    Newsreader (headings, quotes)  Figtree (text, UI)  Caveat (rare handwritten notes)
    ========================================================= */
 :root {
-	--smile-font-display: "Nunito", "Figtree", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif;
+	--smile-font-display: "Nunito", "Nunito Fallback", "Figtree", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif;
 	--smile-font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 	--smile-font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
 	--smile-fs-base: 1.0625rem;
@@ -1486,7 +1486,7 @@ a.smile-btn--sun, a.smile-btn--sun:visited, .smile-btn--sun, .smile-footer a.smi
    The header/footer logo is locked to one size on every page, so page
    or Elementor rules can no longer enlarge it.
    ========================================================= */
-:root { --smile-font-display: "Nunito", "Figtree", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif; }
+:root { --smile-font-display: "Nunito", "Nunito Fallback", "Figtree", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif; }
 h1, h2, h3, .elementor-widget-heading h1.elementor-heading-title, .elementor-widget-heading h2.elementor-heading-title, .elementor-widget-heading h3.elementor-heading-title { font-family: var(--smile-font-display); }
 .smile-header .smile-brand, .smile-header .smile-header__brand { flex: 0 0 auto; width: auto !important; max-width: none !important; }
 .smile-header .smile-brand picture { width: auto !important; }
