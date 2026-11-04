@@ -13,7 +13,7 @@ All 22 pages in the sitemap were checked on 4 Nov 2026 by reading their Elemento
 
 Elementor's frontend bundle (webpack runtime, frontend-modules, jQuery UI core and frontend), together with jQuery, makes up almost all of the unused JavaScript. In lean mode it is skipped on every page above except FAQ. The check runs automatically on every request, covering the page and its header and footer templates. Adding an accordion, tabs, a carousel, an animation, a lightbox or any widget that isn't on the allow-list to a page brings the scripts back for that page only.
 
-A possible next step is to replace the FAQ accordion with the theme's FAQ shortcode or native `<details>` elements. FAQ would then not need the scripts either.
+**Update (2.47.0):** Elementor accordion widgets now render as native `<details>`/`<summary>` elements (`inc/lean-assets.php` section 3). This applies to every visitor, whether or not lean mode is on. The questions and answers are still edited in the Elementor accordion widget, and the styling matches the previous accordion. The browser opens and closes each item itself, so the FAQ page also loads without Elementor's scripts. Inside the Elementor editor, the widget keeps its normal markup. To switch it off: `add_filter( 'smile_native_accordion', '__return_false' )`.
 
 ## Critical CSS without the layout jumping
 - `scripts/build-critical-css.py` keeps only the rules for what is visible before scrolling: base styles, `@font-face`, the top bar, header and menu drawer, buttons, the home slider, and the inner-page banner and breadcrumbs. It keeps the whole rule and any surrounding `@media` block, so the first screen renders exactly as it does with the full stylesheet.
@@ -28,7 +28,7 @@ A possible next step is to replace the FAQ accordion with the theme's FAQ shortc
 2. Add `define( 'SMILE_LEAN_ASSETS', true );` to staging's `wp-config.php`. Clear the page cache and Elementor's cache.
 3. In a private window (lean mode does not apply to signed-in users), check each item:
    - View source on Home and About Us: `elementor/assets/js/frontend.min.js` and `jquery.min.js` should be gone, and `<style id="smile-critical-css">` should appear in `<head>`.
-   - View source on FAQ: the Elementor scripts are still there, and the accordion opens and closes.
+   - View source on FAQ: the Elementor scripts are gone, every question opens and closes on click and with the keyboard (Tab, then Enter or Space), and the plus and minus icons and the open-item highlight look as they did before.
    - The menu drawer, its sub-menus, the slider, the WhatsApp button, the forms and the contact map all work.
    - On phone and desktop widths, the first screen should not flash unstyled content or shift when the page finishes loading.
    - PageSpeed on staging: compare unused JS, unused CSS, render-blocking requests and CLS.

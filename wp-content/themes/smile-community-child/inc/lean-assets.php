@@ -17,7 +17,8 @@
  *    tabs, carousels, entrance animations, motion effects, sticky, lightbox,
  *    background slideshows or videos, HTML widgets, or any widget not on the
  *    allow-list) the scripts load as normal. Today that is only the FAQ page
- *    (accordion). jQuery is skipped too when nothing else on the page needs it.
+ *    (accordion) and, since the accordion now renders as native <details>
+ *    (section 3), no page needs them. jQuery is skipped too when nothing else needs it.
  *
  * 2. Critical CSS is inlined and the theme's large stylesheets load without
  *    blocking the first paint. assets/build/critical-*.min.css (built by
@@ -60,7 +61,10 @@ function smile_lean_assets_on() {
 function smile_lean_static_widgets() {
 	return (array) apply_filters(
 		'smile_lean_static_widgets',
-		array( 'heading', 'text-editor', 'button', 'image', 'shortcode', 'spacer', 'divider', 'icon', 'icon-list', 'google_maps' )
+		array_merge(
+			array( 'heading', 'text-editor', 'button', 'image', 'shortcode', 'spacer', 'divider', 'icon', 'icon-list', 'google_maps' ),
+			smile_native_accordion_on() ? array( 'accordion' ) : array() // Rendered as native <details>, see section 3.
+		)
 	);
 }
 
@@ -233,3 +237,61 @@ function smile_lean_style_tag( $tag, $handle, $href, $media ) {
 	);
 }
 add_filter( 'style_loader_tag', 'smile_lean_style_tag', 10, 4 );
+
+/* -------------------------------------------------------------------------
+ * 3. FAQ accordion without Elementor's scripts (always on, 2.47.0)
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Whether Elementor accordion widgets render as native <details> elements.
+ * Switch off with: add_filter( 'smile_native_accordion', '__return_false' );
+ *
+ * @return bool
+ */
+function smile_native_accordion_on() {
+	if ( is_admin() || ( function_exists( 'smile_is_elementor_preview' ) && smile_is_elementor_preview() ) ) {
+		return false; // Keep Elementor's own markup while editing.
+	}
+	return (bool) apply_filters( 'smile_native_accordion', true );
+}
+
+/**
+ * Render Elementor's accordion widget as native <details>/<summary> elements.
+ *
+ * The questions and answers still come from the widget, so editors change them in
+ * Elementor exactly as before. The browser opens and closes each item itself, so the
+ * FAQ page no longer needs Elementor's frontend JavaScript. The markup has no
+ * .elementor-tab-title, so Elementor's own accordion script (when loaded on other
+ * pages) never binds to it and cannot toggle it twice. Styling: .smile-faq rules in main.css.
+ *
+ * @param string                 $content Widget HTML.
+ * @param \Elementor\Widget_Base $widget  Widget.
+ * @return string
+ */
+function smile_native_accordion( $content, $widget ) {
+	if ( ! is_object( $widget ) || ! method_exists( $widget, 'get_name' ) || 'accordion' !== $widget->get_name() || ! smile_native_accordion_on() ) {
+		return $content;
+	}
+	$tabs = (array) $widget->get_settings_for_display( 'tabs' );
+	if ( ! $tabs ) {
+		return $content;
+	}
+	$plus  = '<svg class="smile-faq__plus" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M416 208H272V64c0-17.7-14.3-32-32-32h-32c-17.7 0-32 14.3-32 32v144H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h144v144c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V304h144c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z"/></svg>';
+	$minus = '<svg class="smile-faq__minus" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M416 208H32c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32v-32c0-17.7-14.3-32-32-32z"/></svg>';
+	$out   = '<div class="elementor-accordion smile-faq__list">';
+	foreach ( $tabs as $tab ) {
+		$title  = isset( $tab['tab_title'] ) ? (string) $tab['tab_title'] : '';
+		$answer = isset( $tab['tab_content'] ) ? (string) $tab['tab_content'] : '';
+		if ( '' === trim( $title ) ) {
+			continue;
+		}
+		$out .= '<details class="elementor-accordion-item smile-faq__item">'
+			. '<summary class="smile-faq__q"><span class="smile-faq__title">' . esc_html( $title ) . '</span>'
+			. '<span class="elementor-accordion-icon smile-faq__icon" aria-hidden="true">' . $plus . $minus . '</span></summary>'
+			. '<div class="smile-faq__a">' . do_shortcode( wpautop( wp_kses_post( $answer ) ) ) . '</div>'
+			. '</details>';
+	}
+	return $out . '</div>';
+}
+add_filter( 'elementor/widget/render_content', 'smile_native_accordion', 10, 2 );
+
