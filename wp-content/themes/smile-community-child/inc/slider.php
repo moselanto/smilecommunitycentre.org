@@ -186,7 +186,7 @@ function smile_hero_slider() {
 						if ( $s['image'] ) {
 							echo wp_get_attachment_image(
 								$s['image'],
-								'smile-hero',
+								0 === $i ? 'smile-hero' : 'smile-hero-md', // Later slides: 1280 px is plenty and saves bytes on phones.
 								false,
 								array(
 									'class'         => 'smile-slide__img',

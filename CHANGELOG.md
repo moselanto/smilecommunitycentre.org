@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.46.1 (mobile speed)
+- **jQuery no longer blocks rendering.** It was the only blocking script in `<head>`. It now loads in the footer on the public site, after the page has painted. Everything that uses it (Elementor) was already in the footer. This is skipped for signed-in users and in the Elementor editor. To switch it off: `add_filter( 'smile_jquery_in_footer', '__return_false' )`.
+- **Lighter slides on phones.** Every hero slide after the first now uses the 1280 px image size instead of 1920 px. The first slide is unchanged.
+- **Server config:** JavaScript is served as `text/javascript`, which the compression and cache rules in `docs/server/htaccess-production.conf` did not cover. Live JS files were going out uncompressed with only one week of caching. Both rules now include `text/javascript`.
+
 ## 2.46.0 / Core 1.3.7 (security, production)
 - **Redirect targets validated:** only `/path` or `http(s)://host` targets are accepted. `javascript:`, `data:` and `//host` targets are ignored. Absolute targets that an administrator adds now redirect correctly instead of falling back to wp-admin.
 - **Rate limits behind a CDN:** new `smile_core_client_ip()`. Forms and the login limiter use the forwarded visitor IP only when the request comes from a trusted proxy (`SMILE_TRUSTED_PROXIES` or the `smile_trusted_proxies` filter). The default behaviour is unchanged.
