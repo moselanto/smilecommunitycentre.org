@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.47.1 (fix: layout shift with lean mode)
+- **Critical CSS was missing the slider and header element rules.** The selector filter in `scripts/build-critical-css.py` used `\b` after the block name, and `_` counts as a word character, so BEM elements like `.smile-slide__content`, `.smile-slider__controls` and `.smile-header__inner` were left out. On slow loads, the hero text and controls moved when the full stylesheet arrived. This caused CLS 0.481 in one of three mobile PageSpeed runs on 4 Nov. The filter now matches BEM elements (`__`) and modifiers (`--`), and the critical files have been rebuilt: 14.8 KB gzipped for home and 12.2 KB for inner pages.
+
 ## 2.47.0 (lean assets, opt-in)
 - New `inc/lean-assets.php`, turned on with `define( 'SMILE_LEAN_ASSETS', true );`. It is off by default; test it on staging first.
   - Elementor's frontend scripts (and jQuery when unused) are skipped on pages that use only static widgets. All pages except FAQ qualify today. Each page and its header and footer templates are checked automatically.

@@ -20,7 +20,7 @@ T = os.path.join(os.path.dirname(__file__), "..", "wp-content", "themes", "smile
 KEEP = re.compile(
     r"^(?:\*|html|body|:root|::?(?:before|after|selection)|h[1-3]|p|a|img|svg|picture|button|"
     r"\.screen-reader-text|\.skip-link|\.smile-(?:skip-link|container|topbar|header|brand|nav|ico|icon|social|btn|"
-    r"pagehero|breadcrumbs|eyebrow|hero|slider|slide|el-header|el-hidden|lead|faq)\b|\.menu-item|\.sub-menu|\.current-menu)"
+    r"pagehero|breadcrumbs|eyebrow|hero|slider|slide|el-header|el-hidden|lead|faq)(?![a-z0-9]|-[a-z0-9])|\.menu-item|\.sub-menu|\.current-menu)"
 )
 
 
