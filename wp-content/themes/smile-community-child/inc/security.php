@@ -34,7 +34,8 @@ defined( 'ABSPATH' ) || exit;
  * @return string
  */
 function smile_security_ip_hash() {
-	$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0';
+	// Same trusted-proxy rules as the enquiry forms when Smile Community Core is active.
+	$ip = function_exists( 'smile_core_client_ip' ) ? smile_core_client_ip() : ( isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0' );
 	return substr( hash_hmac( 'sha256', $ip, wp_salt( 'auth' ) ), 0, 32 );
 }
 

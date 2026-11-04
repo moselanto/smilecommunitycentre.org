@@ -4,8 +4,8 @@
 |---|---|
 | **Product** | smilecommunitycentre.org |
 | **Owner** | Smile Community Centre Children's Home |
-| **Status** | Staging (topnotchmall.co.ke/smilescommunity), preparing for launch |
-| **Theme** | smile-community-child 2.28.0, Smile Community Core 1.2.2 |
+| **Status** | Live at https://smilecommunitycentre.org (launched November 2026). Staging: topnotchmall.co.ke/smilescommunity |
+| **Theme** | smile-community-child 2.46.0, Smile Community Core 1.3.7 (bundled in the theme) |
 
 ## 1. Purpose
 

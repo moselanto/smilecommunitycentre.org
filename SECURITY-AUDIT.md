@@ -1,5 +1,53 @@
 # Security audit
 
+## Production re-audit: 4 November 2026 (theme 2.46.0, Core 1.3.7)
+
+**Scope:** every PHP file in the theme and the bundled plugin (16,000 lines), the theme JavaScript, the live site at https://smilecommunitycentre.org and its cPanel hosting account. **Method:** a manual review of every request entry point (one public form handler, 9 `admin-post`/AJAX handlers, REST, template output), plus pattern searches for SQL, output escaping, dangerous functions and unsanitised input, PHP 8.3 `php -l` on all files, and live HTTP checks.
+
+**Result:** no critical or high-severity vulnerabilities in the code. Two medium-severity issues and one low-severity issue were fixed in code. Six issues on the server were fixed on the server or now have ready-made configuration.
+
+### Required controls: how each one is covered
+
+| Control | Status | Where / how |
+|---|---|---|
+| Rate limiting | In place, improved | Login: 5 failures per 15 minutes per IP (`inc/security.php`). Forms: per-IP hourly limit plus a separate limit on attempts (`forms.php`). **New:** support for trusted proxies and CDNs, so limits use the real visitor IP |
+| Input sanitisation | In place | Every `$_POST`/`$_GET`/`$_SERVER` read is unslashed and sanitised (`sanitize_text_field`, `sanitize_textarea_field`, `sanitize_key`, `absint`, `is_email`). A scan found no raw superglobal reads. **New:** redirect targets are validated |
+| Password hashing | WordPress core | Salted hashes (bcrypt from WordPress 6.8). The theme requires passwords of 12 characters or more, and two-step sign-in is offered. The site never stores or compares passwords itself |
+| Environment variables / no hard-coded keys | In place | The repository holds no keys, tokens or passwords (scanned). Database credentials and salts exist only in `wp-config.php` on the server, now at permission 0600. See `docs/server/wp-config-hardening.md` |
+| CORS | In place | The REST API allows credentialed cross-origin requests only from the site's own origin. WordPress's echo-any-origin default is removed (`inc/security.php` §6) |
+| SQL / NoSQL injection | In place | There is one direct query, and it uses `$wpdb->prepare()` (`inc/slider.php`). Everything else goes through WordPress APIs (`WP_Query`, meta and option functions). There is no NoSQL store |
+| Session expiry | In place | Sessions last 12 hours, or 7 days with "Remember me" (WordPress defaults are 2 and 14 days). HttpOnly secure auth cookies come from core. **Recommended:** rotate the salts after the move from staging (see `wp-config-hardening.md`) |
+| HTTPS everywhere | In place, plus server rules | The theme sends http requests to https (301) and sends HSTS for one year. `upgrade-insecure-requests` is set in the CSP. Staging URLs were replaced in the database (110 rows). **New:** a one-hop http/www to https rule for static files (`docs/server/htaccess-production.conf`) |
+| Security headers | In place | CSP (`object-src`, `base-uri`, `frame-ancestors`, `form-action`), HSTS, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy, COOP and X-Permitted-Cross-Domain-Policies. These apply to pages, login and the dashboard. **New:** the same baseline for static files through `.htaccess` |
+| Regular dependency updates | Process | There are no Composer or npm runtime dependencies. The only third-party code is WordPress, Hello Elementor, Elementor and optional plugins: update them monthly (section 7). The build tools `rcssmin`/`rjsmin` are used only at build time |
+
+### OWASP review results
+
+| Area | Result |
+|---|---|
+| SQL injection | None found. The only direct query is prepared |
+| XSS | None found. Output is escaped at render (`esc_html`, `esc_attr`, `esc_url`, `wp_kses_post`). The two unescaped `echo $html` calls print markup the theme builds and escapes itself. The one `insertAdjacentHTML` call in `main.js` inserts a constant SVG string |
+| CSRF | Every state-changing handler checks a nonce (`check_admin_referer`, `check_ajax_referer`, `wp_verify_nonce`) |
+| Broken authentication | Login throttling, generic login errors, author/user enumeration blocked, XML-RPC off, application passwords off, two-step sign-in available |
+| Unauthorised access | Every admin handler checks a capability (`manage_options`, `edit_pages`, `install_plugins`, `smile_manage_inquiries`). The only public handler is the enquiry form. The 2FA "snooze" handler changes only the signed-in user's own reminder |
+| Insecure file uploads | The site accepts no public uploads. CVs are links, not files. Media uploads are for staff only, with EXIF/GPS stripped (`media-privacy.php`). **New:** a rule that blocks PHP execution in `wp-content/uploads` (`docs/server/uploads-htaccess.conf`) |
+| Session hijacking | Secure HttpOnly cookies, HSTS, shorter sessions, and salt rotation recommended |
+| API vulnerabilities | Users endpoint hidden from visitors, CORS limited to the site's own origin, enquiries not exposed in REST (`show_in_rest => false`, not public) |
+| Data exposure | Enquiries are private posts with a retention cron. IPs are stored only as keyed hashes. Email headers are protected against injection. **Fixed on the server:** three backup ZIPs (9.1 GB in total, including a full site backup) could be downloaded from the web root. They were moved to `~/private-backups/`. `wp-config.php` was world-writable (0666) and is now 0600 |
+
+### Findings fixed in this round
+
+| # | Severity | Finding | Fix |
+|---|---|---|---|
+| P1 | High (server) | Full-site backup ZIPs were downloadable from `public_html` | Moved outside the web root on 4 Nov 2026. `.htaccess` now denies `.zip/.sql/.bak/.log` and other backup or log files |
+| P2 | High (server) | `wp-config.php` had permission 0666 (writable by any process on the server) | Set to 0600 on 4 Nov 2026 |
+| P3 | Medium | Redirect list targets were not validated, so an editor could store a `javascript:`, `data:` or protocol-relative `//host` target. Absolute targets were also sent to wp-admin by `wp_safe_redirect` | `smile_core_valid_redirect_target()` accepts only `/path` or `http(s)://host` targets. `allowed_redirect_hosts` lists only hosts that an administrator typed in |
+| P4 | Medium | Behind a CDN or proxy, every visitor shares the proxy IP, so one abuser could trip the form and login limits for everyone | `smile_core_client_ip()` trusts `CF-Connecting-IP`/`X-Forwarded-For` only from proxies listed in `SMILE_TRUSTED_PROXIES` or the `smile_trusted_proxies` filter. By default nothing changes, so the headers cannot be spoofed |
+| P5 | Low | No server rules for static files: no compression or caching headers, directory listing allowed, readme/license files exposed | `docs/server/htaccess-production.conf` |
+| P6 | Open (host) | `/wp-login.php` returns a 302 to `http://127.0.0.1/` for visitors without a cookie. Nothing in WordPress, `.htaccess` or cPanel Redirects causes it | A ticket is needed with VivaWebHost about a server, vhost or WAF login-protection rule. `/wp-admin/` still works for signing in |
+
+
+
 | | |
 |---|---|
 | **Scope** | `smile-community-child` theme 2.14.0, re-checked for 2.17.0 and again in full for 2.28.0 (all PHP, JS, CSS, templates, page data) and the bundled Smile Community Core plugin 1.1.0, re-checked for 1.2.2 |

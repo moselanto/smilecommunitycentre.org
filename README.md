@@ -8,17 +8,18 @@
 A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.</p>
 
 <p>
-<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.32.0-164B3F?style=flat-square">
-<img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.3.1-176B5B?style=flat-square">
+<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.46.0-164B3F?style=flat-square">
+<img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.3.7-176B5B?style=flat-square">
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=flat-square&logo=wordpress&logoColor=white">
 <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2%20recommended-777BB4?style=flat-square&logo=php&logoColor=white">
 <img alt="Elementor" src="https://img.shields.io/badge/layouts-Elementor-92003B?style=flat-square&logo=elementor&logoColor=white">
 <img alt="Accessibility" src="https://img.shields.io/badge/accessibility-WCAG%202.2%20AA-2E7D32?style=flat-square">
 <img alt="License" src="https://img.shields.io/badge/license-GPL--2.0--or--later-3B5998?style=flat-square">
-<img alt="Status" src="https://img.shields.io/badge/status-staging-F4A100?style=flat-square">
+<img alt="Status" src="https://img.shields.io/badge/status-live-176B5B?style=flat-square">
 </p>
 
 <p>
+<a href="https://smilecommunitycentre.org/"><strong>Live site</strong></a> &nbsp;&middot;&nbsp;
 <a href="https://topnotchmall.co.ke/smilescommunity/"><strong>Staging site</strong></a> &nbsp;&middot;&nbsp;
 <a href="docs/admin-guide.md"><strong>Staff guide</strong></a> &nbsp;&middot;&nbsp;
 <a href="docs/install-and-deploy.md"><strong>Install</strong></a> &nbsp;&middot;&nbsp;
