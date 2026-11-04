@@ -94,12 +94,42 @@ function smile_core_form_fields( $type ) {
 }
 
 /**
+ * Visitor IP address for rate limiting.
+ *
+ * Uses REMOTE_ADDR. When the site sits behind a proxy or CDN (for example Cloudflare),
+ * every visitor would otherwise share the proxy's IP and one person could lock out all
+ * forms. List the proxy IPs with the smile_trusted_proxies filter (or the
+ * SMILE_TRUSTED_PROXIES constant, comma-separated) and the forwarded client IP is used
+ * instead. Forwarded headers are never trusted from unlisted sources, so they cannot be spoofed.
+ *
+ * @return string
+ */
+function smile_core_client_ip() {
+	$remote = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0';
+	$list   = defined( 'SMILE_TRUSTED_PROXIES' ) ? array_map( 'trim', explode( ',', (string) SMILE_TRUSTED_PROXIES ) ) : array();
+	$list   = (array) apply_filters( 'smile_trusted_proxies', $list );
+	if ( ! in_array( $remote, $list, true ) ) {
+		return $remote;
+	}
+	foreach ( array( 'HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR' ) as $header ) {
+		if ( ! empty( $_SERVER[ $header ] ) ) {
+			$parts = explode( ',', sanitize_text_field( wp_unslash( $_SERVER[ $header ] ) ) );
+			$ip    = trim( $parts[0] );
+			if ( filter_var( $ip, FILTER_VALIDATE_IP ) ) {
+				return $ip;
+			}
+		}
+	}
+	return $remote;
+}
+
+/**
  * Hash of the visitor IP (we never store the raw IP).
  *
  * @return string
  */
 function smile_core_ip_hash() {
-	$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '0';
+	$ip = smile_core_client_ip();
 	return hash_hmac( 'sha256', $ip, wp_salt( 'nonce' ) );
 }
 

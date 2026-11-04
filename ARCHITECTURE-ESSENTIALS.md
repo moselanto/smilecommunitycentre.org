@@ -58,3 +58,12 @@ Wrap every visitor-facing string in `__( '...', 'smile-community' )` (or `esc_ht
 - Use `wp_remote_get` for URLs that come from outside (use `wp_safe_remote_get`).
 - Publish children's names, locations or identifying details.
 - Ship a zip that did not pass `check-theme.py`.
+
+## Production and server configuration (added 2.46.0)
+- Production: https://smilecommunitycentre.org on cPanel (VivaWebHost). The theme zip and Smile Setup are the only deployment path. Do not upload the repository's `wp-content` directly.
+- `docs/server/htaccess-production.conf`: deny rules for config, backup and dot files, an HTTPS redirect, compression and long caching for versioned assets.
+- `docs/server/uploads-htaccess.conf`: no script execution in `wp-content/uploads`.
+- `docs/server/wp-config-hardening.md`: `FORCE_SSL_ADMIN`, `DISALLOW_FILE_EDIT`, no debug display, salt rotation, and optional `SMILE_TRUSTED_PROXIES`.
+- Client IP for rate limits: `smile_core_client_ip()` (plugin `forms.php`). The theme's login limiter uses it when the plugin is active.
+- Redirect targets are validated by `smile_core_valid_redirect_target()` (plugin `redirects.php`).
+

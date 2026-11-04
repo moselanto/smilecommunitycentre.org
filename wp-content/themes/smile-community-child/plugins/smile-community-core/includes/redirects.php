@@ -98,10 +98,55 @@ function smile_core_redirect_rules() {
 		if ( count( $parts ) < 2 || 0 !== strpos( $parts[0], '/' ) ) {
 			continue;
 		}
-		$rules[ smile_core_redirect_key( $parts[0] ) ] = $parts[1];
+		$target = smile_core_valid_redirect_target( $parts[1] );
+		if ( '' === $target ) {
+			continue; // Skip unsafe or malformed targets (javascript:, data:, //host, etc.).
+		}
+		$rules[ smile_core_redirect_key( $parts[0] ) ] = $target;
 	}
 	return $rules;
 }
+
+/**
+ * Accept only a site-relative path ("/new-page/") or an absolute http(s) URL.
+ * Rejects protocol-relative "//evil.example", "javascript:", "data:" and other schemes.
+ *
+ * @param string $target Raw target from the redirect list.
+ * @return string Clean target, or '' when it is not allowed.
+ */
+function smile_core_valid_redirect_target( $target ) {
+	$target = trim( (string) $target );
+	if ( '' === $target ) {
+		return '';
+	}
+	if ( '/' === $target[0] ) {
+		return ( 0 === strpos( $target, '//' ) || false !== strpos( $target, '\\' ) ) ? '' : $target;
+	}
+	$scheme = strtolower( (string) wp_parse_url( $target, PHP_URL_SCHEME ) );
+	if ( ! in_array( $scheme, array( 'http', 'https' ), true ) || ! wp_parse_url( $target, PHP_URL_HOST ) ) {
+		return '';
+	}
+	return esc_url_raw( $target, array( 'http', 'https' ) );
+}
+
+/**
+ * Let wp_safe_redirect() follow absolute targets that an administrator added to the
+ * redirect list (previously they were silently sent to wp-admin). Only hosts typed
+ * into Smile Centre > Redirects are allowed; visitors cannot add hosts.
+ *
+ * @param string[] $hosts Allowed hosts.
+ * @return string[]
+ */
+function smile_core_redirect_hosts( $hosts ) {
+	foreach ( smile_core_redirect_rules() as $target ) {
+		$host = wp_parse_url( $target, PHP_URL_HOST );
+		if ( $host ) {
+			$hosts[] = strtolower( $host );
+		}
+	}
+	return array_values( array_unique( $hosts ) );
+}
+add_filter( 'allowed_redirect_hosts', 'smile_core_redirect_hosts' );
 
 /**
  * Old site had no "category" base: /charity/, /charity/page/2/, /charity/feed/.

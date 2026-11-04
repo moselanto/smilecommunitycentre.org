@@ -2,6 +2,12 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.46.0 / Core 1.3.7 (security, production)
+- **Redirect targets validated:** only `/path` or `http(s)://host` targets are accepted. `javascript:`, `data:` and `//host` targets are ignored. Absolute targets that an administrator adds now redirect correctly instead of falling back to wp-admin.
+- **Rate limits behind a CDN:** new `smile_core_client_ip()`. Forms and the login limiter use the forwarded visitor IP only when the request comes from a trusted proxy (`SMILE_TRUSTED_PROXIES` or the `smile_trusted_proxies` filter). The default behaviour is unchanged.
+- **Server configuration** in `docs/server/`: production `.htaccess` (security deny rules, HTTPS, Brotli/Deflate compression, one-year caching for versioned assets), an uploads `.htaccess` that blocks script execution, and a `wp-config.php` hardening guide.
+- Docs: SECURITY-AUDIT production re-audit, and status updated to live in the PRD, README, AGENTS and ARCHITECTURE docs.
+
 ## Unreleased (repository clean-up after launch)
 - Removed the outdated standalone copy of Smile Community Core (1.0.1) from `wp-content/plugins/`. The only maintained copy is the one bundled in the theme (`plugins/smile-community-core`, 1.3.6), which the Smile Setup wizard installs. The old copy contained a separate page builder that could overwrite pages with older content and change search-engine visibility.
 - Added a GitHub Actions workflow (`.github/workflows/build.yml`) that runs PHP 8.3 syntax checks and builds `smile-community-child.zip` as a downloadable artifact.

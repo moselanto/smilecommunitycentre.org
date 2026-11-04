@@ -7,7 +7,8 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 - **Live (old) site:** https://smilecommunitycentre.org/ (old "helpinghands" theme, SEOPress sitemaps at /sitemaps.xml).
 - **Redesign (staging):** https://topnotchmall.co.ke/smilescommunity (WordPress in a sub-folder).
 - **Code:** this repo. Theme `wp-content/themes/smile-community-child/` (child of Hello Elementor) with the **Smile Community Core** plugin bundled at `wp-content/themes/smile-community-child/plugins/smile-community-core/` (this bundled copy is the one that ships; `wp-content/plugins/smile-community-core/` is an older 1.0.0 copy, keep its `includes/redirects.php` in sync).
-- **Plan:** when finished, the staging site replaces the live site on smilecommunitycentre.org.
+- **Production:** live at https://smilecommunitycentre.org since November 2026 (cPanel host leader.vivawebhost.com). Server configuration lives in `docs/server/`.
+- **Plugin copy:** the only maintained copy of Smile Community Core is the one bundled in the theme. The old standalone copy in `wp-content/plugins/` was removed.
 
 ## Standing rules
 
@@ -31,6 +32,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **4 Nov 2026:** Go-live fixes on production: permalinks re-saved (inner pages were returning 500), Elementor URLs moved from staging to the live domain (110 rows), indexing switched on, `wp-config.php` set to 0600, and backup ZIPs moved out of `public_html`. Code 2.46.0 / Core 1.3.7: redirect target validation and trusted-proxy client IP. Open: `/wp-login.php` redirects to 127.0.0.1 because of a host-level rule (VivaWebHost ticket).
 - **29 Oct 2026 (afternoon):** 2.34.0 on branch `feature/site-polish-2-34` (PR): fixes from a desktop review of all 19 staging pages (logo legibility, button contrast, dark-banner text, home Ways to help/closing layout, related-programme cards, About mission icons, Stories column, WhatsApp pop-up). After merge: build zip, upload, Apply latest design, hard-refresh.
 
 - **29 Oct 2026:** 2.33.0 on branch `feature/brand-refresh-2-33` (PR): new logo (Logo Kit v1.2) and brand palette, home page rebuilt from the revised content document with native Elementor widgets, 8 bundled photos with automatic import, new slider and banner photos, new office hours. Quality gate passes (PHP lint not run in this environment: php was unavailable, so lint on staging/CI). After merge: build zip, upload, click **Apply latest design**, check home, About Us (#community), programme pages and footer logo on a phone. Copy, captions and photo use still need the Centre's approval before go-live. Optional: add Nunito woff2 to `assets/fonts/` for exact brand headings.

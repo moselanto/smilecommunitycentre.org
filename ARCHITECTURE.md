@@ -169,3 +169,12 @@ Defence in depth, summarised here and detailed in [SECURITY-AUDIT.md](SECURITY-A
 5. **Access**: capability checks on every admin action; private enquiry post type.
 6. **Identity**: login throttling, generic errors, short sessions, 12-character passwords, core password hashing.
 7. **Exposure**: no version tag, no user enumeration, XML-RPC off, REST CORS limited to own origin.
+
+## Production and server configuration (added 2.46.0)
+- Production: https://smilecommunitycentre.org on cPanel (VivaWebHost). The theme zip and Smile Setup are the only deployment path. Do not upload the repository's `wp-content` directly.
+- `docs/server/htaccess-production.conf`: deny rules for config, backup and dot files, an HTTPS redirect, compression and long caching for versioned assets.
+- `docs/server/uploads-htaccess.conf`: no script execution in `wp-content/uploads`.
+- `docs/server/wp-config-hardening.md`: `FORCE_SSL_ADMIN`, `DISALLOW_FILE_EDIT`, no debug display, salt rotation, and optional `SMILE_TRUSTED_PROXIES`.
+- Client IP for rate limits: `smile_core_client_ip()` (plugin `forms.php`). The theme's login limiter uses it when the plugin is active.
+- Redirect targets are validated by `smile_core_valid_redirect_target()` (plugin `redirects.php`).
+
