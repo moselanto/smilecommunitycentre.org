@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.47.2 (desktop layout shift from fonts)
+- **Caveat no longer swaps in late.** One desktop PageSpeed run on 4 Nov showed CLS 0.747 on the hero slide content, with the Caveat web font listed as a contributor. Caveat is decorative (captions and signatures), so it now uses `font-display: optional`: if it isn't ready for the first paint, the fallback stays and nothing moves. On the home page it is also preloaded, so it is usually ready in time. Nunito and Figtree are unchanged (preloaded, `swap`).
+
 ## Core 1.4.0 (Paystack donations: one-time and monthly)
 - **New `[smile_donate_form]`:** a Paystack donation form with:
   - one-time or monthly giving
