@@ -60,7 +60,7 @@ function smile_security_header_list() {
 		'Permissions-Policy'           => 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
 		'Cross-Origin-Opener-Policy'   => 'same-origin-allow-popups',
 		'X-Permitted-Cross-Domain-Policies' => 'none',
-		'Content-Security-Policy'      => "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' https://wa.me https://api.whatsapp.com" . ( is_ssl() ? '; upgrade-insecure-requests' : '' ),
+		'Content-Security-Policy'      => "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' https://wa.me https://api.whatsapp.com https://checkout.paystack.com" . ( is_ssl() ? '; upgrade-insecure-requests' : '' ),
 	);
 	if ( is_ssl() ) {
 		// One year. "preload" is left out on purpose: only add it once the whole domain is HTTPS-only.
