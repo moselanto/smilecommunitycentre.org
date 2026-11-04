@@ -2,6 +2,13 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.47.0 (lean assets, opt-in)
+- New `inc/lean-assets.php`, turned on with `define( 'SMILE_LEAN_ASSETS', true );`. It is off by default; test it on staging first.
+  - Elementor's frontend scripts (and jQuery when unused) are skipped on pages that use only static widgets. All pages except FAQ qualify today. Each page and its header and footer templates are checked automatically.
+  - Critical CSS is inlined in `<head>`, and the theme stylesheets load without blocking rendering (preload plus a noscript fallback). Elementor's CSS stays blocking to avoid layout shift.
+- New `scripts/build-critical-css.py`, which builds `assets/build/critical-home.min.css` and `critical-inner.min.css`. It runs from `build-theme-zip.sh`.
+- Plan and staging test steps: `docs/lean-assets-plan.md`.
+
 ## 2.46.1 (mobile speed)
 - **jQuery no longer blocks rendering.** It was the only blocking script in `<head>`. It now loads in the footer on the public site, after the page has painted. Everything that uses it (Elementor) was already in the footer. This is skipped for signed-in users and in the Elementor editor. To switch it off: `add_filter( 'smile_jquery_in_footer', '__return_false' )`.
 - **Lighter slides on phones.** Every hero slide after the first now uses the 1280 px image size instead of 1920 px. The first slide is unchanged.
