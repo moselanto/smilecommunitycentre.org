@@ -239,3 +239,27 @@ function smile_page_hero_sources( $post_id ) {
 	}
 	return null;
 }
+
+/**
+ * Move jQuery out of <head> on the public site (2.46.1).
+ *
+ * jQuery was the only render-blocking script in <head>. Everything that uses it
+ * (Elementor's frontend scripts) already loads in the footer, and nothing in the
+ * page body calls jQuery inline, so printing it in the footer removes it from the
+ * critical rendering path without changing behaviour. Skipped in wp-admin, for signed-in
+ * users (admin bar, Elementor editor) and in Elementor previews.
+ * Switch off with: add_filter( 'smile_jquery_in_footer', '__return_false' );
+ */
+function smile_jquery_to_footer() {
+	if ( is_admin() || is_user_logged_in() || smile_is_elementor_preview() || ! apply_filters( 'smile_jquery_in_footer', true ) ) {
+		return;
+	}
+	$scripts = wp_scripts();
+	foreach ( array( 'jquery', 'jquery-core', 'jquery-migrate' ) as $handle ) {
+		if ( isset( $scripts->registered[ $handle ] ) ) {
+			$scripts->add_data( $handle, 'group', 1 );
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'smile_jquery_to_footer', 999 );
+
