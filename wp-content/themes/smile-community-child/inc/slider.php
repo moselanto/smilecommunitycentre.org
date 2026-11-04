@@ -199,12 +199,13 @@ function smile_hero_slider() {
 						} elseif ( $s['file'] ) {
 							$base = SMILE_THEME_URI . '/assets/images/slides/' . $s['file'];
 							printf(
-								'<img class="smile-slide__img" src="%1$s" srcset="%1$s 1600w, %2$s 960w" sizes="(min-width: 901px) 62vw, 100vw" width="1600" height="871" alt="%3$s" loading="%4$s" fetchpriority="%5$s" decoding="async">',
+								'<img class="smile-slide__img" src="%1$s" srcset="%1$s 1600w, %2$s 960w, %6$s 720w" sizes="(min-width: 901px) 62vw, 100vw" width="1600" height="871" alt="%3$s" loading="%4$s" fetchpriority="%5$s" decoding="async">',
 								esc_url( $base . '-1600.webp' ),
 								esc_url( $base . '-960.webp' ),
 								esc_attr( $s['alt'] ),
 								0 === $i ? 'eager' : 'lazy',
-								0 === $i ? 'high' : 'low'
+								0 === $i ? 'high' : 'low',
+								esc_url( $base . '-720.webp' ) // Phones: 720 px is enough at 1.75x density.
 							);
 						}
 						?>
