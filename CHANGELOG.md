@@ -7,6 +7,8 @@ All notable changes to the Smile Community Centre theme (`smile-community-child`
   - Elementor's frontend scripts (and jQuery when unused) are skipped on pages that use only static widgets. All pages except FAQ qualify today. Each page and its header and footer templates are checked automatically.
   - Critical CSS is inlined in `<head>`, and the theme stylesheets load without blocking rendering (preload plus a noscript fallback). Elementor's CSS stays blocking to avoid layout shift.
 - **FAQ without Elementor JS:** Elementor accordion widgets render as native `<details>` elements for all visitors. The questions and answers are still edited in Elementor and look the same as before (new `.smile-faq__*` rules in `main.css`). The FAQ page no longer needs Elementor's scripts. To switch it off: `smile_native_accordion` filter.
+- **Mobile image delivery:** the bundled hero slides now include 720 px versions (`*-720.webp`) in their srcset, so phones no longer download the 960 px file.
+- **Accessibility:** a `<main id="content">` landmark is added around page content on Elementor full-width pages, so both skip links now land on the content. The parent theme's second skip link is visually hidden but still focusable; it was `display:none`, which Lighthouse reports as not focusable.
 - New `scripts/build-critical-css.py`, which builds `assets/build/critical-home.min.css` and `critical-inner.min.css`. It runs from `build-theme-zip.sh`.
 - Plan and staging test steps: `docs/lean-assets-plan.md`.
 

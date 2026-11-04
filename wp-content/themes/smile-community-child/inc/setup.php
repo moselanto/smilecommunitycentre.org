@@ -344,3 +344,18 @@ function smile_speculation_rules( $config ) {
 	return $config;
 }
 add_filter( 'wp_speculation_rules_configuration', 'smile_speculation_rules' );
+
+/**
+ * Main landmark for pages built with Elementor's "Full width" (header-footer) template.
+ * Gives screen readers a <main> region and makes the "Skip to content" links (#content) land
+ * on the page content. Elementor prints no <main> in that template.
+ */
+function smile_main_landmark_open() {
+	echo '<main id="content" class="site-main smile-main" tabindex="-1">';
+}
+function smile_main_landmark_close() {
+	echo '</main>';
+}
+add_action( 'elementor/page_templates/header-footer/before_content', 'smile_main_landmark_open' );
+add_action( 'elementor/page_templates/header-footer/after_content', 'smile_main_landmark_close' );
+
