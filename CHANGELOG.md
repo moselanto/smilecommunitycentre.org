@@ -2,6 +2,33 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## Core 1.4.0 (Paystack donations: one-time and monthly)
+- **New `[smile_donate_form]`:** a Paystack donation form with:
+  - one-time or monthly giving
+  - KES and USD amounts (standard presets: KES 1,000/2,500/5,000/10,000 and USD 10/25/50/100, each with an impact line), plus a custom amount
+  - an optional "cover the processing fee" tick box, off by default
+  - an accessible, mobile-first layout matching the site palette. It works without JavaScript; the script only updates the button label and shows the fee amount.
+- **Payments:** donors pay on Paystack's own checkout page, so card data never touches the site.
+  - Monthly gifts use Paystack Plans and Subscriptions. One plan is created per currency and amount, then reused.
+  - Every payment is verified on the server against the stored amount and currency before it is marked paid.
+- **Webhook** `POST /wp-json/smile/v1/paystack`:
+  - checks the HMAC-SHA512 signature on every request and processes each reference only once
+  - records monthly renewals and stores subscriptions
+  - tracks cancellations and failed renewals, and tells staff when a renewal fails
+- **New `[smile_manage_giving]`:** Paystack emails donors a secure link to update their card or cancel. The page never reveals whether an email address has a gift on file.
+- **Records and emails:**
+  - a private Smile Centre > Donations list with amount, type, status and reference, plus a CSV export that is safe from formula injection
+  - branded HTML receipts for donors
+  - staff notices
+- **Security:**
+  - keys are read only from `wp-config.php` (`SMILE_PAYSTACK_SECRET_KEY`, optional `SMILE_PAYSTACK_TEST_SECRET_KEY` and `SMILE_PAYSTACK_MODE`)
+  - the form has a nonce, a honeypot and a limit of 10 payment starts per hour per visitor; the manage form allows 5 requests per hour
+  - the return URL is validated, and the redirect only goes to `checkout.paystack.com`
+  - donation result pages are never cached
+  - CSP `form-action` now allows `https://checkout.paystack.com`
+- **Settings:** Smile Centre > Centre details > Online donations (Paystack), for administrators only. Covers on/off, currencies, amounts, fee percentages (KES 2.9%, USD 3.8%), the notification email and the manage page URL.
+- Setup and test steps: `docs/paystack-donations.md`.
+
 ## 2.47.1 (fix: layout shift with lean mode)
 - **Critical CSS was missing the slider and header element rules.** The selector filter in `scripts/build-critical-css.py` used `\b` after the block name, and `_` counts as a word character, so BEM elements like `.smile-slide__content`, `.smile-slider__controls` and `.smile-header__inner` were left out. On slow loads, the hero text and controls moved when the full stylesheet arrived. This caused CLS 0.481 in one of three mobile PageSpeed runs on 4 Nov. The filter now matches BEM elements (`__`) and modifiers (`--`), and the critical files have been rebuilt: 14.8 KB gzipped for home and 12.2 KB for inner pages.
 

@@ -49,6 +49,15 @@ function smile_core_defaults() {
 		'online_giving_label'=> 'Give online',
 		'tiers'              => "500|5|Daily meals and clean water for 3 children|\n2500|25|A week of food, hygiene and safe care|\n8000|80|Meals, education and medical care together|featured\n15000|150|School fees or medical treatment for one child|",
 		'tiers_note'         => 'These are estimates of what a gift typically covers, not a guarantee of a specific outcome. Gifts are used where the need is greatest unless you tell us otherwise.',
+		// Online donations (Paystack). Keys live in wp-config.php, never here.
+		'paystack_enabled'      => '0',
+		'paystack_currencies'   => 'KES,USD',
+		'paystack_amounts_kes'  => "1000|A week of nutritious meals for a child\n2500|School books and uniform for one child\n5000|A month of meals for two children\n10000|A term of school fees for one child",
+		'paystack_amounts_usd'  => "10|A week of nutritious meals for a child\n25|School books and uniform for one child\n50|A month of meals for two children\n100|A term of school fees for one child",
+		'paystack_fee_kes'      => '2.9',
+		'paystack_fee_usd'      => '3.8',
+		'paystack_notify_email' => '',
+		'paystack_manage_url'   => home_url( '/donate/#manage' ),
 		// Volunteering.
 		'volunteer_open'     => '0',
 		'volunteer_notice'   => 'Volunteer places are currently full. You are welcome to send an expression of interest and we will contact you when a place opens.',
@@ -127,6 +136,19 @@ function smile_core_fields() {
 				'tiers_note'          => array( 'Note shown under the giving examples', 'textarea' ),
 			),
 		),
+		'paystack'  => array(
+			'title'  => __( 'Online donations (Paystack)', 'smile-core' ),
+			'fields' => array(
+				'paystack_enabled'      => array( 'Show the online donation form ([smile_donate_form]). Needs SMILE_PAYSTACK_SECRET_KEY in wp-config.php.', 'checkbox' ),
+				'paystack_currencies'   => array( 'Currencies, comma-separated (KES, USD). Only list currencies enabled on the Paystack account.', 'text' ),
+				'paystack_amounts_kes'  => array( 'KES amounts, one per line: amount|what it helps with (up to 6)', 'textarea' ),
+				'paystack_amounts_usd'  => array( 'USD amounts, one per line: amount|what it helps with (up to 6)', 'textarea' ),
+				'paystack_fee_kes'      => array( 'Processing fee for KES gifts, in % (used when a donor ticks "cover the fee")', 'text' ),
+				'paystack_fee_usd'      => array( 'Processing fee for USD gifts, in %', 'text' ),
+				'paystack_notify_email' => array( 'Send donation notices to (comma-separated; empty = the enquiries address)', 'text' ),
+				'paystack_manage_url'   => array( 'Page with [smile_manage_giving], linked from monthly receipts', 'url' ),
+			),
+		),
 		'volunteer' => array(
 			'title'  => __( 'Volunteering', 'smile-core' ),
 			'fields' => array(
@@ -177,7 +199,7 @@ function smile_core_save_settings() {
 	$input   = isset( $_POST['smile'] ) && is_array( $_POST['smile'] ) ? wp_unslash( $_POST['smile'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitised per field below.
 
 	foreach ( smile_core_fields() as $group_key => $group ) {
-		if ( 'forms' === $group_key && ! current_user_can( 'manage_options' ) ) {
+		if ( in_array( $group_key, array( 'forms', 'paystack' ), true ) && ! current_user_can( 'manage_options' ) ) {
 			continue;
 		}
 		foreach ( $group['fields'] as $key => $def ) {
@@ -216,6 +238,19 @@ function smile_core_save_settings() {
 	}
 	if ( isset( $current['safeguarding_email'] ) ) {
 		$current['safeguarding_email'] = implode( ',', array_filter( array_map( 'sanitize_email', explode( ',', $current['safeguarding_email'] ) ) ) );
+	}
+
+	foreach ( array( 'paystack_fee_kes', 'paystack_fee_usd' ) as $fee_key ) {
+		if ( isset( $current[ $fee_key ] ) ) {
+			$fee                  = (float) str_replace( ',', '.', $current[ $fee_key ] );
+			$current[ $fee_key ] = ( $fee >= 0 && $fee < 20 ) ? (string) round( $fee, 2 ) : '0';
+		}
+	}
+	if ( isset( $current['paystack_currencies'] ) ) {
+		$current['paystack_currencies'] = implode( ',', array_intersect( array( 'KES', 'USD' ), array_map( 'trim', explode( ',', strtoupper( $current['paystack_currencies'] ) ) ) ) );
+	}
+	if ( isset( $current['paystack_notify_email'] ) ) {
+		$current['paystack_notify_email'] = implode( ',', array_filter( array_map( 'sanitize_email', explode( ',', $current['paystack_notify_email'] ) ) ) );
 	}
 
 	update_option( 'smile_core_settings', $current );
