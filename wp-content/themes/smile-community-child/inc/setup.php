@@ -291,13 +291,17 @@ function smile_local_fonts() {
 		array( 'Figtree', 'normal', '300 900', 'figtree-latin.woff2' ),
 		array( 'Newsreader', 'normal', '500', 'newsreader-latin.woff2' ),
 		array( 'Newsreader', 'italic', '500', 'newsreader-italic-latin.woff2' ),
-		array( 'Caveat', 'normal', '600', 'caveat-latin.woff2' ),
+		array( 'Caveat', 'normal', '600', 'caveat-latin.woff2', 'optional' ), // Decorative only: never swap late (no layout shift).
 	);
 	echo '<link rel="preload" href="' . esc_url( $base . 'nunito-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
 	echo '<link rel="preload" href="' . esc_url( $base . 'figtree-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	if ( is_front_page() ) {
+		// The home page shows hand-written Caveat accents; load it early so it is ready for the first paint.
+		echo '<link rel="preload" href="' . esc_url( $base . 'caveat-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	}
 	$css = '';
 	foreach ( $faces as $f ) {
-		$css .= "@font-face{font-family:'" . $f[0] . "';font-style:" . $f[1] . ';font-weight:' . $f[2] . ';font-display:swap;src:url(' . esc_url( $base . $f[3] ) . ") format('woff2');unicode-range:" . $range . ';}';
+		$css .= "@font-face{font-family:'" . $f[0] . "';font-style:" . $f[1] . ';font-weight:' . $f[2] . ';font-display:' . ( isset( $f[4] ) ? $f[4] : 'swap' ) . ';src:url(' . esc_url( $base . $f[3] ) . ") format('woff2');unicode-range:" . $range . ';}';
 	}
 	echo '<style id="smile-fonts">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from fixed values and esc_url().
 }
