@@ -519,8 +519,21 @@ function smile_pay_back( $return, $status, $ref = '' ) {
 	if ( $ref ) {
 		$args['ref'] = $ref;
 	}
-	wp_safe_redirect( add_query_arg( $args, $return ) . '#give' );
+	$url = add_query_arg( $args, $return ) . '#give';
+	if ( smile_pay_is_popup() ) {
+		wp_send_json( array( 'ok' => false, 'redirect' => wp_validate_redirect( $url, home_url( '/donate/' ) ) ) );
+	}
+	wp_safe_redirect( $url );
 	exit;
+}
+
+/**
+ * Was this payment started by the on-page Paystack window (donate.js) rather than a plain form post?
+ *
+ * @return bool
+ */
+function smile_pay_is_popup() {
+	return isset( $_POST['smile_popup'] ) && '1' === $_POST['smile_popup']; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- the nonce is checked in smile_pay_submit().
 }
 
 /**
@@ -622,6 +635,30 @@ function smile_pay_submit() {
 	if ( is_wp_error( $data ) || 'checkout.paystack.com' !== wp_parse_url( $url, PHP_URL_HOST ) ) {
 		update_post_meta( $id, '_sd_status', 'failed' );
 		smile_pay_back( $return, 'error' );
+	}
+	if ( smile_pay_is_popup() && ! empty( $data['access_code'] ) ) {
+		// Open Paystack's payment window on our page; the redirect URL is the fallback if the window can't open.
+		wp_send_json(
+			array(
+				'ok'          => true,
+				'access_code' => sanitize_text_field( (string) $data['access_code'] ),
+				'url'         => esc_url_raw( $url ),
+				'done'        => add_query_arg(
+					array(
+						'smile_donation' => 'return',
+						'reference'      => $reference,
+					),
+					$return
+				),
+				'cancel'      => add_query_arg(
+					array(
+						'smile_donation' => 'failed',
+						'ref'            => $reference,
+					),
+					$return
+				) . '#give',
+			)
+		);
 	}
 	wp_redirect( esc_url_raw( $url ) ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- host checked above.
 	exit;

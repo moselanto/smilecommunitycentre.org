@@ -57,7 +57,7 @@ function smile_security_header_list() {
 		'X-Content-Type-Options'       => 'nosniff',
 		'X-Frame-Options'              => 'SAMEORIGIN',
 		'Referrer-Policy'              => 'strict-origin-when-cross-origin',
-		'Permissions-Policy'           => 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
+		'Permissions-Policy'           => 'camera=(), microphone=(), geolocation=(), payment=(self "https://checkout.paystack.com"), usb=(), interest-cohort=()',
 		'Cross-Origin-Opener-Policy'   => 'same-origin-allow-popups',
 		'X-Permitted-Cross-Domain-Policies' => 'none',
 		'Content-Security-Policy'      => "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' https://wa.me https://api.whatsapp.com https://checkout.paystack.com" . ( is_ssl() ? '; upgrade-insecure-requests' : '' ),

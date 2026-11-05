@@ -2,6 +2,12 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.47.5 / Core 1.4.2 (Paystack payment window on the Smile page)
+- **Donors stay on smilecommunitycentre.org.** The donation form now opens Paystack's secure payment window (Paystack Inline v2, `resumeTransaction`) over the Donate page instead of sending donors to checkout.paystack.com. The server still starts the transaction (same reference, amount, plan and metadata), and the payment is still verified on the server and by the webhook.
+- After paying, donors land on the usual thank-you message; closing the window shows the "not completed" message.
+- **Fallback:** if Paystack's script can't load or the window can't open, the form falls back to the previous full-page redirect, so giving never breaks.
+- `Permissions-Policy` now allows `payment` for checkout.paystack.com, so wallet payments can work inside the window.
+
 ## 2.47.4 / Core 1.4.1 (Paystack key status on the settings page)
 - **Smile Centre > Centre details > Online donations (Paystack)** now shows a status line under the heading: the Paystack mode (test or live), whether the secret key for that mode was found in wp-config.php, and the webhook URL to enter in Paystack. The key itself is never shown. The status function existed in 1.4.0 but was not displayed.
 
