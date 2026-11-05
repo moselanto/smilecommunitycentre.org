@@ -2,6 +2,9 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.47.4 / Core 1.4.1 (Paystack key status on the settings page)
+- **Smile Centre > Centre details > Online donations (Paystack)** now shows a status line under the heading: the Paystack mode (test or live), whether the secret key for that mode was found in wp-config.php, and the webhook URL to enter in Paystack. The key itself is never shown. The status function existed in 1.4.0 but was not displayed.
+
 ## 2.47.3 (mobile hero heading shift)
 - **A metric-matched fallback font for Nunito.** Fresh mobile PageSpeed on 5 Nov showed CLS 0.108 on `h1.smile-slide__title` while Nunito swapped in. A new `Nunito Fallback` font-face (local Arial, Liberation Sans or Arimo) is sized to Nunito's measured widths and line metrics:
   - weights 200-500: `size-adjust` 100.19%
