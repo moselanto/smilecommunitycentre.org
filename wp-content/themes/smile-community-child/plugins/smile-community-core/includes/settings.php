@@ -283,6 +283,9 @@ function smile_core_render_settings() {
 				}
 				?>
 				<h2><?php echo esc_html( $group['title'] ); ?></h2>
+				<?php if ( 'paystack' === $group_key && function_exists( 'smile_pay_key_status' ) ) : ?>
+					<div class="notice notice-<?php echo esc_attr( '' !== smile_pay_secret() ? 'success' : 'warning' ); ?> inline smile-paystack-status"><p><?php echo esc_html( smile_pay_key_status() ); ?></p></div>
+				<?php endif; ?>
 				<table class="form-table" role="presentation">
 					<?php foreach ( $group['fields'] as $key => $def ) : ?>
 						<?php
