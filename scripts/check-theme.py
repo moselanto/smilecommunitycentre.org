@@ -80,6 +80,8 @@ for p in pages:
             errors.append('%s: link %s points to a page that does not exist' % (p['slug'], u))
     if p['elementor'] and 'smile-pagehero' in json.dumps(p['elementor'][0]):
         sizes = [w['settings'].get('header_size', 'h2') for c in p['elementor'][0]['elements'] for w in c['elements'] if w.get('widgetType') == 'heading']
+        # [smile_give_hero] renders the page H1 itself (Donate page).
+        sizes += ['h1' for c in p['elementor'][0]['elements'] for w in c['elements'] if w.get('widgetType') == 'shortcode' and w['settings'].get('shortcode', '').startswith('[smile_give_hero')]
         if sizes.count('h1') != 1:
             errors.append('%s: banner should have exactly one H1 (found %d)' % (p['slug'], sizes.count('h1')))
 for k, v in ids.items():

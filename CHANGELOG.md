@@ -2,6 +2,22 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.48.1 / Core 1.5.1 (Donate hero: compact form card)
+- The "Give a smile" card in the Donate hero is tighter, so the amounts, name, email and **Donate** button fit the first screen on a normal laptop: "How often?" and "Currency" sit side by side, amounts are a compact 3-column grid (two-line descriptions), and "Other amount" is a normal tile beside KES 10,000 instead of a full-width row.
+- The headline now starts at the top of the hero, level with the card, instead of sitting low with empty photo space above it.
+- Phones keep a 2-column amount grid with "Other amount" full width.
+
+## 2.48.0 / Core 1.5.0 (Donate page: form in the first screen)
+- **New `[smile_give_hero]`** for the Donate page hero: headline, short lead and trust points on the left, the "Give a smile" Paystack form as a white card on the right. On phones the form comes straight after the headline, with the trust points below it. Attributes `eyebrow`, `title` and `lead` keep the wording editable; the defaults are the existing Donate page text.
+- Use it in the hero section with the classes `smile-sec smile-pagehero smile-pagehero--give` (the demo Donate page is updated). If online giving is off, the hero shows the headline only.
+- `[smile_donate_form]` now renders once per page, so a second copy further down the page is skipped automatically.
+
+## 2.47.5 / Core 1.4.2 (Paystack payment window on the Smile page)
+- **Donors stay on smilecommunitycentre.org.** The donation form now opens Paystack's secure payment window (Paystack Inline v2, `resumeTransaction`) over the Donate page instead of sending donors to checkout.paystack.com. The server still starts the transaction (same reference, amount, plan and metadata), and the payment is still verified on the server and by the webhook.
+- After paying, donors land on the usual thank-you message; closing the window shows the "not completed" message.
+- **Fallback:** if Paystack's script can't load or the window can't open, the form falls back to the previous full-page redirect, so giving never breaks.
+- `Permissions-Policy` now allows `payment` for checkout.paystack.com, so wallet payments can work inside the window.
+
 ## 2.47.4 / Core 1.4.1 (Paystack key status on the settings page)
 - **Smile Centre > Centre details > Online donations (Paystack)** now shows a status line under the heading: the Paystack mode (test or live), whether the secret key for that mode was found in wp-config.php, and the webhook URL to enter in Paystack. The key itself is never shown. The status function existed in 1.4.0 but was not displayed.
 
