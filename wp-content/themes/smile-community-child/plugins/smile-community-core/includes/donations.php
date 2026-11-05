@@ -366,9 +366,11 @@ function smile_pay_mark_paid( $id, $data ) {
  * @return string
  */
 function smile_pay_form_shortcode() {
-	if ( ! smile_pay_enabled() ) {
-		return '';
+	static $rendered = false;
+	if ( ! smile_pay_enabled() || $rendered ) {
+		return ''; // One form per page: the Donate hero may already show it.
 	}
+	$rendered = true;
 	$currencies = smile_pay_currencies();
 	$first      = (string) key( $currencies );
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended -- display only.
@@ -457,6 +459,61 @@ function smile_pay_form_shortcode() {
 	return (string) ob_get_clean();
 }
 add_shortcode( 'smile_donate_form', 'smile_pay_form_shortcode' );
+
+/**
+ * [smile_give_hero] - Donate page hero: headline and trust points on the left,
+ * the "Give a smile" form card on the right (form first on phones, after the headline).
+ *
+ * Place it in a hero section with the CSS classes "smile-sec smile-pagehero smile-pagehero--give".
+ *
+ * @param array $atts eyebrow, title, lead.
+ * @return string
+ */
+function smile_pay_hero_shortcode( $atts ) {
+	$a = shortcode_atts(
+		array(
+			'eyebrow' => __( 'Donate', 'smile-core' ),
+			'title'   => __( 'We make a life by what we give', 'smile-core' ),
+			'lead'    => __( 'Your donation directly supports a child’s daily life: shelter, meals, school and medical care.', 'smile-core' ),
+		),
+		$atts,
+		'smile_give_hero'
+	);
+	$form = smile_pay_form_shortcode();
+	$crumbs = '';
+	if ( function_exists( 'smile_breadcrumbs' ) ) {
+		ob_start();
+		smile_breadcrumbs();
+		$crumbs = (string) ob_get_clean();
+	}
+	$paybill = (string) smile_core_get( 'mpesa_paybill' );
+	$account = (string) smile_core_get( 'mpesa_account' );
+	$trust   = array(
+		array( 'lock', __( 'Secure payment by Paystack', 'smile-core' ) ),
+		array( 'check', __( 'Card, M-Pesa and other local options', 'smile-core' ) ),
+		array( 'check', __( 'Change or cancel a monthly gift at any time', 'smile-core' ) ),
+	);
+	if ( $paybill ) {
+		/* translators: 1: paybill 2: account */
+		$trust[] = array( 'check', $account ? sprintf( __( 'Prefer M-Pesa? Paybill %1$s, account %2$s', 'smile-core' ), $paybill, $account ) : sprintf( __( 'Prefer M-Pesa? Paybill %s', 'smile-core' ), $paybill ) );
+	}
+	$out  = smile_pay_styles();
+	$out .= '<div class="smile-givehero' . ( $form ? '' : ' smile-givehero--noform' ) . '">';
+	$out .= '<div class="smile-givehero__intro">' . $crumbs;
+	$out .= '<p class="smile-givehero__eyebrow">' . esc_html( $a['eyebrow'] ) . '</p>';
+	$out .= '<h1 class="smile-givehero__title">' . esc_html( $a['title'] ) . '</h1>';
+	$out .= '<p class="smile-givehero__lead">' . esc_html( $a['lead'] ) . '</p></div>';
+	if ( $form ) {
+		$out .= '<div class="smile-givehero__card">' . $form . '</div>';
+		$out .= '<ul class="smile-givehero__trust">';
+		foreach ( $trust as $t ) {
+			$out .= '<li>' . smile_pay_icon( $t[0] ) . '<span>' . esc_html( $t[1] ) . '</span></li>';
+		}
+		$out .= '</ul>';
+	}
+	return $out . '</div>';
+}
+add_shortcode( 'smile_give_hero', 'smile_pay_hero_shortcode' );
 
 /**
  * Small inline SVG icons.
