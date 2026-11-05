@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.48.2 / Core 1.5.2 (Re-check stuck donations with Paystack)
+- **Smile Centre > Donations** has a **Re-check with Paystack** link on every donation that is not marked Paid, plus a bulk action of the same name (up to 50 at a time). It asks Paystack's verify API for the real status: a successful payment whose amount and currency match is marked Paid (and the receipt/notice steps run as usual); abandoned, failed or reversed payments get that status; anything else stays Pending. A notice lists each reference and its result.
+- Useful when a donor paid but closed the window before returning to the site and the webhook did not arrive.
+
 ## 2.48.1 / Core 1.5.1 (Donate hero: compact form card)
 - The "Give a smile" card in the Donate hero is tighter, so the amounts, name, email and **Donate** button fit the first screen on a normal laptop: "How often?" and "Currency" sit side by side, amounts are a compact 3-column grid (two-line descriptions), and "Other amount" is a normal tile beside KES 10,000 instead of a full-width row.
 - The headline now starts at the top of the hero, level with the card, instead of sitting low with empty photo space above it.

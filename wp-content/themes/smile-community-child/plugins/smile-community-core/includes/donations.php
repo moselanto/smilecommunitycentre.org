@@ -1201,3 +1201,142 @@ function smile_pay_key_status() {
 		rest_url( 'smile/v1/paystack' )
 	);
 }
+
+
+/* -------------------------------------------------------------------------
+ * 11. Admin: re-check stuck donations with Paystack
+ * ---------------------------------------------------------------------- */
+
+/**
+ * "Re-check with Paystack" link on donations that are not marked paid.
+ *
+ * @param array   $actions Row actions.
+ * @param WP_Post $post    Post.
+ * @return array
+ */
+function smile_pay_row_actions( $actions, $post ) {
+	if ( 'smile_donation' !== $post->post_type || ! current_user_can( SMILE_CORE_CAP ) ) {
+		return $actions;
+	}
+	if ( 'paid' === get_post_meta( $post->ID, '_sd_status', true ) || ! get_post_meta( $post->ID, '_sd_reference', true ) ) {
+		return $actions;
+	}
+	$url = wp_nonce_url( admin_url( 'admin-post.php?action=smile_donation_recheck&ids=' . (int) $post->ID ), 'smile_donation_recheck' );
+	$actions['smile_recheck'] = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Re-check with Paystack', 'smile-core' ) . '</a>';
+	return $actions;
+}
+add_filter( 'post_row_actions', 'smile_pay_row_actions', 10, 2 );
+
+/**
+ * Bulk action on the Donations list.
+ *
+ * @param array $actions Bulk actions.
+ * @return array
+ */
+function smile_pay_bulk_actions( $actions ) {
+	if ( current_user_can( SMILE_CORE_CAP ) ) {
+		$actions['smile_recheck'] = __( 'Re-check with Paystack', 'smile-core' );
+	}
+	return $actions;
+}
+add_filter( 'bulk_actions-edit-smile_donation', 'smile_pay_bulk_actions' );
+
+/**
+ * Re-check donations against Paystack's verify API and update their status.
+ *
+ * @param int[] $ids Donation IDs.
+ * @return array{paid:int,checked:int,refs:string[]}
+ */
+function smile_pay_recheck( $ids ) {
+	$out = array(
+		'paid'    => 0,
+		'checked' => 0,
+		'refs'    => array(),
+	);
+	foreach ( array_slice( array_map( 'absint', (array) $ids ), 0, 50 ) as $id ) {
+		if ( ! $id || 'smile_donation' !== get_post_type( $id ) ) {
+			continue;
+		}
+		$ref = (string) get_post_meta( $id, '_sd_reference', true );
+		if ( '' === $ref ) {
+			continue;
+		}
+		++$out['checked'];
+		$paid = smile_pay_verify( $ref );
+		if ( $paid ) {
+			++$out['paid'];
+		}
+		$out['refs'][] = $ref . ': ' . ( $paid ? 'paid' : ( get_post_meta( $id, '_sd_status', true ) ? get_post_meta( $id, '_sd_status', true ) : 'pending' ) );
+	}
+	return $out;
+}
+
+/**
+ * Store the result for the notice and return the list URL.
+ *
+ * @param array  $result Result.
+ * @param string $url    Base URL.
+ * @return string
+ */
+function smile_pay_recheck_redirect( $result, $url ) {
+	set_transient( 'smile_recheck_' . get_current_user_id(), $result, 5 * MINUTE_IN_SECONDS );
+	return add_query_arg( 'smile_rechecked', 1, remove_query_arg( array( 'smile_rechecked', 'action', 'action2', 'post', '_wpnonce' ), $url ) );
+}
+
+/**
+ * Bulk action handler.
+ *
+ * @param string $redirect Redirect URL.
+ * @param string $action   Action.
+ * @param int[]  $ids      IDs.
+ * @return string
+ */
+function smile_pay_handle_bulk( $redirect, $action, $ids ) {
+	if ( 'smile_recheck' !== $action || ! current_user_can( SMILE_CORE_CAP ) ) {
+		return $redirect;
+	}
+	return smile_pay_recheck_redirect( smile_pay_recheck( $ids ), $redirect );
+}
+add_filter( 'handle_bulk_actions-edit-smile_donation', 'smile_pay_handle_bulk', 10, 3 );
+
+/**
+ * Row action handler.
+ */
+function smile_pay_recheck_action() {
+	if ( ! current_user_can( SMILE_CORE_CAP ) ) {
+		wp_die( esc_html__( 'Sorry, you are not allowed to do that.', 'smile-core' ), 403 );
+	}
+	check_admin_referer( 'smile_donation_recheck' );
+	$ids = isset( $_GET['ids'] ) ? array_map( 'absint', explode( ',', sanitize_text_field( wp_unslash( $_GET['ids'] ) ) ) ) : array();
+	wp_safe_redirect( smile_pay_recheck_redirect( smile_pay_recheck( $ids ), admin_url( 'edit.php?post_type=smile_donation' ) ) );
+	exit;
+}
+add_action( 'admin_post_smile_donation_recheck', 'smile_pay_recheck_action' );
+
+/**
+ * Result notice on the Donations list.
+ */
+function smile_pay_recheck_notice() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display only.
+	if ( empty( $_GET['smile_rechecked'] ) || ! current_user_can( SMILE_CORE_CAP ) ) {
+		return;
+	}
+	$key    = 'smile_recheck_' . get_current_user_id();
+	$result = get_transient( $key );
+	delete_transient( $key );
+	if ( ! is_array( $result ) ) {
+		return;
+	}
+	/* translators: 1: number paid 2: number checked */
+	$head = sprintf( __( 'Re-checked %2$d donation(s) with Paystack: %1$d confirmed paid.', 'smile-core' ), (int) $result['paid'], (int) $result['checked'] );
+	echo '<div class="notice notice-' . ( $result['paid'] ? 'success' : 'info' ) . ' is-dismissible"><p>' . esc_html( $head ) . '</p>';
+	if ( ! empty( $result['refs'] ) ) {
+		echo '<ul style="margin:0 0 .5em 1.2em;list-style:disc">';
+		foreach ( $result['refs'] as $line ) {
+			echo '<li><code>' . esc_html( $line ) . '</code></li>';
+		}
+		echo '</ul>';
+	}
+	echo '</div>';
+}
+add_action( 'admin_notices', 'smile_pay_recheck_notice' );
