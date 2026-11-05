@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.48.0 / Core 1.5.0 (Donate page: form in the first screen)
+- **New `[smile_give_hero]`** for the Donate page hero: headline, short lead and trust points on the left, the "Give a smile" Paystack form as a white card on the right. On phones the form comes straight after the headline, with the trust points below it. Attributes `eyebrow`, `title` and `lead` keep the wording editable; the defaults are the existing Donate page text.
+- Use it in the hero section with the classes `smile-sec smile-pagehero smile-pagehero--give` (the demo Donate page is updated). If online giving is off, the hero shows the headline only.
+- `[smile_donate_form]` now renders once per page, so a second copy further down the page is skipped automatically.
+
 ## 2.47.5 / Core 1.4.2 (Paystack payment window on the Smile page)
 - **Donors stay on smilecommunitycentre.org.** The donation form now opens Paystack's secure payment window (Paystack Inline v2, `resumeTransaction`) over the Donate page instead of sending donors to checkout.paystack.com. The server still starts the transaction (same reference, amount, plan and metadata), and the payment is still verified on the server and by the webhook.
 - After paying, donors land on the usual thank-you message; closing the window shows the "not completed" message.

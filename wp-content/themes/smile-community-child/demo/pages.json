@@ -6637,7 +6637,7 @@
     "isInner": false,
     "settings": {
      "gap": "extended",
-     "css_classes": "smile-sec smile-pagehero",
+     "css_classes": "smile-sec smile-pagehero smile-pagehero--give",
      "structure": "10",
      "background_background": "classic",
      "background_image": {
@@ -6658,42 +6658,11 @@
       },
       "elements": [
        {
-        "id": "728c2f7",
+        "id": "a472eb1",
         "elType": "widget",
         "widgetType": "shortcode",
         "settings": {
-         "shortcode": "[smile_breadcrumbs]"
-        },
-        "elements": []
-       },
-       {
-        "id": "f92e233",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "Donate",
-         "header_size": "p",
-         "_css_classes": "smile-eyebrow"
-        },
-        "elements": []
-       },
-       {
-        "id": "816bee0",
-        "elType": "widget",
-        "widgetType": "heading",
-        "settings": {
-         "title": "We make a life by what we give",
-         "header_size": "h1"
-        },
-        "elements": []
-       },
-       {
-        "id": "9b2bd6c",
-        "elType": "widget",
-        "widgetType": "text-editor",
-        "settings": {
-         "editor": "<p>Your donation directly supports a child’s daily life: shelter, meals, school and medical care.</p>",
-         "_css_classes": "smile-lead smile-measure"
+         "shortcode": "[smile_give_hero]"
         },
         "elements": []
        }
