@@ -58,21 +58,46 @@ function smile_analytics_enabled() {
 }
 
 /**
- * Print GTM and GA4 in the head.
+ * Print GTM and GA4 in the head, deferred (2.52.0).
+ *
+ * The dataLayer, gtag() and the GA4 config are set up at once (tiny, inline), so
+ * nothing is lost; the Google scripts themselves (about 260 KB) are only fetched
+ * on the visitor's first interaction (scroll, tap, key, mouse move) or when the
+ * browser is idle after the page has loaded (at most 4 s after load), whichever
+ * comes first. This takes them out of the first-paint and LCP window on phones.
+ * Switch back to immediate loading: add_filter( 'smile_analytics_defer', '__return_false' ).
  */
 function smile_analytics_head() {
 	if ( ! smile_analytics_enabled() ) {
 		return;
 	}
-	$gtm = smile_gtm_id();
-	$ga4 = smile_ga4_id();
+	$gtm   = smile_gtm_id();
+	$ga4   = smile_ga4_id();
+	$defer = (bool) apply_filters( 'smile_analytics_defer', true );
+	$srcs  = array();
+	$js    = 'window.dataLayer=window.dataLayer||[];';
 	if ( $gtm ) {
-		echo "<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" . esc_js( $gtm ) . "');</script>\n<!-- End Google Tag Manager -->\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static snippet, ID validated and escaped.
+		$js    .= "dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});";
+		$srcs[] = 'https://www.googletagmanager.com/gtm.js?id=' . $gtm;
 	}
 	if ( $ga4 ) {
-		echo '<script async src="' . esc_url( 'https://www.googletagmanager.com/gtag/js?id=' . $ga4 ) . '"></script>' . "\n"; // phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- Google's required snippet.
-		echo "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" . esc_js( $ga4 ) . "');</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- ID validated and escaped.
+		$js    .= "function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" . esc_js( $ga4 ) . "');";
+		$srcs[] = 'https://www.googletagmanager.com/gtag/js?id=' . $ga4;
 	}
+	if ( ! $srcs ) {
+		return;
+	}
+	$list = wp_json_encode( array_map( 'esc_url_raw', $srcs ) );
+	if ( $defer ) {
+		$js .= '(function(){var s=' . $list . ',d=0,ev=["scroll","pointerdown","keydown","mousemove","touchstart"];'
+			. 'function go(){if(d)return;d=1;ev.forEach(function(e){removeEventListener(e,go,{passive:true});});'
+			. 's.forEach(function(u){var j=document.createElement("script");j.async=true;j.src=u;document.head.appendChild(j);});}'
+			. 'ev.forEach(function(e){addEventListener(e,go,{passive:true,once:true});});'
+			. 'addEventListener("load",function(){var t=function(){("requestIdleCallback" in window)?requestIdleCallback(go,{timeout:4000}):setTimeout(go,2000);};setTimeout(t,1500);});})();';
+	} else {
+		$js .= '(function(){' . $list . '.forEach(function(u){var j=document.createElement("script");j.async=true;j.src=u;document.head.appendChild(j);});})();';
+	}
+	echo "<!-- Google Tag Manager + GA4 (deferred, see inc/analytics.php) -->\n<script>" . $js . "</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- IDs validated, URLs JSON-encoded.
 }
 add_action( 'wp_head', 'smile_analytics_head', 2 );
 

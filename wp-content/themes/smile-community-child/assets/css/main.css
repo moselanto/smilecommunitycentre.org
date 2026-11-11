@@ -308,7 +308,7 @@ img { max-width: 100%; height: auto; }
 .smile-article__title { font-size: var(--smile-fs-h1); }
 .smile-article__meta { color: var(--smile-muted); font-size: var(--smile-fs-sm); display: flex; gap: .5em; }
 .smile-article__media { margin-top: calc(var(--smile-s6) * -1); margin-bottom: var(--smile-s6); }
-.smile-article__media img { width: 100%; max-height: 560px; object-fit: cover; border-radius: var(--smile-radius-lg); }
+.smile-article__media img { display: block; width: 100%; height: auto; aspect-ratio: 1024 / 532; max-height: 560px; object-fit: cover; border-radius: var(--smile-radius-lg); } /* 2.52.0: fixed box before the image loads (story CLS 0.140). */
 .smile-article__content { padding-block: var(--smile-s6); }
 .smile-prose { font-size: 1.125rem; }
 .smile-prose > * { max-width: var(--smile-narrow); }

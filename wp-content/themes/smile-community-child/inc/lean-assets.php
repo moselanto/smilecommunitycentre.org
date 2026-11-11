@@ -251,6 +251,87 @@ function smile_lean_style_tag( $tag, $handle, $href, $media ) {
 }
 add_filter( 'style_loader_tag', 'smile_lean_style_tag', 10, 4 );
 
+
+/* -------------------------------------------------------------------------
+ * 2b. Small render-blocking stylesheets inlined (2.52.0)
+ *
+ * Home and Donate waited for about nine small CSS files (Hello reset, Elementor
+ * kit, page, header/footer templates, widget-heading, widget-image, base
+ * desktop/mobile), each a separate blocking request on a slow phone network.
+ * Files under 8 KB that live on this server are now printed inline in <head>
+ * instead, in the same order and with the same media query, so the result is
+ * identical but needs no extra round trips. Elementor's 54 KB frontend.min.css
+ * stays an external (cacheable) file. Pages are served from WP Super Cache, so
+ * the files are read once per cached page.
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Handles that may be inlined.
+ *
+ * @param string $handle Style handle.
+ * @return bool
+ */
+function smile_lean_inline_handle( $handle ) {
+	$ok = (bool) preg_match( '/^(?:elementor-post-\d+|widget-[a-z0-9-]+|base-(?:desktop|mobile)|hello-elementor)$/', $handle );
+	return (bool) apply_filters( 'smile_lean_inline_handle', $ok, $handle );
+}
+
+/**
+ * Local path for a stylesheet URL on this site, or ''.
+ *
+ * @param string $href URL.
+ * @return string
+ */
+function smile_lean_local_css_path( $href ) {
+	$url = strtok( (string) $href, '?' );
+	$map = array(
+		content_url() => WP_CONTENT_DIR,
+		site_url()    => ABSPATH,
+	);
+	foreach ( $map as $base => $dir ) {
+		$base = set_url_scheme( $base, 'https' );
+		$url  = set_url_scheme( $url, 'https' );
+		if ( 0 === strpos( $url, trailingslashit( $base ) ) ) {
+			$path = wp_normalize_path( untrailingslashit( $dir ) . '/' . substr( $url, strlen( trailingslashit( $base ) ) ) );
+			if ( false === strpos( $path, '..' ) && '.css' === substr( $path, -4 ) && is_readable( $path ) ) {
+				return $path;
+			}
+		}
+	}
+	return '';
+}
+
+/**
+ * Print small local stylesheets inline.
+ *
+ * @param string $tag    Link tag.
+ * @param string $handle Style handle.
+ * @param string $href   URL.
+ * @param string $media  Media.
+ * @return string
+ */
+function smile_lean_inline_small_css( $tag, $handle, $href, $media ) {
+	if ( ! smile_lean_assets_on() || ! smile_lean_inline_handle( $handle ) || in_array( $handle, smile_lean_async_styles(), true ) ) {
+		return $tag;
+	}
+	$path = smile_lean_local_css_path( $href );
+	if ( '' === $path || filesize( $path ) > (int) apply_filters( 'smile_lean_inline_max_bytes', 8192 ) ) {
+		return $tag;
+	}
+	$css = (string) file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local CSS file.
+	if ( '' === trim( $css ) ) {
+		return '';
+	}
+	// Relative url() values would resolve against the page instead of the file: keep the link.
+	if ( preg_match( '/url\(\s*[\'"]?(?!https?:|data:|\/|#)/i', $css ) ) {
+		return $tag;
+	}
+	$css   = str_ireplace( '</style', '', $css );
+	$media = ( $media && 'all' !== $media ) ? ' media="' . esc_attr( $media ) . '"' : '';
+	return '<style id="' . esc_attr( $handle ) . '-inline-css"' . $media . '>' . $css . "</style>\n";
+}
+add_filter( 'style_loader_tag', 'smile_lean_inline_small_css', 9, 4 );
+
 /* -------------------------------------------------------------------------
  * 3. FAQ accordion without Elementor's scripts (always on, 2.47.0)
  * ---------------------------------------------------------------------- */

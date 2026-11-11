@@ -2,6 +2,12 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.52.0 - 11 Nov 2026
+
+- **Fewer render-blocking stylesheets** (`inc/lean-assets.php`): small local CSS files (Hello reset, Elementor kit, page, header/footer template, widget-heading, widget-image, base desktop/mobile; each under 8 KB) are printed inline in the head in the same order and media, instead of about nine separate blocking requests. Elementor's 54 KB `frontend.min.css` stays external.
+- **GA4 and Tag Manager deferred** (`inc/analytics.php`): dataLayer, gtag() and the GA4 config run at once, but the Google scripts (about 260 KB) load on the first scroll/tap/key/mouse move, or when the browser is idle after load (within about 4 s). Off switch: `smile_analytics_defer` filter.
+- **Story featured image layout shift (CLS 0.140) fixed:** the article image rules are now in the inner-page critical CSS, and the image box has `height:auto` and a fixed `aspect-ratio`, so its space is reserved before it loads.
+
 ## 2.51.1 - 11 Nov 2026
 
 - **Fixed desktop layout shift on the home slider (CLS 0.815 in PageSpeed).** The slider section's own layout rules (`.smile-slider-sec ...`, including where the slide text sits at 768 px and wider) were never in the critical CSS, so the slide text jumped when the full stylesheet arrived. `slider-sec` is now in the critical CSS selector list. Existing bug, not caused by 2.51.0.
