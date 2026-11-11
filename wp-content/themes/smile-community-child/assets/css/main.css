@@ -1792,3 +1792,11 @@ a.skip-link.screen-reader-text:not(.smile-skip-link):not(:focus) { position: abs
 .smile-swash { z-index: -1; }
 /* 2.53.0: Soweto-Kayole community photo: fixed shape so its box is reserved before it loads. */
 .smile-community-photo img { width: 100%; height: auto !important; aspect-ratio: 1024 / 497 !important; }
+
+/* 2.53.1: the slider and the closing band are dark green underneath their photos, so the
+   colour behind white/yellow text is dark even where a photo is not measured (contrast check). */
+.smile-slider, .smile-slider__track, .smile-slide { background-color: var(--smile-forest); }
+.smile-closing { background-color: var(--smile-forest); }
+.smile-closing h2.elementor-heading-title em, .smile-closing h2.elementor-heading-title em.smile-em { color: var(--smile-sun) !important; -webkit-text-fill-color: var(--smile-sun) !important; }
+/* 2.53.1: links inside text must not rely on colour alone (Donate form privacy note). */
+.smile-form__privacy a { text-decoration: underline !important; text-underline-offset: 2px; text-decoration-thickness: 1px; }

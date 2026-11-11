@@ -25,7 +25,7 @@ T = os.path.join(os.path.dirname(__file__), "..", "wp-content", "themes", "smile
 KEEP = re.compile(
     r"^(?:\*|html|body|:root|::?(?:before|after|selection)|h[1-3]|p|a|img|svg|picture|button|"
     r"\.screen-reader-text|\.skip-link|\.smile-(?:skip-link|container|topbar|header|brand|nav|ico|icon|social|btn|"
-    r"pagehero|breadcrumbs|eyebrow|hero|article|slider-sec|slider|slide|el-header|el-hidden|lead|faq)(?![a-z0-9]|-[a-z0-9])|\.menu-item|\.sub-menu|\.current-menu)"
+    r"pagehero|breadcrumbs|eyebrow|hero|article|slider-sec|slider|slide|pillars|el-header|el-hidden|lead|faq)(?![a-z0-9]|-[a-z0-9])|\.menu-item|\.sub-menu|\.current-menu)"
 )
 
 
@@ -53,7 +53,7 @@ STATE = re.compile(r":(?:hover|focus|focus-visible|focus-within|active|visited)\
 # Components that are never in the first screen of a given template (2.51.0).
 SKIP = {
     "home": re.compile(r"^\.smile-(?:pagehero|breadcrumbs|faq|lead|article)(?![a-z0-9]|-[a-z0-9])"),
-    "inner": re.compile(r"^\.smile-(?:slider|slide|faq)(?![a-z0-9]|-[a-z0-9])"),
+    "inner": re.compile(r"^\.smile-(?:slider|slide|pillars|faq)(?![a-z0-9]|-[a-z0-9])"),
 }
 
 

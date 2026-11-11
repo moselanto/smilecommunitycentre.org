@@ -765,3 +765,29 @@ function smile_seo_rank_math_robots( $robots ) {
 	return $robots;
 }
 add_filter( 'rank_math/frontend/robots', 'smile_seo_rank_math_robots', 99 );
+
+
+/**
+ * 2.53.1: Elementor "Learn more" buttons get descriptive link text for screen readers and
+ * search engines ("Learn more about Feeding Program"), taken from the linked page's title.
+ * The visible label is unchanged.
+ *
+ * @param string                 $content Rendered widget HTML.
+ * @param \Elementor\Widget_Base $widget  Widget.
+ * @return string
+ */
+function smile_describe_generic_buttons( $content, $widget ) {
+	if ( 'button' !== $widget->get_name() || false === stripos( $content, 'Learn more' ) || false !== strpos( $content, 'smile-link-desc' ) ) {
+		return $content;
+	}
+	$settings = $widget->get_settings_for_display();
+	$url      = isset( $settings['link']['url'] ) ? (string) $settings['link']['url'] : '';
+	$id       = $url ? url_to_postid( $url ) : 0;
+	$title    = $id ? get_the_title( $id ) : '';
+	if ( '' === $title ) {
+		return $content;
+	}
+	$extra = '<span class="screen-reader-text smile-link-desc"> about ' . esc_html( wp_strip_all_tags( $title ) ) . '</span>';
+	return preg_replace( '#(>\s*Learn more\s*)(</span>)#i', '$1' . $extra . '$2', $content, 1 );
+}
+add_filter( 'elementor/widget/render_content', 'smile_describe_generic_buttons', 20, 2 );

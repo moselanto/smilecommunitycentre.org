@@ -2,6 +2,13 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.1 - 11 Nov 2026
+
+- **Home desktop layout shift (0.198) fixed:** the "A safe home / Daily meals / Schooling" pillars strip (`.smile-pillars`, widget 7a9bc3d) overlaps the bottom of the slider, so it is in the first screen. Its rules are now in the Home critical CSS (`scripts/build-critical-css.py` KEEP list; skipped on inner pages), so it no longer jumps from an unstyled list into the card grid when the async stylesheet arrives.
+- **Contrast checks on Home:** the slider, its track and slides, and the closing "Help make everyday care possible" band now have a dark green background colour under their photos, so the white and yellow text is measured against dark green. The closing band's highlighted words keep a solid yellow.
+- **Donate privacy note:** the Privacy Policy link is underlined, so it does not rely on colour alone.
+- **Descriptive link text** (`inc/seo.php`, `smile_describe_generic_buttons`): Elementor "Learn more" buttons get hidden screen-reader text naming the linked page ("Learn more about Feeding Program"). The visible label is unchanged. This covers the four Home buttons (Education, Feeding, Health and Wellbeing, Sports).
+
 ## 2.53.0 - 11 Nov 2026
 
 - **Staging links and editorial labels removed from posts** (`inc/content-fixes.php`, new): a one-off clean-up that runs once in wp-admin and then records `smile_content_fix_2530`. It rewrites `topnotchmall.co.ke/smilescommunity` links to the live domain in every post, page and Elementor template, and removes the writer's labels "Quick Answer (Featured Snippet Target)" and "Donation Call to Action". Before the fix the REST scan found 8 posts: 151 (sponsor guide: Donate, About, Feeding, Contact + both labels), 152 (Donate link + label), 159, 161, 163 (Donate links and image URLs), 166, 182 and 183 (Donate links). Posts are saved with wp_update_post, so revisions are kept.
