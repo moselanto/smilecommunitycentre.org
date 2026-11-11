@@ -148,3 +148,24 @@ Single runs; mobile performance scores and LCP vary from run to run (Home mobile
 - New: Home desktop CLS 0.198 from the "A safe home / Daily meals" text widget (data-id 7a9bc3d: 0.174 + 0.023); the nav is also listed with caveat-latin.woff2. Needs a follow-up.
 - Remaining contrast on Home mobile: slider eyebrow text and slide containers over photos (Lighthouse cannot read text over images) and one `em.smile-em`. Donate: Privacy Policy link in `.smile-form__privacy` relies on colour only (needs an underline).
 - Home SEO 92: four links without descriptive text.
+
+
+### After 2.53.1 (pillars in Home critical CSS, dark backgrounds under slider/closing text, underlined privacy link, descriptive Learn more text)
+
+| Page | Device | Perf | A11y | SEO | LCP | FCP | TBT | CLS | SI |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Home | Mobile | 88 | 96 | **100** | 1.5 s | 1.0 s | 340 ms | 0.109 | 3.2 s |
+| Home | Desktop | **99** | 100 | **100** | 0.7 s | 0.3 s | 50 ms | **0.058** (was 0.198) | 0.7 s |
+| Donate | Mobile | n/a (NO_LCP, twice) | **100** | 100 | NO_LCP | 1.2 s | n/a | 0 | 4.6 s |
+| Donate | Desktop | 98 | **100** | 100 | 0.7 s | 0.4 s | 110 ms | 0 | 1.2 s |
+| Story | Mobile | 98 | 100 | 100 | 1.7 s | 1.1 s | 120 ms | 0.061 | 2.5 s |
+| Story | Desktop | 98 | 100 | 100 | 0.7 s | 0.3 s | 50 ms | 0 | 1.5 s |
+
+Single Lighthouse 13.6 runs; field data "No Data".
+- Fixed: "Links do not have descriptive text" (Home SEO 92 to 100); "Links rely on color" on Donate (A11y 97 to 100); slider eyebrow/slide contrast items gone; Home desktop CLS down from 0.198 to 0.058.
+- Still open:
+  - Home mobile CLS 0.109 and story mobile 0.061 again come from the h1 (`h1.smile-slide__title`, `h1.smile-article__title`). Runs vary (both were 0 on the 2.53.0 run), so font-display: optional alone is not enough; next step is to reserve the h1 height or check whether the critical CSS gives the mobile h1 its final size.
+  - Home desktop 0.058 still from the pillars strip (7a9bc3d); caveat-latin.woff2 listed.
+  - Home mobile contrast: `em.smile-em` "everyday care possible." in the closing band.
+  - Unsized image on Home: `img.wp-image-1048` (education photo).
+  - Donate mobile returned NO_LCP twice (Lighthouse could not pick a largest element); desktop is fine.
