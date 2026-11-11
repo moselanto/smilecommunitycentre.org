@@ -34,7 +34,7 @@
   - "Latest stories" uses a shortcode rather than the Pro Posts widget.
   - Forms are provided by the plugin, not Elementor Forms.
   With Pro, Theme Builder templates can replace any of these, and they take priority automatically.
-- **No online card or M-Pesa STK payments are built.** There are no approved credentials or provider, so only the verified manual M-Pesa method is shown. A Daraja STK Push or card gateway can be added once the centre approves a provider and supplies credentials. It needs server-side callback verification and a sandbox test first.
+- **Online card giving uses Paystack** (Core 1.4.0+, one-time and monthly; see `docs/paystack-donations.md`). It needs approved live keys for KES/USD. There is no M-Pesa STK Push: M-Pesa is the manual Paybill with copy buttons. Daraja STK can be added once the centre supplies credentials; it needs server-side callback verification.
 - **Job applications** are by email or an external link (for example a Google Form). The site does not accept CV file uploads, to avoid storing personal documents on the web server; the talent community form takes a CV or LinkedIn link instead.
 - **Careers form needs Smile Community Core 1.2.0 or later (bundled: 1.3.6).** Until the plugin is updated (Smile Setup shows "Update"), the talent community section shows an "Email your CV" button instead of the form.
 - **Email delivery** depends on SMTP being configured on the host. The forms report honestly if email fails, and every message is also stored.

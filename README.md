@@ -8,8 +8,8 @@
 A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable children shelter, daily meals, education and care since 2009.</p>
 
 <p>
-<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.46.0-164B3F?style=flat-square">
-<img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.3.7-176B5B?style=flat-square">
+<img alt="Theme version" src="https://img.shields.io/badge/theme-v2.54.0-164B3F?style=flat-square">
+<img alt="Core plugin" src="https://img.shields.io/badge/core%20plugin-v1.6.2-176B5B?style=flat-square">
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.3%2B-21759B?style=flat-square&logo=wordpress&logoColor=white">
 <img alt="PHP" src="https://img.shields.io/badge/PHP-8.2%20recommended-777BB4?style=flat-square&logo=php&logoColor=white">
 <img alt="Elementor" src="https://img.shields.io/badge/layouts-Elementor-92003B?style=flat-square&logo=elementor&logoColor=white">
@@ -21,6 +21,7 @@ A children's home in Soweto, Kayole, Nairobi, giving orphaned and vulnerable chi
 <p>
 <a href="https://smilecommunitycentre.org/"><strong>Live site</strong></a> &nbsp;&middot;&nbsp;
 <a href="https://topnotchmall.co.ke/smilescommunity/"><strong>Staging site</strong></a> &nbsp;&middot;&nbsp;
+<a href="docs/HANDOVER.md"><strong>Handover</strong></a> &nbsp;&middot;&nbsp;
 <a href="docs/admin-guide.md"><strong>Staff guide</strong></a> &nbsp;&middot;&nbsp;
 <a href="docs/install-and-deploy.md"><strong>Install</strong></a> &nbsp;&middot;&nbsp;
 <a href="ARCHITECTURE.md"><strong>Architecture</strong></a> &nbsp;&middot;&nbsp;

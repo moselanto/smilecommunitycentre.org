@@ -1,11 +1,11 @@
 # AGENTS.md: start here (for the next AI agent or developer)
 
-Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/redirects.md` before changing anything. Append to the log at the bottom when you finish.
+**Start with `docs/HANDOVER.md`** (current state, release steps and the full pending list). Then read this file, `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/redirects.md` before changing anything. Append to the log at the bottom when you finish.
 
 ## The project
 
-- **Live (old) site:** https://smilecommunitycentre.org/ (old "helpinghands" theme, SEOPress sitemaps at /sitemaps.xml).
-- **Redesign (staging):** https://topnotchmall.co.ke/smilescommunity (WordPress in a sub-folder).
+- **Live site:** https://smilecommunitycentre.org/ (this theme since 4 Nov 2026; Rank Math sitemap at /sitemap_index.xml).
+- **Staging (not kept in sync since go-live):** https://topnotchmall.co.ke/smilescommunity (WordPress in a sub-folder).
 - **Code:** this repo. Theme `wp-content/themes/smile-community-child/` (child of Hello Elementor) with the **Smile Community Core** plugin bundled at `wp-content/themes/smile-community-child/plugins/smile-community-core/` (this bundled copy is the one that ships; `wp-content/plugins/smile-community-core/` is an older 1.0.0 copy, keep its `includes/redirects.php` in sync).
 - **Production:** live at https://smilecommunitycentre.org since November 2026 (cPanel host leader.vivawebhost.com). Server configuration lives in `docs/server/`.
 - **Plugin copy:** the only maintained copy of Smile Community Core is the one bundled in the theme. The old standalone copy in `wp-content/plugins/` was removed.
@@ -17,13 +17,10 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 - Release flow: edit, bump version in `style.css` and `functions.php` (and the Core header/constant if the plugin changed), `bash scripts/build-theme-zip.sh`, commit to `main`, upload zip, add a `CHANGELOG.md` entry.
 - Never publish children's names, locations or identifying details. No secrets in code.
 
-## Current state (11 Nov 2026)
+## Current state (12 Nov 2026, 02:45 EAT)
 
-- Live: theme **2.54.0** / Core **1.6.2**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
-
-## Earlier state (19 Oct 2026, 23:30 EAT)
-
-- Theme **2.31.0** with Core **1.3.0** (commit d74c3d8) is uploaded on staging and verified: all 56 old sitemap URLs plus old sitemap files and category pagination/feeds end on a 200 page with at most one redirect. Permalinks on staging are now `/%postname%/`.
+- Live: theme **2.54.0** / Core **1.6.2**. Rank Math SEO is the only SEO plugin (SEOPress removed). GA4 key events are live, and GTM has 0 tags. See `docs/HANDOVER.md`, `docs/SEO.md`, `docs/performance.md` and `docs/crawler-access-matrix.md`.
+- Home PageSpeed after 2.54.0: desktop 98/100/100 with CLS 0, mobile 94/96/93.
 
 ## How to re-check old links
 
@@ -31,11 +28,20 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Open items
 
-1. Decide whether to import the 9 old posts that were not carried over (list in `docs/redirects.md`); they currently redirect to general pages.
-2. At go-live on smilecommunitycentre.org: keep old `wp-content/uploads/` files, turn search-engine indexing on (Site setup ticks "discourage" on staging), then re-run the old-URL check against the live domain.
+The full prioritised list is in `docs/HANDOVER.md` section 4. In short:
+
+1. **Google Business Profile:** the current owner must add peterwafulah@gmail.com as a manager. Owner action.
+2. **Content questions:** the 15 questions in `docs/content-drafts.md` and the launch confirmations in `docs/known-limitations.md` are unanswered. Nothing in the drafts goes live without approval.
+3. **Core Web Vitals:** on 2 Dec 2026, run Core Web Vitals "Validate fix" in Search Console (33 mobile URLs, LCP over 4 s) and check the Bing sitemap. A scheduled Town task is set for this.
+4. **Search Console:** click "Validate fix" on the 404 group.
+5. **Untested GA4 events:** donation_start, donation_complete, partner_enquiry and enquiry_submit have not been seen in GA4 yet.
+6. **Paystack:** confirm the live keys for KES and USD card giving.
+7. **Directory listings:** add them with a consistent name, address and phone (NAP) after the Business Profile is sorted.
+8. **Retired posts:** Agnes decided on 20 Oct to keep the 9 retired posts as redirects. No action needed.
 
 ## Work log
 
+- **12 Nov 2026, 02:45 EAT (Ray / Town):** Docs only. Added `docs/HANDOVER.md` (state, release steps, work done on 10-12 Nov, prioritised pending list, gotchas). Refreshed AGENTS.md (current state, open items), the README badges and `docs/known-limitations.md` (Paystack note).
 - **12 Nov 2026, 01:15 EAT (Ray / Town):** 2.54.0 is live.
   - **GA4 key events:** 8 events are sent by the theme's gtag and all are marked as key events in GA4. Four were verified in DebugView and Realtime; GTM still has 0 tags.
   - **Care strip:** a metric-matched Figtree Fallback fixes the intermittent desktop care-strip shift. Home desktop scored 98/100/100 with CLS 0/0/0; mobile scored 94/96/93.
