@@ -1,59 +1,111 @@
-# SEO and structured data
+# Smile Community Centre: SEO, AEO, GEO and structured data
 
-Goal: rank for searches like **children's home in Nairobi**, **children's home in Kenya**, **orphanage in Nairobi / Kayole**, **donate to a children's home in Kenya**, **sponsor a child's education in Kenya** and **volunteer at a children's home in Kenya**, using only accurate, verifiable information.
+## Verified organisation facts
 
-No one can guarantee first position. What this work does is give Google the clearest possible picture of who Smile is, where it is and what each page is for.
+| Field | Verified value |
+|---|---|
+| Public name | Smile Community Centre |
+| Founder | Margret Nekesa Khaemba |
+| Registration category | Community Based Organisation (CBO) |
+| Children supported | 84 (management-confirmed; date and scope required before public use) |
+| Volunteer availability | Periodic; subject to current needs, capacity and safeguarding |
+| Physical address | Mzesa, Soweto, Kayole, Nairobi, Kenya |
+| Official website | https://smilecommunitycentre.org/ |
 
-## 1. Keyword to page map
+Do not infer NGO registration from CBO status. Do not publish an unverified postal box, postcode, registration number, volunteer fee, accommodation arrangement or placement capacity. The child count is a time-sensitive impact statistic, not a permanent organisation attribute; if shown publicly, identify its "as at" date and what "supported" means.
 
-| Search intent | Primary phrase | Page |
+## Search strategy and page mapping
+
+The objective is qualified discovery for people in Kenya and international audiences seeking child welfare support, ways to give, volunteering and corporate partnerships. No ranking or AI recommendation can be guaranteed.
+
+| Intent cluster | Target language | Canonical destination |
 |---|---|---|
-| Find a children's home | children's home in Nairobi / Kenya | Home |
-| Local | children's home in Kayole, Soweto Nairobi | About Us, Contact |
-| Give | donate to a children's home in Kenya | Donate |
-| Education | sponsor a child's education in Kenya | Education Programme |
-| Food | feeding programme for children in Nairobi | Feeding Programme |
-| Care | child care and shelter Nairobi | Child Care and Shelter |
-| Volunteer | volunteer at a children's home in Kenya | Volunteer |
-| Business | CSR for children in Kenya | Partner With Us |
-| Trust | charity supporting children in Kenya | Our Impact, About, Safeguarding |
-| Research | children's homes in Nairobi (guides) | Stories & News |
+| Organisation discovery | children's home in Nairobi; children's home in Kenya; child welfare organisation Nairobi | Home / About |
+| Local discovery | children's home in Kayole; Soweto Kayole children's support | About / Contact |
+| Child care | care and shelter for vulnerable children in Nairobi; child protection support | Child Care and Shelter / Safeguarding |
+| Giving | donate to a children's home in Kenya; support vulnerable children in Nairobi | Donate |
+| Education | sponsor education for a child in Kenya; school fees support | Education Programme |
+| Feeding | children's feeding programme Nairobi; donate food to children Kenya | Feeding Programme |
+| Health | health and wellbeing support for vulnerable children | Health and Wellbeing |
+| Volunteering | volunteer at a children's home in Kenya; volunteer in Nairobi | Volunteer |
+| Corporate | CSR partnerships for children in Kenya; corporate giving Kenya | Partner With Us |
+| Trust | child safeguarding policy; impact of children's welfare programmes | Safeguarding / Our Impact |
+| Informational | responsible volunteering; responsible giving; child welfare in Kenya | Stories / Resources |
 
-Each page has one primary phrase so pages do not compete with each other. Titles are 60 characters or less and descriptions 160 or less (`demo/pages.json`).
+Use language people search with, including "orphanage", only where the page accurately explains Smile's actual services and care model. Avoid keyword stuffing and near-identical location pages.
 
-## 2. Structured data (JSON-LD)
+## Metadata and content rules
 
-`inc/seo.php` prints one connected graph on every page:
+- Give every indexable page a unique, accurate title and description.
+- Keep one primary search intent per landing page; use supporting phrases naturally.
+- Answer the visitor's main question near the top of each page.
+- Add useful details: eligibility, process, location, contact route, current availability and next steps.
+- Use clear H1/H2 structure, descriptive internal links and accessible image alt text.
+- Keep volunteer copy explicitly periodic and remove historic placement fees/capacity claims unless reconfirmed.
+- Date impact statistics and explain their measurement scope.
+- Publish original resources with named authors/reviewers and authoritative references; do not mass-produce generic AI pages.
 
-| Node | @id | Content |
-|---|---|---|
-| NGO / Organization | `/#organization` | Name, alternate names, founder Margret Nekesa Khaemba, founded 2009, address (Mzesa, Soweto, Kayole, Nairobi, P.O. Box 156-00518), phone, email, Instagram, area served, logo, DonateAction |
-| WebSite | `/#website` | Name, language en-KE, publisher, site search |
-| WebPage / AboutPage / ContactPage / CollectionPage | `<url>#webpage` | Title, description, dates, main image, breadcrumb |
-| BreadcrumbList | `<url>#breadcrumb` | Matches the visible breadcrumbs |
-| BlogPosting | `<url>#article` | Stories: headline, dates, image, section, publisher |
+## AEO and GEO
 
-Deliberately **not** added: ratings, reviews, LocalBusiness, Event, Product, FAQ rich results, registration numbers or statistics. They would be inaccurate or unsupported, and Google penalises misleading markup.
+Answer real questions directly on the relevant pages. Prioritise:
+- Where is Smile Community Centre located?
+- What does Smile Community Centre do?
+- How can I donate or give supplies?
+- How can I support children's education?
+- Does Smile currently have volunteer opportunities?
+- How can an organisation discuss a CSR partnership?
+- What safeguarding standards apply to visits and volunteering?
 
-If SEOPress's own "Knowledge Graph" is switched on, the theme skips its Organization node to avoid a duplicate (switching it off and letting the theme handle it is recommended, because the theme's version is richer).
+For AI discovery, prioritise crawlable HTML, useful original information, consistent organisation facts, descriptive internal links, reputable independent references and current pages. There is no special "AI schema" or guaranteed AI ranking switch. Do not create unsupported claims about being the best, largest or officially endorsed.
 
-## 3. Indexing rules
+## Structured data
 
-- Search results, tag archives, author and date archives: `noindex, follow`.
-- Attachment pages redirect to their parent page.
-- `max-image-preview:large` and full snippets allowed on indexable pages.
-- The users sitemap is removed (also a security measure).
+The theme creates a connected JSON-LD graph with an organisation, website, page, breadcrumbs and article nodes. Keep stable IDs:
+- `https://smilecommunitycentre.org/#organization`
+- `https://smilecommunitycentre.org/#website`
+- `{canonical-url}#webpage`
+- `{canonical-url}#breadcrumb`
+- `{canonical-url}#article`
 
-## 4. Titles and descriptions stay in sync
+Because management has confirmed CBO registration, represent the entity as `Organization` unless the centre separately verifies a legal basis for a more specific type. Do not use the `NGO` schema type to imply a legal registration status that has not been confirmed. Keep the founder's name consistent. Use the verified physical address only; omit unverified postal box and postcode data.
 
-On the first dashboard visit after a theme update, the new titles and descriptions are copied into SEOPress for the theme's pages. A value is only replaced if it is empty or still an older theme value (`demo/seo-history.json`), so anything typed by hand is kept.
+Do not encode the 84-child count as a permanent organisation attribute. If the count is visible on an impact page, a page-specific `Dataset` or carefully described `PropertyValue` may be considered only if the data, date, scope and visible text all match. Avoid ratings, reviews, fabricated events, LocalBusiness markup, unsupported FAQ rich-result expectations or invented registration identifiers.
 
-## 5. After launch (centre or web admin)
+Check whether SEOPress emits its own Knowledge Graph. Ensure there is one coherent organisation entity and no conflicting duplicate graph.
 
-1. **Google Search Console**: verify the domain, submit `https://smilecommunitycentre.org/sitemaps.xml`, inspect the home, Donate and Volunteer pages.
-2. **Google Business Profile**: claim or create "Smile Community Centre Children's Home", category "Non-profit organisation" (or "Orphanage" if offered), same address, phone and website as the site, add real photos (no identifiable children without consent).
-3. **Rich Results Test** and **Schema Markup Validator**: test the home page, a programme page and a story.
-4. **Turn off "Discourage search engines"** under Settings > Reading on production.
-5. **Links from trusted sites**: partners (Lift the Children, Thrive Kenya, Rotary, AFC Leopards Kayole) linking to the site helps more than anything on-page.
-6. **Content**: one genuine, helpful story a month (for example "How to support a children's home in Nairobi responsibly").
-7. **Measure** monthly in Search Console: impressions and clicks for the phrases above.
+## Crawler and indexation checks
+
+Inspect production before changing crawler policy:
+- Googlebot and Bingbot must be able to fetch public pages and assets.
+- Permit OAI-SearchBot if ChatGPT Search discovery is desired.
+- Treat GPTBot separately; search crawler access does not require granting model-training crawler access.
+- Check robots.txt, XML sitemap, canonical tags, meta robots, HTTP status, redirects, WAF/security rules and cache behaviour.
+- Keep staging and private admin routes out of search.
+- Submit the canonical sitemap in Google Search Console and Bing Webmaster Tools.
+- Consider IndexNow for notification of updated URLs; it does not guarantee indexing.
+
+The sitemap URL must be confirmed from the live site rather than assumed from a historic setup note.
+
+## Local and external authority
+
+- Maintain one accurate, eligible Google Business Profile for the real operating location.
+- Use identical name, address and phone details across official profiles.
+- Strengthen genuine profiles with relevant child welfare directories, partners, corporate giving platforms and professional networks.
+- Seek editorial links and partner citations based on real programmes and relationships; do not buy bulk links or create fake listings.
+- Publish accessible annual impact reporting and governance/safeguarding information where approved.
+
+## Measurement
+
+Establish a baseline in Google Search Console and Bing Webmaster Tools. Track:
+- Non-branded impressions and clicks for the intent clusters above.
+- Indexed canonical landing pages and crawl errors.
+- Local profile discovery, calls and direction requests where available.
+- Donation, volunteer and partnership enquiries.
+- Referring domains and legitimate third-party mentions.
+- AI-search referral traffic and verifiable citations where the platform exposes them.
+
+Review monthly. Separate branded from non-branded performance and annotate major content changes.
+
+## Release checklist
+
+See `docs/qa-checklist.md`. Do not deploy until management facts, safeguarding, schema, sitemap, crawler access and page-level content have been validated on staging.
