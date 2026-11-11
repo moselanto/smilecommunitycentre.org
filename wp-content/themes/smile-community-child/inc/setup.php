@@ -295,7 +295,7 @@ function smile_local_fonts() {
 	$range = 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD';
 	$faces = array(
 		array( 'Nunito', 'normal', '200 1000', 'nunito-latin.woff2', 'optional' ), // Brand heading font (Smile Logo Kit), SIL OFL 1.1. 'optional' (2.53.0): preloaded, so it is used when it arrives in time (and on every later page from cache); otherwise the metric-matched fallback stays and headings never jump (mobile CLS on the slide and article h1).
-		array( 'Figtree', 'normal', '300 900', 'figtree-latin.woff2' ),
+		array( 'Figtree', 'normal', '300 900', 'figtree-latin.woff2', 'optional' ), // 2.53.2: body font, preloaded; 'optional' so text never re-wraps after first paint (pillars strip CLS).
 		array( 'Newsreader', 'normal', '500', 'newsreader-latin.woff2' ),
 		array( 'Newsreader', 'italic', '500', 'newsreader-italic-latin.woff2' ),
 		array( 'Caveat', 'normal', '600', 'caveat-latin.woff2', 'optional' ), // Decorative only: never swap late (no layout shift).

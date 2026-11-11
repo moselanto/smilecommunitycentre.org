@@ -2,6 +2,13 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.2 - 11 Nov 2026
+
+- **Heading and body fonts never swap late** (`inc/setup.php`, `assets/css/main.css`): Figtree (body) now uses `font-display: optional` like Nunito, and the heading font stack no longer falls back to Figtree. Lighthouse's test machine has no Arial, so headings fell through to Figtree, which then swapped in and re-wrapped the slide h1 (Home mobile CLS 0.109), the article h1 (0.061) and the pillars strip text (Home desktop 0.058).
+- **Slide h1 room reserved on phones:** the three-line split-slide title keeps `min-height: 3.3em`.
+- **Closing band contrast:** the yellow bar under "everyday care possible." now sits under the words instead of behind them.
+- **Programme card photos** (`.smile-pcard__img img`, e.g. wp-image-1048) and photo widgets get `height:auto`, so the box keeps its ratio and counts as sized.
+
 ## 2.53.1 - 11 Nov 2026
 
 - **Home desktop layout shift (0.198) fixed:** the "A safe home / Daily meals / Schooling" pillars strip (`.smile-pillars`, widget 7a9bc3d) overlaps the bottom of the slider, so it is in the first screen. Its rules are now in the Home critical CSS (`scripts/build-critical-css.py` KEEP list; skipped on inner pages), so it no longer jumps from an unstyled list into the card grid when the async stylesheet arrives.

@@ -782,7 +782,7 @@ img { max-width: 100%; height: auto; }
    Newsreader (headings, quotes)  Figtree (text, UI)  Caveat (rare handwritten notes)
    ========================================================= */
 :root {
-	--smile-font-display: "Nunito", "Nunito Fallback", "Figtree", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif;
+	--smile-font-display: "Nunito", "Nunito Fallback", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif;
 	--smile-font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 	--smile-font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
 	--smile-fs-base: 1.0625rem;
@@ -1486,7 +1486,7 @@ a.smile-btn--sun, a.smile-btn--sun:visited, .smile-btn--sun, .smile-footer a.smi
    The header/footer logo is locked to one size on every page, so page
    or Elementor rules can no longer enlarge it.
    ========================================================= */
-:root { --smile-font-display: "Nunito", "Nunito Fallback", "Figtree", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif; }
+:root { --smile-font-display: "Nunito", "Nunito Fallback", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif; }
 h1, h2, h3, .elementor-widget-heading h1.elementor-heading-title, .elementor-widget-heading h2.elementor-heading-title, .elementor-widget-heading h3.elementor-heading-title { font-family: var(--smile-font-display); }
 .smile-header .smile-brand, .smile-header .smile-header__brand { flex: 0 0 auto; width: auto !important; max-width: none !important; }
 .smile-header .smile-brand picture { width: auto !important; }
@@ -1800,3 +1800,13 @@ a.skip-link.screen-reader-text:not(.smile-skip-link):not(:focus) { position: abs
 .smile-closing h2.elementor-heading-title em, .smile-closing h2.elementor-heading-title em.smile-em { color: var(--smile-sun) !important; -webkit-text-fill-color: var(--smile-sun) !important; }
 /* 2.53.1: links inside text must not rely on colour alone (Donate form privacy note). */
 .smile-form__privacy a { text-decoration: underline !important; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+
+/* 2.53.2: headings no longer fall back to Figtree (a web font that swapped in late and
+   re-wrapped the slide and article h1). The slide h1 on phones keeps room for its three lines. */
+@media (max-width: 767px) {
+	.smile-slider .smile-slide--split h1.smile-slide__title { min-height: 3.3em !important; }
+}
+/* 2.53.2: closing band highlight bar sits under the words, not behind them (contrast check). */
+.smile-closing .elementor-heading-title em::after { top: auto !important; bottom: -.22em !important; height: .14em !important; opacity: .9 !important; z-index: 0; }
+/* 2.53.2: programme card photos (e.g. wp-image-1048) keep their width/height ratio box. */
+.smile-pcard__img img, .elementor-widget-image.smile-photo img { height: auto !important; }
