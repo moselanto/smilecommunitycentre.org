@@ -4,7 +4,7 @@
  * sensible indexing rules, and fallback meta tags when no SEO plugin is active.
  *
  * Graph (stable @id values, so Google sees one organisation across the site):
- *   #organization  NGO (Smile Community Centre)  <- founder, address, contact, logo
+ *   #organization  Organization (Smile Community Centre)  <- founder, address, contact, logo
  *   #website       WebSite (+ site search)
  *   <url>#webpage  WebPage / AboutPage / ContactPage / CollectionPage
  *   <url>#breadcrumb BreadcrumbList
@@ -121,7 +121,7 @@ function smile_seo_organization() {
 	$logo_url = function_exists( 'smile_brand_logo_url' ) && apply_filters( 'smile_use_brand_logo', true ) ? smile_brand_logo_url() : ( $logo_id ? wp_get_attachment_image_url( $logo_id, 'full' ) : '' );
 
 	$org = array(
-		'@type'         => array( 'NGO', 'Organization' ),
+		'@type'         => 'Organization',
 		'@id'           => $home . '#organization',
 		'name'          => __( 'Smile Community Centre', 'smile-community' ),
 		'alternateName' => array( 'Smile Community Centre Children\'s Home', 'Smile Children\'s Home Kayole' ),
@@ -136,11 +136,9 @@ function smile_seo_organization() {
 		),
 		'address'       => array(
 			'@type'               => 'PostalAddress',
-			'streetAddress'       => 'Mzesa, Soweto, Kayole (near Donholm Phase 8)',
+			'streetAddress'       => 'Mzesa, Soweto, Kayole',
 			'addressLocality'     => 'Nairobi',
 			'addressRegion'       => 'Nairobi County',
-			'postOfficeBoxNumber' => '156',
-			'postalCode'          => '00518',
 			'addressCountry'      => 'KE',
 		),
 		'areaServed'    => array(

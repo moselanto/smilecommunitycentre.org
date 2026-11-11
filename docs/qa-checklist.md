@@ -41,6 +41,14 @@ Tick each item and note the device or browser you used. Do not mark anything as 
 - [ ] Turn on "reduce motion" in the operating system. No movement on hover.
 
 ## SEO
+- [ ] Organisation facts match management verification: founder Margret Nekesa Khaemba; registration category CBO; physical address Mzesa, Soweto, Kayole, Nairobi; 84 children only where a dated scope is supplied.
+- [ ] No historic postal box or postcode is emitted until management verifies it.
+- [ ] Volunteer page states opportunities are periodic; no unverified fees, accommodation promises or monthly capacity claims remain.
+- [ ] Founder spelling is consistent across visible copy, metadata and JSON-LD.
+- [ ] CBO status is not represented as NGO registration without separate documentary confirmation.
+- [ ] Any public child-count statistic has an explicit reporting date and definition.
+- [ ] Check robots.txt, sitemap, canonical URLs, noindex directives, OAI-SearchBot and Bingbot access, and security/WAF logs.
+- [ ] Confirm the SEO plugin and theme do not emit duplicate Organization entities.
 - [ ] Each page has a unique title and description (SEOPress).
 - [ ] `/sitemaps.xml` is reachable. Staging is noindex, and production is indexable at launch.
 - [ ] Every row in redirects.md returns a 301 to the right page.
