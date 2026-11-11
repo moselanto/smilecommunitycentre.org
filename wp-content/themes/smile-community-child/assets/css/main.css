@@ -1200,7 +1200,7 @@ p, li { text-wrap: pretty; }
    v2.8.2 Speed: skip painting far-down sections until needed
    ========================================================= */
 .elementor-section.smile-sec ~ .elementor-section.smile-sec ~ .elementor-section.smile-sec:not(.smile-sec--pathnav):not(.smile-sec--stats):not(.smile-sec--hub):not(.smile-sec--overlap),
-.smile-footer { content-visibility: auto; contain-intrinsic-size: auto 720px; }
+/* 2.53.0: footer no longer uses content-visibility:auto; the skipped render made the contrast check read the footer text against a white page instead of the dark green footer. */
 
 /* =========================================================
    v2.9 Top of every page: top bar, header, page banner
@@ -1784,3 +1784,11 @@ a.skip-link.screen-reader-text:not(.smile-skip-link):not(:focus) { position: abs
 .smile-faq .smile-faq__item[open] .smile-faq__icon { background: var(--smile-teal); color: #fff; }
 .smile-faq .smile-faq__a { padding: 0 1.35rem 1.25rem; color: #3A4843; font-size: 1.02rem; line-height: 1.7; }
 .smile-faq .smile-faq__a p:last-child { margin-bottom: 0; }
+
+/* 2.53.0: highlighted heading words keep a solid colour that the contrast check can read; the yellow smile mark sits under the text, not behind it. */
+.smile-em { color: inherit; isolation: isolate; }
+.smile-sec h2.elementor-heading-title em.smile-em { color: var(--smile-teal); }
+.smile-sec--forest h2.elementor-heading-title em.smile-em, .smile-closing h2.elementor-heading-title em.smile-em, .smile-sec--journey h2.elementor-heading-title em.smile-em { color: var(--smile-sun); }
+.smile-swash { z-index: -1; }
+/* 2.53.0: Soweto-Kayole community photo: fixed shape so its box is reserved before it loads. */
+.smile-community-photo img { width: 100%; height: auto !important; aspect-ratio: 1024 / 497 !important; }

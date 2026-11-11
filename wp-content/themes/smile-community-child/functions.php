@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SMILE_THEME_VERSION', '2.52.0' );
+define( 'SMILE_THEME_VERSION', '2.53.0' );
 define( 'SMILE_THEME_DIR', get_stylesheet_directory() );
 define( 'SMILE_THEME_URI', get_stylesheet_directory_uri() );
 
@@ -31,6 +31,7 @@ require_once SMILE_THEME_DIR . '/inc/performance.php';
 require_once SMILE_THEME_DIR . '/inc/lean-assets.php';
 require_once SMILE_THEME_DIR . '/inc/two-factor.php';
 require_once SMILE_THEME_DIR . '/inc/theme-options.php';
+require_once SMILE_THEME_DIR . '/inc/content-fixes.php';
 require_once SMILE_THEME_DIR . '/inc/elementor/builder.php';
 require_once SMILE_THEME_DIR . '/inc/elementor/widgets.php';
 

@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.0 - 11 Nov 2026
+
+- **Staging links and editorial labels removed from posts** (`inc/content-fixes.php`, new): a one-off clean-up that runs once in wp-admin and then records `smile_content_fix_2530`. It rewrites `topnotchmall.co.ke/smilescommunity` links to the live domain in every post, page and Elementor template, and removes the writer's labels "Quick Answer (Featured Snippet Target)" and "Donation Call to Action". Before the fix the REST scan found 8 posts: 151 (sponsor guide: Donate, About, Feeding, Contact + both labels), 152 (Donate link + label), 159, 161, 163 (Donate links and image URLs), 166, 182 and 183 (Donate links). Posts are saved with wp_update_post, so revisions are kept.
+- **Heading font no longer shifts layout** (`inc/setup.php`): Nunito now uses `font-display: optional` (still preloaded). Fixes the mobile CLS on the Home slide h1 (0.090) and the article h1 (0.061). On a very slow first visit, headings may stay in the metric-matched fallback for that page only.
+- **Footer contrast audit** (`assets/css/main.css`): removed `content-visibility: auto` from the footer. The colours already pass (cream #DCE7E2 and yellow on #0B4021), but the skipped render made Lighthouse check them against white.
+- **Highlighted heading words** (`.smile-em`): solid text colour per section, with the yellow smile mark placed under the text.
+- **Soweto-Kayole photo** (`.smile-community-photo img`, wp-image-1053): fixed 1024/497 shape with `height:auto`, so its space is reserved before it loads.
+
 ## 2.52.0 - 11 Nov 2026
 
 - **Fewer render-blocking stylesheets** (`inc/lean-assets.php`): small local CSS files (Hello reset, Elementor kit, page, header/footer template, widget-heading, widget-image, base desktop/mobile; each under 8 KB) are printed inline in the head in the same order and media, instead of about nine separate blocking requests. Elementor's 54 KB `frontend.min.css` stays external.
