@@ -2,6 +2,18 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.54.0 - 12 Nov 2026
+
+- **GA4 key events** (`assets/js/main.js`, `inc/analytics.php`): sent with the theme's own gtag (GA4 `G-DJQ2PBW3YN`). Tag Manager stays empty, so nothing is counted twice. No names, emails, phone numbers or message text are sent.
+  - `donation_start`: the Paystack giving form is submitted (method `paystack`, plus currency and frequency).
+  - `mpesa_details_copy`: the M-Pesa paybill or account number is copied (method `mpesa`).
+  - `donation_complete`: the donor returns from Paystack with `?smile_donation=thanks`.
+  - `contact_submit`, `volunteer_enquiry`, `partner_enquiry` and `enquiry_submit` (for visit, donation and careers forms): a Smile form was received (`?smile_form=TYPE&smile_status=ok|saved`).
+  - `whatsapp_click`: any wa.me or WhatsApp link, or "Send on WhatsApp" in the chat panel (with `link_location`).
+  - `?smile_ga_debug=1` sends the visit's hits to GA4 DebugView.
+- **Intermittent desktop care-strip shift:** Figtree (body text and the slide headings) is `font-display: optional` and preloaded. When it arrived inside its short block period after the first layout, the slide text was re-measured with different metrics, the slide grew and the care strip (7a9bc3d) moved; PageSpeed listed Figtree as the root cause. A metric-matched "Figtree Fallback" (Arial and Arial Bold with `size-adjust`, `ascent-override` and `descent-override` measured from `figtree-latin.woff2`) now sits behind Figtree in `--smile-font-body`, so a late font no longer changes text size. Same look once Figtree is loaded.
+- `build-theme-zip.sh` now actually rebuilds `main.min.js`, because rjsmin is installed.
+
 ## 2.53.10 - 11 Nov 2026
 
 - **Meta descriptions within the search-snippet length:** Home (192 to 150 characters) and About Us (167 to 145) in `demo/pages.json`, and the theme fallback in `inc/seo.php`. Same facts, no new claims. Live audit of all 52 sitemap URLs: every page has one H1, a unique title and description, a self-canonical, no noindex and valid JSON-LD; these two descriptions were the only length issues.

@@ -320,6 +320,12 @@ function smile_local_fonts() {
 	// metrics (measured from the font files), so text does not re-wrap or move when Nunito
 	// loads. Regular weights match Arial; 600+ match Arial Bold. Fixes the mobile CLS on the hero h1.
 	$css .= "@font-face{font-family:'Nunito Fallback';font-style:normal;font-weight:200 500;src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('Arimo');size-adjust:100.19%;ascent-override:100.91%;descent-override:35.23%;line-gap-override:0%;}@font-face{font-family:'Nunito Fallback';font-style:normal;font-weight:600 1000;src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold'),local('Arimo Bold');size-adjust:95.35%;ascent-override:106.03%;descent-override:37.02%;line-gap-override:0%;}";
+	// 2.54.0: metric-matched fallback for Figtree (body text and the slide headings), measured from
+	// figtree-latin.woff2 (upm 1000, ascent 950, descent 250, weighted average width 0.446 at 400 and
+	// 0.466 at 800) against Arial (0.441) / Arial Bold (0.480). If Figtree arrives inside its short
+	// block period after first layout, text keeps the same size, so the slide and the care strip below
+	// it cannot move (intermittent desktop CLS on 7a9bc3d).
+	$css .= "@font-face{font-family:'Figtree Fallback';font-style:normal;font-weight:100 500;src:local('Arial'),local('ArialMT'),local('Liberation Sans'),local('Arimo');size-adjust:101.09%;ascent-override:93.98%;descent-override:24.73%;line-gap-override:0%;}@font-face{font-family:'Figtree Fallback';font-style:normal;font-weight:600 1000;src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold'),local('Arimo Bold');size-adjust:97.00%;ascent-override:97.94%;descent-override:25.77%;line-gap-override:0%;}";
 	echo '<style id="smile-fonts">' . $css . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from fixed values and esc_url().
 }
 add_action( 'wp_head', 'smile_local_fonts', 1 );

@@ -482,3 +482,52 @@
 	}, { rootMargin: '300px 0px' } );
 	maps.forEach( function ( f ) { io.observe( f ); } );
 })();
+
+
+/**
+ * GA4 key events (2.54.0). Sent with gtag() set up by inc/analytics.php (no GTM tag, no double counting).
+ *  - donation_start     Paystack card/USD giving form submitted (method: paystack)
+ *  - mpesa_details_copy M-Pesa paybill/account copied (method: mpesa)
+ *  - donation_complete  return from Paystack with ?smile_donation=thanks
+ *  - contact_submit / volunteer_enquiry / partner_enquiry / enquiry_submit
+ *                       a Smile form was received (?smile_form=TYPE&smile_status=ok|saved)
+ *  - whatsapp_click     any wa.me / WhatsApp link or the chat panel "Send on WhatsApp"
+ * No names, emails, phone numbers or message text are sent.
+ */
+( function () {
+	'use strict';
+	function send( name, params ) {
+		if ( typeof window.gtag !== 'function' ) { return; }
+		var p = { transport_type: 'beacon', page_path: window.location.pathname };
+		for ( var k in params ) { if ( Object.prototype.hasOwnProperty.call( params, k ) ) { p[ k ] = params[ k ]; } }
+		window.gtag( 'event', name, p );
+	}
+	var q = new URLSearchParams( window.location.search );
+	var type = q.get( 'smile_form' ), status = q.get( 'smile_status' );
+	if ( type && ( status === 'ok' || status === 'saved' ) ) {
+		var map = { contact: 'contact_submit', volunteer: 'volunteer_enquiry', partner: 'partner_enquiry', visit: 'enquiry_submit', donation: 'enquiry_submit', careers: 'enquiry_submit' };
+		if ( map[ type ] ) { send( map[ type ], { form_type: type } ); }
+	}
+	if ( q.get( 'smile_donation' ) === 'thanks' ) { send( 'donation_complete', { method: 'paystack' } ); }
+	document.addEventListener( 'submit', function ( e ) {
+		var f = e.target;
+		if ( ! f || ! f.classList ) { return; }
+		if ( f.classList.contains( 'smile-give__form' ) ) {
+			var cur = f.querySelector( '[name="currency"]:checked, select[name="currency"]' );
+			var freq = f.querySelector( '[name="frequency"]:checked' );
+			send( 'donation_start', { method: 'paystack', currency: cur ? cur.value : '', frequency: freq ? freq.value : '' } );
+		} else if ( f.classList.contains( 'smile-wa__form' ) ) {
+			send( 'whatsapp_click', { link_location: 'chat_panel' } );
+		}
+	}, true );
+	document.addEventListener( 'click', function ( e ) {
+		var el = e.target && e.target.closest ? e.target.closest( 'a[href*="wa.me/"], a[href*="api.whatsapp.com"], a[href^="whatsapp:"], [data-smile-copy]' ) : null;
+		if ( ! el ) { return; }
+		if ( el.hasAttribute( 'data-smile-copy' ) ) {
+			send( 'mpesa_details_copy', { method: 'mpesa' } );
+			return;
+		}
+		var area = el.closest( 'header, footer, .smile-wa, .smile-tabbar, main' );
+		send( 'whatsapp_click', { link_location: area ? ( area.tagName.toLowerCase() === 'main' ? 'content' : ( area.className.split( ' ' )[0] || area.tagName.toLowerCase() ) ) : 'page' } );
+	}, true );
+} )();

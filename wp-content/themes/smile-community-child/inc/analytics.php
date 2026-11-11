@@ -81,7 +81,9 @@ function smile_analytics_head() {
 		$srcs[] = 'https://www.googletagmanager.com/gtm.js?id=' . $gtm;
 	}
 	if ( $ga4 ) {
-		$js    .= "function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" . esc_js( $ga4 ) . "');";
+		// 2.54.0: ?smile_ga_debug=1 sends hits to GA4 DebugView (read-only switch, no data stored).
+		$debug  = isset( $_GET['smile_ga_debug'] ) ? ",{debug_mode:true}" : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$js    .= "function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','" . esc_js( $ga4 ) . "'" . $debug . ");";
 		$srcs[] = 'https://www.googletagmanager.com/gtag/js?id=' . $ga4;
 	}
 	if ( ! $srcs ) {

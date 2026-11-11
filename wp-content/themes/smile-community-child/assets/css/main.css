@@ -783,7 +783,7 @@ img { max-width: 100%; height: auto; }
    ========================================================= */
 :root {
 	--smile-font-display: "Nunito", "Nunito Fallback", "Arial Rounded MT Bold", Verdana, system-ui, sans-serif;
-	--smile-font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+	--smile-font-body: "Figtree", "Figtree Fallback", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 	--smile-font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
 	--smile-fs-base: 1.0625rem;
 	--smile-fs-h1: clamp(2.4rem, 1.7rem + 3vw, 4rem);
