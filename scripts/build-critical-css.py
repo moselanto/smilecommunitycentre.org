@@ -24,7 +24,7 @@ T = os.path.join(os.path.dirname(__file__), "..", "wp-content", "themes", "smile
 
 KEEP = re.compile(
     r"^(?:\*|html|body|:root|::?(?:before|after|selection)|h[1-3]|p|a|img|svg|picture|button|"
-    r"\.screen-reader-text|\.skip-link|\.smile-(?:skip-link|container|topbar|header|brand|nav|ico|icon|social|btn|"
+    r"\.screen-reader-text|\.skip-link|\.smile-(?:skip-link|container|topbar|header|brand|nav-toggle|nav|ico|icon|social|btn|"
     r"pagehero|breadcrumbs|eyebrow|hero|article|slider-sec|slider|slide|pillars|el-header|el-hidden|lead|faq)(?![a-z0-9]|-[a-z0-9])|\.menu-item|\.sub-menu|\.current-menu)"
 )
 
@@ -48,7 +48,7 @@ def blocks(css):
         i = k
 
 
-STATE = re.compile(r":(?:hover|focus|focus-visible|focus-within|active|visited)\b|\.is-open\b|\[aria-expanded=.?true|\[open\]")
+STATE = re.compile(r":(?:hover|focus|focus-visible|focus-within|active|visited)\b|\.is-open\b|\.smile-nav-open\b|\[aria-expanded=.?true|\[open\]")
 
 # Components that are never in the first screen of a given template (2.51.0).
 SKIP = {

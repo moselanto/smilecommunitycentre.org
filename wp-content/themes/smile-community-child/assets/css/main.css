@@ -1810,3 +1810,8 @@ a.skip-link.screen-reader-text:not(.smile-skip-link):not(:focus) { position: abs
 .smile-closing .elementor-heading-title em::after { top: auto !important; bottom: -.22em !important; height: .14em !important; opacity: .9 !important; z-index: 0; }
 /* 2.53.2: programme card photos (e.g. wp-image-1048) keep their width/height ratio box. */
 .smile-pcard__img img, .elementor-widget-image.smile-photo img { height: auto !important; }
+
+/* 2.53.3: Home closing band: the main heading sits on a solid green panel so its white and
+   yellow words have a measurable background (mobile contrast check). The rest of the band is unchanged. */
+.smile-closing .elementor-widget-heading h2.elementor-heading-title { display: inline-block; background-color: var(--smile-forest); padding: .35em .7em .45em; border-radius: 18px; }
+.smile-closing .elementor-widget-heading:has(h2.elementor-heading-title) { text-align: center; }

@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.3 - 11 Nov 2026
+
+- **Home closing band:** the "Help make everyday care possible." heading now sits on a solid dark green panel, so Lighthouse can measure its white and yellow text (mobile contrast warning). Photo, overlay, eyebrow, text and buttons are unchanged.
+- **Donate mobile layout shift (0.018):** the menu button (`.smile-nav-toggle`) had no rules in the critical CSS (the KEEP pattern matched `.smile-nav` but not `.smile-nav-toggle`), so it painted as a plain button and resized when the full stylesheet arrived, moving the header and the hero below it. `nav-toggle` is now kept in the critical CSS (open-menu states excluded via `.smile-nav-open`).
+
 ## 2.53.2 - 11 Nov 2026
 
 - **Heading and body fonts never swap late** (`inc/setup.php`, `assets/css/main.css`): Figtree (body) now uses `font-display: optional` like Nunito, and the heading font stack no longer falls back to Figtree. Lighthouse's test machine has no Arial, so headings fell through to Figtree, which then swapped in and re-wrapped the slide h1 (Home mobile CLS 0.109), the article h1 (0.061) and the pillars strip text (Home desktop 0.058).
