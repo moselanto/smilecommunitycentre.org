@@ -275,3 +275,28 @@ Cause of the remaining care-strip shift: the slider eyebrow ("Because of you,") 
 - Desktop CLS 0 in all three runs; no layout-shift culprits, font or unsized-image causes listed.
 - Phone-width comparison of the trimmed Home CSS: full-page 390px screenshots (thum.io) of `/` and `/?smile_full_css=1`, compared pixel by pixel. The only differences were capture timing in the reference shot (lazy photos not yet loaded, heading underlines mid-animation). Nothing unstyled; purge safelist unchanged.
 - Note: as designed with font-display: optional, a first visit where Caveat is slow shows the two handwritten slider lines in the fallback sans font; later visits use Caveat from cache.
+
+
+### 2.53.8 / 2.53.9 (Caveat preloaded on Home; slider eyebrow Caveat made !important)
+
+2.53.8 preloads caveat-latin.woff2 (51 KB, fetchpriority low) on the front page only. Check after 2.53.8: "Change a life today." showed in Caveat, but "Because of you," stayed sans-serif because a shared eyebrow rule in main.css set `font-family: var(--smile-font-body) !important` and `letter-spacing: .14em !important`. 2.53.9 makes the slider eyebrow's Caveat font-family and letter-spacing:0 `!important`. Fixed line boxes from 2.53.7 kept. Live HTML verified: preload present, critical rule `font-family:"Caveat",var(--smile-font-body) !important`.
+
+2.53.8 (11 Nov, EAT):
+
+| Run | Mobile perf | LCP | TBT | CLS | Desktop perf | LCP | TBT | CLS |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 21:01 | 99 | 2.0 s | 60 ms | 0.001 | 99 | 0.5 s | 0 ms | 0 |
+| 21:02 | 97 | 2.4 s | 10 ms | 0.001 | 98 | 0.7 s | 80 ms | 0 |
+| 21:03 | 92 | 3.2 s | 70 ms | 0.002 | 99 | 0.3 s | 80 ms | 0.008 |
+
+2.53.9 (11 Nov, EAT):
+
+| Run | Mobile perf | LCP | TBT | CLS | Desktop perf | LCP | TBT | CLS |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 21:08 | 93 | 2.6 s | 180 ms | 0.001 | 99 | 0.6 s | 50 ms | 0 |
+| 21:09 | 88 | 3.3 s | 20 ms | 0 | 83 | 0.8 s | 360 ms | 0 |
+| 21:10 | 90 | 2.7 s | 250 ms | 0 | 100 | 0.4 s | 0 ms | 0.022 |
+
+- Mobile CLS stays at 0-0.002. Desktop CLS is 0 in 4 of 6 runs; the care strip came back once per release (0.007 with 2.53.8, 0.021 with 2.53.9). PageSpeed blamed the fonts in the 2.53.8 run, and an unsized image once in each release. With Caveat now preloaded it can arrive inside its block period on slow runs; the line boxes are fixed, so the remaining cause is not settled. Desktop 83 (TBT 360 ms) in one 2.53.9 run is test-machine variance.
+- Accessibility 96 on one mobile run (a contrast warning) - check next time.
+- Headless screenshot services still show the eyebrow in the fallback font (font-display: optional on a cold load), so confirm the handwriting on a real phone/desktop browser.
