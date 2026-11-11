@@ -1,21 +1,42 @@
-# Live site audit summary (13 Oct 2026)
+# Live site audit summary and verified updates
 
-Source: a public crawl of https://smilecommunitycentre.org/ and its public WordPress REST API. No admin access was used.
+Source: repository review, public website review and management verification supplied for the November 2026 SEO implementation. Production behaviour still requires staging and live validation.
 
-- **Pages (16):** Home, About Us, Our Goals, Our Founder, Education Program, Feeding Program, Sports, HIV/AIDS Counselling, Donate, Volunteer, Contact Us, FAQ, Photos, Blog, Privacy Policy, Sitemap.
-- **Posts:** 27, from 2021 to 2026. Keep, review and retire decisions are in `migration-manifest.md`.
-- **Media:** about 80 files, including about 20 stock (Pexels) images and a sensitive 2021 set showing named adults and infants.
-- **Stack:** WPBakery with Ultimate Addons, Contact Form 7, WP Rocket, SEOPress, BackWPup, WebP Converter and WP 2FA. A leftover placeholder suggests WooCommerce was installed at some point.
-- **Donations:** M-Pesa Paybill 247247, account 147516. The giving amounts are KES 500, 2,500, 8,000 and 15,000+. The page mentions bank details and online giving, but neither is published.
-- **Contact:** 0721 318 869 (also WhatsApp), 0722 412 676 and 0720 809 885. Email info@smilecommunitycentre.org, P.O. Box 196-00518 Nairobi. Location: Mzesa, Soweto-Kayole, near Donholm Phase 8.
+## Management-verified organisation facts
 
-## Conflicts and items needing review
-- **Children in care:** 85 (Home and Founder pages) vs 75 (FAQ).
-- **Age of the youngest child:** 3 years (Founder page) vs months old (FAQ).
-- **Founder's name:** spelt both "Margret" and "Margaret".
-- **Volunteering:** the Volunteer page says slots are closed, but the Home page invites volunteers.
-- **Outdated content:** statistics on the About and HIV pages, and the university status of former residents on the Education page.
-- **Named children:** Mary, Abel, Laurence, Purity, Pamela and the twins are named, and consent is not recorded.
-- **Copy:** several typos, and empty "Vision" headings on three pages.
+- **Public name:** Smile Community Centre.
+- **Founder:** Margret Nekesa Khaemba.
+- **Registration category:** Community Based Organisation (CBO).
+- **Children supported:** 84 (management-confirmed figure; publish with an "as at" date and defined reporting scope when displayed publicly).
+- **Volunteer availability:** Periodic; enquiries depend on current needs, capacity, eligibility and safeguarding requirements.
+- **Physical address:** Mzesa, Soweto, Kayole, Nairobi, Kenya.
+- **Primary audiences:** Kenya, international donors, corporate partners, volunteers and AI-assisted discovery.
 
-The full audit document was shared in the project Thread.
+The supplied address does not confirm a postal box or postal code. Do not output historic postal details in structured data or new content until the centre verifies them. The CBO category must not be described as NGO registration unless the centre separately confirms that legal status.
+
+## Resolved content conflicts
+
+- Replace the historic 75 / 85 child-count variants with the management-confirmed figure of 84 wherever a current public count is genuinely needed. Add a reporting date and scope; do not use an undated count as permanent organisation metadata.
+- Use the founder spelling **Margret Nekesa Khaemba** consistently.
+- State that volunteer opportunities are periodic. Do not promise open slots, international placements or a monthly capacity.
+- Remove historical volunteer fees, accommodation promises and placement-volume claims unless management reconfirms them in writing.
+- Use the verified physical address without adding an unconfirmed postal box or postcode.
+
+## Safeguarding and privacy review still required
+
+- Review historic posts and media for named children, sensitive case histories, school/location details and consent records.
+- Confirm that every identifiable child's photograph has documented, appropriate authorisation for its intended public use.
+- Check image captions, filenames, alt text, metadata and social previews, not only visible page copy.
+- Keep child protection and privacy information easy to find.
+
+## Historical audit observations requiring production re-check
+
+The earlier audit recorded 27 posts (2021–2026), approximately 80 media files, historic conflicting contact/postal details, and old child-related stories. Those are historical observations, not assertions that every item remains live. Re-crawl the production site and reconcile each item against the current migration manifest before deleting, redirecting or republishing content.
+
+## Release gates
+
+1. Verify the live robots.txt, sitemap, canonical tags, indexability and server/security treatment of search crawlers.
+2. Confirm only one authoritative organisation entity is emitted by the theme and SEO plugin.
+3. Validate the schema against visible content and the official registration category.
+4. Test all changed pages on staging and production after deployment.
+5. Record the date and scope for every impact statistic.
