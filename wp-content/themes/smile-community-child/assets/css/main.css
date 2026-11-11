@@ -1818,3 +1818,14 @@ a.skip-link.screen-reader-text:not(.smile-skip-link):not(:focus) { position: abs
 
 /* 2.53.4: all photo widgets keep a ratio box from their width/height (e.g. wp-image-13 on Donate). */
 .smile-photo img { height: auto !important; }
+
+/* 2.53.5: phone slider: the handwritten eyebrow line has a fixed height and the three-line
+   heading's reserved height now covers its accent line, so neither can move the text below. */
+@media (max-width: 767px) {
+	.smile-slider .smile-slide--split .smile-slide__eyebrow { height: 1.2em; line-height: 1.2 !important; white-space: nowrap; overflow: visible; }
+	.smile-slider .smile-slide--split h1.smile-slide__title { min-height: 3.45em !important; }
+}
+/* 2.53.5: programme card photos (e.g. wp-image-1048) sit in a fixed-ratio box, so the image
+   size never decides the layout. Looks the same: the photo still fills the box (object-fit: cover). */
+.smile-pcard .elementor-widget-image.smile-pcard__img { position: relative; aspect-ratio: 16 / 11; overflow: hidden; }
+.smile-pcard .elementor-widget-image.smile-pcard__img > img, .smile-pcard .elementor-widget-image.smile-pcard__img > a > img, .smile-pcard .elementor-widget-image.smile-pcard__img > .elementor-widget-container > img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; aspect-ratio: auto !important; object-fit: cover; }

@@ -88,3 +88,20 @@ function smile_fix_staging_content_2530() {
 	update_option( 'smile_content_fix_2530', array( 'time' => time(), 'fixed' => $log ), false );
 }
 add_action( 'admin_init', 'smile_fix_staging_content_2530', 30 );
+
+
+/**
+ * 2.53.5: drop an empty browser-extension element pasted into the Home text
+ * (<div id="jw-selection-toolbar-host" hidden>) from rendered Elementor widgets.
+ *
+ * @param string $content Rendered widget HTML.
+ * @return string
+ */
+function smile_strip_editor_junk( $content ) {
+	if ( false === strpos( $content, 'jw-selection-toolbar' ) ) {
+		return $content;
+	}
+	return preg_replace( '#<div id="jw-selection-toolbar-host"[^>]*>\s*</div>#', '', $content );
+}
+add_filter( 'elementor/widget/render_content', 'smile_strip_editor_junk', 30 );
+add_filter( 'the_content', 'smile_strip_editor_junk', 30 );

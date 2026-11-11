@@ -2,6 +2,13 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.5 - 11 Nov 2026
+
+- **Lighter Home styles** (`scripts/purge-front-css.py`, new; `inc/setup.php`): the front page now loads purged copies `main-front.min.css` (126 KB to 48 KB) and `home-front.min.css` (159 KB to 87 KB), holding only rules whose classes/ids appear in the live Home markup (mobile and desktop), in the theme/Core JavaScript, or in a safelist of runtime state classes. Every other page keeps the full files; critical CSS is still built from the full files. The used-token list is saved in `scripts/front-used-tokens.txt`; **after editing the Home page in Elementor, run `python3 scripts/purge-front-css.py --refresh` before building**, or new classes on Home will have no styles. `build-theme-zip.sh` runs the purge (offline) on every build.
+- **Home DOM:** an empty browser-extension element pasted into the Home text (`#jw-selection-toolbar-host`) is stripped on render (`inc/content-fixes.php`). The Home body has about 740 elements, below Lighthouse's DOM-size warning, so no sections were restructured.
+- **Phone slider heading shift (0.020 in 2 of 4 runs):** the handwritten eyebrow line has a fixed 1.2em height and the three-line heading's reserved height is raised to 3.45em, which covers its accent line, so neither can push text below.
+- **Programme card photos** (wp-image-1048 and the others): the image widget itself is now a fixed 16:11 box and the photo fills it (object-fit: cover), so the image size never decides the layout. Same look.
+
 ## 2.53.4 / Core 1.6.2 - 11 Nov 2026
 
 - **Donate form styles in the head** (Core `includes/donations.php`): `smile-give-css` was printed inside the Donate hero card, so the hero intro could paint before the form/hero rules were parsed and then move (Donate CLS 0.017 mobile, 0.029 desktop). It is now printed in `wp_head` on pages using `[smile_donate_form]`, `[smile_give_hero]` or `[smile_manage_giving]`; the shortcodes then skip it (shared `$GLOBALS['smile_pay_styles_done']` flag).

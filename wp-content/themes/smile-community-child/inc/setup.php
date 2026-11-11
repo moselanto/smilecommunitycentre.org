@@ -104,7 +104,9 @@ function smile_asset( $rel, $min ) {
  */
 function smile_theme_assets() {
 	$inner = ! smile_needs_full_css();
-	list( $css_url, $css_ver ) = smile_asset( 'assets/css/main.css', $inner && file_exists( SMILE_THEME_DIR . '/assets/build/main-inner.min.css' ) ? 'assets/build/main-inner.min.css' : 'assets/build/main.min.css' );
+	// 2.53.5: the front page uses purged copies (scripts/purge-front-css.py) holding only the rules its markup uses.
+	$front = is_front_page() && ! is_customize_preview() && ! isset( $_GET['elementor-preview'] ) && file_exists( SMILE_THEME_DIR . '/assets/build/main-front.min.css' ) && file_exists( SMILE_THEME_DIR . '/assets/build/home-front.min.css' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check.
+	list( $css_url, $css_ver ) = smile_asset( 'assets/css/main.css', $front ? 'assets/build/main-front.min.css' : ( $inner && file_exists( SMILE_THEME_DIR . '/assets/build/main-inner.min.css' ) ? 'assets/build/main-inner.min.css' : 'assets/build/main.min.css' ) );
 	wp_enqueue_style( 'smile-community', $css_url, array(), $css_ver );
 
 	list( $js_url, $js_ver ) = smile_asset( 'assets/js/main.js', 'assets/build/main.min.js' );
@@ -112,7 +114,7 @@ function smile_theme_assets() {
 
 	// Section components (programme cards, timeline, community, related rows) are used on many pages,
 	// so their styles load everywhere; only the slider script is home-only.
-	list( $h_url, $h_ver ) = smile_asset( 'assets/css/home.css', $inner && file_exists( SMILE_THEME_DIR . '/assets/build/home-inner.min.css' ) ? 'assets/build/home-inner.min.css' : 'assets/build/home.min.css' );
+	list( $h_url, $h_ver ) = smile_asset( 'assets/css/home.css', $front ? 'assets/build/home-front.min.css' : ( $inner && file_exists( SMILE_THEME_DIR . '/assets/build/home-inner.min.css' ) ? 'assets/build/home-inner.min.css' : 'assets/build/home.min.css' ) );
 	wp_enqueue_style( 'smile-home', $h_url, array( 'smile-community' ), $h_ver );
 	if ( ! file_exists( SMILE_THEME_DIR . '/assets/build/home.min.css' ) || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
 		wp_enqueue_style( 'smile-slider', SMILE_THEME_URI . '/assets/css/slider.css', array( 'smile-community' ), SMILE_THEME_VERSION );
