@@ -4,7 +4,7 @@
  * sensible indexing rules, and fallback meta tags when no SEO plugin is active.
  *
  * Graph (stable @id values, so Google sees one organisation across the site):
- *   #organization  NGO (Smile Community Centre)  <- founder, address, contact, logo
+ *   #organization  Organization (Smile Community Centre)  <- founder, address, contact, logo
  *   #website       WebSite (+ site search)
  *   <url>#webpage  WebPage / AboutPage / ContactPage / CollectionPage
  *   <url>#breadcrumb BreadcrumbList
