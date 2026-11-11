@@ -130,3 +130,21 @@ Remaining:
 - Render-blocking requests about 850 ms mobile (mainly Elementor `frontend.min.css` and the async theme CSS preloads); unused JS about 260 KiB is still reported (Lighthouse counts the deferred Google scripts when they load at idle).
 - Content (not performance): the sponsor-guide story links to the old staging domain topnotchmall.co.ke/smilescommunity/ and shows editorial labels ("Quick Answer (Featured Snippet Target)", "Donation Call to Action").
 - Contrast warnings on Home and the story (Accessibility 96).
+
+
+### After 2.53.0 (Nunito font-display optional, footer contrast, sized community photo)
+
+| Page | Device | Perf | A11y | LCP | FCP | TBT | CLS | SI |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| Home | Mobile | 92 | 96 | 3.0 s | 1.0 s | 80 ms | **0** (was 0.095) | 4.0 s |
+| Home | Desktop | 88 | 100 | 0.6 s | 0.3 s | 0 ms | **0.198** (was 0) | 1.6 s |
+| Donate | Mobile | 95 | 97 | 2.6 s | 1.1 s | 80 ms | **0** | 3.9 s |
+| Donate | Desktop | 95 | 97 | 0.7 s | 0.3 s | 150 ms | 0.005 | 1.5 s |
+| Story | Mobile | 93 | **100** | 2.1 s | 1.1 s | 240 ms | **0** (was 0.061) | 3.7 s |
+| Story | Desktop | 96 | 100 | 0.7 s | 0.3 s | 10 ms | 0 | 2.0 s |
+
+Single runs; mobile performance scores and LCP vary from run to run (Home mobile LCP 1.9 s on the previous run, 3.0 s on this one).
+- Fixed: mobile CLS is 0 on all three pages; footer contrast items are gone; no unsized images reported.
+- New: Home desktop CLS 0.198 from the "A safe home / Daily meals" text widget (data-id 7a9bc3d: 0.174 + 0.023); the nav is also listed with caveat-latin.woff2. Needs a follow-up.
+- Remaining contrast on Home mobile: slider eyebrow text and slide containers over photos (Lighthouse cannot read text over images) and one `em.smile-em`. Donate: Privacy Policy link in `.smile-form__privacy` relies on colour only (needs an underline).
+- Home SEO 92: four links without descriptive text.
