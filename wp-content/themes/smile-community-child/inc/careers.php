@@ -569,7 +569,9 @@ function smile_careers_setup() {
 		update_post_meta( $id, '_elementor_data', wp_slash( wp_json_encode( $data ) ) );
 		update_post_meta( $id, '_elementor_page_settings', array( 'hide_title' => 'yes' ) );
 		update_post_meta( $id, '_seopress_titles_title', sanitize_text_field( $def['seo_title'] ) );
+			update_post_meta( $id, 'rank_math_title', sanitize_text_field( $def['seo_title'] ) );
 		update_post_meta( $id, '_seopress_titles_desc', sanitize_text_field( $def['seo_desc'] ) );
+			update_post_meta( $id, 'rank_math_description', sanitize_text_field( $def['seo_desc'] ) );
 		$page = get_post( $id );
 	}
 	// Menu links: under "Get Involved" in the main menu, and in the footer menu.

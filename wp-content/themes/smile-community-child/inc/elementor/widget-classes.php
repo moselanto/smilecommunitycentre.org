@@ -220,9 +220,19 @@ final class Smile_EW_cta_photo extends Smile_Elementor_Section_Widget {
 	const TAG = 'smile_cta_photo';
 }
 
+/** Smile widget: Donate form. */
+final class Smile_EW_donate_form extends Smile_Elementor_Section_Widget {
+	const TAG = 'smile_donate_form';
+}
+
 /** Smile widget: Enquiry form. */
 final class Smile_EW_form extends Smile_Elementor_Section_Widget {
 	const TAG = 'smile_form';
+}
+
+/** Smile widget: Give hero. */
+final class Smile_EW_give_hero extends Smile_Elementor_Section_Widget {
+	const TAG = 'smile_give_hero';
 }
 
 /** Smile widget: Giving tiers. */
@@ -258,6 +268,11 @@ final class Smile_EW_icon extends Smile_Elementor_Section_Widget {
 /** Smile widget: Latest posts. */
 final class Smile_EW_latest_posts extends Smile_Elementor_Section_Widget {
 	const TAG = 'smile_latest_posts';
+}
+
+/** Smile widget: Manage giving. */
+final class Smile_EW_manage_giving extends Smile_Elementor_Section_Widget {
+	const TAG = 'smile_manage_giving';
 }
 
 /** Smile widget: Needs. */

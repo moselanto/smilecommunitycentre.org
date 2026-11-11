@@ -2,7 +2,7 @@
 /**
  * Required / recommended plugins (ThemeForest-style).
  *
- * - Elementor, SEOPress and WP Mail SMTP install from WordPress.org.
+ * - Elementor, Rank Math SEO and WP Mail SMTP install from WordPress.org.
  * - Smile Community Core ships inside the theme (plugins/smile-community-core)
  *   and is copied into wp-content/plugins, so content and enquiries survive a
  *   future theme change.
@@ -40,12 +40,12 @@ function smile_theme_plugins() {
 			'required' => false,
 			'why'      => __( 'Full Smile Theme Options panel (header and footer templates, colours, top bar, custom CSS). The basic options work without it.', 'smile-community' ),
 		),
-		'wp-seopress'          => array(
-			'name'     => 'SEOPress',
-			'file'     => 'wp-seopress/seopress.php',
+		'seo-by-rank-math'     => array(
+			'name'     => 'Rank Math SEO',
+			'file'     => 'seo-by-rank-math/rank-math.php',
 			'source'   => 'repo',
 			'required' => false,
-			'why'      => __( 'SEO titles, descriptions and XML sitemap (already used on the live site).', 'smile-community' ),
+			'why'      => __( 'SEO titles, descriptions, XML sitemap, Instant Indexing (IndexNow) and Search Console reports. The theme provides the schema. Use only one SEO plugin.', 'smile-community' ),
 		),
 		'wp-super-cache'       => array(
 			'name'     => 'WP Super Cache',
@@ -218,6 +218,7 @@ function smile_theme_ajax_install_plugin() {
 	delete_transient( '_wp_mail_smtp_activation_redirect' );
 	update_option( 'wp_mail_smtp_activation_prevent_redirect', true );
 	delete_option( 'seopress_activated' );
+	delete_transient( '_rank_math_activation_redirect' );
 
 	wp_send_json_success( array( 'message' => __( 'Installed and active', 'smile-community' ) ) );
 }

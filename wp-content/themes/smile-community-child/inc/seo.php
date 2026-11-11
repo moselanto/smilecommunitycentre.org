@@ -44,6 +44,37 @@ function smile_seo_plugin_prints_org() {
 }
 
 /**
+ * Post meta keys used by the active SEO plugin for a hand-typed title or description.
+ * Rank Math is the site's SEO plugin from 2.49.0; SEOPress keys are still read so
+ * values typed before the switch are not lost if the import skipped any.
+ *
+ * @param string $field title|desc.
+ * @return string[] Keys in priority order.
+ */
+function smile_seo_meta_keys( $field ) {
+	$rm = 'title' === $field ? 'rank_math_title' : 'rank_math_description';
+	$sp = 'title' === $field ? '_seopress_titles_title' : '_seopress_titles_desc';
+	return class_exists( 'RankMath' ) ? array( $rm, $sp ) : array( $sp, $rm );
+}
+
+/**
+ * First non-empty hand-typed SEO value for a post.
+ *
+ * @param int    $id    Post ID.
+ * @param string $field title|desc.
+ * @return string
+ */
+function smile_seo_meta( $id, $field ) {
+	foreach ( smile_seo_meta_keys( $field ) as $key ) {
+		$v = trim( (string) get_post_meta( $id, $key, true ) );
+		if ( '' !== $v ) {
+			return $v;
+		}
+	}
+	return '';
+}
+
+/**
  * Site base URL with trailing slash.
  *
  * @return string
@@ -83,7 +114,7 @@ function smile_seo_description() {
 	$id   = get_queried_object_id();
 	$desc = '';
 	if ( $id && ( is_singular() || is_home() ) ) {
-		$desc = (string) get_post_meta( $id, '_seopress_titles_desc', true );
+		$desc = smile_seo_meta( $id, 'desc' );
 		if ( '' === $desc && is_singular( 'post' ) ) {
 			$desc = wp_trim_words( wp_strip_all_tags( get_the_excerpt( $id ) ), 30, '' );
 		}
@@ -451,7 +482,8 @@ add_action( 'template_redirect', 'smile_seo_attachment_redirect', 5 );
  * so anything the centre has typed in by hand is never overwritten.
  */
 function smile_seo_sync_meta() {
-	if ( ! current_user_can( 'manage_options' ) || get_option( 'smile_seo_synced' ) === SMILE_THEME_VERSION ) {
+	$stamp = SMILE_THEME_VERSION . ( class_exists( 'RankMath' ) ? '-rm' : '' );
+	if ( ! current_user_can( 'manage_options' ) || get_option( 'smile_seo_synced' ) === $stamp ) {
 		return;
 	}
 	$pages = json_decode( (string) file_get_contents( SMILE_THEME_DIR . '/demo/pages.json' ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local theme file.
@@ -469,7 +501,9 @@ function smile_seo_sync_meta() {
 		if ( ! $post || '1' !== get_post_meta( $post->ID, '_smile_setup', true ) ) {
 			continue;
 		}
-		foreach ( array( '_seopress_titles_title' => array( 'seo_title', $old_titles ), '_seopress_titles_desc' => array( 'seo_desc', $old_descs ) ) as $meta => $cfg ) {
+		$t_key = smile_seo_meta_keys( 'title' )[0];
+		$d_key = smile_seo_meta_keys( 'desc' )[0];
+		foreach ( array( $t_key => array( 'seo_title', $old_titles ), $d_key => array( 'seo_desc', $old_descs ) ) as $meta => $cfg ) {
 			if ( empty( $page[ $cfg[0] ] ) ) {
 				continue;
 			}
@@ -479,7 +513,7 @@ function smile_seo_sync_meta() {
 			}
 		}
 	}
-	update_option( 'smile_seo_synced', SMILE_THEME_VERSION, false );
+	update_option( 'smile_seo_synced', $stamp, false );
 }
 add_action( 'admin_init', 'smile_seo_sync_meta' );
 
@@ -580,7 +614,6 @@ function smile_seo_resolve( $field ) {
 	if ( is_admin() || is_feed() ) {
 		return '';
 	}
-	$meta_key = 'title' === $field ? '_seopress_titles_title' : '_seopress_titles_desc';
 	$site     = 'Smile Community Centre';
 
 	// Pages (including the front page and the Stories page).
@@ -593,8 +626,8 @@ function smile_seo_resolve( $field ) {
 		$page_id = get_queried_object_id();
 	}
 	if ( $page_id ) {
-		$custom = trim( (string) get_post_meta( $page_id, $meta_key, true ) );
-		if ( '' !== $custom && ! in_array( $custom, smile_seo_old_values( $field ), true ) && false === strpos( $custom, '%%' ) ) {
+		$custom = smile_seo_meta( $page_id, $field );
+		if ( '' !== $custom && ! in_array( $custom, smile_seo_old_values( $field ), true ) && false === strpos( $custom, '%%' ) && false === strpos( $custom, '%title%' ) ) {
 			return $custom;
 		}
 		$slug = get_post_field( 'post_name', $page_id );
@@ -617,8 +650,8 @@ function smile_seo_resolve( $field ) {
 	// Stories.
 	if ( is_singular( 'post' ) ) {
 		$id     = get_queried_object_id();
-		$custom = trim( (string) get_post_meta( $id, $meta_key, true ) );
-		if ( '' !== $custom && false === strpos( $custom, '%%' ) ) {
+		$custom = smile_seo_meta( $id, $field );
+		if ( '' !== $custom && false === strpos( $custom, '%%' ) && false === strpos( $custom, '%title%' ) ) {
 			return $custom;
 		}
 		if ( 'title' === $field ) {
@@ -670,3 +703,65 @@ function smile_seo_seopress_desc( $value ) {
 	return '' !== $d ? $d : $value;
 }
 add_filter( 'seopress_titles_desc', 'smile_seo_seopress_desc', 99 );
+
+
+/* -------------------------------------------------------------------------
+ * Rank Math (the site's SEO plugin from 2.49.0)
+ *
+ * Rank Math prints the title, meta description, canonical, robots, Open Graph
+ * and sitemap. The theme feeds it the same keyword-mapped titles and
+ * descriptions, and keeps the schema: Rank Math's own JSON-LD is switched off
+ * so Google sees one Smile organisation, not two (owner decision 11 Nov 2026).
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Rank Math title.
+ *
+ * @param string $value Rank Math value.
+ * @return string
+ */
+function smile_seo_rank_math_title( $value ) {
+	$t = smile_seo_resolve( 'title' );
+	return '' !== $t ? $t : $value;
+}
+add_filter( 'rank_math/frontend/title', 'smile_seo_rank_math_title', 99 );
+
+/**
+ * Rank Math meta description (also used for Open Graph and Twitter).
+ *
+ * @param string $value Rank Math value.
+ * @return string
+ */
+function smile_seo_rank_math_desc( $value ) {
+	$d = smile_seo_resolve( 'desc' );
+	return '' !== $d ? $d : $value;
+}
+add_filter( 'rank_math/frontend/description', 'smile_seo_rank_math_desc', 99 );
+
+/**
+ * Switch off Rank Math's JSON-LD; the theme prints the connected graph.
+ * Turn it back on with add_filter( 'smile_seo_schema', '__return_false' ).
+ *
+ * @param array $data Rank Math schema data.
+ * @return array
+ */
+function smile_seo_rank_math_json_ld( $data ) {
+	return apply_filters( 'smile_seo_schema', true ) ? array() : $data;
+}
+add_filter( 'rank_math/json_ld', 'smile_seo_rank_math_json_ld', 999 );
+
+/**
+ * Feeds are not pages to rank: keep them out of Rank Math's sitemap and index.
+ * Also keep Rank Math from indexing thin archives the theme already noindexes.
+ *
+ * @param array $robots Rank Math robots.
+ * @return array
+ */
+function smile_seo_rank_math_robots( $robots ) {
+	if ( is_search() || is_tag() || is_author() || is_date() ) {
+		$robots['index']  = 'noindex';
+		$robots['follow'] = 'follow';
+	}
+	return $robots;
+}
+add_filter( 'rank_math/frontend/robots', 'smile_seo_rank_math_robots', 99 );

@@ -17,7 +17,11 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 - Release flow: edit, bump version in `style.css` and `functions.php` (and the Core header/constant if the plugin changed), `bash scripts/build-theme-zip.sh`, commit to `main`, upload zip, add a `CHANGELOG.md` entry.
 - Never publish children's names, locations or identifying details. No secrets in code.
 
-## Current state (19 Oct 2026, 23:30 EAT)
+## Current state (11 Nov 2026)
+
+- Live: theme **2.49.0** / Core **1.6.0**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
+
+## Earlier state (19 Oct 2026, 23:30 EAT)
 
 - Theme **2.31.0** with Core **1.3.0** (commit d74c3d8) is uploaded on staging and verified: all 56 old sitemap URLs plus old sitemap files and category pagination/feeds end on a 200 page with at most one redirect. Permalinks on staging are now `/%postname%/`.
 
@@ -31,6 +35,8 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 2. At go-live on smilecommunitycentre.org: keep old `wp-content/uploads/` files, turn search-engine indexing on (Site setup ticks "discourage" on staging), then re-run the old-URL check against the live domain.
 
 ## Work log
+
+- **11 Nov 2026 (Ray / Town):** Merged PR #22 into main (squash ebb594c). Released 2.49.0 / Core 1.6.0: Rank Math replaces SEOPress (theme feeds titles/descriptions, Rank Math JSON-LD off, theme graph is the only schema), GA4 G-DJQ2PBW3YN + GTM-TDZHTDQF printed by `inc/analytics.php`, robots.txt AI-crawler policy + `/llms.txt` + feed noindex (`inc/ai-discovery.php`), redirects for Search Console 404s (/shop/, /cart/) and old .html addresses, sitemap redirects to `/sitemap_index.xml`. Google: Search Console, GA4 (stream now https) and GTM owned by peterwafulah@gmail.com; NURA Beauty's account removed. Business Profile managed by sc...@gmail.com (no access yet). Open: Business Profile access, Sunday hours and Instagram handle, 33 poor mobile Core Web Vitals URLs, Bing Webmaster Tools, content/AEO work from the SEO plan document.
 
 - **4 Nov 2026:** Go-live fixes on production: permalinks re-saved (inner pages were returning 500), Elementor URLs moved from staging to the live domain (110 rows), indexing switched on, `wp-config.php` set to 0600, and backup ZIPs moved out of `public_html`. Code 2.46.0 / Core 1.3.7: redirect target validation and trusted-proxy client IP. Open: `/wp-login.php` redirects to 127.0.0.1 because of a host-level rule (VivaWebHost ticket).
 - **29 Oct 2026 (afternoon):** 2.34.0 on branch `feature/site-polish-2-34` (PR): fixes from a desktop review of all 19 staging pages (logo legibility, button contrast, dark-banner text, home Ways to help/closing layout, related-programme cards, About mission icons, Stories column, WhatsApp pop-up). After merge: build zip, upload, Apply latest design, hard-refresh.

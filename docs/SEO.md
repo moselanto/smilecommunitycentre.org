@@ -109,3 +109,13 @@ Review monthly. Separate branded from non-branded performance and annotate major
 ## Release checklist
 
 See `docs/qa-checklist.md`. Do not deploy until management facts, safeguarding, schema, sitemap, crawler access and page-level content have been validated on staging.
+
+
+## Rank Math, analytics and AI discovery (2.49.0, 11 Nov 2026)
+
+- **SEO plugin:** Rank Math SEO replaces SEOPress (owner decision). Rank Math prints title, description, canonical, robots meta, Open Graph and the sitemap at `/sitemap_index.xml`. Old `/sitemaps.xml`, `/sitemap.xml` and `/wp-sitemap.xml` 301 to it. Use only one SEO plugin.
+- **Titles and descriptions:** the theme still supplies keyword-mapped values (`demo/pages.json`) through `rank_math/frontend/title` and `rank_math/frontend/description`. A value typed by hand in Rank Math wins; SEOPress values typed before the switch are still read as a fallback.
+- **Schema:** the theme's connected graph (`inc/seo.php`) is the only JSON-LD. Rank Math's JSON-LD is switched off with `rank_math/json_ld` so there is one organisation entity. Do not enable Rank Math's Local SEO/Knowledge Graph schema.
+- **Analytics:** GA4 `G-DJQ2PBW3YN` (property 270195586, stream https://smilecommunitycentre.org) and GTM container `GTM-TDZHTDQF` are printed by `inc/analytics.php`. Logged-in staff are not tracked. The GTM container must not contain a GA4 tag for the same ID (double counting). Google accounts: peterwafulah@gmail.com owns Search Console, GA4 and GTM. The Google Business Profile is managed by another account (sc...@gmail.com) and still needs access.
+- **Crawlers:** see `docs/crawler-access-matrix.md`. Feeds send `X-Robots-Tag: noindex, follow`.
+- **IndexNow:** enable Rank Math > Instant Indexing (IndexNow) for posts and pages. Rank Math hosts the key file.

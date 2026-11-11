@@ -2,6 +2,15 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.49.0 / Core 1.6.0 - 11 Nov 2026
+
+- **Rank Math SEO replaces SEOPress.** Theme titles and descriptions now feed Rank Math (`rank_math/frontend/title`, `rank_math/frontend/description`); hand-typed Rank Math values win, older SEOPress values are read as a fallback. Rank Math's JSON-LD is switched off so the theme's connected graph is the only schema. Setup wizard recommends Rank Math instead of SEOPress; importer and careers write both meta keys.
+- **Analytics in the theme** (`inc/analytics.php`): GA4 `G-DJQ2PBW3YN` and GTM `GTM-TDZHTDQF`, not for logged-in staff, silent while SEOPress is still active (no double counting).
+- **AI and crawler readiness** (`inc/ai-discovery.php`): robots.txt with explicit rules for Google, Bing, Apple, OpenAI, Perplexity, Anthropic and Common Crawl (all allowed; admin and search closed) and the active sitemap address; `/llms.txt`; feeds `noindex, follow` (15 feed URLs were "Crawled - currently not indexed").
+- **Search Console 404s and old URLs (Core):** `/shop/`, `/cart/`, `/checkout/` to Donate, `/my-account/` to Home; old static-HTML addresses (`/volunteer.html`, `/smile-children-s-home-kenya.html` and others) to their pages; old sitemap addresses go to Rank Math's `/sitemap_index.xml` when Rank Math is active.
+- Merged PR #22 first (verified facts: founder Margret Nekesa Khaemba, CBO, Organization type, no unverified postal box, periodic volunteering).
+- Docs: `docs/SEO.md` (Rank Math, analytics, AI section), new `docs/crawler-access-matrix.md`.
+
 ## 2.48.2 / Core 1.5.2 (Re-check stuck donations with Paystack)
 - **Smile Centre > Donations** has a **Re-check with Paystack** link on every donation that is not marked Paid, plus a bulk action of the same name (up to 50 at a time). It asks Paystack's verify API for the real status: a successful payment whose amount and currency match is marked Paid (and the receipt/notice steps run as usual); abandoned, failed or reversed payments get that status; anything else stays Pending. A notice lists each reference and its result.
 - Useful when a donor paid but closed the window before returning to the site and the webhook did not arrive.

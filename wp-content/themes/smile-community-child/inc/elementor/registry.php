@@ -2526,6 +2526,126 @@ return array(
 		),
 	),
 	array(
+		'tag' => 'smile_donate_form',
+		'title' => 'Donate form',
+		'group' => 'Sections',
+		'file' => 'plugins/smile-community-core/includes/donations.php',
+		'atts' => array(),
+		'texts' => array(
+			array(
+				'k' => '05ec0000dbeb1fad',
+				'd' => 'smile-core',
+				't' => 'Thank you for your gift',
+			),
+			array(
+				'k' => 'cd4a7a494856b9c6',
+				'd' => 'smile-core',
+				't' => 'Your monthly gift of %s is set up. A receipt is on its way to your email.',
+			),
+			array(
+				'k' => '48cf4931deeb96e8',
+				'd' => 'smile-core',
+				't' => 'We have received your gift of %s. A receipt is on its way to your email.',
+			),
+			array(
+				'k' => '29dfd05c2f7aac06',
+				'd' => 'smile-core',
+				't' => 'Reference: %s',
+			),
+			array(
+				'k' => '01eca0468334588a',
+				'd' => 'smile-core',
+				't' => 'We are confirming your payment with Paystack. If it went through, you will receive a receipt by email within a few minutes.',
+			),
+			array(
+				'k' => '1a01ac6596c73879',
+				'd' => 'smile-core',
+				't' => 'The payment was not completed and no money was taken. Please try again, or use M-Pesa below.',
+			),
+			array(
+				'k' => '17476fb0ea635397',
+				'd' => 'smile-core',
+				't' => 'We could not start the payment. Please check the details and try again, or use M-Pesa below.',
+			),
+			array(
+				'k' => 'a50ae6ba428f8641',
+				'd' => 'smile-core',
+				't' => 'Give a smile',
+			),
+			array(
+				'k' => '7100a6c159829bf3',
+				'd' => 'smile-core',
+				't' => 'Secure payment by Paystack',
+			),
+			array(
+				'k' => 'e674d5112a4391bf',
+				'd' => 'smile-core',
+				't' => 'How often?',
+			),
+			array(
+				'k' => '99e19ed19983a2f4',
+				'd' => 'smile-core',
+				't' => 'Give once',
+			),
+			array(
+				'k' => '693aea3d6a9701c5',
+				'd' => 'smile-core',
+				't' => 'Monthly',
+			),
+			array(
+				'k' => '5c9e8b1804482a9d',
+				'd' => 'smile-core',
+				't' => 'Most impact',
+			),
+			array(
+				'k' => 'd8f6ae0d0c5d2f30',
+				'd' => 'smile-core',
+				't' => 'Currency',
+			),
+			array(
+				'k' => '06cde7002001ab96',
+				'd' => 'smile-core',
+				't' => 'Choose an amount',
+			),
+			array(
+				'k' => 'ec476c5f3dfe3855',
+				'd' => 'smile-core',
+				't' => 'Other amount in %1$s (minimum %2$s)',
+			),
+			array(
+				'k' => '72b340156be831be',
+				'd' => 'smile-core',
+				't' => 'Other amount',
+			),
+			array(
+				'k' => '80fc2cdf33728c68',
+				'd' => 'smile-core',
+				't' => 'Add a little to cover the payment processing fee, so 100% of my gift reaches the children.',
+			),
+			array(
+				'k' => '87bdab45fcc06219',
+				'd' => 'smile-core',
+				't' => 'Full name',
+			),
+			array(
+				'k' => '6c1c00afe4b2ae17',
+				'd' => 'smile-core',
+				't' => 'Email (for your receipt)',
+			),
+			array(
+				'k' => '6b2f5dddca5b2e38',
+				'd' => 'smile-core',
+				't' => 'Continue to secure payment',
+			),
+			array(
+				'k' => 'a290c4ec3ac12d62',
+				'd' => 'smile-core',
+				't' => 'You pay on Paystack\'s secure page by card, M-Pesa or the other options available in your country. Monthly gifts renew automatically, and you can update or cancel them at any time.',
+			),
+		),
+		'images' => array(),
+	),
+	array(
 		'tag' => 'smile_form',
 		'title' => 'Enquiry form',
 		'group' => 'Sections',
@@ -2955,6 +3075,189 @@ return array(
 				'k' => '61cd2d83b4691dbc',
 				'd' => 'smile-core',
 				't' => 'Media',
+			),
+		),
+		'images' => array(),
+	),
+	array(
+		'tag' => 'smile_give_hero',
+		'title' => 'Give hero',
+		'group' => 'Sections',
+		'file' => 'plugins/smile-community-core/includes/donations.php',
+		'atts' => array(
+			array(
+				'n' => 'eyebrow',
+				'v' => 'Donate',
+			),
+			array(
+				'n' => 'title',
+				'v' => 'We make a life by what we give',
+			),
+			array(
+				'n' => 'lead',
+				'v' => 'Your donation directly supports a child’s daily life: shelter, meals, school and medical care.',
+			),
+		),
+		'texts' => array(
+			array(
+				'k' => '41206847cbe199ed',
+				'd' => 'smile-core',
+				't' => 'Donate',
+			),
+			array(
+				'k' => '63f8ba499474ad4d',
+				'd' => 'smile-core',
+				't' => 'We make a life by what we give',
+			),
+			array(
+				'k' => 'b2bf3342d6e1c765',
+				'd' => 'smile-core',
+				't' => 'Your donation directly supports a child’s daily life: shelter, meals, school and medical care.',
+			),
+			array(
+				'k' => '7100a6c159829bf3',
+				'd' => 'smile-core',
+				't' => 'Secure payment by Paystack',
+			),
+			array(
+				'k' => '317113e7a2826635',
+				'd' => 'smile-core',
+				't' => 'Card, M-Pesa and other local options',
+			),
+			array(
+				'k' => 'ceccc32679115f31',
+				'd' => 'smile-core',
+				't' => 'Change or cancel a monthly gift at any time',
+			),
+			array(
+				'k' => '32515dea3172440a',
+				'd' => 'smile-core',
+				't' => 'Prefer M-Pesa? Paybill %1$s, account %2$s',
+			),
+			array(
+				'k' => 'ffaae76fbc2870dc',
+				'd' => 'smile-core',
+				't' => 'Prefer M-Pesa? Paybill %s',
+			),
+			array(
+				'k' => '05ec0000dbeb1fad',
+				'd' => 'smile-core',
+				't' => 'Thank you for your gift',
+			),
+			array(
+				'k' => 'cd4a7a494856b9c6',
+				'd' => 'smile-core',
+				't' => 'Your monthly gift of %s is set up. A receipt is on its way to your email.',
+			),
+			array(
+				'k' => '48cf4931deeb96e8',
+				'd' => 'smile-core',
+				't' => 'We have received your gift of %s. A receipt is on its way to your email.',
+			),
+			array(
+				'k' => '29dfd05c2f7aac06',
+				'd' => 'smile-core',
+				't' => 'Reference: %s',
+			),
+			array(
+				'k' => '01eca0468334588a',
+				'd' => 'smile-core',
+				't' => 'We are confirming your payment with Paystack. If it went through, you will receive a receipt by email within a few minutes.',
+			),
+			array(
+				'k' => '1a01ac6596c73879',
+				'd' => 'smile-core',
+				't' => 'The payment was not completed and no money was taken. Please try again, or use M-Pesa below.',
+			),
+			array(
+				'k' => '17476fb0ea635397',
+				'd' => 'smile-core',
+				't' => 'We could not start the payment. Please check the details and try again, or use M-Pesa below.',
+			),
+			array(
+				'k' => 'a50ae6ba428f8641',
+				'd' => 'smile-core',
+				't' => 'Give a smile',
+			),
+			array(
+				'k' => 'e674d5112a4391bf',
+				'd' => 'smile-core',
+				't' => 'How often?',
+			),
+			array(
+				'k' => '99e19ed19983a2f4',
+				'd' => 'smile-core',
+				't' => 'Give once',
+			),
+			array(
+				'k' => '693aea3d6a9701c5',
+				'd' => 'smile-core',
+				't' => 'Monthly',
+			),
+			array(
+				'k' => '5c9e8b1804482a9d',
+				'd' => 'smile-core',
+				't' => 'Most impact',
+			),
+			array(
+				'k' => 'd8f6ae0d0c5d2f30',
+				'd' => 'smile-core',
+				't' => 'Currency',
+			),
+			array(
+				'k' => '06cde7002001ab96',
+				'd' => 'smile-core',
+				't' => 'Choose an amount',
+			),
+			array(
+				'k' => 'ec476c5f3dfe3855',
+				'd' => 'smile-core',
+				't' => 'Other amount in %1$s (minimum %2$s)',
+			),
+			array(
+				'k' => '72b340156be831be',
+				'd' => 'smile-core',
+				't' => 'Other amount',
+			),
+			array(
+				'k' => '80fc2cdf33728c68',
+				'd' => 'smile-core',
+				't' => 'Add a little to cover the payment processing fee, so 100% of my gift reaches the children.',
+			),
+			array(
+				'k' => '87bdab45fcc06219',
+				'd' => 'smile-core',
+				't' => 'Full name',
+			),
+			array(
+				'k' => '6c1c00afe4b2ae17',
+				'd' => 'smile-core',
+				't' => 'Email (for your receipt)',
+			),
+			array(
+				'k' => '6b2f5dddca5b2e38',
+				'd' => 'smile-core',
+				't' => 'Continue to secure payment',
+			),
+			array(
+				'k' => 'a290c4ec3ac12d62',
+				'd' => 'smile-core',
+				't' => 'You pay on Paystack\'s secure page by card, M-Pesa or the other options available in your country. Monthly gifts renew automatically, and you can update or cancel them at any time.',
+			),
+			array(
+				'k' => '596cfc025f066db4',
+				'd' => 'smile-community',
+				't' => 'Home',
+			),
+			array(
+				'k' => '964bb52ceba7f1e5',
+				'd' => 'smile-community',
+				't' => 'Search results',
+			),
+			array(
+				'k' => 'c7e13c8211f22849',
+				'd' => 'smile-community',
+				't' => 'Breadcrumb',
 			),
 		),
 		'images' => array(),
@@ -3854,6 +4157,46 @@ return array(
 		'images' => array(
 			'mealtime',
 		),
+	),
+	array(
+		'tag' => 'smile_manage_giving',
+		'title' => 'Manage giving',
+		'group' => 'Sections',
+		'file' => 'plugins/smile-community-core/includes/donations.php',
+		'atts' => array(),
+		'texts' => array(
+			array(
+				'k' => 'e4b0b33593e0e99f',
+				'd' => 'smile-core',
+				't' => 'Manage your monthly gift',
+			),
+			array(
+				'k' => '57367d0d68680d27',
+				'd' => 'smile-core',
+				't' => 'If we found a monthly gift for that email address, Paystack has sent it a secure link to update your card or cancel. Please check your inbox.',
+			),
+			array(
+				'k' => 'a58acf2ee0a846ec',
+				'd' => 'smile-core',
+				't' => 'Enter the email you used to give. Paystack will email you a secure link to change your card or cancel your monthly gift.',
+			),
+			array(
+				'k' => 'eda170681424ca9c',
+				'd' => 'smile-core',
+				't' => 'Email address',
+			),
+			array(
+				'k' => 'ce64a60ab7159168',
+				'd' => 'smile-core',
+				't' => 'Your email address',
+			),
+			array(
+				'k' => 'f8dda5bec020c8a3',
+				'd' => 'smile-core',
+				't' => 'Email me a link',
+			),
+		),
+		'images' => array(),
 	),
 	array(
 		'tag' => 'smile_needs',

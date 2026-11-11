@@ -3954,16 +3954,322 @@
 "section": "smile_whatsapp_chat"
 },
 {
+"text": "Donations",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_register_type"
+},
+{
+"text": "Donation",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_register_type"
+},
+{
+"text": "Search donations",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_register_type"
+},
+{
+"text": "No donations yet.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_register_type"
+},
+{
+"text": "Thank you for your gift",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Your monthly gift of %s is set up. A receipt is on its way to your email.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "We have received your gift of %s. A receipt is on its way to your email.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Reference: %s",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "We are confirming your payment with Paystack. If it went through, you will receive a receipt by email within a few minutes.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "The payment was not completed and no money was taken. Please try again, or use M-Pesa below.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "We could not start the payment. Please check the details and try again, or use M-Pesa below.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Give a smile",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Secure payment by Paystack",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "How often?",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Give once",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Monthly",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Most impact",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Currency",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Choose an amount",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Other amount in %1$s (minimum %2$s)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Other amount",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Add a little to cover the payment processing fee, so 100% of my gift reaches the children.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
 "text": "Full name",
 "domain": "smile-core",
-"file": "plugins/smile-community-core/includes/forms.php",
-"section": "smile_core_form_fields"
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Email (for your receipt)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Continue to secure payment",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "You pay on Paystack's secure page by card, M-Pesa or the other options available in your country. Monthly gifts renew automatically, and you can update or cancel them at any time.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_form_shortcode"
+},
+{
+"text": "Donate",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_hero_shortcode"
+},
+{
+"text": "We make a life by what we give",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_hero_shortcode"
+},
+{
+"text": "Your donation directly supports a child’s daily life: shelter, meals, school and medical care.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_hero_shortcode"
+},
+{
+"text": "Card, M-Pesa and other local options",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_hero_shortcode"
+},
+{
+"text": "Change or cancel a monthly gift at any time",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_hero_shortcode"
+},
+{
+"text": "Prefer M-Pesa? Paybill %1$s, account %2$s",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_hero_shortcode"
+},
+{
+"text": "Prefer M-Pesa? Paybill %s",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_hero_shortcode"
+},
+{
+"text": "Manage your monthly gift",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_manage_shortcode"
+},
+{
+"text": "If we found a monthly gift for that email address, Paystack has sent it a secure link to update your card or cancel. Please check your inbox.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_manage_shortcode"
+},
+{
+"text": "Enter the email you used to give. Paystack will email you a secure link to change your card or cancel your monthly gift.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_manage_shortcode"
 },
 {
 "text": "Email address",
 "domain": "smile-core",
-"file": "plugins/smile-community-core/includes/forms.php",
-"section": "smile_core_form_fields"
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_manage_shortcode"
+},
+{
+"text": "Your email address",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_manage_shortcode"
+},
+{
+"text": "Email me a link",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_manage_shortcode"
+},
+{
+"text": "Donor",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_columns"
+},
+{
+"text": "Amount",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_columns"
+},
+{
+"text": "Type",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_columns"
+},
+{
+"text": "Status",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_columns"
+},
+{
+"text": "Reference",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_columns"
+},
+{
+"text": "Date",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_columns"
+},
+{
+"text": "Export CSV",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_export_button"
+},
+{
+"text": "Not allowed.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_export"
+},
+{
+"text": "Paystack mode: %1$s. Secret key in wp-config.php: %2$s. Webhook URL for Paystack > Settings > API Keys & Webhooks: %3$s",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_key_status"
+},
+{
+"text": "found",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_key_status"
+},
+{
+"text": "missing (online giving stays hidden)",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_key_status"
+},
+{
+"text": "Re-check with Paystack",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_row_actions"
+},
+{
+"text": "Sorry, you are not allowed to do that.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_recheck_action"
+},
+{
+"text": "Re-checked %2$d donation(s) with Paystack: %1$d confirmed paid.",
+"domain": "smile-core",
+"file": "plugins/smile-community-core/includes/donations.php",
+"section": "smile_pay_recheck_notice"
 },
 {
 "text": "Phone or WhatsApp",
@@ -4291,12 +4597,6 @@
 },
 {
 "text": "General question",
-"domain": "smile-core",
-"file": "plugins/smile-community-core/includes/forms.php",
-"section": "smile_core_form_fields"
-},
-{
-"text": "Donations",
 "domain": "smile-core",
 "file": "plugins/smile-community-core/includes/forms.php",
 "section": "smile_core_form_fields"

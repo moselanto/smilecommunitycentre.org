@@ -43,14 +43,42 @@ function smile_core_builtin_redirects() {
 		'/building-bridges-the-shared-commitment-of-comoros-and-kenya-in-supporting-orphaned-and-vulnerable-children/' => '/stories/',
 		'/smile-community-centre-childrens-home-announcement-in-regards-to-the-fifteenth-15th-presidential-address-on-the-coronavirus-pandemic/' => '/category/announcements/',
 
-		// Old SEOPress sitemap files: point to the WordPress sitemap.
-		'/sitemaps.xml'             => '/wp-sitemap.xml',
-		'/sitemap.xml'              => '/wp-sitemap.xml',
-		'/sitemap_index.xml'        => '/wp-sitemap.xml',
-		'/post-sitemap1.xml'        => '/wp-sitemap-posts-post-1.xml',
-		'/page-sitemap1.xml'        => '/wp-sitemap-posts-page-1.xml',
-		'/category-sitemap1.xml'    => '/wp-sitemap-taxonomies-category-1.xml',
+		// Search Console 404s (Nov 2026): leftover shop links from the old WooCommerce install.
+		'/shop/'                  => '/donate/',
+		'/cart/'                  => '/donate/',
+		'/checkout/'              => '/donate/',
+		'/my-account/'            => '/',
+
+		// Very old static-HTML site (www.../*.html), still crawled by Google.
+		'/volunteer.html'                    => '/volunteer/',
+		'/smile-children-s-home-kenya.html'  => '/',
+		'/index.html'                        => '/',
+		'/donate.html'                       => '/donate/',
+		'/contact.html'                      => '/contact-us/',
+		'/about.html'                        => '/about-us/',
 	);
+
+	// Old sitemap files: point to the sitemap of the active SEO plugin. Only used
+	// when the address would otherwise 404, so a plugin's real sitemap always wins.
+	if ( class_exists( 'RankMath' ) ) {
+		$map += array(
+			'/sitemaps.xml'          => '/sitemap_index.xml',
+			'/sitemap.xml'           => '/sitemap_index.xml',
+			'/wp-sitemap.xml'        => '/sitemap_index.xml',
+			'/post-sitemap1.xml'     => '/post-sitemap.xml',
+			'/page-sitemap1.xml'     => '/page-sitemap.xml',
+			'/category-sitemap1.xml' => '/category-sitemap.xml',
+		);
+	} else {
+		$map += array(
+			'/sitemaps.xml'          => '/wp-sitemap.xml',
+			'/sitemap.xml'           => '/wp-sitemap.xml',
+			'/sitemap_index.xml'     => '/wp-sitemap.xml',
+			'/post-sitemap1.xml'     => '/wp-sitemap-posts-post-1.xml',
+			'/page-sitemap1.xml'     => '/wp-sitemap-posts-page-1.xml',
+			'/category-sitemap1.xml' => '/wp-sitemap-taxonomies-category-1.xml',
+		);
+	}
 
 	/**
 	 * Filter the built-in redirect map.

@@ -424,9 +424,11 @@ function smile_demo_import_pages( $overwrite ) {
 		}
 		if ( ! empty( $page['seo_title'] ) ) {
 			update_post_meta( $id, '_seopress_titles_title', sanitize_text_field( $page['seo_title'] ) );
+			update_post_meta( $id, 'rank_math_title', sanitize_text_field( $page['seo_title'] ) );
 		}
 		if ( ! empty( $page['seo_desc'] ) ) {
 			update_post_meta( $id, '_seopress_titles_desc', sanitize_text_field( $page['seo_desc'] ) );
+			update_post_meta( $id, 'rank_math_description', sanitize_text_field( $page['seo_desc'] ) );
 		}
 		if ( ! empty( $page['image'] ) && isset( $images[ $page['image'] ] ) ) {
 			set_post_thumbnail( $id, $images[ $page['image'] ] );
