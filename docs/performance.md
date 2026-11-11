@@ -73,3 +73,39 @@ Run https://pagespeed.web.dev/ on the home page and one inner page (mobile tab) 
 - Next candidates if field LCP stays above 2.5s: a smaller inline critical CSS (it currently holds almost the whole stylesheet), loading Elementor's per-page CSS asynchronously where the critical CSS covers it, and a server-level cache or CDN (for example Cloudflare) in front of VivaWebHost.
 - PageSpeed Insights/Lighthouse could not be run from the build environment (API daily quota exceeded; headless Chrome missing libraries). Run PSI on Home, Donate and a story after each release and note the scores here.
 - Validate the fix in Search Console (Core Web Vitals > Mobile > Validate fix) about 28 days after this release.
+
+
+## PageSpeed Insights scores (11 Nov 2026, Lighthouse 13.6.0, single lab runs)
+
+Mobile = emulated Moto G Power, Slow 4G. Field (CrUX) data: "No Data" on all three pages.
+
+### After 2.51.0 (smaller critical CSS, footer CSS in background)
+
+| Page | Device | Perf | LCP | FCP | TBT | CLS | SI | LCP element |
+|---|---|---:|---:|---:|---:|---:|---:|---|
+| Home | Mobile | 69 | 6.4 s | 3.2 s | 10 ms | 0 | 4.3 s | first slide photo |
+| Home | Desktop | 70 | 1.4 s | 0.8 s | 0 ms | 0.815 | 1.5 s | first slide photo |
+| Donate | Mobile | 73 | 5.5 s | 3.1 s | 10 ms | 0 | 3.5 s | hero section "We make a life by what we give" |
+| Donate | Desktop | 94 | 1.3 s | 0.8 s | 0 ms | 0.084 | 1.2 s | hero section |
+| Story* | Mobile | 92 | 1.1 s | 1.1 s | 180 ms | 0.140 | 2.6 s | article h1 |
+| Story* | Desktop | 95 | 1.2 s | 0.8 s | 0 ms | 0 | 1.4 s | featured image |
+
+*Story: /how-to-sponsor-a-child-in-kenya-a-donors-guide-to-real-lasting-impact/
+
+Home desktop CLS 0.815 was blamed on `.smile-slide__content`: the `.smile-slider-sec` rules were never in the critical CSS (existing bug). Fixed in 2.51.1.
+
+### After 2.51.1 (home re-test)
+
+| Page | Device | Perf | LCP | FCP | TBT | CLS | SI |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Home | Mobile | 70 | 6.3 s | 3.2 s | 20 ms | 0 | 4.1 s |
+| Home | Desktop | **94** | 1.4 s | 0.8 s | 0 ms | **0** | 1.5 s |
+
+### Remaining opportunities (from these reports)
+
+- Mobile LCP on Home (6.3 s lab) and Donate (5.5 s): FCP is 3.1-3.2 s, so the delay is mostly before the first paint. Render-blocking requests about 300 ms (Elementor frontend/kit/page CSS), plus the server time.
+- Unused JavaScript about 260 KiB on Home and Donate (Google tag/GTM and gtag.js account for most of it; consider loading analytics after the first interaction or idle).
+- Image delivery: 41 KiB (Home), 16 KiB (Donate), 55 KiB (story).
+- Story: CLS 0.140 from `.smile-container--narrow`; Lighthouse flags the featured image as unsized. Render-blocking 690 ms.
+- Accessibility: contrast warnings on Home and the story (scores 96).
+- Phone-size visual check of menu/footer could not be done with the available browser tools; mobile Lighthouse CLS was 0 on Home and Donate.
