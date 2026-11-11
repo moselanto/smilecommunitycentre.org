@@ -19,7 +19,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Current state (11 Nov 2026)
 
-- Live: theme **2.53.10** / Core **1.6.2**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
+- Live: theme **2.54.0** / Core **1.6.2**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
 
 ## Earlier state (19 Oct 2026, 23:30 EAT)
 
@@ -36,6 +36,11 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **12 Nov 2026, 01:15 EAT (Ray / Town):** 2.54.0 is live.
+  - **GA4 key events:** 8 events are sent by the theme's gtag and all are marked as key events in GA4. Four were verified in DebugView and Realtime; GTM still has 0 tags.
+  - **Care strip:** a metric-matched Figtree Fallback fixes the intermittent desktop care-strip shift. Home desktop scored 98/100/100 with CLS 0/0/0; mobile scored 94/96/93.
+  - **Build:** rjsmin is now installed in the build sandbox, so main.min.js is rebuilt.
+  - See docs/SEO.md and docs/performance.md.
 - **11 Nov 2026, 21:30 EAT (Ray / Town):** 2.53.10 live. Home and About Us meta descriptions shortened, in the repo and in the hand-typed Rank Math fields (those override the theme). SEO status review added to docs/SEO.md: live audit of all 52 URLs is clean; IndexNow is on; GSC sitemap read OK with 80 pages indexed; GA4 is receiving data; GTM is empty (no double count). Open: GBP access (owner), mobile CWV validation on 2 Dec, GA4 key events, content-drafts answers.
 - **11 Nov 2026, 21:15 EAT (Ray / Town):** 2.53.8 preloads Caveat on Home; 2.53.9 fixes the slider eyebrow being forced to the body font by the shared eyebrow rule (now Caveat !important). Home mobile 93/88/90, desktop 99/83/100. Desktop care-strip CLS reappeared once (0.021), cause not settled. Handwriting not yet confirmed in a real browser. See docs/performance.md.
 - **11 Nov 2026, 20:55 EAT (Ray / Town):** 2.53.7 live. Desktop line boxes fixed for the Caveat slider eyebrow/note (care-strip shift) and section padding added to Home critical CSS (intro shift). Home desktop 97/97/100, CLS 0/0/0; mobile 95/96/99. Phone-width check done with 390px full-page screenshots of trimmed vs ?smile_full_css=1: no unstyled element, safelist unchanged. Details in docs/performance.md.

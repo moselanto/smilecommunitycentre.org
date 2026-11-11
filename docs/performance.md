@@ -300,3 +300,17 @@ Cause of the remaining care-strip shift: the slider eyebrow ("Because of you,") 
 - Mobile CLS stays at 0-0.002. Desktop CLS is 0 in 4 of 6 runs; the care strip came back once per release (0.007 with 2.53.8, 0.021 with 2.53.9). PageSpeed blamed the fonts in the 2.53.8 run, and an unsized image once in each release. With Caveat now preloaded it can arrive inside its block period on slow runs; the line boxes are fixed, so the remaining cause is not settled. Desktop 83 (TBT 360 ms) in one 2.53.9 run is test-machine variance.
 - Accessibility 96 on one mobile run (a contrast warning) - check next time.
 - Headless screenshot services still show the eyebrow in the fallback font (font-display: optional on a cold load), so confirm the handwriting on a real phone/desktop browser.
+
+
+### After 2.54.0 (metric-matched "Figtree Fallback")
+
+Cause of the remaining intermittent desktop care-strip shift (0.007 and 0.021, once per release in 2.53.8 and 2.53.9): Figtree (body text and the slide headings; `font-display: optional`, preloaded) sometimes arrived inside its block period after the first layout. The slide text was then re-measured, the slide grew, and the care strip (7a9bc3d) moved; PageSpeed listed figtree/caveat-latin.woff2 as root causes. 2.54.0 adds a "Figtree Fallback" face (Arial / Arial Bold with size-adjust 101.09% / 97.00% and ascent/descent overrides, measured from figtree-latin.woff2) behind Figtree in `--smile-font-body`, so a late font no longer changes text size. The unsized-image causes listed in those runs (wp-image-1048/1053) are photos below the first screen with width/height attributes, and they produced no shift of their own.
+
+| Run (12 Nov, EAT) | Desktop perf | LCP | TBT | CLS | SI | Mobile perf | LCP | TBT | CLS |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 01:07 | 98 | 0.7 s | 40 ms | 0 | 1.4 s | 94 | 3.0 s | 30 ms | 0.001 |
+| 01:09 | 100 | 0.5 s | 0 ms | 0 | 1.0 s | 96 | 2.7 s | 90 ms | 0.001 |
+| 01:10 | 100 | 0.5 s | 10 ms | 0 | 1.1 s | 93 | 2.9 s | 20 ms | 0 |
+
+- **Desktop:** CLS 0 in all three runs, with no culprits or root causes listed.
+- **Mobile:** the only shift is the slider pause button (0.001). Nunito is listed once as a possible cause, but it already has a metric-matched fallback.

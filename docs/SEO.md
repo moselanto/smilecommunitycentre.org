@@ -142,7 +142,28 @@ See `docs/qa-checklist.md`. Do not deploy until management facts, safeguarding, 
 ### Open
 1. **Google Business Profile:** Peter's account manages no businesses. The existing profile (managed by sc...@gmail.com) must add peterwafulah@gmail.com as a manager, or the owner must confirm that no profile exists so one can be created. **Owner action.**
 2. **Mobile Core Web Vitals:** Search Console shows 33 poor URLs ("LCP longer than 4s", group LCP 4.2 s, report dated 8 Nov). The field data predates releases 2.50-2.53, whose lab mobile LCP is 2.0-3.3 s. Validation is scheduled for 2 Dec 2026, once 28 days of new field data exist.
-3. **GA4 key events:** none are defined yet. Mark donation clicks (Paystack/M-Pesa), contact and enquiry form submits, WhatsApp clicks and volunteer/partner enquiries as key events.
+3. ~~GA4 key events~~ done in 2.54.0 (see below).
 4. **Content and AEO:** the 15 confirmation questions in `docs/content-drafts.md` are still unanswered. They block the FAQ and impact copy (child count with an "as at" date, volunteer status, partnership details).
 5. **External authority:** directory and partner listings with consistent name, address and phone (NAP), once the Google Business Profile details are confirmed.
 6. **Search Console clean-up:** start "Validate fix" on the 404 group, now that /shop/ and /cart/ redirect.
+
+
+## GA4 key events (2.54.0, 12 Nov 2026)
+
+Sent by the theme's own gtag (`assets/js/main.js`, set up in `inc/analytics.php`). Tag Manager `GTM-TDZHTDQF` still has 0 tags (live version 2), so nothing is counted twice. No personal data or message text is sent.
+
+| Event (GA4 key event) | Fires when | Parameters |
+|---|---|---|
+| `donation_start` | Paystack giving form submitted | method=paystack, currency, frequency |
+| `mpesa_details_copy` | M-Pesa paybill/account "Copy" clicked | method=mpesa |
+| `donation_complete` | return from Paystack with `?smile_donation=thanks` | method=paystack |
+| `contact_submit` | contact form received (`?smile_form=contact&smile_status=ok/saved`) | form_type |
+| `volunteer_enquiry` | volunteer form received | form_type |
+| `partner_enquiry` | partner form received | form_type |
+| `enquiry_submit` | visit, donation or careers form received | form_type |
+| `whatsapp_click` | any wa.me/WhatsApp link, or "Send on WhatsApp" in the chat panel | link_location |
+
+- All 8 are marked as key events in GA4 property 270195586. The older `purchase` key event was left in place.
+- **Verified 12 Nov 2026 in DebugView and Realtime** (logged out, with `?smile_ga_debug=1`): `whatsapp_click` (link_location=page), `mpesa_details_copy` (method=mpesa), `contact_submit` (form_type=contact) and `volunteer_enquiry` (form_type=volunteer), once each. The form events were tested with the thank-you URL only, so no real enquiry was created.
+- **Not yet tested end to end:** `donation_start` and `donation_complete` (would need a real Paystack payment), and `partner_enquiry` and `enquiry_submit` (they use the same code path as the verified form events).
+- **Debugging:** add `?smile_ga_debug=1` to any page URL to send that visit's hits to DebugView. Logged-in staff are never tracked.
