@@ -1815,3 +1815,6 @@ a.skip-link.screen-reader-text:not(.smile-skip-link):not(:focus) { position: abs
    yellow words have a measurable background (mobile contrast check). The rest of the band is unchanged. */
 .smile-closing .elementor-widget-heading h2.elementor-heading-title { display: inline-block; background-color: var(--smile-forest); padding: .35em .7em .45em; border-radius: 18px; }
 .smile-closing .elementor-widget-heading:has(h2.elementor-heading-title) { text-align: center; }
+
+/* 2.53.4: all photo widgets keep a ratio box from their width/height (e.g. wp-image-13 on Donate). */
+.smile-photo img { height: auto !important; }

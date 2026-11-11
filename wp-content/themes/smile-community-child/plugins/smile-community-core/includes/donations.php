@@ -536,11 +536,10 @@ function smile_pay_icon( $name ) {
  * @return string
  */
 function smile_pay_styles() {
-	static $done = false;
-	if ( $done ) {
+	if ( ! empty( $GLOBALS['smile_pay_styles_done'] ) ) {
 		return '';
 	}
-	$done = true;
+	$GLOBALS['smile_pay_styles_done'] = true;
 	$file = SMILE_CORE_DIR . 'assets/donate.css';
 	return is_readable( $file ) ? '<style id="smile-give-css">' . str_ireplace( '</style', '', (string) file_get_contents( $file ) ) . '</style>' : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local plugin file.
 }
@@ -1340,3 +1339,23 @@ function smile_pay_recheck_notice() {
 	echo '</div>';
 }
 add_action( 'admin_notices', 'smile_pay_recheck_notice' );
+
+
+/**
+ * 1.6.2: print the form styles in the page head (not inside the Donate hero), so the
+ * hero and form are styled from the first paint (Donate CLS 0.017 mobile / 0.029 desktop).
+ * Runs on singular pages whose content or Elementor data uses one of the giving shortcodes;
+ * smile_pay_styles() then prints nothing more in the body.
+ */
+function smile_pay_styles_in_head() {
+	if ( is_admin() || ! is_singular() ) {
+		return;
+	}
+	$id   = get_queried_object_id();
+	$text = (string) get_post_field( 'post_content', $id ) . (string) get_post_meta( $id, '_elementor_data', true );
+	if ( ! preg_match( '/smile_(?:donate_form|give_hero|manage_giving)/', $text ) ) {
+		return;
+	}
+	echo smile_pay_styles() . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static CSS from a plugin file.
+}
+add_action( 'wp_head', 'smile_pay_styles_in_head', 8 );

@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.4 / Core 1.6.2 - 11 Nov 2026
+
+- **Donate form styles in the head** (Core `includes/donations.php`): `smile-give-css` was printed inside the Donate hero card, so the hero intro could paint before the form/hero rules were parsed and then move (Donate CLS 0.017 mobile, 0.029 desktop). It is now printed in `wp_head` on pages using `[smile_donate_form]`, `[smile_give_hero]` or `[smile_manage_giving]`; the shortcodes then skip it (shared `$GLOBALS['smile_pay_styles_done']` flag).
+- **Photo widgets** (`.smile-photo img`, e.g. wp-image-13 "Young pupils in school uniform"): `height:auto`, so the existing width/height attributes (800x416) and aspect-ratio rules reserve the box.
+
 ## 2.53.3 - 11 Nov 2026
 
 - **Home closing band:** the "Help make everyday care possible." heading now sits on a solid dark green panel, so Lighthouse can measure its white and yellow text (mobile contrast warning). Photo, overlay, eyebrow, text and buttons are unchanged.
