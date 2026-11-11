@@ -260,3 +260,18 @@ Cause found: `.elementor-section.elementor-section-boxed>.elementor-container` (
 - Desktop scores are now steady at 98-99 (2.53.5: 67-99). The care-strip shift dropped from 0.058 to 0.021 but still appears in 2 of 3 runs (run #3 also lists the intro container at 0.004). Next suspect: another async-only rule above the fold, or the Caveat slider eyebrow font (listed in the CLS insight). Not fixed yet.
 - Phone-width check of the trimmed Home: the browser cannot be resized and the preview sites either failed or were refused by the site, so no full side-by-side visual comparison was possible. Checked in a 320px preview: the mobile menu opens and closes, all four submenus expand and collapse, the tab bar shows, and the WhatsApp panel opens. Offline check: every class on the mobile Home markup (menu, sub-menu, tab bar, WhatsApp panel and states) is kept in the trimmed files; the only dropped menu-type classes (smile-mbar, smile-tabbar__item--menu, smile-tabbar__burger, current-menu-parent) are not output on Home. No safelist change needed.
 - For manual comparison on a phone: https://smilecommunitycentre.org/?smile_full_css=1 loads the full stylesheets.
+
+
+### After 2.53.7 (Caveat slider lines get fixed desktop line boxes; section padding in Home critical CSS)
+
+Cause of the remaining care-strip shift: the slider eyebrow ("Because of you,") and note ("Change a life today.") use Caveat (font-display: optional, not preloaded). When Caveat arrived inside its short block period after first layout, those lines were re-measured, the slide grew and the care strip (7a9bc3d) moved. The intro's 0.004 came from section padding (`.smile-sec`, `.home .smile-sec`, `.home .smile-sec.smile-intro2`, `.smile-intro2`) that was only in the async stylesheet.
+
+| Run (11 Nov, EAT) | Desktop perf | LCP | FCP | TBT | CLS | SI | Mobile perf | Mobile CLS |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| #1 20:49 | 97 | 0.6 s | 0.3 s | 50 ms | 0 | 1.7 s | 95 | 0.001 |
+| #2 20:50 | 97 | 0.6 s | 0.3 s | 20 ms | 0 | 1.7 s | 96 | 0.001 |
+| #3 20:51 | 100 | 0.5 s | 0.3 s | 10 ms | 0 | 1.0 s | 99 | 0 |
+
+- Desktop CLS 0 in all three runs; no layout-shift culprits, font or unsized-image causes listed.
+- Phone-width comparison of the trimmed Home CSS: full-page 390px screenshots (thum.io) of `/` and `/?smile_full_css=1`, compared pixel by pixel. The only differences were capture timing in the reference shot (lazy photos not yet loaded, heading underlines mid-animation). Nothing unstyled; purge safelist unchanged.
+- Note: as designed with font-display: optional, a first visit where Caveat is slow shows the two handwritten slider lines in the fallback sans font; later visits use Caveat from cache.
