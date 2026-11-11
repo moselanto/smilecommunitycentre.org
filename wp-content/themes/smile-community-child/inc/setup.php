@@ -305,8 +305,13 @@ function smile_local_fonts() {
 	);
 	echo '<link rel="preload" href="' . esc_url( $base . 'nunito-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
 	echo '<link rel="preload" href="' . esc_url( $base . 'figtree-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
-	// Caveat (decorative, font-display: optional) is no longer preloaded on the home page:
-	// its 51 KB competed with the hero photo, the largest element on phones (2.50.0).
+	// 2.53.8: Caveat is preloaded again on the front page only, so the handwritten slider lines
+	// ("Because of you," / "Change a life today.") show in handwriting on a first visit. It stays
+	// font-display: optional and the lines keep fixed line boxes (2.53.7), so nothing can shift.
+	// Low fetch priority so it does not compete with the hero photo (the 2.50.0 concern).
+	if ( is_front_page() ) {
+		echo '<link rel="preload" href="' . esc_url( $base . 'caveat-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin fetchpriority="low">' . "\n";
+	}
 	$css = '';
 	foreach ( $faces as $f ) {
 		$css .= "@font-face{font-family:'" . $f[0] . "';font-style:" . $f[1] . ';font-weight:' . $f[2] . ';font-display:' . ( isset( $f[4] ) ? $f[4] : 'swap' ) . ';src:url(' . esc_url( $base . $f[3] ) . ") format('woff2');unicode-range:" . $range . ';}';

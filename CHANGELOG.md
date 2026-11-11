@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.8 - 11 Nov 2026
+
+- **Handwritten slider lines always in handwriting** (`inc/setup.php`): Caveat (51 KB) is preloaded again on the front page only, with low fetch priority so it does not compete with the hero photo. It stays `font-display: optional`, and the eyebrow and note keep their fixed desktop line boxes from 2.53.7, so its arrival cannot move anything.
+
 ## 2.53.7 - 11 Nov 2026
 
 - **Remaining desktop care-strip shift (about 0.02 in 2 of 3 runs):** the handwritten slider lines use Caveat (font-display: optional, not preloaded). When Caveat arrived inside its short block period after the first layout, the eyebrow ("Because of you,") and note line were re-measured, the slide grew and the care strip (7a9bc3d) below it moved. On desktop the eyebrow now has a fixed 1.1em line box and the note a 1em line box, both on one line (`assets/css/home.css`), so the font can no longer change the slide height. Same look.
