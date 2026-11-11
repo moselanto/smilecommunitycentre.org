@@ -120,7 +120,7 @@ function smile_seo_description() {
 		}
 	}
 	if ( '' === $desc && ( is_front_page() || ! $id ) ) {
-		$desc = __( 'Smile Community Centre Children\'s Home in Soweto, Kayole, Nairobi gives orphaned and vulnerable children shelter, daily meals, education and care. Donate, volunteer or partner with us.', 'smile-community' );
+		$desc = __( 'Children\'s home in Soweto, Kayole, Nairobi giving orphaned and vulnerable children shelter, daily meals, schooling and healthcare. Donate, partner or visit.', 'smile-community' );
 	}
 	if ( '' === $desc && ( is_category() || is_tag() ) ) {
 		$desc = wp_strip_all_tags( term_description() );

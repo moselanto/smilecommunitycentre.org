@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.10 - 11 Nov 2026
+
+- **Meta descriptions within the search-snippet length:** Home (192 to 150 characters) and About Us (167 to 145) in `demo/pages.json`, and the theme fallback in `inc/seo.php`. Same facts, no new claims. Live audit of all 52 sitemap URLs: every page has one H1, a unique title and description, a self-canonical, no noindex and valid JSON-LD; these two descriptions were the only length issues.
+
 ## 2.53.9 - 11 Nov 2026
 
 - **"Because of you," now in handwriting:** a shared eyebrow rule in `main.css` (`.smile-eyebrow, .smile-slide__eyebrow { font-family: var(--smile-font-body) !important; letter-spacing: .14em !important }`) overrode the slider's Caveat eyebrow, so it showed in the body font with wide letter spacing even with Caveat loaded (2.53.8 check). The slider eyebrow rule in `home.css` now marks `font-family` and `letter-spacing: 0` as `!important`. The fixed line boxes from 2.53.7 stay, so nothing shifts.
