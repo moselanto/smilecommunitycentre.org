@@ -1836,3 +1836,11 @@ body.smile-nav-open .smile-header { z-index: 10000 !important; }
 	body { padding-bottom: calc(68px + env(safe-area-inset-bottom)) !important; }
 	.smile-wa { bottom: calc(80px + env(safe-area-inset-bottom)) !important; }
 }
+
+/* 2.53.7: reserve the handwritten (Caveat, font-display: optional, not preloaded) slider lines on desktop.
+   When Caveat arrived inside its short block period after first layout, the eyebrow re-measured,
+   the slide grew and the care strip below moved (desktop CLS about 0.02). Fixed line boxes, same look. */
+@media (min-width: 768px) {
+	.smile-slider .smile-slide--split .smile-slide__eyebrow { height: 1.1em; line-height: 1.1 !important; white-space: nowrap; overflow: visible; }
+	.smile-slider .smile-slide__note { height: 1em; line-height: 1 !important; white-space: nowrap; overflow: visible; }
+}

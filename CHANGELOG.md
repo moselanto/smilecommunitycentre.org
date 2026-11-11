@@ -2,6 +2,12 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.7 - 11 Nov 2026
+
+- **Remaining desktop care-strip shift (about 0.02 in 2 of 3 runs):** the handwritten slider lines use Caveat (font-display: optional, not preloaded). When Caveat arrived inside its short block period after the first layout, the eyebrow ("Because of you,") and note line were re-measured, the slide grew and the care strip (7a9bc3d) below it moved. On desktop the eyebrow now has a fixed 1.1em line box and the note a 1em line box, both on one line (`assets/css/home.css`), so the font can no longer change the slide height. Same look.
+- **Intro section shift (0.004):** the section padding that places the intro below the care strip (`.smile-sec`, `.home .smile-sec`, `.home .smile-sec.smile-intro2`, `.smile-intro2`) was only in the async stylesheet. It is now in the Home critical CSS (`scripts/build-critical-css.py`, `HOME_EXACT`). Critical CSS 60.3 KB to 61.0 KB.
+- **Phone-width check of the trimmed Home CSS (2.53.5):** full-page 390px screenshots of `/` and `/?smile_full_css=1` were compared pixel by pixel. The only differences were capture timing (lazy photos not yet loaded and heading underlines mid-animation in the reference shot); nothing unstyled, so the purge safelist is unchanged.
+
 ## 2.53.6 - 11 Nov 2026
 
 - **Desktop care-strip shift (0.058 in 1 of 3 runs), fixed** (`scripts/build-critical-css.py`): the boxed-section container rule (`.elementor-section.elementor-section-boxed>.elementor-container`: max-width and `padding-inline: clamp(.25rem,3vw,1.25rem)`) and `.smile-btn-row` were only in the full stylesheet, which loads after first paint. In runs where that stylesheet arrived after the first paint, the 'A safe home / Daily meals' strip (data-id 7a9bc3d) was first drawn without the container padding, then moved when it arrived; in faster runs it arrived before first paint, so no shift. Both rules are now in the critical CSS (Home 59.9 KB to 60.3 KB). Same look.

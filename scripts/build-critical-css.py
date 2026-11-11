@@ -57,6 +57,11 @@ SKIP = {
 }
 
 
+# 2.53.7: section padding that places the first section below the Home care strip. It was only in the
+# async stylesheet, so the intro section moved when that arrived (desktop CLS 0.004).
+HOME_EXACT = {".smile-sec", ".home .smile-sec", ".home .smile-sec.smile-intro2", ".smile-intro2"}
+
+
 def keep_selectors(prelude, kind):
     """Return only the selectors in this rule that style the first screen.
 
@@ -69,7 +74,7 @@ def keep_selectors(prelude, kind):
         if not sel or STATE.search(sel):
             continue
         bare = re.sub(r"^(?:body(?:\.[\w-]+)*|html(?:\.[\w-]+)*)\s+", "", sel)  # body.home .x -> .x
-        if KEEP.match(bare) and not SKIP[kind].match(bare):
+        if (KEEP.match(bare) or (kind == "home" and sel in HOME_EXACT)) and not SKIP[kind].match(bare):
             kept.append(sel)
     return ",".join(kept)
 
