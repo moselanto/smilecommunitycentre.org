@@ -222,3 +222,26 @@ Donate: the layout shift is fixed; the form was checked visually (frequency, cur
 - Options if we want a steadier score: load GA4/GTM only on the first interaction (no idle fallback; misses visitors who leave without scrolling or tapping), trim unused Home CSS, and reduce Home DOM size (sections below the first screen).
 - Smaller items: Home mobile slider h1 shift of 0.020 in 2 of 4 runs; `img.wp-image-1048` flagged as unsized again in 2 runs.
 - Judge real-world speed from Search Console Core Web Vitals (field data) once it has data; the check is scheduled for 2 Dec.
+
+
+### After 2.53.5 (purged front-page CSS, phone slider eyebrow/h1 height lock, fixed-ratio programme card photos)
+
+Home now loads main-front.min.css (48 KB, was 126 KB) and home-front.min.css (87 KB, was 159 KB). Visual walkthrough of every Home section on desktop after deploy: no unstyled or changed section; programme card photos fill their boxes and hover still works.
+
+| Run (11 Nov, EAT) | Device | Perf | A11y | LCP | FCP | TBT | CLS | SI | Main thread | Style & Layout |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Home #1 19:34 | Mobile | 91 | 100 | 2.0 s | 1.0 s | 340 ms | 0.001 | 3.0 s | 2.2 s | 584 ms |
+| Home #1 | Desktop | 67 | 100 | 1.0 s | 0.6 s | 1,010 ms | 0.058 | 1.8 s | 3.2 s | 1,165 ms |
+| Home #2 19:36 | Mobile | 93 | 100 | 2.9 s | 1.0 s | 120 ms | 0.001 | 3.7 s | 1.8 s | 493 ms |
+| Home #2 | Desktop | 90 | 100 | 0.8 s | 0.5 s | 230 ms | 0 | 1.5 s | 1.5 s | 457 ms |
+| Home #3 19:38 | Mobile | 93 | 100 | 2.5 s | 1.0 s | 230 ms | 0.002 | 3.5 s | 1.8 s | 493 ms |
+| Home #3 | Desktop | 99 | 100 | 0.6 s | 0.4 s | 60 ms | 0 | 1.3 s | 1.1 s | 325 ms |
+| Donate 19:40 | Mobile | 78 | 100 | 2.4 s | 1.1 s | 750 ms | 0 | 3.5 s | 2.7 s | 917 ms |
+| Donate | Desktop | 98 | 100 | 0.7 s | 0.3 s | 20 ms | 0.005 | 1.4 s | 0.6 s | 117 ms |
+
+- Home mobile is steadier: 91-93 over three runs (2.53.4 runs ranged 57-97). Home "Reduce unused CSS" now passes on every run (it was flagged before).
+- Phone slider heading shift is gone: mobile CLS 0.001-0.002, culprits only the pause button/icon (0.001) and once the pillars strip (0.002).
+- DOM: 776 elements, depth 18 (below Lighthouse's warning level). No restructuring needed; the pasted `#jw-selection-toolbar-host` element was removed.
+- Still variable: Home desktop 67-99 (one run had TBT 1,010 ms and pillars-strip CLS 0.058); Donate mobile 78 on one run (TBT 750 ms). Same code scored higher minutes apart, so this looks like test-machine load again.
+- The CLS insight still labels programme photos `wp-image-1048` (run 1 desktop) and `wp-image-1050` (run 2 desktop) as unsized, while the "Image elements have explicit width and height" audit passes and they contribute no shift. Left as is.
+- Maintenance: after editing Home in Elementor, run `python3 scripts/purge-front-css.py --refresh`, then build and deploy, or new classes on Home will be unstyled.

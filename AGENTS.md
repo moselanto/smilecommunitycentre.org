@@ -19,7 +19,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Current state (11 Nov 2026)
 
-- Live: theme **2.53.4** / Core **1.6.2**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
+- Live: theme **2.53.5** / Core **1.6.2**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
 
 ## Earlier state (19 Oct 2026, 23:30 EAT)
 
@@ -36,6 +36,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **11 Nov 2026, 19:45 EAT (Ray / Town):** 2.53.5 live. Front page uses purged CSS (scripts/purge-front-css.py; main 126->48 KB, home 159->87 KB). IMPORTANT: after editing Home in Elementor run `python3 scripts/purge-front-css.py --refresh` before building. Home mobile 91/93/93, desktop 67/90/99; mobile CLS 0.001-0.002. Details in docs/performance.md.
 - **11 Nov 2026, 19:30 EAT (Ray / Town):** 2.53.4 / Core 1.6.2 live (Donate form CSS in wp_head). Donate CLS 0 mobile / 0.005 desktop, perf 97/99. Home mobile re-run 4 times: 73, 92, 97, 57 with LCP steady and TBT 40-3,060 ms, so the earlier 94 to 75 drop is test-machine variance, not a regression. Findings and options in docs/performance.md.
 - **11 Nov 2026, 19:10 EAT (Ray / Town):** 2.53.3 live. Contrast failures cleared everywhere. Donate CLS still 0.017 mobile / 0.029 desktop (hero widget wrap / shortcode 3bb899c, unsized wp-image-13); next suspect is the in-body smile-give-css style. Home mobile 75 on one run, needs a repeat. Details in docs/performance.md.
 - **11 Nov 2026, 18:45 EAT (Ray / Town):** 2.53.2 live. PageSpeed mobile/desktop: Home 94/99, Donate 98/98, story 98/97; CLS Home 0.007/0, story 0/0. Donate NO_LCP did not recur. Open: closing-band em contrast on Home mobile. Details in docs/performance.md.
