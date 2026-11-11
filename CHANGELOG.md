@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.49.1 / Core 1.6.1 - 11 Nov 2026
+
+- Old sitemap addresses (`/sitemaps.xml`, `/sitemap.xml`, `/wp-sitemap.xml`) now reach Rank Math's `/sitemap_index.xml` in one 301. The saved redirect list from the original activation still pointed to `/wp-sitemap.xml`, causing two hops; built-in sitemap rules now always win.
+- Verified live after 2.49.0: one JSON-LD block (theme graph), GA4 and GTM each loaded once (2 ID occurrences each: script + config/noscript), robots.txt and llms.txt live, `/shop/`, `/cart/`, `/volunteer.html` 301 in one hop, feeds send `X-Robots-Tag: noindex, follow`, GA4 Realtime receiving data.
+
 ## 2.49.0 / Core 1.6.0 - 11 Nov 2026
 
 - **Rank Math SEO replaces SEOPress.** Theme titles and descriptions now feed Rank Math (`rank_math/frontend/title`, `rank_math/frontend/description`); hand-typed Rank Math values win, older SEOPress values are read as a fallback. Rank Math's JSON-LD is switched off so the theme's connected graph is the only schema. Setup wizard recommends Rank Math instead of SEOPress; importer and careers write both meta keys.

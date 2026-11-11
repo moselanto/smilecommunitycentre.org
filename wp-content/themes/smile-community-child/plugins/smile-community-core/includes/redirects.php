@@ -132,6 +132,14 @@ function smile_core_redirect_rules() {
 		}
 		$rules[ smile_core_redirect_key( $parts[0] ) ] = $target;
 	}
+	// Sitemap addresses always follow the active SEO plugin. Older saved lists
+	// (copied from the defaults on activation) still point to /wp-sitemap.xml,
+	// which made /sitemaps.xml take two hops once Rank Math was active.
+	foreach ( smile_core_builtin_redirects() as $old => $new ) {
+		if ( '.xml' === substr( $old, -4 ) ) {
+			$rules[ smile_core_redirect_key( $old ) ] = $new;
+		}
+	}
 	return $rules;
 }
 
