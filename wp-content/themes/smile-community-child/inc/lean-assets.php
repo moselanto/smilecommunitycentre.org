@@ -27,6 +27,7 @@
  *    page banner. The full theme stylesheets then load in the background, with a
  *    <noscript> fallback. Elementor's own CSS stays render-blocking on purpose: it
  *    lays out the page sections, so loading it late would make the layout jump.
+ *    Exception (2.51.0): the Elementor footer template's CSS loads in the background.
  *
  * @package SmileCommunity
  */
@@ -185,7 +186,19 @@ add_action( 'wp_footer', 'smile_lean_trim_scripts', 19 );
  * @return string[]
  */
 function smile_lean_async_styles() {
-	return (array) apply_filters( 'smile_lean_async_styles', array( 'smile-community', 'smile-home', 'smile-slider' ) );
+	$handles = array( 'smile-community', 'smile-home', 'smile-slider' );
+	// 2.51.0: Elementor CSS for content that is never in the first screen loads in the
+	// background too: the footer template (always below the fold). The page's own
+	// Elementor CSS, the kit and Elementor's frontend/layout CSS stay blocking because
+	// they lay out the first section; loading them late would make it jump (CLS).
+	if ( function_exists( 'smile_builder_resolve' ) ) {
+		$footer = (int) smile_builder_resolve( 'footer' );
+		$header = (int) smile_builder_resolve( 'header' );
+		if ( $footer > 0 && $footer !== $header && $footer !== (int) get_queried_object_id() ) {
+			$handles[] = 'elementor-post-' . $footer;
+		}
+	}
+	return (array) apply_filters( 'smile_lean_async_styles', $handles );
 }
 
 /**

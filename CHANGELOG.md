@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.51.0 - 11 Nov 2026
+
+- **Smaller inline critical CSS.** `scripts/build-critical-css.py` now keeps only the matching selectors of each rule (not the whole comma list), leaves interaction states (:hover, :focus, open menu) to the full stylesheet, skips print media, and skips components that are never in a template's first screen (home: page banner, breadcrumbs, FAQ, stories lead; inner pages: slider, FAQ). Home: 81.0 KB to 55.2 KB (10.6 KB gzipped); inner: 66.1 KB to 53.5 KB. The remaining bulk is the header menu (desktop menu and mobile drawer markup are in the first screen).
+- **Elementor footer CSS loads in the background** (`inc/lean-assets.php`): the footer template is always below the fold. The page's own Elementor CSS, the kit and Elementor's frontend layout CSS stay render-blocking because they lay out the first section (moving them would cause layout shift).
+
 ## 2.50.0 - 11 Nov 2026
 
 Mobile LCP work (Search Console: "LCP issue: longer than 4s (mobile)", 33 URLs in one group, group LCP 4.2s, CrUX data to 8 Nov 2026).

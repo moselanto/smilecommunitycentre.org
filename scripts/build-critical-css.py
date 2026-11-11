@@ -7,6 +7,11 @@ the inner-page banner (pagehero/breadcrumbs). Whole rules are kept when any sele
 the rule matches, and @media/@supports blocks are kept around matching rules, so the
 inlined CSS renders the first screen exactly like the full stylesheet (no layout jump).
 
+2.51.0: only the matching selectors of a rule are kept (not the whole comma list),
+interaction states (:hover, :focus, open menu) are left to the full stylesheet, and
+each template skips components that are never in its first screen (home: page
+banner, breadcrumbs, FAQ, stories lead; inner pages: slider, FAQ).
+
 Output:
   assets/build/critical-home.min.css   (main + home stylesheets, home page)
   assets/build/critical-inner.min.css  (main + inner home bundle, every other page)
@@ -43,28 +48,53 @@ def blocks(css):
         i = k
 
 
-def selector_matches(prelude):
-    for sel in prelude.split(","):
-        sel = sel.strip()
-        sel = re.sub(r"^(?:body(?:\.[\w-]+)*|html(?:\.[\w-]+)*)\s+", "", sel)  # body.home .x -> .x
-        if KEEP.match(sel):
-            return True
-    return False
+STATE = re.compile(r":(?:hover|focus|focus-visible|focus-within|active|visited)\b|\.is-open\b|\[aria-expanded=.?true|\[open\]")
+
+# Components that are never in the first screen of a given template (2.51.0).
+SKIP = {
+    "home": re.compile(r"^\.smile-(?:pagehero|breadcrumbs|faq|lead)(?![a-z0-9]|-[a-z0-9])"),
+    "inner": re.compile(r"^\.smile-(?:slider|slide|faq)(?![a-z0-9]|-[a-z0-9])"),
+}
 
 
-def critical(css):
+def keep_selectors(prelude, kind):
+    """Return only the selectors in this rule that style the first screen.
+
+    Interaction states (hover, focus, open menu) are left to the full stylesheet:
+    nothing is hovered or open when the page first paints.
+    """
+    kept = []
+    for raw in prelude.split(","):
+        sel = raw.strip()
+        if not sel or STATE.search(sel):
+            continue
+        bare = re.sub(r"^(?:body(?:\.[\w-]+)*|html(?:\.[\w-]+)*)\s+", "", sel)  # body.home .x -> .x
+        if KEEP.match(bare) and not SKIP[kind].match(bare):
+            kept.append(sel)
+    return ",".join(kept)
+
+
+def selector_matches(prelude, kind="home"):
+    return bool(keep_selectors(prelude, kind))
+
+
+def critical(css, kind="home"):
     out = []
     for prelude, body in blocks(css):
         if prelude.startswith("@font-face") or prelude.startswith("@charset"):
             out.append(prelude + "{" + body + "}")
         elif prelude.startswith(("@media", "@supports", "@layer")):
-            inner = critical(body)
+            if "print" in prelude and "screen" not in prelude:
+                continue
+            inner = critical(body, kind)
             if inner:
                 out.append(prelude + "{" + inner + "}")
         elif prelude.startswith("@"):
             continue  # @keyframes etc. are not needed for the first paint
-        elif selector_matches(prelude):
-            out.append(prelude + "{" + body + "}")
+        else:
+            sel = keep_selectors(prelude, kind)
+            if sel:
+                out.append(sel + "{" + body + "}")
     return "".join(out)
 
 
@@ -73,11 +103,11 @@ def read(name):
         return fh.read()
 
 
-for target, sources in (
-    ("critical-home.min.css", ("main.min.css", "home.min.css")),
-    ("critical-inner.min.css", ("main-inner.min.css", "home-inner.min.css")),
+for target, sources, kind in (
+    ("critical-home.min.css", ("main.min.css", "home.min.css"), "home"),
+    ("critical-inner.min.css", ("main-inner.min.css", "home-inner.min.css"), "inner"),
 ):
-    css = critical("".join(read(s) for s in sources))
+    css = critical("".join(read(s) for s in sources), kind)
     with open(os.path.join(T, target), "w", encoding="utf-8") as fh:
         fh.write(css)
     print("%s: %d bytes" % (target, len(css)))
