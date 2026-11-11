@@ -201,3 +201,24 @@ Single Lighthouse 13.6 runs; field data "No Data".
 - Fixed: no contrast failures on any page (Home mobile Accessibility 96 to 100). Menu button no longer listed as a shift culprit on Donate.
 - Not fixed: Donate mobile CLS 0.017 (hero `div.elementor-widget-wrap.elementor-element-populated`); Donate desktop 0.029 (shortcode widget 3bb899c) plus unsized `img.wp-image-13` ("Young pupils in school uniform outside the centre"). Likely cause to check next: the give form's CSS (`<style id="smile-give-css">`) is printed inside the hero card in the body, so the intro can paint before those rules are parsed.
 - Home mobile 75 / LCP 4.1 s / TBT 360 ms is lower than the 2.53.2 run (94 / 3.0 s / 0 ms); 2.53.3 changed only CSS, so this needs a repeat run before treating it as a regression.
+
+
+### After 2.53.4 / Core 1.6.2 (Donate form CSS in head, height:auto on photo widgets) and Home mobile repeat runs
+
+| Run (11 Nov, EAT) | Perf | A11y | LCP | FCP | TBT | CLS | SI |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Donate Mobile 19:15 | **97** | 100 | 2.4 s | 1.1 s | 10 ms | **0** (was 0.017) | 2.9 s |
+| Donate Desktop | **99** | 100 | 0.7 s | 0.3 s | 100 ms | **0.005** (was 0.029) | 1.0 s |
+| Home Desktop 19:16 | 80 | 100 | 0.8 s | 0.4 s | 390 ms | 0 | 1.6 s |
+| Home Mobile #1 19:16 | 73 | 100 | 3.0 s | 1.1 s | 920 ms | 0.020 | 2.9 s |
+| Home Mobile #2 19:19 | 92 | 100 | 3.1 s | 1.2 s | 110 ms | 0.001 | 3.2 s |
+| Home Mobile #3 19:20 | 97 | 100 | 2.6 s | 0.9 s | 40 ms | 0.020 | 2.7 s |
+| Home Mobile #4 19:22 | 57 | 100 | 2.9 s | 1.8 s | 3,060 ms | 0 | 8.6 s |
+
+Donate: the layout shift is fixed; the form was checked visually (frequency, currency, amounts, fields, Donate button).
+
+**Home mobile 94 to 75 drop: not a release regression, it is run-to-run variance.** Five runs on unchanged code (the 2.53.3 run plus four above) range from 57 to 97. LCP is steady (2.6-3.1 s); the score swings come from TBT (40 to 3,060 ms). In the worst run main-thread work was 10.7 s (Style & Layout 5.0 s, Other 3.4 s) and the document alone used 8.3 s of CPU, against 1.0 s in the best run, for the same page. That pattern (same bytes, 8x more CPU) points to load on PageSpeed's shared test machines rather than the site.
+- What is consistently ours: Style & Layout is the biggest category even in good runs (239-391 ms), from the large Home DOM and CSS (home.min.css about 160 KB), and the slider/animation script (main.min.js 150-510 ms). GA4 + GTM add about 200-500 ms when they load at idle inside the test window.
+- Options if we want a steadier score: load GA4/GTM only on the first interaction (no idle fallback; misses visitors who leave without scrolling or tapping), trim unused Home CSS, and reduce Home DOM size (sections below the first screen).
+- Smaller items: Home mobile slider h1 shift of 0.020 in 2 of 4 runs; `img.wp-image-1048` flagged as unsized again in 2 runs.
+- Judge real-world speed from Search Console Core Web Vitals (field data) once it has data; the check is scheduled for 2 Dec.
