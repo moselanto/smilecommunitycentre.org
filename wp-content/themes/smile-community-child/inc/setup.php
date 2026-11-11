@@ -105,7 +105,8 @@ function smile_asset( $rel, $min ) {
 function smile_theme_assets() {
 	$inner = ! smile_needs_full_css();
 	// 2.53.5: the front page uses purged copies (scripts/purge-front-css.py) holding only the rules its markup uses.
-	$front = is_front_page() && ! is_customize_preview() && ! isset( $_GET['elementor-preview'] ) && file_exists( SMILE_THEME_DIR . '/assets/build/main-front.min.css' ) && file_exists( SMILE_THEME_DIR . '/assets/build/home-front.min.css' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check.
+	// 2.53.6: add ?smile_full_css=1 to the Home URL to load the full stylesheets instead (for side-by-side checks).
+	$front = is_front_page() && ! is_customize_preview() && ! isset( $_GET['elementor-preview'] ) && ! isset( $_GET['smile_full_css'] ) && file_exists( SMILE_THEME_DIR . '/assets/build/main-front.min.css' ) && file_exists( SMILE_THEME_DIR . '/assets/build/home-front.min.css' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only check.
 	list( $css_url, $css_ver ) = smile_asset( 'assets/css/main.css', $front ? 'assets/build/main-front.min.css' : ( $inner && file_exists( SMILE_THEME_DIR . '/assets/build/main-inner.min.css' ) ? 'assets/build/main-inner.min.css' : 'assets/build/main.min.css' ) );
 	wp_enqueue_style( 'smile-community', $css_url, array(), $css_ver );
 

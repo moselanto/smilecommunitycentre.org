@@ -2,6 +2,11 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.53.6 - 11 Nov 2026
+
+- **Desktop care-strip shift (0.058 in 1 of 3 runs), fixed** (`scripts/build-critical-css.py`): the boxed-section container rule (`.elementor-section.elementor-section-boxed>.elementor-container`: max-width and `padding-inline: clamp(.25rem,3vw,1.25rem)`) and `.smile-btn-row` were only in the full stylesheet, which loads after first paint. In runs where that stylesheet arrived after the first paint, the 'A safe home / Daily meals' strip (data-id 7a9bc3d) was first drawn without the container padding, then moved when it arrived; in faster runs it arrived before first paint, so no shift. Both rules are now in the critical CSS (Home 59.9 KB to 60.3 KB). Same look.
+- **Full-CSS comparison switch** (`inc/setup.php`): `https://smilecommunitycentre.org/?smile_full_css=1` loads the full stylesheets instead of the trimmed front-page copies, for side-by-side checks after Home edits.
+
 ## 2.53.5 - 11 Nov 2026
 
 - **Lighter Home styles** (`scripts/purge-front-css.py`, new; `inc/setup.php`): the front page now loads purged copies `main-front.min.css` (126 KB to 48 KB) and `home-front.min.css` (159 KB to 87 KB), holding only rules whose classes/ids appear in the live Home markup (mobile and desktop), in the theme/Core JavaScript, or in a safelist of runtime state classes. Every other page keeps the full files; critical CSS is still built from the full files. The used-token list is saved in `scripts/front-used-tokens.txt`; **after editing the Home page in Elementor, run `python3 scripts/purge-front-css.py --refresh` before building**, or new classes on Home will have no styles. `build-theme-zip.sh` runs the purge (offline) on every build.
