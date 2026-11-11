@@ -109,3 +109,24 @@ Home desktop CLS 0.815 was blamed on `.smile-slide__content`: the `.smile-slider
 - Story: CLS 0.140 from `.smile-container--narrow`; Lighthouse flags the featured image as unsized. Render-blocking 690 ms.
 - Accessibility: contrast warnings on Home and the story (scores 96).
 - Phone-size visual check of menu/footer could not be done with the available browser tools; mobile Lighthouse CLS was 0 on Home and Donate.
+
+
+### After 2.52.0 (inline small Elementor/Hello CSS, deferred GA4/GTM, story image box)
+
+| Page | Device | Perf | LCP | FCP | TBT | CLS | SI | LCP element |
+|---|---|---:|---:|---:|---:|---:|---:|---|
+| Home | Mobile | **97** | 1.9 s | 1.0 s | 50 ms | 0.095 | 2.9 s | first slide photo |
+| Home | Desktop | **99** | 0.7 s | 0.3 s | 10 ms | 0 | 1.3 s | first slide photo |
+| Donate | Mobile | **97** | 2.4 s | 0.9 s | 10 ms | 0.017 | 2.8 s | hero section |
+| Donate | Desktop | **99** | 0.7 s | 0.3 s | 20 ms | 0.005 | 1.2 s | hero section |
+| Story | Mobile | **99** | 1.1 s | 1.1 s | 50 ms | 0.061 | 2.6 s | article h1 |
+| Story | Desktop | **99** | 0.7 s | 0.3 s | 10 ms | 0 | 1.3 s | featured image |
+
+Home mobile went from 70 to 97 (LCP 6.3 s to 1.9 s); Donate mobile from 73 to 97 (LCP 5.5 s to 2.4 s). GA4 Realtime still records visits (scripts load on first scroll/tap or when idle). Field data: still "No Data".
+
+Remaining:
+- Home mobile CLS 0.095: `h1.smile-slide__title` (0.090), probably the heading font swapping in; plus the Soweto-Kayole image (`wp-image-1053`) has no width/height.
+- Story mobile CLS 0.061: `h1.smile-article__title` (font swap). Donate mobile CLS 0.017: hero widget wrap.
+- Render-blocking requests about 850 ms mobile (mainly Elementor `frontend.min.css` and the async theme CSS preloads); unused JS about 260 KiB is still reported (Lighthouse counts the deferred Google scripts when they load at idle).
+- Content (not performance): the sponsor-guide story links to the old staging domain topnotchmall.co.ke/smilescommunity/ and shows editorial labels ("Quick Answer (Featured Snippet Target)", "Donation Call to Action").
+- Contrast warnings on Home and the story (Accessibility 96).
