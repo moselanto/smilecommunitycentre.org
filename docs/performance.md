@@ -245,3 +245,18 @@ Home now loads main-front.min.css (48 KB, was 126 KB) and home-front.min.css (87
 - Still variable: Home desktop 67-99 (one run had TBT 1,010 ms and pillars-strip CLS 0.058); Donate mobile 78 on one run (TBT 750 ms). Same code scored higher minutes apart, so this looks like test-machine load again.
 - The CLS insight still labels programme photos `wp-image-1048` (run 1 desktop) and `wp-image-1050` (run 2 desktop) as unsized, while the "Image elements have explicit width and height" audit passes and they contribute no shift. Left as is.
 - Maintenance: after editing Home in Elementor, run `python3 scripts/purge-front-css.py --refresh`, then build and deploy, or new classes on Home will be unstyled.
+
+
+### After 2.53.6 (care-strip shift fix: boxed-container padding and .smile-btn-row moved into critical CSS)
+
+Cause found: `.elementor-section.elementor-section-boxed>.elementor-container` (max-width and padding-inline) and `.smile-btn-row` were only in the async full stylesheet. When it arrived after first paint (slower runs only), the care strip (7a9bc3d) was first drawn without the container padding and then moved, giving 0.058 in one 2.53.5 run.
+
+| Run (11 Nov, EAT) | Desktop perf | LCP | FCP | TBT | CLS | SI | Mobile perf | Mobile CLS |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| #1 20:35 | 98 | 0.6 s | 0.3 s | 0 ms | 0 | 1.4 s | 85 | 0 |
+| #2 20:36 | 98 | 0.7 s | 0.3 s | 30 ms | 0.021 | 1.4 s | 93 | 0.001 |
+| #3 20:37 | 99 | 0.8 s | 0.5 s | 10 ms | 0.025 | 1.3 s | 92 | 0 |
+
+- Desktop scores are now steady at 98-99 (2.53.5: 67-99). The care-strip shift dropped from 0.058 to 0.021 but still appears in 2 of 3 runs (run #3 also lists the intro container at 0.004). Next suspect: another async-only rule above the fold, or the Caveat slider eyebrow font (listed in the CLS insight). Not fixed yet.
+- Phone-width check of the trimmed Home: the browser cannot be resized and the preview sites either failed or were refused by the site, so no full side-by-side visual comparison was possible. Checked in a 320px preview: the mobile menu opens and closes, all four submenus expand and collapse, the tab bar shows, and the WhatsApp panel opens. Offline check: every class on the mobile Home markup (menu, sub-menu, tab bar, WhatsApp panel and states) is kept in the trimmed files; the only dropped menu-type classes (smile-mbar, smile-tabbar__item--menu, smile-tabbar__burger, current-menu-parent) are not output on Home. No safelist change needed.
+- For manual comparison on a phone: https://smilecommunitycentre.org/?smile_full_css=1 loads the full stylesheets.
