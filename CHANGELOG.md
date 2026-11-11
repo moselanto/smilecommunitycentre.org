@@ -2,6 +2,10 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.51.1 - 11 Nov 2026
+
+- **Fixed desktop layout shift on the home slider (CLS 0.815 in PageSpeed).** The slider section's own layout rules (`.smile-slider-sec ...`, including where the slide text sits at 768 px and wider) were never in the critical CSS, so the slide text jumped when the full stylesheet arrived. `slider-sec` is now in the critical CSS selector list. Existing bug, not caused by 2.51.0.
+
 ## 2.51.0 - 11 Nov 2026
 
 - **Smaller inline critical CSS.** `scripts/build-critical-css.py` now keeps only the matching selectors of each rule (not the whole comma list), leaves interaction states (:hover, :focus, open menu) to the full stylesheet, skips print media, and skips components that are never in a template's first screen (home: page banner, breadcrumbs, FAQ, stories lead; inner pages: slider, FAQ). Home: 81.0 KB to 55.2 KB (10.6 KB gzipped); inner: 66.1 KB to 53.5 KB. The remaining bulk is the header menu (desktop menu and mobile drawer markup are in the first screen).
