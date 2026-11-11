@@ -119,3 +119,5 @@ See `docs/qa-checklist.md`. Do not deploy until management facts, safeguarding, 
 - **Analytics:** GA4 `G-DJQ2PBW3YN` (property 270195586, stream https://smilecommunitycentre.org) and GTM container `GTM-TDZHTDQF` are printed by `inc/analytics.php`. Logged-in staff are not tracked. The GTM container must not contain a GA4 tag for the same ID (double counting). Google accounts: peterwafulah@gmail.com owns Search Console, GA4 and GTM. The Google Business Profile is managed by another account (sc...@gmail.com) and still needs access.
 - **Crawlers:** see `docs/crawler-access-matrix.md`. Feeds send `X-Robots-Tag: noindex, follow`.
 - **IndexNow:** enable Rank Math > Instant Indexing (IndexNow) for posts and pages. Rank Math hosts the key file.
+
+- **Bing Webmaster Tools:** site imported from Search Console under peterwafulah@gmail.com (11 Nov 2026), sitemap_index.xml submitted.

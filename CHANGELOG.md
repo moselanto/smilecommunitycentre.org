@@ -2,6 +2,14 @@
 
 All notable changes to the Smile Community Centre theme (`smile-community-child`) and the bundled Smile Community Core plugin. Newest first.
 
+## 2.50.0 - 11 Nov 2026
+
+Mobile LCP work (Search Console: "LCP issue: longer than 4s (mobile)", 33 URLs in one group, group LCP 4.2s, CrUX data to 8 Nov 2026).
+- **Home hero photo preloaded.** The bundled first slide had no preload (the preload only handled Media Library images), so phones discovered it after about 90 KB of inline CSS. Now preloaded in the head with the same srcset/sizes as the `<img>`.
+- **1200 px slide photos added.** Phones at about 2.6x density were downloading the 1600 px file (feeding-tables: 95 KB); they now get 1200 px (63 KB). All six slides have a 1200 px version (25-30% smaller).
+- **Caveat font no longer preloaded** on the home page (51 KB, decorative, `font-display: optional`); it was competing with the hero photo.
+- Findings recorded in `docs/performance.md`: the field data is a 28-day window, and the new site went live on 4 Nov 2026, so most of the 4.2s comes from the old site. Cached page TTFB is about 0.7s, but uncached it is 1.5-2.1s (VivaWebHost), so WP Super Cache preload mode was enabled to keep pages warm. Validate the fix in Search Console from about 2 Dec 2026.
+
 ## 2.49.1 / Core 1.6.1 - 11 Nov 2026
 
 - Old sitemap addresses (`/sitemaps.xml`, `/sitemap.xml`, `/wp-sitemap.xml`) now reach Rank Math's `/sitemap_index.xml` in one 301. The saved redirect list from the original activation still pointed to `/wp-sitemap.xml`, causing two hops; built-in sitemap rules now always win.

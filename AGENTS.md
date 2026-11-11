@@ -19,7 +19,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Current state (11 Nov 2026)
 
-- Live: theme **2.49.1** / Core **1.6.1**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
+- Live: theme **2.50.0** / Core **1.6.1**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
 
 ## Earlier state (19 Oct 2026, 23:30 EAT)
 
@@ -36,6 +36,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **11 Nov 2026, 12:00 EAT (Ray / Town):** Bing Webmaster Tools set up under peterwafulah@gmail.com: site imported from Google Search Console (verified through Search Console, no separate code), sitemap_index.xml submitted (status Processing; the previous sitemap showed 56 URLs). IndexNow comes from Rank Math Instant Indexing. Mobile Core Web Vitals: 33 URLs with poor LCP (4.2s, mostly old-site data). Released 2.50.0 (hero preload, 1200w slides, no Caveat preload); details in docs/performance.md. Validate in Search Console around 2 Dec 2026.
 - **11 Nov 2026, 11:30 EAT (Ray / Town):** 2.49.0 installed live, SEOPress imported into Rank Math then deleted, Rank Math sitemap + Instant Indexing on, Analytics/Schema/Local SEO modules off, sitemap_index.xml submitted in Search Console (old sitemaps.xml removed). curl checks passed except /sitemaps.xml taking two hops; fixed in 2.49.1 / Core 1.6.1. No /shop/ or /cart/ links remain on Home or Our Goals; the Search Console referrers were historical.
 - **11 Nov 2026 (Ray / Town):** Merged PR #22 into main (squash ebb594c). Released 2.49.0 / Core 1.6.0: Rank Math replaces SEOPress (theme feeds titles/descriptions, Rank Math JSON-LD off, theme graph is the only schema), GA4 G-DJQ2PBW3YN + GTM-TDZHTDQF printed by `inc/analytics.php`, robots.txt AI-crawler policy + `/llms.txt` + feed noindex (`inc/ai-discovery.php`), redirects for Search Console 404s (/shop/, /cart/) and old .html addresses, sitemap redirects to `/sitemap_index.xml`. Google: Search Console, GA4 (stream now https) and GTM owned by peterwafulah@gmail.com; NURA Beauty's account removed. Business Profile managed by sc...@gmail.com (no access yet). Open: Business Profile access, Sunday hours and Instagram handle, 33 poor mobile Core Web Vitals URLs, Bing Webmaster Tools, content/AEO work from the SEO plan document.
 

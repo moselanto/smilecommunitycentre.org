@@ -189,6 +189,13 @@ function smile_preload_lcp() {
 		return;
 	}
 	$slides = smile_slider_slides();
+	if ( empty( $slides[0]['image'] ) && ! empty( $slides[0]['file'] ) ) {
+		// Bundled slide photo (the default): it had no preload, so phones found it only
+		// after about 90 KB of inline CSS. Same srcset/sizes as the <img> (2.50.0).
+		$base = SMILE_THEME_URI . '/assets/images/slides/' . $slides[0]['file'];
+		echo '<link rel="preload" as="image" href="' . esc_url( $base . '-1600.webp' ) . '" imagesrcset="' . esc_attr( $base . '-1600.webp 1600w, ' . $base . '-1200.webp 1200w, ' . $base . '-960.webp 960w, ' . $base . '-720.webp 720w' ) . '" imagesizes="(min-width: 901px) 62vw, 100vw" fetchpriority="high">' . "\n";
+		return;
+	}
 	if ( empty( $slides[0]['image'] ) ) {
 		return;
 	}
@@ -295,10 +302,8 @@ function smile_local_fonts() {
 	);
 	echo '<link rel="preload" href="' . esc_url( $base . 'nunito-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
 	echo '<link rel="preload" href="' . esc_url( $base . 'figtree-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
-	if ( is_front_page() ) {
-		// The home page shows hand-written Caveat accents; load it early so it is ready for the first paint.
-		echo '<link rel="preload" href="' . esc_url( $base . 'caveat-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
-	}
+	// Caveat (decorative, font-display: optional) is no longer preloaded on the home page:
+	// its 51 KB competed with the hero photo, the largest element on phones (2.50.0).
 	$css = '';
 	foreach ( $faces as $f ) {
 		$css .= "@font-face{font-family:'" . $f[0] . "';font-style:" . $f[1] . ';font-weight:' . $f[2] . ';font-display:' . ( isset( $f[4] ) ? $f[4] : 'swap' ) . ';src:url(' . esc_url( $base . $f[3] ) . ") format('woff2');unicode-range:" . $range . ';}';

@@ -62,3 +62,14 @@ Run https://pagespeed.web.dev/ on the home page and one inner page (mobile tab) 
 4. **Images:** convert large uploads to WebP (for example with the free "Converter for Media" plugin) and keep photos under 2000 px wide.
 5. **Elementor > Settings > Features:** keep "Optimized DOM output", "Improved asset loading", "Improved CSS loading" and "Lazy load background images" active.
 6. Measure with PageSpeed Insights (mobile) after each step.
+
+
+## Mobile LCP review (11 Nov 2026, 2.50.0)
+
+- Search Console (CrUX, updated 8 Nov 2026): one group of 33 mobile URLs, "LCP longer than 4s", group LCP 4.2s; no CLS or INP issue. The 28-day window is mostly the old site (new site live 4 Nov), so the figure will move as new data replaces it.
+- Measured with curl from outside Kenya: cached HTML TTFB about 0.7s; uncached 1.5-2.1s (PHP generation about 1.0-1.2s). HTML 197 KB (34 KB gzipped), of which about 89 KB is inline critical CSS. Theme images and fonts are served with a 1-year immutable cache.
+- Fixed in code: hero preload for bundled slides, 1200w slide files, Caveat preload removed.
+- Fixed in admin: WP Super Cache preload mode on, so visitors rarely hit an uncached page.
+- Next candidates if field LCP stays above 2.5s: a smaller inline critical CSS (it currently holds almost the whole stylesheet), loading Elementor's per-page CSS asynchronously where the critical CSS covers it, and a server-level cache or CDN (for example Cloudflare) in front of VivaWebHost.
+- PageSpeed Insights/Lighthouse could not be run from the build environment (API daily quota exceeded; headless Chrome missing libraries). Run PSI on Home, Donate and a story after each release and note the scores here.
+- Validate the fix in Search Console (Core Web Vitals > Mobile > Validate fix) about 28 days after this release.
