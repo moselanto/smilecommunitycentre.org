@@ -169,3 +169,20 @@ Single Lighthouse 13.6 runs; field data "No Data".
   - Home mobile contrast: `em.smile-em` "everyday care possible." in the closing band.
   - Unsized image on Home: `img.wp-image-1048` (education photo).
   - Donate mobile returned NO_LCP twice (Lighthouse could not pick a largest element); desktop is fine.
+
+
+### After 2.53.2 (Figtree font-display optional, no Figtree in heading stack, slide h1 reserve, closing highlight under text, sized card photos)
+
+| Page | Device | Perf | A11y | SEO | LCP | FCP | TBT | CLS | SI | LCP element |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| Home | Mobile | 94 | 96 | 100 | 3.0 s | 1.0 s | 0 ms | **0.007** (was 0.109) | 3.3 s | first slide photo |
+| Home | Desktop | **99** | 100 | 100 | 0.7 s | 0.4 s | 20 ms | **0** (was 0.058) | 1.2 s | first slide photo |
+| Donate | Mobile | **98** | 100 | 100 | 2.3 s | 0.9 s | 80 ms | 0.018 | 2.8 s | hero section 2603e9d |
+| Donate | Desktop | 98 | 100 | 100 | 0.7 s | 0.3 s | 10 ms | 0.005 | 1.5 s | hero section 2603e9d |
+| Story | Mobile | 98 | 100 | 100 | 2.1 s | 1.1 s | 10 ms | **0** (was 0.061) | 3.5 s | featured image |
+| Story | Desktop | 97 | 100 | 100 | 0.7 s | 0.3 s | 120 ms | 0 | 1.2 s | featured image |
+
+Single Lighthouse 13.6 runs; field data "No Data". Headings still render in the rounded brand font (checked visually).
+- Fixed: h1 shifts on Home mobile and the story; pillars-strip shift on Home desktop; unsized images (none reported on any page).
+- Donate mobile NO_LCP did not recur (first run normal). Cause of the two earlier failures not identified; checked: no Elementor entrance animations or lazy-background rules on the hero section, hero image preloaded per breakpoint. Treat as a Lighthouse flake unless it returns.
+- Still open: Home mobile contrast on `em.smile-em` "everyday care possible." in the closing band (text over a photo with a 78% green overlay; Lighthouse cannot measure text over an image, so it may need a solid band behind the heading). Donate mobile CLS 0.018 (hero widget wrap 0.017, menu button 0.002).

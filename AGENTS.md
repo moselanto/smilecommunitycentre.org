@@ -19,7 +19,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Current state (11 Nov 2026)
 
-- Live: theme **2.53.1** / Core **1.6.1**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
+- Live: theme **2.53.2** / Core **1.6.1**, Rank Math SEO (SEOPress removed). See `docs/SEO.md` and `docs/crawler-access-matrix.md`.
 
 ## Earlier state (19 Oct 2026, 23:30 EAT)
 
@@ -36,6 +36,7 @@ Read this file, then `ARCHITECTURE-ESSENTIALS.md`, `docs/workflow.md` and `docs/
 
 ## Work log
 
+- **11 Nov 2026, 18:45 EAT (Ray / Town):** 2.53.2 live. PageSpeed mobile/desktop: Home 94/99, Donate 98/98, story 98/97; CLS Home 0.007/0, story 0/0. Donate NO_LCP did not recur. Open: closing-band em contrast on Home mobile. Details in docs/performance.md.
 - **11 Nov 2026, 18:30 EAT (Ray / Town):** 2.53.1 live (Elementor CSS regenerated). Home SEO 100, Donate A11y 100, descriptive Learn more text, privacy link underlined, Home desktop CLS 0.198 to 0.058. Open: h1 CLS on Home mobile (0.109) and story mobile (0.061), closing-band em contrast, unsized wp-image-1048, Donate mobile NO_LCP. Details in docs/performance.md.
 - **11 Nov 2026, 18:00 EAT (Ray / Town):** 2.53.0 live. One-off clean-up (inc/content-fixes.php, option smile_content_fix_2530) replaced topnotchmall.co.ke/smilescommunity links in posts 151, 152, 159, 161, 163, 166, 182, 183 and removed the editorial labels in 151 and 152; REST scan of all posts and pages now finds none. Nunito font-display optional: mobile CLS 0 on Home, Donate and the story. Footer contrast fixed. New: Home desktop CLS 0.198 (text widget 7a9bc3d), Donate privacy link needs an underline, slider text over photos still flagged. Scores in docs/performance.md.
 - **11 Nov 2026, 12:45 EAT (Ray / Town):** 2.52.0 live (small Elementor/Hello CSS inlined, GA4/GTM deferred to first interaction or idle, story image box reserved). PageSpeed mobile: Home 97, Donate 97, story 99; desktop 99 on all three (docs/performance.md). GA4 Realtime still records visits. Open: Home mobile CLS 0.095 (slide title font swap, unsized wp-image-1053), story h1 CLS 0.061, staging links and visible editorial labels in the sponsor-guide story.
