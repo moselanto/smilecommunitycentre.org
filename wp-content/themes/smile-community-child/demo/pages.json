@@ -5683,7 +5683,7 @@
   "title": "Volunteer With Us",
   "order": 51,
   "seo_title": "Volunteer at a Children's Home in Kenya | Smile, Nairobi",
-  "seo_desc": "Volunteer with children in Nairobi: teaching, mentoring, sports, counselling and daily care at Smile Community Centre, Kayole. Local and overseas volunteers.",
+  "seo_desc": "Volunteer opportunities at Smile Community Centre in Kayole, Nairobi are considered periodically, depending on current needs, capacity and safeguarding requirements. Contact us to enquire.",
   "image": "volunteer",
   "elementor": [
    {
@@ -5747,7 +5747,7 @@
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>We welcome volunteers who want to promote positive growth in our community.</p>",
+         "editor": "<p>Volunteer opportunities are considered periodically and depend on the centre’s current needs, capacity and safeguarding requirements. Contact us to ask whether an opportunity is available.</p>",
          "_css_classes": "smile-lead smile-measure"
         },
         "elements": []
@@ -5877,7 +5877,7 @@
       "isInner": false,
       "settings": {
        "_column_size": 50,
-       "_inline_size": 50.0
+       "_inline_size": 50
       },
       "elements": [
        {
@@ -5907,7 +5907,7 @@
       "isInner": false,
       "settings": {
        "_column_size": 50,
-       "_inline_size": 50.0
+       "_inline_size": 50
       },
       "elements": [
        {
@@ -6021,7 +6021,7 @@
         "elType": "widget",
         "widgetType": "text-editor",
         "settings": {
-         "editor": "<p>Volunteers from overseas are welcome. Here is what to expect before you apply.</p>"
+         "editor": "<p>International volunteer enquiries are considered periodically, subject to current programme needs, capacity, eligibility and safeguarding requirements. Please contact the centre before making travel arrangements.</p>"
         },
         "elements": []
        },
@@ -6071,7 +6071,7 @@
     "isInner": false
    }
   ],
-  "html": "<section><p>Volunteer with us</p><h1>Share your time and skills</h1><p>We welcome volunteers who want to promote positive growth in our community.</p><p><img src=\"smile-img:volunteer\" alt=\"A volunteer spending time with children at the centre\"></p></section><section>[smile_volunteer_notice]</section><section><h2>Ways to volunteer</h2><ul><li>Teaching and tutoring</li><li>Mentoring young people</li><li>Counselling (for qualified volunteers)</li><li>Organising youth activities and community awareness events with our staff</li><li>Proposal writing and record keeping</li><li>Online and community fundraising</li><li>Sports coaching</li><li>Cooking, cleaning and daily care alongside staff</li><li>Welcoming visitors</li></ul><p>If you have other ideas for Smile, please tell us.</p><h2>What we look for</h2><ul><li>Aged 18 or over</li><li>Good communication and listening skills</li><li>Patience, and care for people with special needs</li><li>Basic knowledge of HIV/AIDS, with zero discrimination towards anyone affected</li><li>A real interest in helping people in need</li></ul></section><section><h2>Safeguarding and conduct</h2><p>Children’s safety comes first. Every volunteer signs a volunteer agreement and is expected to:</p><ul><li>Follow staff guidance at all times and never be alone with a child out of sight of staff.</li><li>Never photograph, film or post about children without the centre’s permission, and never share children’s names, locations or stories online.</li><li>Never give children personal contact details or contact them outside the centre.</li><li>Treat every child and community member with dignity and respect.</li><li>Report any concern about a child’s safety to the centre’s management immediately.</li></ul><p>We may ask for references or a police clearance certificate as part of our approval process. We will explain how to share these securely. Please do not send identity documents through the form below.</p></section><section><h2>International volunteers</h2><p>Volunteers from overseas are welcome. All volunteer work is unpaid. International volunteers pay a one-time administration fee of US$165 and cover their own living costs, including airport transfers, accommodation and meals. Accommodation can be arranged with a secure local host family or at a nearby hotel or hostel, usually 1 to 5 km from the centre. The project hosts between one and four volunteers a month.</p><p>Bring a mosquito net, a torch, toiletries, a first-aid kit, sun cream and durable shoes. All of these can also be bought in Nairobi.</p><h2>Apply or express interest</h2>[smile_form type=\"volunteer\"]</section>"
+  "html": "<section><p>Volunteer with us</p><h1>Share your time and skills</h1><p>Volunteer opportunities are considered periodically and depend on the centre’s current needs, capacity and safeguarding requirements. Contact us to ask whether an opportunity is available.</p><p><img src=\"smile-img:volunteer\" alt=\"A volunteer spending time with children at the centre\"></p></section><section>[smile_volunteer_notice]</section><section><h2>Ways to volunteer</h2><ul><li>Teaching and tutoring</li><li>Mentoring young people</li><li>Counselling (for qualified volunteers)</li><li>Organising youth activities and community awareness events with our staff</li><li>Proposal writing and record keeping</li><li>Online and community fundraising</li><li>Sports coaching</li><li>Cooking, cleaning and daily care alongside staff</li><li>Welcoming visitors</li></ul><p>If you have other ideas for Smile, please tell us.</p><h2>What we look for</h2><ul><li>Aged 18 or over</li><li>Good communication and listening skills</li><li>Patience, and care for people with special needs</li><li>Basic knowledge of HIV/AIDS, with zero discrimination towards anyone affected</li><li>A real interest in helping people in need</li></ul></section><section><h2>Safeguarding and conduct</h2><p>Children’s safety comes first. Every volunteer signs a volunteer agreement and is expected to:</p><ul><li>Follow staff guidance at all times and never be alone with a child out of sight of staff.</li><li>Never photograph, film or post about children without the centre’s permission, and never share children’s names, locations or stories online.</li><li>Never give children personal contact details or contact them outside the centre.</li><li>Treat every child and community member with dignity and respect.</li><li>Report any concern about a child’s safety to the centre’s management immediately.</li></ul><p>We may ask for references or a police clearance certificate as part of our approval process. We will explain how to share these securely. Please do not send identity documents through the form below.</p></section><section><h2>International volunteers</h2><p>International volunteer enquiries are considered periodically, subject to current programme needs, capacity, eligibility and safeguarding requirements. Any fees, accommodation arrangements, duration and other practical details must be confirmed directly with Smile Community Centre in writing before travel or payment. Do not make travel bookings based on historical information on this website.</p><p>Bring a mosquito net, a torch, toiletries, a first-aid kit, sun cream and durable shoes. All of these can also be bought in Nairobi.</p><h2>Apply or express interest</h2>[smile_form type=\"volunteer\"]</section>"
  },
  {
   "slug": "partner-with-us",
@@ -7318,7 +7318,7 @@
       "isInner": false,
       "settings": {
        "_column_size": 50,
-       "_inline_size": 50.0
+       "_inline_size": 50
       },
       "elements": [
        {
@@ -7360,7 +7360,7 @@
       "isInner": false,
       "settings": {
        "_column_size": 50,
-       "_inline_size": 50.0
+       "_inline_size": 50
       },
       "elements": [
        {
