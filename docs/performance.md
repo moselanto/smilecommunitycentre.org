@@ -186,3 +186,18 @@ Single Lighthouse 13.6 runs; field data "No Data". Headings still render in the 
 - Fixed: h1 shifts on Home mobile and the story; pillars-strip shift on Home desktop; unsized images (none reported on any page).
 - Donate mobile NO_LCP did not recur (first run normal). Cause of the two earlier failures not identified; checked: no Elementor entrance animations or lazy-background rules on the hero section, hero image preloaded per breakpoint. Treat as a Lighthouse flake unless it returns.
 - Still open: Home mobile contrast on `em.smile-em` "everyday care possible." in the closing band (text over a photo with a 78% green overlay; Lighthouse cannot measure text over an image, so it may need a solid band behind the heading). Donate mobile CLS 0.018 (hero widget wrap 0.017, menu button 0.002).
+
+
+### After 2.53.3 (green panel behind Home closing heading; .smile-nav-toggle in critical CSS)
+
+| Page | Device | Perf | A11y | SEO | LCP | FCP | TBT | CLS | SI |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Home | Mobile | 75 | **100** | 100 | 4.1 s | 1.0 s | 360 ms | 0 | 4.9 s |
+| Home | Desktop | 95 | 100 | 100 | 0.8 s | 0.3 s | 70 ms | 0 | 1.9 s |
+| Donate | Mobile | 97 | 100 | 100 | 2.4 s | 1.1 s | 10 ms | 0.017 | 2.6 s |
+| Donate | Desktop | 94 | 100 | 100 | 0.7 s | 0.3 s | 170 ms | 0.029 | 1.3 s |
+
+Single Lighthouse 13.6 runs; field data "No Data".
+- Fixed: no contrast failures on any page (Home mobile Accessibility 96 to 100). Menu button no longer listed as a shift culprit on Donate.
+- Not fixed: Donate mobile CLS 0.017 (hero `div.elementor-widget-wrap.elementor-element-populated`); Donate desktop 0.029 (shortcode widget 3bb899c) plus unsized `img.wp-image-13` ("Young pupils in school uniform outside the centre"). Likely cause to check next: the give form's CSS (`<style id="smile-give-css">`) is printed inside the hero card in the body, so the intro can paint before those rules are parsed.
+- Home mobile 75 / LCP 4.1 s / TBT 360 ms is lower than the 2.53.2 run (94 / 3.0 s / 0 ms); 2.53.3 changed only CSS, so this needs a repeat run before treating it as a regression.
